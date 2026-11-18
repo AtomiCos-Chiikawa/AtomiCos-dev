@@ -18,6 +18,13 @@ inject_local "$HERE/test/vesting_delegate_underflow_test.go" "$PKG/vesting_deleg
 inject_local "$HERE/test/probe_contract.go"                  "$PKG/probe_contract.go"
 
 RAN_PATTERN='--- (PASS|FAIL): TestGHSA7g4w_VestingDelegateBeyondSpendable'
+# Failure signature of the vulnerable version (all must match, see lib.sh): the test fails on
+# the wrap-around assertion of the target delegation, not on setup, the control or anything else.
+EXPECT_FAIL=(
+  '^--- FAIL: TestGHSA7g4w_VestingDelegateBeyondSpendable '
+  'Error:[[:space:]]+Should be false$'
+  'Messages:[[:space:]]+StateDB balance wrapped around after delegating more than the spendable balance \(underflow\)'
+)
 # -tags=test: test config (x/vm/types/*_testing.go) only exists under the 'test' build tag,
 #             as in the upstream Makefile.
 ARGS=(-tags=test ./tests/integration/atomicos_ghsa7g4w/ -run TestGHSA7g4w -count=1 -v -timeout 30m)

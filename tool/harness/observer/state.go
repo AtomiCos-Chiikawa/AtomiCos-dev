@@ -117,11 +117,10 @@ func readState(v statedb.AtomicosView, committed bool) (s *state) {
 		s.Error = "atomicos: context has no multistore"
 		return s
 	}
-	// Throw-away branch, infinite gas, no KV gas: reads cannot affect the traced execution.
-	ctx, _ := view.CacheContext()
-	ctx = ctx.WithGasMeter(storetypes.NewInfiniteGasMeter()).
-		WithKVGasConfig(storetypes.GasConfig{}).
-		WithTransientKVGasConfig(storetypes.GasConfig{})
+	// Isolated read context, infinite gas, no KV gas: reads cannot affect the traced execution.
+	// release runs on every exit path; on a panic it runs before the recover above.
+	ctx, release := isolatedReadCtx(view)
+	defer release()
 
 	denom := evmtypes.GetEVMCoinDenom()
 	s.Denom = denom
@@ -183,6 +182,44 @@ func readState(v statedb.AtomicosView, committed bool) (s *state) {
 		s.StateDB[h] = rec
 	}
 	return s
+}
+
+// layeredStore is the stack-of-layers multistore cosmos/evm installs on a StateDB's precompile
+// cache context (x/vm/store/snapshotmulti.Store, v0.5 and v0.7 families). Its CacheMultiStore()
+// is `s.Snapshot(); return s`: it pushes a layer onto the store under test and returns that same
+// store, so ctx.CacheContext() is NOT a throw-away branch there, and nothing ever pops the layer.
+// Reads that write (x/distribution's DelegationRewards query calls IncrementValidatorPeriod on
+// the context it is given) would then land in the store under test and be committed with it.
+type layeredStore interface {
+	Snapshot() int
+	RevertToSnapshot(target int)
+}
+
+// isolatedReadCtx returns a context whose writes cannot reach the traced execution, and a
+// release function the caller must defer.
+//   - layered store: take a snapshot (a new top layer), read through it, and revert to that
+//     snapshot on release; RevertToSnapshot(id) pops layer id and every layer pushed above it
+//     (also by CacheContext calls made inside the reads).
+//   - any other multistore (cosmos-sdk cachemulti / rootmulti, v0.1 family): ctx.CacheContext(),
+//     a real branch that is simply dropped.
+//
+// Both use a fresh EventManager, an infinite gas meter and zero KV gas configs.
+func isolatedReadCtx(view sdk.Context) (sdk.Context, func()) {
+	var (
+		ctx     sdk.Context
+		release = func() {}
+	)
+	if ls, ok := view.MultiStore().(layeredStore); ok {
+		id := ls.Snapshot()
+		release = func() { ls.RevertToSnapshot(id) }
+		ctx = view.WithEventManager(sdk.NewEventManager())
+	} else {
+		ctx, _ = view.CacheContext()
+	}
+	ctx = ctx.WithGasMeter(storetypes.NewInfiniteGasMeter()).
+		WithKVGasConfig(storetypes.GasConfig{}).
+		WithTransientKVGasConfig(storetypes.GasConfig{})
+	return ctx, release
 }
 
 func readStaking(ctx sdk.Context, k Keepers, s *state, denom string, accs []sdk.AccountI) {

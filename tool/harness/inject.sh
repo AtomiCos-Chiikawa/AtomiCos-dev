@@ -29,7 +29,10 @@ refresh_package() {
   local storeimp
   storeimp="$(grep -ho 'storetypes "[^"]*"' "$PC" | head -1)"
   [ -n "$storeimp" ] || { echo "inject: cannot find the storetypes import in $PC"; exit 1; }
-  sed -i "s#storetypes \"cosmossdk.io/store/types\"#$storeimp#" "$WT/evmd/atomicos/"*.go
+  # perl, not `sed -i`: works with GNU and BSD userlands (BSD sed -i needs a suffix argument).
+  # \Q..\E: the import line is matched literally; the values are passed through the environment.
+  ATOMICOS_FROM='storetypes "cosmossdk.io/store/types"' ATOMICOS_TO="$storeimp" \
+    perl -pi -e 's/\Q$ENV{ATOMICOS_FROM}\E/$ENV{ATOMICOS_TO}/' "$WT/evmd/atomicos/"*.go
 }
 
 if grep -q "atomicosOnSnapshot" "$SD"; then

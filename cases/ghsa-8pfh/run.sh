@@ -35,11 +35,25 @@ done
 #    (initial-state check, where eventAmount does not exist yet) is left untouched.
 for variant in vuln fixed; do
   f="$(wt "$variant")/evmd/tests/ibc/ics20_recursive_precompile_calls_test.go"
-  sed -i 's#^\(\t\t\t\t\)suite\.Require()\.Equal(contractBondDenomBalance\.Amount, sdkmath\.NewInt(\(0\|50\)))$#\1fmt.Printf("REPRO %s: contract bond-denom balance after transfer=%s (test expects \2), tx events=%d\\n", suite.T().Name(), contractBondDenomBalance.Amount, eventAmount)\n&#' "$f"
+  #    perl, not GNU `sed -i` with \t, \| and \n (BSD sed rejects or misreads them); the result is
+  #    byte-for-byte what the former GNU sed command produced.
+  perl -pi -e 's/^(\t\t\t\t)suite\.Require\(\)\.Equal\(contractBondDenomBalance\.Amount, sdkmath\.NewInt\((0|50)\)\)$/${1}fmt.Printf("REPRO %s: contract bond-denom balance after transfer=%s (test expects ${2}), tx events=%d\\n", suite.T().Name(), contractBondDenomBalance.Amount, eventAmount)\n$&/' "$f"
   [ "$(grep -c 'REPRO %s: contract bond-denom balance' "$f")" -eq 2 ] || { echo "observation hooks not inserted in $variant"; exit 1; }
 done
 
 RAN_PATTERN='--- (PASS|FAIL): TestICS20RecursivePrecompileCallsTestSuite'
+# Failure signature of the vulnerable version (all must match, see lib.sh): the "with reverts"
+# sub-test fails on its post-check balance assertion (the 4-tab `...NewInt(0))` line, i.e. the
+# contract's bond-denom balance after the transfer).
+ASSERT_LINE="$(awk -v want="$(printf '\t\t\t\t')suite.Require().Equal(contractBondDenomBalance.Amount, sdkmath.NewInt(0))" \
+  '$0 == want {print NR}' "$(wt vuln)/evmd/tests/ibc/ics20_recursive_precompile_calls_test.go")"
+case "$ASSERT_LINE" in ''|*[!0-9]*) echo "cannot locate the post-check balance assertion in the injected test"; exit 1;; esac
+EXPECT_FAIL=(
+  '--- FAIL: TestICS20RecursivePrecompileCallsTestSuite/TestHandleMsgTransfer/test_recursive_precompile_call_with_reverts \('
+  "Error Trace:[[:space:]]+.*/evmd/tests/ibc/ics20_recursive_precompile_calls_test\\.go:$ASSERT_LINE\$"
+  'Error:[[:space:]]+Not equal: *$'
+  'Test:[[:space:]]+TestICS20RecursivePrecompileCallsTestSuite/TestHandleMsgTransfer/test_recursive_precompile_call_with_reverts$'
+)
 # -tags=test: this version's test config (x/vm/types/*_testing.go) only exists under the 'test'
 #             build tag; the upstream Makefile runs evmd tests the same way.
 ARGS=(-tags=test ./tests/ibc/ -run TestICS20RecursivePrecompileCallsTestSuite -count=1 -v -timeout 30m)
