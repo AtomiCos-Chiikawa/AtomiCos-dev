@@ -1,0 +1,7 @@
+[04:11:28] vuln worktree: /home/dev/atomicos/.work/ghsa-7g4w-vuln @ 0fe56c03
+[04:11:28] fixed worktree: /home/dev/atomicos/.work/ghsa-7g4w-fixed @ 0182da19
+[04:11:28] running vuln ...
+vuln   FAIL (exit 1)                      expected FAIL  -> as expected
+[04:23:41] running fixed ...
+fixed  PASS                               expected PASS  -> as expected
+[04:30:05] summary: /home/dev/atomicos/cases/ghsa-7g4w/results/summary.txt

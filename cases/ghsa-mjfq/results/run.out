@@ -1,0 +1,7 @@
+[03:52:45] vuln worktree: /home/dev/atomicos/.work/ghsa-mjfq-vuln @ 5456ce8d
+[03:52:46] fixed worktree: /home/dev/atomicos/.work/ghsa-mjfq-fixed @ 0fff8c14
+[03:52:46] running vuln ...
+vuln   FAIL (exit 1)                      expected FAIL  -> as expected
+[03:57:07] running fixed ...
+fixed  PASS                               expected PASS  -> as expected
+[03:57:52] summary: /home/dev/atomicos/cases/ghsa-mjfq/results/summary.txt

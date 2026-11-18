@@ -1,0 +1,13 @@
+case:    ghsa-mjfq
+date:    2026-11-18T18:52:46Z
+vuln:    5456ce8dd3d1bed0c7442ab2f0d4146a23efe624
+fixed:   0fff8c144b24effbcb3addd666150ba5989d631c
+go:      go1.23.6 (CGO_ENABLED=default)
+command: (cd precompiles/distribution && go test -run TestPrecompileIntegrationTestSuite -count=1 -timeout 60m -ginkgo.focus tryClaimRewards -ginkgo.v)
+
+vuln   FAIL (exit 1)                      expected FAIL  -> as expected
+fixed  PASS                               expected PASS  -> as expected
+
+observations (lines tagged REPRO in the logs):
+  [vuln]   REPRO tryClaimRewards(gasLimit=80000): accruedRewardsBefore=28779770773615504 initialBalance=99997996644996888347057 finalBalance=99998007102202353674122 gasCost=79415000000000 extra(final-(initial-gas))=10536620465327065
+  [fixed]   REPRO tryClaimRewards(gasLimit=80000): accruedRewardsBefore=28779770773615504 initialBalance=99997996644996888347057 finalBalance=99997996565581888347057 gasCost=79415000000000 extra(final-(initial-gas))=0

@@ -1,0 +1,15 @@
+case:    ghsa-8pfh
+date:    2026-11-18T19:30:15Z
+vuln:    f4637461878001f6f41acdedad214db247d4f3dd
+fixed:   79089feebe79ce1f35250ba457cbd436e6bfff8b
+go:      go1.23.8 (CGO_ENABLED=default)
+command: (cd evmd && go test -tags=test ./tests/ibc/ -run TestICS20RecursivePrecompileCallsTestSuite -count=1 -v -timeout 30m)
+
+vuln   FAIL (exit 1)                      expected FAIL  -> as expected
+fixed  PASS                               expected PASS  -> as expected
+
+observations (lines tagged REPRO in the logs):
+  [vuln] REPRO TestICS20RecursivePrecompileCallsTestSuite/TestHandleMsgTransfer/test_recursive_precompile_call_with_reverts: contract bond-denom balance after transfer=200 (test expects 0), tx events=49
+  [vuln] REPRO TestICS20RecursivePrecompileCallsTestSuite/TestHandleMsgTransfer/test_recursive_precompile_call_without_reverts: contract bond-denom balance after transfer=50 (test expects 50), tx events=29
+  [fixed] REPRO TestICS20RecursivePrecompileCallsTestSuite/TestHandleMsgTransfer/test_recursive_precompile_call_with_reverts: contract bond-denom balance after transfer=0 (test expects 0), tx events=20
+  [fixed] REPRO TestICS20RecursivePrecompileCallsTestSuite/TestHandleMsgTransfer/test_recursive_precompile_call_without_reverts: contract bond-denom balance after transfer=50 (test expects 50), tx events=29
