@@ -267,10 +267,8 @@ func readStaking(ctx sdk.Context, k Keepers, s *state, denom string, accs []sdk.
 		if v, ok := byOp[d.ValidatorAddress]; ok {
 			s.Deleg[key] = v.TokensFromShares(d.Shares).TruncateInt().String()
 		}
-		if res, err := q.DelegationRewards(ctx, &distrtypes.QueryDelegationRewardsRequest{
-			DelegatorAddress: d.DelegatorAddress, ValidatorAddress: d.ValidatorAddress,
-		}); err == nil {
-			s.Rewards[key] = res.Rewards.AmountOf(denom).String()
+		if r, ok := delegationRewards(ctx, q, d.DelegatorAddress, d.ValidatorAddress, denom); ok {
+			s.Rewards[key] = r
 		}
 		if !seen[dh] {
 			seen[dh] = true
@@ -279,6 +277,26 @@ func readStaking(ctx sdk.Context, k Keepers, s *state, denom string, accs []sdk.
 			}
 		}
 	}
+}
+
+// delegationRewards reads one delegation's claimable rewards. ok is false when the query
+// returns an error or panics. x/distribution panics (nil dereference) when the reward period
+// records are incomplete, which happens on the intermediate state of a precompile call that
+// ran out of gas half-way (O2 exit with an error). Such an entry is left out, like a query
+// error, instead of failing the whole state read; rules that use rewards (R3) skip failed calls.
+func delegationRewards(ctx sdk.Context, q distrtypes.QueryServer, del, val, denom string) (amount string, ok bool) {
+	defer func() {
+		if recover() != nil {
+			amount, ok = "", false
+		}
+	}()
+	res, err := q.DelegationRewards(ctx, &distrtypes.QueryDelegationRewardsRequest{
+		DelegatorAddress: del, ValidatorAddress: val,
+	})
+	if err != nil {
+		return "", false
+	}
+	return res.Rewards.AmountOf(denom).String(), true
 }
 
 // eventSigs returns a short content hash per event (type and attributes, in order).
