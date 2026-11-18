@@ -1,0 +1,37 @@
+records: 98, findings: 4
+  violation R2-A         2
+  violation R2-W         2
+
+[VIOLATION] R2-A  (seq 87 db22 O4.balance call 2)
+  subject:  0xa4df1f1088c2db43748148938edc9a60b18859aa
+  expected: sub amount <= current balance 1000000000000000000
+  actual:   sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:506 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-W  (seq 88 db22 O2.exit call 2)
+  subject:  0xa4df1f1088c2db43748148938edc9a60b18859aa
+  expected: write-back 2000000000000000000 == bank reference
+  actual:   write-back 115792089237316195423570985008687907853269984665640564039459584007913129639936 (StateDB balance 115792089237316195423570985008687907853269984665640564039455584007913129639936, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[VIOLATION] R2-A  (seq 96 db23 O4.balance call 3)
+  subject:  0xa4df1f1088c2db43748148938edc9a60b18859aa
+  expected: sub amount <= current balance 1000000000000000000
+  actual:   sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:506 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-W  (seq 97 db23 O2.exit call 3)
+  subject:  0xa4df1f1088c2db43748148938edc9a60b18859aa
+  expected: write-back 2000000000000000000 == bank reference
+  actual:   write-back 115792089237316195423570985008687907853269984665640564039459584007913129639936 (StateDB balance 115792089237316195423570985008687907853269984665640564039455584007913129639936, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit

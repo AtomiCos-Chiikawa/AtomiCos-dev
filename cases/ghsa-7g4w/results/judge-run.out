@@ -1,0 +1,9 @@
+[05:37:08] vuln worktree: /home/dev/atomicos/.work/ghsa-7g4w-vuln @ 0fe56c03
+[05:37:09] fixed worktree: /home/dev/atomicos/.work/ghsa-7g4w-fixed @ 0182da19
+[05:37:09] judging vuln ...
+vuln   test FAIL  records 98   violations 4   expected >=1 violation  -> as expected
+       findings: violation R2-A x2, violation R2-W x2
+[05:37:35] judging fixed ...
+fixed  test PASS  records 97   violations 0   expected 0 violations   -> as expected
+       findings: guarded R2-A x2
+[05:38:00] summary: /home/dev/atomicos/cases/ghsa-7g4w/results/judge/summary.txt

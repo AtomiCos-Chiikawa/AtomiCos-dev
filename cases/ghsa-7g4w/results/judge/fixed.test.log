@@ -1,0 +1,8 @@
+=== RUN   TestGHSA7g4w_VestingDelegateBeyondSpendable
+    vesting_delegate_underflow_test.go:173: REPRO account 0x4b76b47ecA5B12C3bFa721D0048ca19A8a23Cfee type=*types.DelayedVestingAccount bank: total=5000000000000000000 spendable=1000000000000000000 locked=4000000000000000000
+    vesting_delegate_underflow_test.go:180: REPRO control: delegate(amount=500000000000000000 <= spendable=1000000000000000000) -> ok=true before=1000000000000000000 after=500000000000000000
+    vesting_delegate_underflow_test.go:193: REPRO target: delegate(amount=3000000000000000000 > spendable=1000000000000000000, <= total=5000000000000000000) -> vmErr="" callErr="panic: state balance underflow for 0x4b76b47ecA5B12C3bFa721D0048ca19A8a23Cfee: have=1000000000000000000 sub=3000000000000000000" | 2^256-after=- | wrapped=false
+    vesting_delegate_underflow_test.go:222: REPRO real-tx: delegate(amount=3000000000000000000) code=111222 err="failed ETH tx: tx failed with Code: 111222, Logs: recovered: state balance underflow for 0x4b76b47ecA5B12C3bFa721D0048ca19A8a23Cfee: have=1000000000000000000 sub=3000000000000000000\nstack:\ngoroutine 430 [running]:\nruntime/debug.Stack()\n\t/home/dev/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.9.linux..." nextBlockErr=<nil> | supply 200003000000000000000000 -> 200003000000000000000000 (delta 0) | probe bank balance 5000000000000000000 -> 5000000000000000000
+--- PASS: TestGHSA7g4w_VestingDelegateBeyondSpendable (0.15s)
+PASS
+ok  	github.com/cosmos/evm/evmd/tests/integration/atomicos_ghsa7g4w	0.202s

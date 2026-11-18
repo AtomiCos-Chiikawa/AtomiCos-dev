@@ -1,0 +1,13 @@
+case:    ghsa-7g4w (step 7: same input as step 4 + harness v07 + checker)
+date:    2026-11-18T20:37:09Z
+vuln:    0fe56c036b72aeaf60e5862b2a8bd6d9893a5ef9
+fixed:   0182da198f1f84dc0e4c937fca5e5f175d1be986
+go:      go1.25.9
+command: (cd evmd && ATOMICOS_TRACE=<trace> go test -tags=test ./tests/integration/atomicos_ghsa7g4w/ -run TestGHSA7g4w -count=1 -v -timeout 30m)
+
+vuln   test FAIL  records 98   violations 4   expected >=1 violation  -> as expected
+       findings: violation R2-A x2, violation R2-W x2
+fixed  test PASS  records 97   violations 0   expected 0 violations   -> as expected
+       findings: guarded R2-A x2
+
+details: results/judge/{vuln,fixed}.check.txt  (re-judge: atomicos-check results/judge/<variant>.trace.jsonl.gz)

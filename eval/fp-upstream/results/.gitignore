@@ -1,0 +1,2 @@
+# traces of the upstream runs are large (MBs); regenerate with ../run.sh
+*.trace.jsonl.gz

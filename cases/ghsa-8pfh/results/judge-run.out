@@ -1,0 +1,9 @@
+[05:36:16] vuln worktree: /home/dev/atomicos/.work/ghsa-8pfh-vuln @ f4637461
+[05:36:16] fixed worktree: /home/dev/atomicos/.work/ghsa-8pfh-fixed @ 79089fee
+[05:36:16] judging vuln ...
+vuln   test FAIL  records 294  violations 6   expected >=1 violation  -> as expected
+       findings: aux A1 x1, violation R1-E x5, violation R2-W x1
+[05:36:53] judging fixed ...
+fixed  test PASS  records 299  violations 0   expected 0 violations   -> as expected
+       findings: none
+[05:37:08] summary: /home/dev/atomicos/cases/ghsa-8pfh/results/judge/summary.txt

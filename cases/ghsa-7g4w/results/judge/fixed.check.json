@@ -1,0 +1,47 @@
+{
+  "records": 97,
+  "findings": [
+    {
+      "rule": "R2-A",
+      "severity": "guarded",
+      "point": "O4.balance",
+      "seq": 87,
+      "db": "db22",
+      "call": 2,
+      "subject": "0x4b76b47eca5b12c3bfa721d0048ca19a8a23cfee",
+      "expected": "sub amount \u003c= current balance 1000000000000000000",
+      "actual": "sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)",
+      "detail": "balance underflow",
+      "outcome": "rejected (panic: state balance underflow for 0x4b76b47ecA5B12C3bFa721D0048ca19A8a23Cfee: have=1000000000000000000 sub=3000000000000000000)",
+      "stack": [
+        "x/vm/statedb/statedb.go:506 statedb.(*StateDB).SubBalance",
+        "precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange",
+        "precompiles/common/precompile.go:131 common.Precompile.runNativeAction",
+        "precompiles/common/precompile.go:48 common.Precompile.RunNativeAction",
+        "precompiles/staking/staking.go:100 staking.Precompile.Run",
+        "x/vm/keeper/state_transition.go:522 keeper.(*Keeper).ApplyMessageWithConfig"
+      ]
+    },
+    {
+      "rule": "R2-A",
+      "severity": "guarded",
+      "point": "O4.balance",
+      "seq": 96,
+      "db": "db23",
+      "call": 3,
+      "subject": "0x4b76b47eca5b12c3bfa721d0048ca19a8a23cfee",
+      "expected": "sub amount \u003c= current balance 1000000000000000000",
+      "actual": "sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)",
+      "detail": "balance underflow",
+      "outcome": "rejected (panic: state balance underflow for 0x4b76b47ecA5B12C3bFa721D0048ca19A8a23Cfee: have=1000000000000000000 sub=3000000000000000000)",
+      "stack": [
+        "x/vm/statedb/statedb.go:506 statedb.(*StateDB).SubBalance",
+        "precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange",
+        "precompiles/common/precompile.go:131 common.Precompile.runNativeAction",
+        "precompiles/common/precompile.go:48 common.Precompile.RunNativeAction",
+        "precompiles/staking/staking.go:100 staking.Precompile.Run",
+        "x/vm/keeper/state_transition.go:522 keeper.(*Keeper).ApplyMessageWithConfig"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+case:    ghsa-mjfq (step 7: same input as step 4 + harness v01 + checker)
+date:    2026-11-18T20:35:36Z
+vuln:    5456ce8dd3d1bed0c7442ab2f0d4146a23efe624
+fixed:   0fff8c144b24effbcb3addd666150ba5989d631c
+go:      go1.23.6
+command: (cd precompiles/distribution && ATOMICOS_TRACE=<trace> go test -run TestPrecompileIntegrationTestSuite -count=1 -timeout 60m -ginkgo.focus tryClaimRewards -ginkgo.v)
+
+vuln   test FAIL  records 96   violations 6   expected >=1 violation  -> as expected
+       findings: violation R1-E x4, violation R1-S x2
+fixed  test PASS  records 96   violations 0   expected 0 violations   -> as expected
+       findings: none
+
+details: results/judge/{vuln,fixed}.check.txt  (re-judge: atomicos-check results/judge/<variant>.trace.jsonl.gz)

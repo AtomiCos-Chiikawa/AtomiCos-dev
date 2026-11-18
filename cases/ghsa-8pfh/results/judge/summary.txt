@@ -1,0 +1,13 @@
+case:    ghsa-8pfh (step 7: same input as step 4 + harness v05 + checker)
+date:    2026-11-18T20:36:16Z
+vuln:    f4637461878001f6f41acdedad214db247d4f3dd
+fixed:   79089feebe79ce1f35250ba457cbd436e6bfff8b
+go:      go1.23.8
+command: (cd evmd && ATOMICOS_TRACE=<trace> go test -tags=test ./tests/ibc/ -run TestICS20RecursivePrecompileCallsTestSuite -count=1 -v -timeout 30m)
+
+vuln   test FAIL  records 294  violations 6   expected >=1 violation  -> as expected
+       findings: aux A1 x1, violation R1-E x5, violation R2-W x1
+fixed  test PASS  records 299  violations 0   expected 0 violations   -> as expected
+       findings: none
+
+details: results/judge/{vuln,fixed}.check.txt  (re-judge: atomicos-check results/judge/<variant>.trace.jsonl.gz)

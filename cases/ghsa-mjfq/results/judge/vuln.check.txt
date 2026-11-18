@@ -1,0 +1,35 @@
+records: 96, findings: 6
+  violation R1-E         4
+  violation R1-S         2
+
+[VIOLATION] R1-S  (seq 96 db26 O6.commit)
+  subject:  bank:0x93354845030274cd4bf1686abd60ab28ec52e1a7
+  expected: 50430654405337022 (value before the reverted frame)
+  actual:   39894033940009957 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 95)
+
+[VIOLATION] R1-S  (seq 96 db26 O6.commit)
+  subject:  bank:0xd07695a2a92086aedcf8d0c853793e7237e354ad
+  expected: 99997996564996888347057 (value before the reverted frame)
+  actual:   99998007101617353674122 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 95)
+
+[VIOLATION] R1-E  (seq 96 db26 O6.commit)
+  subject:  event coin_received:25002878911e
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 95)
+
+[VIOLATION] R1-E  (seq 96 db26 O6.commit)
+  subject:  event coin_spent:3e5afbe6e946
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 95)
+
+[VIOLATION] R1-E  (seq 96 db26 O6.commit)
+  subject:  event message:1fac781d0d91
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 95)
+
+[VIOLATION] R1-E  (seq 96 db26 O6.commit)
+  subject:  event transfer:736e3d5866d5
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 95)

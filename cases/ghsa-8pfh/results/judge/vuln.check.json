@@ -1,0 +1,77 @@
+{
+  "records": 294,
+  "findings": [
+    {
+      "rule": "R2-W",
+      "severity": "violation",
+      "point": "O2.exit",
+      "seq": 150,
+      "db": "db9",
+      "call": 7,
+      "subject": "0xcbb7d3f6fb847b662a5212015a569a73442627b5",
+      "expected": "write-back 0 == bank reference",
+      "actual": "write-back 200000000000000 (StateDB balance 200000000000000, mode balance=bank_spendable)",
+      "detail": "the StateDB balance would not reconcile with the bank at commit"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 151,
+      "db": "db9",
+      "subject": "event coin_received:9c1ab87bbe6e",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 151,
+      "db": "db9",
+      "subject": "event coin_spent:4a88ef7a3ca1",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 151,
+      "db": "db9",
+      "subject": "event message:1fac781d0d91",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 151,
+      "db": "db9",
+      "subject": "event transfer:85d43ec62356",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 151,
+      "db": "db9",
+      "subject": "event withdraw_rewards:f69bb65b7087",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)"
+    },
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 151,
+      "db": "db9",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "104000042842370275213 -\u003e 104000042842370275413"
+    }
+  ]
+}

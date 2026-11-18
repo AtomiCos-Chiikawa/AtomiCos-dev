@@ -1,0 +1,22 @@
+false-positive pre-measurement: upstream precompile integration suites
+date:   2026-11-18T20:42:30Z
+tree:   cosmos/evm v0.7.4 (ba66d3106a52f84b1c1ede8d9683c2df98d742ef) + harness v07
+
+[set B: bank] Ran 19 of 19 Specs (19 Passed | 0 Failed)
+      records 3226, StateDBs 688, precompile calls 244, reverts 342
+      findings: none
+[set B: erc20] Ran 121 of 129 Specs (121 Passed | 0 Failed)
+      records 75870, StateDBs 20325, precompile calls 863, reverts 9890
+      findings: none
+[set B: werc20] Ran 81 of 81 Specs (81 Passed | 0 Failed)
+      records 981, StateDBs 165, precompile calls 84, reverts 12
+      findings: none
+[set B: gov] Ran 58 of 58 Specs (58 Passed | 0 Failed)
+      records 5632, StateDBs 1423, precompile calls 87, reverts 706
+      findings: none
+[set B: slashing] Ran 1 of 1 Specs (1 Passed | 0 Failed)
+      records 82, StateDBs 21, precompile calls 1, reverts 13
+      findings: none
+[set B: ics20] Ran 9 of 9 Specs (9 Passed | 0 Failed)
+      records 143, StateDBs 17, precompile calls 8, reverts 7
+      findings: none

@@ -1,0 +1,9 @@
+[05:35:35] vuln worktree: /home/dev/atomicos/.work/ghsa-mjfq-vuln @ 5456ce8d
+[05:35:36] fixed worktree: /home/dev/atomicos/.work/ghsa-mjfq-fixed @ 0fff8c14
+[05:35:36] judging vuln ...
+vuln   test FAIL  records 96   violations 6   expected >=1 violation  -> as expected
+       findings: violation R1-E x4, violation R1-S x2
+[05:36:11] judging fixed ...
+fixed  test PASS  records 96   violations 0   expected 0 violations   -> as expected
+       findings: none
+[05:36:16] summary: /home/dev/atomicos/cases/ghsa-mjfq/results/judge/summary.txt

@@ -1,0 +1,40 @@
+records: 294, findings: 7
+  aux A1                 1
+  violation R1-E         5
+  violation R2-W         1
+
+[VIOLATION] R2-W  (seq 150 db9 O2.exit call 7)
+  subject:  0xcbb7d3f6fb847b662a5212015a569a73442627b5
+  expected: write-back 0 == bank reference
+  actual:   write-back 200000000000000 (StateDB balance 200000000000000, mode balance=bank_spendable)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[VIOLATION] R1-E  (seq 151 db9 O6.commit)
+  subject:  event coin_received:9c1ab87bbe6e
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)
+
+[VIOLATION] R1-E  (seq 151 db9 O6.commit)
+  subject:  event coin_spent:4a88ef7a3ca1
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)
+
+[VIOLATION] R1-E  (seq 151 db9 O6.commit)
+  subject:  event message:1fac781d0d91
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)
+
+[VIOLATION] R1-E  (seq 151 db9 O6.commit)
+  subject:  event transfer:85d43ec62356
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)
+
+[VIOLATION] R1-E  (seq 151 db9 O6.commit)
+  subject:  event withdraw_rewards:f69bb65b7087
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)
+
+[AUX] A1  (seq 151 db9 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   104000042842370275213 -> 104000042842370275413
