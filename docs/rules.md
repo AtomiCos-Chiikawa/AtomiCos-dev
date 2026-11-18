@@ -52,7 +52,13 @@
 | O5 | 세 계열 모두 | 이벤트는 내용 해시 목록으로 기록한다 |
 | O6 | 세 계열 모두 (`Commit`만) | 커밋 직후 기본 컨텍스트(커밋된 결과)를 읽는다. 커밋 중 panic이면 `err`에 남긴다. 훅은 panic만 본다. `Commit`이 error를 반환하면 `err` 없이 기록되고(`statedb_hooks.go` `atomicosAfterCommit`) 판정기는 그 커밋을 성공한 커밋으로 본다. `FlushToCacheCtx`는 아직 관찰하지 않는다 |
 
-모든 읽기는 `CacheContext`로 만든 컨텍스트에서 무한 gas 미터와 0으로 둔 KV gas 설정으로 한다. `CacheContext`는 새 `EventManager`를 쓴다. 그래서 관찰은 gas와 이벤트를 바꾸지 않는다. 저장소 격리는 v0.5와 v0.7 계열에서 성립하지 않는다(알려진 결함, 아직 고치지 않음). precompile 캐시가 있으면 그 저장소는 cosmos/evm의 `snapshotmulti.Store`이고 이 저장소의 `CacheMultiStore()`는 분기를 만들지 않고 스냅샷만 올린 뒤 자기 자신을 돌려준다. 그래서 보상 조회(`DelegationRewards`)가 받은 컨텍스트에 바로 부르는 `IncrementValidatorPeriod`의 distribution 쓰기가 실행 중인 precompile 캐시에 남는다(`tool/harness/observer/state.go` `readState`, `readStaking`). v0.1.x는 일반 캐시 저장소를 써서 해당하지 않는다. 확인 결과, 세 사례 모두 하네스를 붙인 실행(7단계)과 붙이지 않은 실행(4단계)의 테스트 판정과 REPRO 수치가 같았다.
+모든 읽기는 격리된 컨텍스트에서 무한 gas 미터와 0으로 둔 KV gas 설정, 새 `EventManager`로 한다(`tool/harness/observer/state.go` `isolatedReadCtx`). 그래서 관찰은 gas, 이벤트, 저장소를 바꾸지 않는다. 격리 방법은 저장소 종류에 따라 다르다.
+- v0.5와 v0.7 계열의 precompile 캐시 저장소(cosmos/evm `snapshotmulti.Store`): 이 저장소의 `CacheMultiStore()`는 분기를 만들지 않고 스냅샷만 올린 뒤 자기 자신을 돌려준다. 그래서 `CacheContext`로는 격리되지 않는다. 읽기 전에 스냅샷을 잡고 읽은 뒤 그 스냅샷으로 되돌린다. 보상 조회(`DelegationRewards`)는 받은 컨텍스트에 `IncrementValidatorPeriod`로 distribution 값을 쓰는데, 이 쓰기도 되돌림으로 사라진다.
+- 그 밖의 저장소(v0.1.x 등): `CacheContext`로 만든 분기에서 읽고 버린다.
+
+처음 구현(e8d8e34)은 모든 계열에서 `CacheContext`를 써서 v0.5·v0.7에서는 보상 조회의 쓰기가 실행 중인 precompile 캐시에 남았다. 같은 거래를 하네스 없이, 수정 전 하네스로, 수정 후 하네스로 커밋해 모든 KV 저장소 값의 해시와 gasUsed를 비교했다. 수정 전 하네스는 gasUsed와 distribution 저장소를 바꿨고(예: 7g4w 수정 버전 위임 128,569 → 126,630), 수정 후 하네스는 하네스 없는 실행과 같았다. 세 사례의 판정, REPRO 수치, 규칙 적중은 수정 전후가 같았다. 업스트림 set A의 기록 수와 호출 수는 조금 달라졌다(`eval/fp-upstream/README.md`).
+
+보상 조회 하나가 실패하거나 panic하면 그 항목만 빼고 나머지 상태는 기록한다. out of gas로 중간에 멈춘 precompile 호출의 종료 시점(O2 종료)에는 distribution 기록이 덜 써진 상태라 SDK의 보상 계산이 nil 참조로 panic한다. 처음 구현은 이 panic 때문에 그 시점의 상태 전체를 읽기 실패(`state.error`)로 남겼다.
 
 사례별 적용 규칙 (`cases/<id>/results/judge/*.trace.jsonl.gz` 기준):
 
@@ -164,7 +170,7 @@ O2 진입·종료 값으로 판정하고 성공한 호출에만 적용한다(실
 }
 ```
 
-`severity`: `violation`은 규칙 위반이다. `guarded`는 위반이 시도됐지만 시스템이 거부한 경우다(위반 수에 넣지 않음). `aux`는 보조 검사 결과다(판정 기준 아님). CLI(`atomicos-check`)는 `violation`이 하나라도 있으면 종료 코드 1을 돌려준다.
+`severity`: `violation`은 규칙 위반이다. `guarded`는 위반이 시도됐지만 시스템이 거부한 경우다(위반 수에 넣지 않음). `aux`는 보조 검사 결과다(판정 기준 아님). CLI(`atomicos-check`)의 판정과 종료 코드: `violation`이 하나라도 있으면 "violation"(1), 없고 trace가 판정 근거로 충분하면 "no violation"(0), 위반은 없지만 trace가 판정 근거가 못 되면 "inconclusive"(3)다. 판정 불가가 되는 경우는 빈 trace, 관찰 지점을 하나도 알아보지 못한 trace, 상태 읽기에 실패한 기록(`state.error`)이 있는 trace다. 출력의 `stats`에는 규칙마다 실제로 검사한 횟수가 나온다.
 
 ---
 

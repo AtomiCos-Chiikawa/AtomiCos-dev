@@ -1,33 +1,33 @@
-Running Suite: Distribution Precompile Suite - /home/dev/atomicos/.work/ghsa-mjfq-vuln/precompiles/distribution
-===============================================================================================================
-Random Seed: [1m1795034171[0m
+Running Suite: Distribution Precompile Suite - /private/tmp/atomicos-run/AtomiCos/.work/ghsa-mjfq-vuln/precompiles/distribution
+===============================================================================================================================
+Random Seed: [1m1795044108[0m
 
 Will run [1m1[0m of [1m76[0m specs
 [38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m
 [38;5;243m------------------------------[0m
 [0mCalling distribution precompile from another contract [38;5;243mtryClaimRewards [0m[1mshould claim rewards successfully[0m
-[38;5;243m/home/dev/atomicos/.work/ghsa-mjfq-vuln/precompiles/distribution/integration_test.go:2259[0m
+[38;5;243m/private/tmp/atomicos-run/AtomiCos/.work/ghsa-mjfq-vuln/precompiles/distribution/integration_test.go:2259[0m
   REPRO tryClaimRewards(gasLimit=80000): accruedRewardsBefore=28779770773615504 initialBalance=99997996644996888347057 finalBalance=99998007102202353674122 gasCost=79415000000000 extra(final-(initial-gas))=10536620465327065
-  [38;5;9m[FAILED][0m in [It] - /home/dev/atomicos/.work/ghsa-mjfq-vuln/precompiles/distribution/integration_test.go:2288 [38;5;243m@ 11/19/26 05:36:11.358[0m
-[38;5;9m• [FAILED] [0.088 seconds][0m
+  [38;5;9m[FAILED][0m in [It] - /private/tmp/atomicos-run/AtomiCos/.work/ghsa-mjfq-vuln/precompiles/distribution/integration_test.go:2288 [38;5;243m@ 11/19/26 08:21:48.17[0m
+[38;5;9m• [FAILED] [0.046 seconds][0m
 [0mCalling distribution precompile from another contract [38;5;243mtryClaimRewards [38;5;9m[1m[It] should claim rewards successfully[0m
-[38;5;243m/home/dev/atomicos/.work/ghsa-mjfq-vuln/precompiles/distribution/integration_test.go:2259[0m
+[38;5;243m/private/tmp/atomicos-run/AtomiCos/.work/ghsa-mjfq-vuln/precompiles/distribution/integration_test.go:2259[0m
 
   [38;5;9m[FAILED] expected final balance must be initial balance minus any gas spent
   Expected
       <bool>: false
   to be true[0m
-  [38;5;9mIn [1m[It][0m[38;5;9m at: [1m/home/dev/atomicos/.work/ghsa-mjfq-vuln/precompiles/distribution/integration_test.go:2288[0m [38;5;243m@ 11/19/26 05:36:11.358[0m
+  [38;5;9mIn [1m[It][0m[38;5;9m at: [1m/private/tmp/atomicos-run/AtomiCos/.work/ghsa-mjfq-vuln/precompiles/distribution/integration_test.go:2288[0m [38;5;243m@ 11/19/26 08:21:48.17[0m
 [38;5;243m------------------------------[0m
 [38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m[38;5;14mS[0m
 
 [38;5;9m[1mSummarizing 1 Failure:[0m
   [38;5;9m[FAIL][0m [0mCalling distribution precompile from another contract [38;5;243mtryClaimRewards [38;5;9m[1m[It] should claim rewards successfully[0m
-  [38;5;243m/home/dev/atomicos/.work/ghsa-mjfq-vuln/precompiles/distribution/integration_test.go:2288[0m
+  [38;5;243m/private/tmp/atomicos-run/AtomiCos/.work/ghsa-mjfq-vuln/precompiles/distribution/integration_test.go:2288[0m
 
-[38;5;9m[1mRan 1 of 76 Specs in 0.088 seconds[0m
+[38;5;9m[1mRan 1 of 76 Specs in 0.046 seconds[0m
 [38;5;9m[1mFAIL![0m -- [38;5;10m[1m0 Passed[0m | [38;5;9m[1m1 Failed[0m | [38;5;11m[1m0 Pending[0m | [38;5;14m[1m75 Skipped[0m
---- FAIL: TestPrecompileIntegrationTestSuite (0.09s)
+--- FAIL: TestPrecompileIntegrationTestSuite (0.05s)
 FAIL
 exit status 1
-FAIL	github.com/cosmos/evm/precompiles/distribution	0.148s
+FAIL	github.com/cosmos/evm/precompiles/distribution	1.056s

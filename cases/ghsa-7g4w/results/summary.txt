@@ -1,19 +1,20 @@
 case:    ghsa-7g4w
-date:    2026-11-18T19:11:28Z
+date:    2026-11-18T23:20:57Z
 vuln:    0fe56c036b72aeaf60e5862b2a8bd6d9893a5ef9
 fixed:   0182da198f1f84dc0e4c937fca5e5f175d1be986
 go:      go1.25.9 (CGO_ENABLED=default)
 command: (cd evmd && go test -tags=test ./tests/integration/atomicos_ghsa7g4w/ -run TestGHSA7g4w -count=1 -v -timeout 30m)
+expect:  vuln FAIL with its known failure signature (EXPECT_FAIL in run.sh), fixed PASS
 
 vuln   FAIL (exit 1)                      expected FAIL  -> as expected
 fixed  PASS                               expected PASS  -> as expected
 
 observations (lines tagged REPRO in the logs):
-  [vuln]     vesting_delegate_underflow_test.go:173: REPRO account 0x97a019Eb09bf07A3F65e2eBe6e08a68Fd52C1aE8 type=*types.DelayedVestingAccount bank: total=5000000000000000000 spendable=1000000000000000000 locked=4000000000000000000
+  [vuln]     vesting_delegate_underflow_test.go:173: REPRO account 0x469B26D5B19C96FAbcBb2b00E663DdBE76eD449F type=*types.DelayedVestingAccount bank: total=5000000000000000000 spendable=1000000000000000000 locked=4000000000000000000
   [vuln]     vesting_delegate_underflow_test.go:180: REPRO control: delegate(amount=500000000000000000 <= spendable=1000000000000000000) -> ok=true before=1000000000000000000 after=500000000000000000
   [vuln]     vesting_delegate_underflow_test.go:193: REPRO target: delegate(amount=3000000000000000000 > spendable=1000000000000000000, <= total=5000000000000000000) -> ok=true before=1000000000000000000 after=115792089237316195423570985008687907853269984665640564039455584007913129639936 | 2^256-after=2000000000000000000 | wrapped=true
-  [vuln]     vesting_delegate_underflow_test.go:222: REPRO real-tx: delegate(amount=3000000000000000000) code=111222 err="failed ETH tx: tx failed with Code: 111222, Logs: recovered: NewIntFromBigInt() out of bound\nstack:\ngoroutine 335 [running]:\nruntime/debug.Stack()\n\t/home/dev/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.9.linux-amd64/src/runtime/debug/stack.go:26 +0x5e\ngithub.com/cosmos/cosmos-sdk/baseapp.NewBaseAp..." nextBlockErr=<nil> | supply 200003000000000000000000 -> 200003000000000000000000 (delta 0) | probe bank balance 5000000000000000000 -> 5000000000000000000
-  [fixed]     vesting_delegate_underflow_test.go:173: REPRO account 0x47d40235fda1183a9ab1A77d68fe00B8259edF45 type=*types.DelayedVestingAccount bank: total=5000000000000000000 spendable=1000000000000000000 locked=4000000000000000000
+  [vuln]     vesting_delegate_underflow_test.go:239: REPRO real-tx: delegate(amount=3000000000000000000) code=111222 err="failed ETH tx: tx failed with Code: 111222, Logs: recovered: NewIntFromBigInt() out of bound\nstack:\ngoroutine 350 [running]:\nruntime/debug.Stack()\n\t/private/tmp/atomicos-run/env/gopath/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.9.darwin-arm64/src/runtime/debug/stack.go:26 +0x64\ngithub.com/cosmos/cos..." nextBlockErr=<nil> | supply 200003000000000000000000 -> 200003000000000000000000 (delta 0) | probe bank balance 5000000000000000000 -> 5000000000000000000
+  [fixed]     vesting_delegate_underflow_test.go:173: REPRO account 0x2AdeAA8a54171Af832deB7179605B050B8898C68 type=*types.DelayedVestingAccount bank: total=5000000000000000000 spendable=1000000000000000000 locked=4000000000000000000
   [fixed]     vesting_delegate_underflow_test.go:180: REPRO control: delegate(amount=500000000000000000 <= spendable=1000000000000000000) -> ok=true before=1000000000000000000 after=500000000000000000
-  [fixed]     vesting_delegate_underflow_test.go:193: REPRO target: delegate(amount=3000000000000000000 > spendable=1000000000000000000, <= total=5000000000000000000) -> vmErr="" callErr="panic: state balance underflow for 0x47d40235fda1183a9ab1A77d68fe00B8259edF45: have=1000000000000000000 sub=3000000000000000000" | 2^256-after=- | wrapped=false
-  [fixed]     vesting_delegate_underflow_test.go:222: REPRO real-tx: delegate(amount=3000000000000000000) code=111222 err="failed ETH tx: tx failed with Code: 111222, Logs: recovered: state balance underflow for 0x47d40235fda1183a9ab1A77d68fe00B8259edF45: have=1000000000000000000 sub=3000000000000000000\nstack:\ngoroutine 459 [running]:\nruntime/debug.Stack()\n\t/home/dev/go/pkg/mod/golang.org/toolchain@v0.0.1-go1.25.9.linux..." nextBlockErr=<nil> | supply 200003000000000000000000 -> 200003000000000000000000 (delta 0) | probe bank balance 5000000000000000000 -> 5000000000000000000
+  [fixed]     vesting_delegate_underflow_test.go:193: REPRO target: delegate(amount=3000000000000000000 > spendable=1000000000000000000, <= total=5000000000000000000) -> vmErr="" callErr="panic: state balance underflow for 0x2AdeAA8a54171Af832deB7179605B050B8898C68: have=1000000000000000000 sub=3000000000000000000" | 2^256-after=- | wrapped=false
+  [fixed]     vesting_delegate_underflow_test.go:239: REPRO real-tx: delegate(amount=3000000000000000000) code=111222 err="failed ETH tx: tx failed with Code: 111222, Logs: recovered: state balance underflow for 0x2AdeAA8a54171Af832deB7179605B050B8898C68: have=1000000000000000000 sub=3000000000000000000\nstack:\ngoroutine 384 [running]:\nruntime/debug.Stack()\n\t/private/tmp/atomicos-run/env/gopath/pkg/mod/golang.org/toolcha..." nextBlockErr=<nil> | supply 200003000000000000000000 -> 200003000000000000000000 (delta 0) | probe bank balance 5000000000000000000 -> 5000000000000000000

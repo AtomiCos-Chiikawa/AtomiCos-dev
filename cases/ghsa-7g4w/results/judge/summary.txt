@@ -1,13 +1,17 @@
 case:    ghsa-7g4w (step 7: same input as step 4 + harness v07 + checker)
-date:    2026-11-18T20:37:09Z
+date:    2026-11-18T23:21:14Z
+atomicos: e7eaa57b60958252c81db03fb577b5a2ee09d102 (tree DIRTY: 1 changed or untracked paths outside results/; hash of git diff HEAD: 92353bfe8d73d86814218e81e47f7364a2db1e02)
 vuln:    0fe56c036b72aeaf60e5862b2a8bd6d9893a5ef9
 fixed:   0182da198f1f84dc0e4c937fca5e5f175d1be986
 go:      go1.25.9
 command: (cd evmd && ATOMICOS_TRACE=<trace> go test -tags=test ./tests/integration/atomicos_ghsa7g4w/ -run TestGHSA7g4w -count=1 -v -timeout 30m)
+expect:  vuln: test FAIL (EXPECT_FAIL signature), checker exit 1, >=1 violation
+         fixed: test PASS, checker exit 0, 0 violations
+         both: records > 0 and observation points O2 O4 O5 O6 present
 
-vuln   test FAIL  records 98   violations 4   expected >=1 violation  -> as expected
+vuln   test FAIL  records 98   violations 4   checker exit 1  expected >=1 violation  -> as expected
        findings: violation R2-A x2, violation R2-W x2
-fixed  test PASS  records 97   violations 0   expected 0 violations   -> as expected
+fixed  test PASS  records 97   violations 0   checker exit 0  expected 0 violations   -> as expected
        findings: guarded R2-A x2
 
 details: results/judge/{vuln,fixed}.check.txt  (re-judge: atomicos-check results/judge/<variant>.trace.jsonl.gz)

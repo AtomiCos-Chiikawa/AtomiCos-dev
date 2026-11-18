@@ -1,9 +1,10 @@
 case:    ghsa-mjfq
-date:    2026-11-18T18:52:46Z
+date:    2026-11-18T23:21:30Z
 vuln:    5456ce8dd3d1bed0c7442ab2f0d4146a23efe624
 fixed:   0fff8c144b24effbcb3addd666150ba5989d631c
 go:      go1.23.6 (CGO_ENABLED=default)
 command: (cd precompiles/distribution && go test -run TestPrecompileIntegrationTestSuite -count=1 -timeout 60m -ginkgo.focus tryClaimRewards -ginkgo.v)
+expect:  vuln FAIL with its known failure signature (EXPECT_FAIL in run.sh), fixed PASS
 
 vuln   FAIL (exit 1)                      expected FAIL  -> as expected
 fixed  PASS                               expected PASS  -> as expected

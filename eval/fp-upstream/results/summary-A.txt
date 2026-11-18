@@ -1,20 +1,14 @@
-false-positive pre-measurement, set A (staking, distribution)
-tree:   cosmos/evm v0.7.4 (ba66d3106a52f84b1c1ede8d9683c2df98d742ef) + harness v07
-run:    2026-11-18T20:38Z (UTC)
+false-positive pre-measurement: upstream precompile integration suites
+date:   2026-11-18T23:22:24Z
+tree:   cosmos/evm v0.7.4 (ba66d3106a52f84b1c1ede8d9683c2df98d742ef, pinned by hash) + harness v07
+atomicos: e7eaa57b60958252c81db03fb577b5a2ee09d102 (tree DIRTY: 6 changed or untracked paths outside results/; hash of git diff HEAD: 383fcb3adeb522323aab164b37896efc8dcf8a1c)
 
 [set A: staking] Ran 92 of 92 Specs (92 Passed | 0 Failed)
-      records 22639, StateDBs 4398, precompile calls 1155, reverts 2850
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 22515, StateDBs 4398, precompile calls 1144, reverts 2831
+      findings: none
 [set A: distribution] Ran 77 of 77 Specs (77 Passed | 0 Failed)
-      records 14218, StateDBs 2259, precompile calls 1068, reverts 1395
-
-first judgement (checker as of step 6):
-  staking:      R3-D x2, R3-U x6      distribution: R3-D x98     R1/R2: 0
-  cause: R3-D/U expected Δbank(delegator) = -amount / 0, but x/distribution's
-         BeforeDelegationSharesModified hook first withdraws accrued rewards to the
-         withdraw address (rule too strict; not a bug in cosmos/evm).
-
-re-judgement after correcting R3-D/U (same traces, no re-run):
-  staking: records: 22639, findings: 0
-  distribution: records: 14218, findings: 0
-
-note: set A was used to correct R3, so its 0 is not independent evidence. See summary-B.txt.
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 14230, StateDBs 2263, precompile calls 1072, reverts 1402
+      findings: none
+result: every suite passed, no violation

@@ -2,15 +2,28 @@ records: 294, findings: 7
   aux A1                 1
   violation R1-E         5
   violation R2-W         1
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 24, O2.exit 24, O4.balance 157, O5.revert 10, O5.snapshot 69, O6.commit 10; unknown point 0
+  trace   statedbs 27, records with state.error 0, unparsable numbers 0
+  O2      enters 24, exits 24, enters never closed 0
+  R1      reverts 10: compared 10, with candidates 5, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 5; discarded (no judged top-level commit followed) 0
+  R1      commits 10: top-level judged 8 (with candidates 1); not judged: nested 2, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 157: add/sub checked 157 (non-zero amount 13); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 46, exit 50 (sync points enter 24, exit 24); not compared: blocked 48, unparsable 0; failed exits 0, no usable state 0
+  R3      exits 24: evaluated R3-D 2, R3-U 0, R3-C 20; method not covered 2
+  R3      skipped: call exited with error 0, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 10, unparsable 0
 
 [VIOLATION] R2-W  (seq 150 db9 O2.exit call 7)
-  subject:  0xcbb7d3f6fb847b662a5212015a569a73442627b5
+  subject:  0xf0414780734bf490b6d6fb12da4431ca298b03a0
   expected: write-back 0 == bank reference
   actual:   write-back 200000000000000 (StateDB balance 200000000000000, mode balance=bank_spendable)
   detail:   the StateDB balance would not reconcile with the bank at commit
 
 [VIOLATION] R1-E  (seq 151 db9 O6.commit)
-  subject:  event coin_received:9c1ab87bbe6e
+  subject:  event coin_received:0c6406d4b856
   expected: events of reverted frames are absent from the committed events
   actual:   appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)
 
@@ -25,12 +38,12 @@ records: 294, findings: 7
   actual:   appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)
 
 [VIOLATION] R1-E  (seq 151 db9 O6.commit)
-  subject:  event transfer:85d43ec62356
+  subject:  event transfer:940f7a40e923
   expected: events of reverted frames are absent from the committed events
   actual:   appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)
 
 [VIOLATION] R1-E  (seq 151 db9 O6.commit)
-  subject:  event withdraw_rewards:f69bb65b7087
+  subject:  event withdraw_rewards:3dfe6c3fab53
   expected: events of reverted frames are absent from the committed events
   actual:   appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 98)
 

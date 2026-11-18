@@ -16,7 +16,7 @@ tool/generator ──> scenario/*.json ──(tool/harness/runner: cosmos/evm �
 | `checker/trace.go` | 기록 형식(JSON Lines). 관찰 지점 이름, `State`, `ReadTrace` |
 | `checker/checker.go` | 규칙: R1-S/R1-E(커밋 시점 판정, 중첩 StateDB 처리), R2-A, R2-W, R3-D/U/C, 보조 A1 |
 | `checker/checker_test.go` | 합성 기록으로 만든 단위 테스트. 규칙마다 위반·정상 경우를 둔다(권고 사례의 숫자는 쓰지 않음) |
-| `checker/cmd/atomicos-check` | CLI. `violation`이 있으면 종료 코드 1 |
+| `checker/cmd/atomicos-check` | CLI. 종료 코드 0 위반 없음, 1 위반, 3 판정 불가(빈 trace, 상태 읽기 실패 등). 규칙별 검사 횟수(`stats`)도 출력 |
 
 판정기는 기록만 읽는다. 어떤 사례, 버전, 공격인지 모르고 사례별 숫자도 갖고 있지 않다.
 
@@ -51,7 +51,7 @@ cd .work/ghsa-7g4w-vuln/evmd && ATOMICOS_TRACE=/tmp/trace.jsonl go test -tags=te
 
 **동작 원칙**
 - `ATOMICOS_TRACE`가 없으면 훅은 `nil`이고 끼워 넣은 코드는 아무 일도 하지 않는다.
-- 상태 읽기는 `CacheContext`로 만든 컨텍스트(새 `EventManager`)에서 무한 gas 미터와 0으로 둔 KV gas 설정으로 한다. 그래서 gas와 이벤트는 바뀌지 않는다. 저장소 격리는 v0.5와 v0.7 계열에서 성립하지 않는다(알려진 결함, 아직 고치지 않음). precompile 캐시의 `snapshotmulti.Store`는 `CacheMultiStore()`에서 분기를 만들지 않고 자기 자신을 돌려주므로 보상 조회(`DelegationRewards` → `IncrementValidatorPeriod`)의 distribution 쓰기가 실행 중인 precompile 캐시에 남는다. v0.1.x는 해당하지 않는다. 세 사례의 테스트 판정과 REPRO 수치는 하네스 유무와 관계없이 같았다([`../docs/rules.md`](../docs/rules.md) §1). 계정을 새로 로드하지 않는다(이미 로드된 StateDB 계정만 본다).
+- 상태 읽기는 격리된 컨텍스트(새 `EventManager`)에서 무한 gas 미터와 0으로 둔 KV gas 설정으로 한다. 그래서 gas, 이벤트, 저장소는 바뀌지 않는다. v0.5와 v0.7 계열의 precompile 캐시(`snapshotmulti.Store`)는 `CacheMultiStore()`가 분기를 만들지 않으므로 스냅샷을 잡고 읽은 뒤 되돌린다. 그 밖의 저장소는 `CacheContext` 분기에서 읽는다(`observer/state.go` `isolatedReadCtx`, 자세한 내용과 확인 방법은 [`../docs/rules.md`](../docs/rules.md) §1). 계정을 새로 로드하지 않는다(이미 로드된 StateDB 계정만 본다).
 - precompile 종료 훅은 panic을 잡아 기록한 뒤 같은 값으로 다시 panic한다(동작 동일).
 - 앱 식별: EVM 키퍼 포인터로 찾는다. 실패하면 앱이 하나일 때 그 앱을 쓴다. 여러 개면 그 컨텍스트에서 읽기가 성공하는 앱을 쓴다. `EthCall`은 키퍼 복사본으로 StateDB를 만들고 IBC 테스트는 앱이 여러 개라서 이 처리가 필요하다.
 
