@@ -1,0 +1,341 @@
+{
+  "records": 19867,
+  "verdict": "violation",
+  "inconclusive": [],
+  "stats": {
+    "records": 19867,
+    "points": {
+      "O4.balance": 11324,
+      "O5.revert": 2651,
+      "O5.snapshot": 5632,
+      "O6.commit": 260
+    },
+    "unknownPoints": 0,
+    "stateDBs": 5036,
+    "stateErrors": 0,
+    "unparsable": 0,
+    "o2": {
+      "enters": 0,
+      "exits": 0,
+      "unclosed": 0
+    },
+    "r1": {
+      "reverts": 2651,
+      "noSnapshot": 0,
+      "noState": 0,
+      "compared": 2651,
+      "withCandidates": 311,
+      "stateCandidates": 808,
+      "eventCandidates": 979,
+      "commits": 260,
+      "commitsNested": 0,
+      "commitsFailed": 0,
+      "commitsNoState": 0,
+      "judged": 260,
+      "judgedWithCandidates": 4,
+      "discarded": 1709,
+      "unparsable": 0
+    },
+    "r2a": {
+      "ops": 11324,
+      "checked": 11324,
+      "nonZero": 264,
+      "set": 0,
+      "otherOp": 0,
+      "unparsable": 0
+    },
+    "r2w": {
+      "syncEnter": 0,
+      "syncExit": 0,
+      "failedExit": 0,
+      "noState": 0,
+      "enter": 0,
+      "exit": 0,
+      "blocked": 0,
+      "unparsable": 0
+    },
+    "r3": {
+      "exits": 0,
+      "evaluated": {
+        "R3-D": 0,
+        "R3-U": 0,
+        "R3-C": 0
+      },
+      "notCovered": 0,
+      "skipped": {
+        "callError": 0,
+        "noEnter": 0,
+        "noState": 0,
+        "missingArgs": 0,
+        "unparsable": 0,
+        "missingModule": 0
+      }
+    },
+    "a1": {
+      "compared": 260,
+      "unparsable": 0
+    }
+  },
+  "findings": [
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 2723,
+      "db": "db640",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "200003000000000000000000 -\u003e 200002999992186689603792"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event coin_received:29595f88fb44",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event coin_received:405f2a1a371e",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event coin_received:82ae5bbf5b6b",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event coin_received:99551c6d77f7",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 3 time(s) in the committed events; 4 copy(ies) were left behind by reverts (first at seq 4076)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event coin_received:e0173a92146d",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event coin_spent:74be2d641db0",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 3 time(s) in the committed events; 4 copy(ies) were left behind by reverts (first at seq 4076)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event coin_spent:8a118325e274",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event coin_spent:d2bc21f602c5",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event coinbase:0cf974d2d59f",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event coinbase:124bebfd83b2",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event delegate:7f6ad5836be3",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 3 time(s) in the committed events; 4 copy(ies) were left behind by reverts (first at seq 4076)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event message:963d14e1e470",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event transfer:574025f2a386",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event transfer:94b2ff4235f6",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 4109,
+      "db": "db743",
+      "subject": "event withdraw_rewards:94e6e43fcd7d",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)"
+    },
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 6368,
+      "db": "db1314",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "200003000000000000000000 -\u003e 200002999961208333333334"
+    },
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 7195,
+      "db": "db1548",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "200003000000000000000000 -\u003e 200002999961208333333334"
+    },
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 8308,
+      "db": "db1860",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "200003000000000000000000 -\u003e 200002999961208333333334"
+    },
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 8592,
+      "db": "db1939",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "200003000000000000000000 -\u003e 200002999961208333333334"
+    },
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 11568,
+      "db": "db2789",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "200003000000000000000000 -\u003e 200002999961208333333334"
+    },
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 11851,
+      "db": "db2868",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "200003000000000000000000 -\u003e 200002999961208333333334"
+    },
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 12134,
+      "db": "db2947",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "200003000000000000000000 -\u003e 200002999961208333333334"
+    },
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 12417,
+      "db": "db3026",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "200003000000000000000000 -\u003e 200002999961208333333334"
+    },
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 12700,
+      "db": "db3105",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "200003000000000000000000 -\u003e 200002999961208333333334"
+    },
+    {
+      "rule": "A1",
+      "severity": "aux",
+      "point": "O6.commit",
+      "seq": 19864,
+      "db": "db5035",
+      "subject": "supply",
+      "expected": "unchanged unless explained by a mint/burn feature",
+      "actual": "200003000000000000000000 -\u003e 200002999961208333333334"
+    }
+  ]
+}

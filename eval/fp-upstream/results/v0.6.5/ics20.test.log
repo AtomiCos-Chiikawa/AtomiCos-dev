@@ -1,0 +1,13 @@
+=== RUN   TestICS20PrecompileIntegrationTestSuite
+Running Suite: ICS20 Precompile Test Suite - /private/tmp/atomicos-run/AtomiCos/.work/fp-v065/evmd/tests/integration/precompiles/ics20
+======================================================================================================================================
+Random Seed: [1m1795097030[0m
+
+Will run [1m9[0m of [1m9[0m specs
+[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m
+
+[38;5;10m[1mRan 9 of 9 Specs in 0.780 seconds[0m
+[38;5;10m[1mSUCCESS![0m -- [38;5;10m[1m9 Passed[0m | [38;5;9m[1m0 Failed[0m | [38;5;11m[1m0 Pending[0m | [38;5;14m[1m0 Skipped[0m
+--- PASS: TestICS20PrecompileIntegrationTestSuite (0.78s)
+PASS
+ok  	github.com/cosmos/evm/evmd/tests/integration/precompiles/ics20	1.908s

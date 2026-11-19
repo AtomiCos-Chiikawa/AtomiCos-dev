@@ -1,0 +1,82 @@
+{
+  "records": 14281,
+  "verdict": "no violation",
+  "inconclusive": [],
+  "stats": {
+    "records": 14281,
+    "points": {
+      "O2.enter": 1077,
+      "O2.exit": 1077,
+      "O4.balance": 7058,
+      "O5.revert": 1473,
+      "O5.snapshot": 3417,
+      "O6.commit": 179
+    },
+    "unknownPoints": 0,
+    "stateDBs": 2268,
+    "stateErrors": 0,
+    "unparsable": 0,
+    "o2": {
+      "enters": 1077,
+      "exits": 1077,
+      "unclosed": 0
+    },
+    "r1": {
+      "reverts": 1473,
+      "noSnapshot": 0,
+      "noState": 0,
+      "compared": 1473,
+      "withCandidates": 542,
+      "stateCandidates": 0,
+      "eventCandidates": 2468,
+      "commits": 179,
+      "commitsNested": 0,
+      "commitsFailed": 0,
+      "commitsNoState": 0,
+      "judged": 179,
+      "judgedWithCandidates": 1,
+      "discarded": 2467,
+      "unparsable": 0
+    },
+    "r2a": {
+      "ops": 7058,
+      "checked": 7058,
+      "nonZero": 897,
+      "set": 0,
+      "otherOp": 0,
+      "unparsable": 0
+    },
+    "r2w": {
+      "syncEnter": 1077,
+      "syncExit": 759,
+      "failedExit": 318,
+      "noState": 0,
+      "enter": 1978,
+      "exit": 1494,
+      "blocked": 1835,
+      "unparsable": 0
+    },
+    "r3": {
+      "exits": 1077,
+      "evaluated": {
+        "R3-D": 104,
+        "R3-U": 0,
+        "R3-C": 182
+      },
+      "notCovered": 473,
+      "skipped": {
+        "callError": 318,
+        "noEnter": 0,
+        "noState": 0,
+        "missingArgs": 0,
+        "unparsable": 0,
+        "missingModule": 0
+      }
+    },
+    "a1": {
+      "compared": 179,
+      "unparsable": 0
+    }
+  },
+  "findings": null
+}

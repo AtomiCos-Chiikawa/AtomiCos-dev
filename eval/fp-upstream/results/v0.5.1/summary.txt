@@ -1,0 +1,38 @@
+false-positive pre-measurement: upstream precompile integration suites
+date:   2026-11-19T14:00:34Z
+tree:   cosmos/evm v0.5.1 (e2f6e47c70b77bfb375ae27b7aa24082aabe6884, pinned by hash) + harness v05
+atomicos: c27a96fa3fc1362bc8964e39bd3fbf4cfd7de028 (tree DIRTY: 1 changed or untracked paths outside results/; hash of git diff HEAD: 52c77e8b9dce7185a90399de95cb96a16e481522)
+
+[set A: staking] Ran 89 of 89 Specs (89 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 1 (violations)
+      records 22028, StateDBs 4251, precompile calls 1146, reverts 2827
+      findings: violation R1-E x11
+[set A: distribution] Ran 77 of 77 Specs (77 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 14281, StateDBs 2268, precompile calls 1077, reverts 1473
+      findings: none
+[set B: bank] Ran 18 of 18 Specs (18 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 3108, StateDBs 664, precompile calls 241, reverts 308
+      findings: none
+[set B: erc20] Ran 121 of 129 Specs (121 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 1 (violations)
+      records 75862, StateDBs 20325, precompile calls 862, reverts 9884
+      findings: violation R1-E x6
+[set B: werc20] Ran 81 of 81 Specs (81 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 1079, StateDBs 165, precompile calls 84, reverts 12
+      findings: none
+[set B: gov] Ran 58 of 58 Specs (58 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 5632, StateDBs 1423, precompile calls 87, reverts 706
+      findings: none
+[set B: slashing] Ran 1 of 1 Specs (1 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 82, StateDBs 21, precompile calls 1, reverts 13
+      findings: none
+[set B: ics20] Ran 9 of 9 Specs (9 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 1 (violations)
+      records 143, StateDBs 17, precompile calls 8, reverts 7
+      findings: violation R1-E x2
+result: the checker reported violations; each one must be explained

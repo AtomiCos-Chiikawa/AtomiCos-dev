@@ -1,0 +1,193 @@
+{
+  "records": 22028,
+  "verdict": "violation",
+  "inconclusive": [],
+  "stats": {
+    "records": 22028,
+    "points": {
+      "O2.enter": 1146,
+      "O2.exit": 1146,
+      "O4.balance": 11268,
+      "O5.revert": 2827,
+      "O5.snapshot": 5358,
+      "O6.commit": 283
+    },
+    "unknownPoints": 0,
+    "stateDBs": 4251,
+    "stateErrors": 0,
+    "unparsable": 0,
+    "o2": {
+      "enters": 1146,
+      "exits": 1146,
+      "unclosed": 0
+    },
+    "r1": {
+      "reverts": 2827,
+      "noSnapshot": 0,
+      "noState": 0,
+      "compared": 2827,
+      "withCandidates": 577,
+      "stateCandidates": 0,
+      "eventCandidates": 783,
+      "commits": 283,
+      "commitsNested": 0,
+      "commitsFailed": 0,
+      "commitsNoState": 0,
+      "judged": 283,
+      "judgedWithCandidates": 6,
+      "discarded": 733,
+      "unparsable": 0
+    },
+    "r2a": {
+      "ops": 11268,
+      "checked": 11268,
+      "nonZero": 694,
+      "set": 0,
+      "otherOp": 0,
+      "unparsable": 0
+    },
+    "r2w": {
+      "syncEnter": 1146,
+      "syncExit": 802,
+      "failedExit": 344,
+      "noState": 0,
+      "enter": 1797,
+      "exit": 1350,
+      "blocked": 1948,
+      "unparsable": 0
+    },
+    "r3": {
+      "exits": 1146,
+      "evaluated": {
+        "R3-D": 534,
+        "R3-U": 65,
+        "R3-C": 0
+      },
+      "notCovered": 203,
+      "skipped": {
+        "callError": 344,
+        "noEnter": 0,
+        "noState": 0,
+        "missingArgs": 0,
+        "unparsable": 0,
+        "missingModule": 0
+      }
+    },
+    "a1": {
+      "compared": 283,
+      "unparsable": 0
+    }
+  },
+  "findings": [
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 3796,
+      "db": "db716",
+      "subject": "event coin_received:99551c6d77f7",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 3757)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 3796,
+      "db": "db716",
+      "subject": "event coin_spent:7601d84d0900",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 3757)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 3796,
+      "db": "db716",
+      "subject": "event delegate:9da1ba345cee",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 3757)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 5770,
+      "db": "db879",
+      "subject": "event coin_received:99551c6d77f7",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 5 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 5723)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 5770,
+      "db": "db879",
+      "subject": "event coin_spent:368e863e3a7e",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 5 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 5723)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 5770,
+      "db": "db879",
+      "subject": "event delegate:412cf0e248be",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 5 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 5723)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 5770,
+      "db": "db879",
+      "subject": "event withdraw_rewards:e48ef9805a58",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 4 time(s) in the committed events; 5 copy(ies) were left behind by reverts (first at seq 5723)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 8937,
+      "db": "db973",
+      "subject": "event coin_received:99551c6d77f7",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 12 time(s) in the committed events; 9 copy(ies) were left behind by reverts (first at seq 8832)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 8937,
+      "db": "db973",
+      "subject": "event coin_spent:3d8e19292cc0",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 12 time(s) in the committed events; 9 copy(ies) were left behind by reverts (first at seq 8832)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 8937,
+      "db": "db973",
+      "subject": "event delegate:5bb4ea32dc89",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 12 time(s) in the committed events; 9 copy(ies) were left behind by reverts (first at seq 8832)"
+    },
+    {
+      "rule": "R1-E",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 8937,
+      "db": "db973",
+      "subject": "event withdraw_rewards:ab492c157200",
+      "expected": "events of reverted frames are absent from the committed events",
+      "actual": "appears 11 time(s) in the committed events; 9 copy(ies) were left behind by reverts (first at seq 8832)"
+    }
+  ]
+}

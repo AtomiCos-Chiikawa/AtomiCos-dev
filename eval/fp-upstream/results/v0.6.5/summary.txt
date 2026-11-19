@@ -1,0 +1,38 @@
+false-positive pre-measurement: upstream precompile integration suites
+date:   2026-11-19T14:01:05Z
+tree:   cosmos/evm v0.6.5 (e04dc041978ba3ea5289a2c8398e9939ba8e957e, pinned by hash) + harness v07
+atomicos: c27a96fa3fc1362bc8964e39bd3fbf4cfd7de028 (tree DIRTY: 1 changed or untracked paths outside results/; hash of git diff HEAD: 52c77e8b9dce7185a90399de95cb96a16e481522)
+
+[set A: staking] Ran 92 of 92 Specs (92 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 22667, StateDBs 4414, precompile calls 1165, reverts 2859
+      findings: none
+[set A: distribution] Ran 77 of 77 Specs (77 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 14290, StateDBs 2269, precompile calls 1078, reverts 1475
+      findings: none
+[set B: bank] Ran 19 of 19 Specs (19 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 3231, StateDBs 688, precompile calls 244, reverts 347
+      findings: none
+[set B: erc20] Ran 121 of 129 Specs (121 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 75851, StateDBs 20321, precompile calls 862, reverts 9885
+      findings: none
+[set B: werc20] Ran 81 of 81 Specs (81 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 1079, StateDBs 165, precompile calls 84, reverts 12
+      findings: none
+[set B: gov] Ran 58 of 58 Specs (58 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 5632, StateDBs 1423, precompile calls 87, reverts 706
+      findings: none
+[set B: slashing] Ran 1 of 1 Specs (1 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 82, StateDBs 21, precompile calls 1, reverts 13
+      findings: none
+[set B: ics20] Ran 9 of 9 Specs (9 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 143, StateDBs 17, precompile calls 8, reverts 7
+      findings: none
+result: every suite passed, no violation

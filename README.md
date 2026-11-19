@@ -14,7 +14,7 @@ Cosmos EVM precompile이 EVM 상태와 Cosmos SDK 모듈 상태를 함께 바꿀
 | 4. 순수 재현 | `cases/<id>/run.sh`, `cases/<id>/results/` | 완료. 세 사례 모두 취약 FAIL / 수정 PASS (2026-11-19) |
 | 5. 설계 근거 | [`docs/rules.md`](docs/rules.md), [`docs/design-rationale.md`](docs/design-rationale.md) | 완료. 초안: 규칙 R1-S/E, R2-A/W, R3-D/U/C, 보조 A1/A2, 관찰 지점 O1~O6 |
 | 6. 판정기 | [`tool/`](tool/README.md): `checker`(판정), `harness`(관찰 훅, 버전 계열 3개) | 완료. 단위 테스트 통과. 관찰 지점 O1, O3과 보조 검사 A2는 미구현이다. v0.1.x 계열(mjfq) 하네스에는 O2가 없어서 mjfq에는 R2-W와 R3를 적용하지 않았다(구현 상태 표: [`docs/rules.md`](docs/rules.md) §1) |
-| 7. 재현 사례로 동작 확인 | `cases/<id>/run.sh --judge` → `cases/<id>/results/judge/` | 완료. 세 사례 모두 취약 버전 위반 보고 / 수정 버전 위반 0건. 추가로 업스트림 정상 스위트에서 오탐 사전 측정을 했다([`eval/fp-upstream`](eval/fp-upstream/README.md)). 설계에 쓰지 않은 스펙 289개에서 0건이다. 단, 의미 있게 검사된 규칙은 R2(R2-A, R2-W)뿐이다. R1은 후보가 0회라 시험되지 않았고 R3에 해당하는 호출은 set B에 거의 없다. 수정된 업스트림 v0.7.4 스위트에서 잰 오탐 측정이지 검출 능력 측정이 아니다 |
+| 7. 재현 사례로 동작 확인 | `cases/<id>/run.sh --judge` → `cases/<id>/results/judge/` | 완료. 세 사례 모두 취약 버전 위반 보고 / 수정 버전 위반 0건. 추가로 업스트림 정상 스위트에서 오탐 사전 측정을 했다([`eval/fp-upstream`](eval/fp-upstream/README.md)). v0.7.4에서는 설계에 쓰지 않은 스펙 289개에서 0건이다. 다른 릴리스(v0.6.5, v0.5.1, v0.2.0)로 넓히면 테스트가 모두 통과한 v0.5.1과 v0.2.0에서 실제 결함에서 나온 위반 26건(되돌린 호출의 이벤트가 커밋에 남음)과 보조 검사 A1 11건(컨트랙트 위임자 보상 소실)을 찾았고, R1-E 오탐 8건이 나왔다 |
 | 8~11. 생성기, 소스 분석기, 평가 | `tool/generator`, `tool/analyzer`, `eval/` | 시작 전 |
 
 ## 사례

@@ -1,0 +1,146 @@
+records: 19867, findings: 26
+  aux A1                 11
+  violation R1-E         15
+verdict: violation
+stats (what the checker examined):
+  points  O4.balance 11324, O5.revert 2651, O5.snapshot 5632, O6.commit 260; unknown point 0
+  trace   statedbs 5036, records with state.error 0, unparsable numbers 0
+  O2      enters 0, exits 0, enters never closed 0
+  R1      reverts 2651: compared 2651, with candidates 311, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 808, events 979; discarded (no judged top-level commit followed) 1709
+  R1      commits 260: top-level judged 260 (with candidates 4); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 11324: add/sub checked 11324 (non-zero amount 264); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 0, exit 0 (sync points enter 0, exit 0); not compared: blocked 0, unparsable 0; failed exits 0, no usable state 0
+  R3      exits 0: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 0
+  R3      skipped: call exited with error 0, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 260, unparsable 0
+
+[AUX] A1  (seq 2723 db640 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   200003000000000000000000 -> 200002999992186689603792
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event coin_received:29595f88fb44
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event coin_received:405f2a1a371e
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event coin_received:82ae5bbf5b6b
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event coin_received:99551c6d77f7
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 3 time(s) in the committed events; 4 copy(ies) were left behind by reverts (first at seq 4076)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event coin_received:e0173a92146d
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event coin_spent:74be2d641db0
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 3 time(s) in the committed events; 4 copy(ies) were left behind by reverts (first at seq 4076)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event coin_spent:8a118325e274
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event coin_spent:d2bc21f602c5
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event coinbase:0cf974d2d59f
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event coinbase:124bebfd83b2
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event delegate:7f6ad5836be3
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 3 time(s) in the committed events; 4 copy(ies) were left behind by reverts (first at seq 4076)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event message:963d14e1e470
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event transfer:574025f2a386
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event transfer:94b2ff4235f6
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[VIOLATION] R1-E  (seq 4109 db743 O6.commit)
+  subject:  event withdraw_rewards:94e6e43fcd7d
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 3 copy(ies) were left behind by reverts (first at seq 4084)
+
+[AUX] A1  (seq 6368 db1314 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   200003000000000000000000 -> 200002999961208333333334
+
+[AUX] A1  (seq 7195 db1548 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   200003000000000000000000 -> 200002999961208333333334
+
+[AUX] A1  (seq 8308 db1860 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   200003000000000000000000 -> 200002999961208333333334
+
+[AUX] A1  (seq 8592 db1939 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   200003000000000000000000 -> 200002999961208333333334
+
+[AUX] A1  (seq 11568 db2789 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   200003000000000000000000 -> 200002999961208333333334
+
+[AUX] A1  (seq 11851 db2868 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   200003000000000000000000 -> 200002999961208333333334
+
+[AUX] A1  (seq 12134 db2947 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   200003000000000000000000 -> 200002999961208333333334
+
+[AUX] A1  (seq 12417 db3026 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   200003000000000000000000 -> 200002999961208333333334
+
+[AUX] A1  (seq 12700 db3105 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   200003000000000000000000 -> 200002999961208333333334
+
+[AUX] A1  (seq 19864 db5035 O6.commit)
+  subject:  supply
+  expected: unchanged unless explained by a mint/burn feature
+  actual:   200003000000000000000000 -> 200002999961208333333334

@@ -1,0 +1,45 @@
+records: 75862, findings: 6
+  violation R1-E         6
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 862, O2.exit 862, O4.balance 42033, O5.revert 9884, O5.snapshot 21259, O6.commit 962; unknown point 0
+  trace   statedbs 20325, records with state.error 0, unparsable numbers 0
+  O2      enters 862, exits 862, enters never closed 0
+  R1      reverts 9884: compared 9884, with candidates 4, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 66; discarded (no judged top-level commit followed) 0
+  R1      commits 962: top-level judged 962 (with candidates 4); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 42033: add/sub checked 42033 (non-zero amount 36); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 2116, exit 2158 (sync points enter 862, exit 848); not compared: blocked 0, unparsable 0; failed exits 14, no usable state 0
+  R3      exits 862: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 848
+  R3      skipped: call exited with error 14, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 962, unparsable 0
+
+[VIOLATION] R1-E  (seq 10108 db2816 O6.commit)
+  subject:  event coin_received:1ccf6159e510
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 10107)
+
+[VIOLATION] R1-E  (seq 10108 db2816 O6.commit)
+  subject:  event coin_spent:385131a8d992
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 10107)
+
+[VIOLATION] R1-E  (seq 10108 db2816 O6.commit)
+  subject:  event fractional_balance_change:0acc84677a1d
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 10107)
+
+[VIOLATION] R1-E  (seq 10108 db2816 O6.commit)
+  subject:  event fractional_balance_change:c2d591a8d3c3
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 10107)
+
+[VIOLATION] R1-E  (seq 10108 db2816 O6.commit)
+  subject:  event message:01fe57bc6db3
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 10107)
+
+[VIOLATION] R1-E  (seq 10108 db2816 O6.commit)
+  subject:  event transfer:b3037ffc7359
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 10107)

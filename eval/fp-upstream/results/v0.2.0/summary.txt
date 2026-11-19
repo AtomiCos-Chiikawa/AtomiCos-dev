@@ -1,0 +1,30 @@
+false-positive pre-measurement: upstream precompile integration suites
+date:   2026-11-19T14:01:32Z
+tree:   cosmos/evm v0.2.0 (0fff8c144b24effbcb3addd666150ba5989d631c, pinned by hash) + harness v01
+atomicos: c27a96fa3fc1362bc8964e39bd3fbf4cfd7de028 (tree DIRTY: 2 changed or untracked paths outside results/; hash of git diff HEAD: 1a179fe033376d3dcd2c90072147ee71646b2fe5)
+
+[set A: staking] Ran 85 of 85 Specs (85 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 1 (violations)
+      records 19867, StateDBs 5036, precompile calls 0, reverts 2651
+      findings: aux A1 x11, violation R1-E x15
+[set A: distribution] Ran 76 of 76 Specs (76 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 15378, StateDBs 2958, precompile calls 0, reverts 1717
+      findings: none
+[set B: bank] Ran 18 of 18 Specs (18 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 3625, StateDBs 931, precompile calls 0, reverts 332
+      findings: none
+[set B: erc20] Ran 162 of 170 Specs (162 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 135420, StateDBs 36516, precompile calls 0, reverts 16525
+      findings: none
+[set B: werc20] Ran 27 of 27 Specs (27 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 337, StateDBs 72, precompile calls 0, reverts 4
+      findings: none
+[set B: gov] Ran 20 of 20 Specs (20 Passed | 0 Failed)
+      go test exit 0 (PASS), checker exit 0 (no violation)
+      records 279, StateDBs 76, precompile calls 0, reverts 21
+      findings: none
+result: the checker reported violations; each one must be explained
