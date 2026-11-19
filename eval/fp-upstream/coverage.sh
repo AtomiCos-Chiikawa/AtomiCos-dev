@@ -1,8 +1,11 @@
 #!/usr/bin/env bash
 # Builds results/coverage.md from the checker statistics in results/<suite>.check.txt
 # (the "stats" block atomicos-check prints). Run after ./run.sh.
+#   ./coverage.sh            -> results/coverage.md          (v0.7.4)
+#   ./coverage.sh v0.5.1     -> results/v0.5.1/coverage.md   (FP_VERSION=v0.5.1 ./run.sh)
 set -euo pipefail
-OUT="$(cd "$(dirname "$0")" && pwd)/results"
+OUT="$(cd "$(dirname "$0")" && pwd)/results${1:+/$1}"
+[ -d "$OUT" ] || { echo "no results directory $OUT" >&2; exit 2; }
 
 row() { # row <set> <suite>
   awk -v set="$1" -v suite="$2" '
@@ -19,7 +22,7 @@ row() { # row <set> <suite>
 {
   echo "# 규칙이 실제로 검사된 횟수"
   echo
-  echo "\`coverage.sh\`가 \`results/<suite>.check.txt\`의 판정기 통계에서 만든다."
+  echo "\`coverage.sh${1:+ $1}\`가 \`results/${1:+$1/}<suite>.check.txt\`의 판정기 통계에서 만든다."
   echo
   echo "| set | suite | 판정 | R2-A 검사 (금액이 0이 아닌 것) | R2-W 비교 | 되돌림 | R1 후보가 생긴 되돌림 | R1 판정한 커밋 | R3-D / R3-U / R3-C |"
   echo "|---|---|---|---|---|---|---|---|---|"

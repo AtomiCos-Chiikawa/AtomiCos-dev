@@ -8,6 +8,9 @@
 # to be explained.
 #
 #   ./eval/fp-upstream/run.sh [A|B]       -> eval/fp-upstream/results/   (default: both sets)
+#   FP_VERSION=v0.5.1 ./eval/fp-upstream/run.sh [A|B]
+#                                         -> eval/fp-upstream/results/v0.5.1/
+#   FP_VERSION selects a row of the version table below (default v0.7.4).
 #
 # Exit status: 0 = every suite ran and passed and the checker found no violation;
 #              1 = runs fine, but the checker reported violations (to be explained);
@@ -18,24 +21,56 @@
 # fix it is no longer independent. Set B was never looked at while designing or fixing rules.
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-# Pinned by commit hash: tag v0.7.4 = latest patched release on release/v0.7.x at the time of
-# writing. A tag can be moved; the commit cannot.
-REF=v0.7.4
-COMMIT=ba66d3106a52f84b1c1ede8d9683c2df98d742ef
-GO_TOOLCHAIN=go1.25.9
-WT="$ROOT/.work/fp-v074"
-OUT="$ROOT/eval/fp-upstream/results"
+# Every version is pinned by commit hash: a tag can be moved; the commit cannot.
+#   v0.7.4: latest patched release on release/v0.7.x at the time of writing (default).
+#   v0.6.5: latest patched release on release/v0.6.x. It has the locked-balance snapshot
+#           write-back (SetBalanceWithLocked) of v0.7.x, so it uses harness family v07.
+#   v0.5.1: latest patched release on release/v0.5.x (harness family v05).
+#   v0.2.0: the v0.1.x line has a single tag, v0.1.0, which predates the GHSA-mjfq fix and the
+#           example_chain -> evmd rename (inject.sh needs evmd/). v0.2.0 is the GHSA-mjfq fix
+#           commit itself (the base of harness family v01). Its precompile integration suites
+#           live in precompiles/<module>/ (root module); slashing and ics20 have none.
+FP_VERSION="${FP_VERSION:-v0.7.4}"
 # set|package dir|test function
-SUITES=(
-  "A|staking|TestStakingPrecompileIntegrationTestSuite"
-  "A|distribution|TestDistributionPrecompileIntegrationTestSuite"
-  "B|bank|TestBankPrecompileIntegrationTestSuite"
-  "B|erc20|TestErc20IntegrationTestSuite"
-  "B|werc20|TestWERC20PrecompileIntegrationTestSuite"
-  "B|gov|TestGovPrecompileIntegrationTestSuite"
-  "B|slashing|TestStakingPrecompileIntegrationTestSuite"
-  "B|ics20|TestICS20PrecompileIntegrationTestSuite"
-)
+case "$FP_VERSION" in
+  v0.7.4|v0.6.5|v0.5.1)
+    SUITES=(
+      "A|staking|TestStakingPrecompileIntegrationTestSuite"
+      "A|distribution|TestDistributionPrecompileIntegrationTestSuite"
+      "B|bank|TestBankPrecompileIntegrationTestSuite"
+      "B|erc20|TestErc20IntegrationTestSuite"
+      "B|werc20|TestWERC20PrecompileIntegrationTestSuite"
+      "B|gov|TestGovPrecompileIntegrationTestSuite"
+      "B|slashing|TestStakingPrecompileIntegrationTestSuite"
+      "B|ics20|TestICS20PrecompileIntegrationTestSuite"
+    )
+    TEST_DIR=evmd PKG_PREFIX=./tests/integration/precompiles ;;
+  v0.2.0)
+    SUITES=(
+      "A|staking|TestPrecompileIntegrationTestSuite"
+      "A|distribution|TestPrecompileIntegrationTestSuite"
+      "B|bank|TestIntegrationSuite"
+      "B|erc20|TestIntegrationSuite"
+      "B|werc20|TestPrecompileIntegrationTestSuite"
+      "B|gov|TestKeeperIntegrationTestSuite"
+    )
+    TEST_DIR=. PKG_PREFIX=./precompiles ;;
+esac
+case "$FP_VERSION" in
+  v0.7.4) COMMIT=ba66d3106a52f84b1c1ede8d9683c2df98d742ef FAM=v07 GO_TOOLCHAIN=go1.25.9 ;;
+  v0.6.5) COMMIT=e04dc041978ba3ea5289a2c8398e9939ba8e957e FAM=v07 GO_TOOLCHAIN=go1.23.8 ;;
+  v0.5.1) COMMIT=e2f6e47c70b77bfb375ae27b7aa24082aabe6884 FAM=v05 GO_TOOLCHAIN=go1.23.8 ;;
+  v0.2.0) COMMIT=0fff8c144b24effbcb3addd666150ba5989d631c FAM=v01 GO_TOOLCHAIN=go1.23.6 ;;
+  *) echo "unknown FP_VERSION $FP_VERSION (v0.7.4 | v0.6.5 | v0.5.1 | v0.2.0)" >&2; exit 2 ;;
+esac
+REF=$FP_VERSION
+WT="$ROOT/.work/fp-$(echo "$FP_VERSION" | tr -d .)"
+# v0.7.4 keeps its results where they were first written
+if [ "$FP_VERSION" = v0.7.4 ]; then
+  OUT="$ROOT/eval/fp-upstream/results"
+else
+  OUT="$ROOT/eval/fp-upstream/results/$FP_VERSION"
+fi
 ONLY="${1:-}"
 
 # reuse helpers (clone, checker build); CASE/VULN/FIXED are only needed by the mirror check
@@ -50,7 +85,7 @@ fi
 [ -d "$WT" ] || git -C "$MIRROR" worktree add --detach --quiet "$WT" "$COMMIT"
 git -C "$WT" checkout --detach --quiet --force "$COMMIT"
 git -C "$WT" clean -fdq
-"$ROOT/tool/harness/inject.sh" v07 "$WT"
+"$ROOT/tool/harness/inject.sh" "$FAM" "$WT"
 build_checker
 
 mkdir -p "$OUT"
@@ -58,7 +93,7 @@ SUMMARY="$OUT/summary${ONLY:+-$ONLY}.txt"
 {
   echo "false-positive pre-measurement: upstream precompile integration suites"
   echo "date:   $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-  echo "tree:   cosmos/evm $REF ($COMMIT, pinned by hash) + harness v07"
+  echo "tree:   cosmos/evm $REF ($COMMIT, pinned by hash) + harness $FAM"
   echo "atomicos: $(atomicos_rev)"
   echo
 } > "$SUMMARY"
@@ -71,8 +106,8 @@ for entry in "${SUITES[@]}"; do
   rm -f "$trace" "$trace.gz"
   log "suite $s ..."
   set +e
-  (cd "$WT/evmd" && ATOMICOS_TRACE="$trace" GOTOOLCHAIN="$GO_TOOLCHAIN" GOFLAGS="-p=4" \
-     go test -tags=test "./tests/integration/precompiles/$s/" -run "^${testfn}\$" -count=1 -timeout 120m -v) \
+  (cd "$WT/$TEST_DIR" && ATOMICOS_TRACE="$trace" GOTOOLCHAIN="$GO_TOOLCHAIN" GOFLAGS="-p=4" \
+     go test -tags=test "$PKG_PREFIX/$s/" -run "^${testfn}\$" -count=1 -timeout 120m -v) \
      > "$OUT/$s.test.log" 2>&1
   tstatus=$?
   "$CHECKER" "$trace" > "$OUT/$s.check.txt" 2>&1
