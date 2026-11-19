@@ -3,8 +3,10 @@
 // environment variable ATOMICOS_TRACE names a file, the harness installs the StateDB hook
 // and appends one JSON line per observation (format: tool/checker/trace.go).
 //
-// The harness only reads state. Every read happens on a throw-away cache branch with an
-// infinite gas meter, so gas accounting, events and stores of the traced execution do not change.
+// The harness only reads state. Every read happens in an isolated context (isolatedReadCtx:
+// a throw-away cache branch, or a snapshot that is reverted on the precompile cache's layered
+// store) with an infinite gas meter, so gas accounting, events and stores of the traced
+// execution do not change.
 package atomicos
 
 import (
@@ -17,8 +19,6 @@ import (
 	"sync"
 
 	"github.com/ethereum/go-ethereum/common"
-
-	storetypes "cosmossdk.io/store/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
@@ -157,8 +157,10 @@ func ownsContext(k Keepers, ctx sdk.Context) (ok bool) {
 	if ctx.MultiStore() == nil {
 		return false
 	}
-	c, _ := ctx.CacheContext()
-	c = c.WithGasMeter(storetypes.NewInfiniteGasMeter())
+	// same isolation as readState: on a layered precompile-cache store a CacheContext would push
+	// a layer that is never popped
+	c, release := isolatedReadCtx(ctx)
+	defer release()
 	k.Bank.GetSupply(c, evmtypes.GetEVMCoinDenom())
 	return true
 }

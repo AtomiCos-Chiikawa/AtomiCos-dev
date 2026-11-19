@@ -1,13 +1,17 @@
 case:    ghsa-8pfh (step 7: same input as step 4 + harness v05 + checker)
-date:    2026-11-18T20:36:16Z
+date:    2026-11-18T23:22:09Z
+atomicos: e7eaa57b60958252c81db03fb577b5a2ee09d102 (tree DIRTY: 6 changed or untracked paths outside results/; hash of git diff HEAD: 383fcb3adeb522323aab164b37896efc8dcf8a1c)
 vuln:    f4637461878001f6f41acdedad214db247d4f3dd
 fixed:   79089feebe79ce1f35250ba457cbd436e6bfff8b
 go:      go1.23.8
 command: (cd evmd && ATOMICOS_TRACE=<trace> go test -tags=test ./tests/ibc/ -run TestICS20RecursivePrecompileCallsTestSuite -count=1 -v -timeout 30m)
+expect:  vuln: test FAIL (EXPECT_FAIL signature), checker exit 1, >=1 violation
+         fixed: test PASS, checker exit 0, 0 violations
+         both: records > 0 and observation points O2 O4 O5 O6 present
 
-vuln   test FAIL  records 294  violations 6   expected >=1 violation  -> as expected
+vuln   test FAIL  records 294  violations 6   checker exit 1  expected >=1 violation  -> as expected
        findings: aux A1 x1, violation R1-E x5, violation R2-W x1
-fixed  test PASS  records 299  violations 0   expected 0 violations   -> as expected
+fixed  test PASS  records 299  violations 0   checker exit 0  expected 0 violations   -> as expected
        findings: none
 
 details: results/judge/{vuln,fixed}.check.txt  (re-judge: atomicos-check results/judge/<variant>.trace.jsonl.gz)

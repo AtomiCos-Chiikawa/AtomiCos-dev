@@ -1,9 +1,10 @@
 case:    ghsa-8pfh
-date:    2026-11-18T19:30:15Z
+date:    2026-11-18T23:21:55Z
 vuln:    f4637461878001f6f41acdedad214db247d4f3dd
 fixed:   79089feebe79ce1f35250ba457cbd436e6bfff8b
 go:      go1.23.8 (CGO_ENABLED=default)
 command: (cd evmd && go test -tags=test ./tests/ibc/ -run TestICS20RecursivePrecompileCallsTestSuite -count=1 -v -timeout 30m)
+expect:  vuln FAIL with its known failure signature (EXPECT_FAIL in run.sh), fixed PASS
 
 vuln   FAIL (exit 1)                      expected FAIL  -> as expected
 fixed  PASS                               expected PASS  -> as expected

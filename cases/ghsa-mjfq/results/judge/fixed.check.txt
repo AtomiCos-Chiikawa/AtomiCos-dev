@@ -1,1 +1,14 @@
 records: 96, findings: 0
+verdict: no violation
+stats (what the checker examined):
+  points  O4.balance 54, O5.revert 13, O5.snapshot 27, O6.commit 2; unknown point 0
+  trace   statedbs 26, records with state.error 0, unparsable numbers 0
+  O2      enters 0, exits 0, enters never closed 0
+  R1      reverts 13: compared 13, with candidates 1, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 2, events 4; discarded (no judged top-level commit followed) 0
+  R1      commits 2: top-level judged 2 (with candidates 1); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 54: add/sub checked 54 (non-zero amount 0); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 0, exit 0 (sync points enter 0, exit 0); not compared: blocked 0, unparsable 0; failed exits 0, no usable state 0
+  R3      exits 0: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 0
+  R3      skipped: call exited with error 0, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 2, unparsable 0

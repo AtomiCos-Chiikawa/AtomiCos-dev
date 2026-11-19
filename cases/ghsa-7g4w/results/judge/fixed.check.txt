@@ -1,23 +1,36 @@
 records: 97, findings: 2
   guarded R2-A           2
+verdict: no violation
+stats (what the checker examined):
+  points  O2.enter 3, O2.exit 3, O4.balance 55, O5.revert 9, O5.snapshot 26, O6.commit 1; unknown point 0
+  trace   statedbs 23, records with state.error 0, unparsable numbers 0
+  O2      enters 3, exits 3, enters never closed 0
+  R1      reverts 9: compared 9, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 1: top-level judged 1 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 55: add/sub checked 55 (non-zero amount 3); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 6, exit 2 (sync points enter 3, exit 1); not compared: blocked 4, unparsable 0; failed exits 2, no usable state 0
+  R3      exits 3: evaluated R3-D 1, R3-U 0, R3-C 0; method not covered 0
+  R3      skipped: call exited with error 2, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 1, unparsable 0
 
 [GUARDED] R2-A  (seq 87 db22 O4.balance call 2)
-  subject:  0x4b76b47eca5b12c3bfa721d0048ca19a8a23cfee
+  subject:  0x96297a9e43de0652591d8c65a8be18db6004a188
   expected: sub amount <= current balance 1000000000000000000
   actual:   sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)
   detail:   balance underflow
-  outcome:  rejected (panic: state balance underflow for 0x4b76b47ecA5B12C3bFa721D0048ca19A8a23Cfee: have=1000000000000000000 sub=3000000000000000000)
+  outcome:  rejected (panic: state balance underflow for 0x96297A9E43dE0652591d8C65A8Be18db6004a188: have=1000000000000000000 sub=3000000000000000000)
   at x/vm/statedb/statedb.go:506 statedb.(*StateDB).SubBalance
   at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
   at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
   at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
 
 [GUARDED] R2-A  (seq 96 db23 O4.balance call 3)
-  subject:  0x4b76b47eca5b12c3bfa721d0048ca19a8a23cfee
+  subject:  0x96297a9e43de0652591d8c65a8be18db6004a188
   expected: sub amount <= current balance 1000000000000000000
   actual:   sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)
   detail:   balance underflow
-  outcome:  rejected (panic: state balance underflow for 0x4b76b47ecA5B12C3bFa721D0048ca19A8a23Cfee: have=1000000000000000000 sub=3000000000000000000)
+  outcome:  rejected (panic: state balance underflow for 0x96297A9E43dE0652591d8C65A8Be18db6004a188: have=1000000000000000000 sub=3000000000000000000)
   at x/vm/statedb/statedb.go:506 statedb.(*StateDB).SubBalance
   at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
   at precompiles/common/precompile.go:131 common.Precompile.runNativeAction

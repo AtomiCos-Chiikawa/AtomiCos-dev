@@ -1,6 +1,93 @@
 {
   "records": 96,
+  "verdict": "violation",
+  "inconclusive": [],
+  "stats": {
+    "records": 96,
+    "points": {
+      "O4.balance": 54,
+      "O5.revert": 13,
+      "O5.snapshot": 27,
+      "O6.commit": 2
+    },
+    "unknownPoints": 0,
+    "stateDBs": 26,
+    "stateErrors": 0,
+    "unparsable": 0,
+    "o2": {
+      "enters": 0,
+      "exits": 0,
+      "unclosed": 0
+    },
+    "r1": {
+      "reverts": 13,
+      "noSnapshot": 0,
+      "noState": 0,
+      "compared": 13,
+      "withCandidates": 1,
+      "stateCandidates": 2,
+      "eventCandidates": 4,
+      "commits": 2,
+      "commitsNested": 0,
+      "commitsFailed": 0,
+      "commitsNoState": 0,
+      "judged": 2,
+      "judgedWithCandidates": 1,
+      "discarded": 0,
+      "unparsable": 0
+    },
+    "r2a": {
+      "ops": 54,
+      "checked": 54,
+      "nonZero": 0,
+      "set": 0,
+      "otherOp": 0,
+      "unparsable": 0
+    },
+    "r2w": {
+      "syncEnter": 0,
+      "syncExit": 0,
+      "failedExit": 0,
+      "noState": 0,
+      "enter": 0,
+      "exit": 0,
+      "blocked": 0,
+      "unparsable": 0
+    },
+    "r3": {
+      "exits": 0,
+      "evaluated": {
+        "R3-D": 0,
+        "R3-U": 0,
+        "R3-C": 0
+      },
+      "notCovered": 0,
+      "skipped": {
+        "callError": 0,
+        "noEnter": 0,
+        "noState": 0,
+        "missingArgs": 0,
+        "unparsable": 0,
+        "missingModule": 0
+      }
+    },
+    "a1": {
+      "compared": 2,
+      "unparsable": 0
+    }
+  },
   "findings": [
+    {
+      "rule": "R1-S",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 96,
+      "db": "db26",
+      "subject": "bank:0x39c6d796f6c825fca48d7f278ed381cadfad2e3f",
+      "expected": "99997996564996888347057 (value before the reverted frame)",
+      "actual": "99998007101617353674122 (committed; equals the value the reverted frame left behind)",
+      "detail": "SDK write of a reverted frame was committed (revert at seq 95)"
+    },
     {
       "rule": "R1-S",
       "severity": "violation",
@@ -13,23 +100,12 @@
       "detail": "SDK write of a reverted frame was committed (revert at seq 95)"
     },
     {
-      "rule": "R1-S",
-      "severity": "violation",
-      "point": "O6.commit",
-      "seq": 96,
-      "db": "db26",
-      "subject": "bank:0xd07695a2a92086aedcf8d0c853793e7237e354ad",
-      "expected": "99997996564996888347057 (value before the reverted frame)",
-      "actual": "99998007101617353674122 (committed; equals the value the reverted frame left behind)",
-      "detail": "SDK write of a reverted frame was committed (revert at seq 95)"
-    },
-    {
       "rule": "R1-E",
       "severity": "violation",
       "point": "O6.commit",
       "seq": 96,
       "db": "db26",
-      "subject": "event coin_received:25002878911e",
+      "subject": "event coin_received:b7f47ac0842a",
       "expected": "events of reverted frames are absent from the committed events",
       "actual": "appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 95)"
     },
@@ -59,7 +135,7 @@
       "point": "O6.commit",
       "seq": 96,
       "db": "db26",
-      "subject": "event transfer:736e3d5866d5",
+      "subject": "event transfer:08344d668f41",
       "expected": "events of reverted frames are absent from the committed events",
       "actual": "appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 95)"
     }

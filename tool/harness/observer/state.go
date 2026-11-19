@@ -117,11 +117,10 @@ func readState(v statedb.AtomicosView, committed bool) (s *state) {
 		s.Error = "atomicos: context has no multistore"
 		return s
 	}
-	// Throw-away branch, infinite gas, no KV gas: reads cannot affect the traced execution.
-	ctx, _ := view.CacheContext()
-	ctx = ctx.WithGasMeter(storetypes.NewInfiniteGasMeter()).
-		WithKVGasConfig(storetypes.GasConfig{}).
-		WithTransientKVGasConfig(storetypes.GasConfig{})
+	// Isolated read context, infinite gas, no KV gas: reads cannot affect the traced execution.
+	// release runs on every exit path; on a panic it runs before the recover above.
+	ctx, release := isolatedReadCtx(view)
+	defer release()
 
 	denom := evmtypes.GetEVMCoinDenom()
 	s.Denom = denom
@@ -185,6 +184,44 @@ func readState(v statedb.AtomicosView, committed bool) (s *state) {
 	return s
 }
 
+// layeredStore is the stack-of-layers multistore cosmos/evm installs on a StateDB's precompile
+// cache context (x/vm/store/snapshotmulti.Store, v0.5 and v0.7 families). Its CacheMultiStore()
+// is `s.Snapshot(); return s`: it pushes a layer onto the store under test and returns that same
+// store, so ctx.CacheContext() is NOT a throw-away branch there, and nothing ever pops the layer.
+// Reads that write (x/distribution's DelegationRewards query calls IncrementValidatorPeriod on
+// the context it is given) would then land in the store under test and be committed with it.
+type layeredStore interface {
+	Snapshot() int
+	RevertToSnapshot(target int)
+}
+
+// isolatedReadCtx returns a context whose writes cannot reach the traced execution, and a
+// release function the caller must defer.
+//   - layered store: take a snapshot (a new top layer), read through it, and revert to that
+//     snapshot on release; RevertToSnapshot(id) pops layer id and every layer pushed above it
+//     (also by CacheContext calls made inside the reads).
+//   - any other multistore (cosmos-sdk cachemulti / rootmulti, v0.1 family): ctx.CacheContext(),
+//     a real branch that is simply dropped.
+//
+// Both use a fresh EventManager, an infinite gas meter and zero KV gas configs.
+func isolatedReadCtx(view sdk.Context) (sdk.Context, func()) {
+	var (
+		ctx     sdk.Context
+		release = func() {}
+	)
+	if ls, ok := view.MultiStore().(layeredStore); ok {
+		id := ls.Snapshot()
+		release = func() { ls.RevertToSnapshot(id) }
+		ctx = view.WithEventManager(sdk.NewEventManager())
+	} else {
+		ctx, _ = view.CacheContext()
+	}
+	ctx = ctx.WithGasMeter(storetypes.NewInfiniteGasMeter()).
+		WithKVGasConfig(storetypes.GasConfig{}).
+		WithTransientKVGasConfig(storetypes.GasConfig{})
+	return ctx, release
+}
+
 func readStaking(ctx sdk.Context, k Keepers, s *state, denom string, accs []sdk.AccountI) {
 	vals, err := k.Staking.GetAllValidators(ctx)
 	if err != nil {
@@ -230,10 +267,8 @@ func readStaking(ctx sdk.Context, k Keepers, s *state, denom string, accs []sdk.
 		if v, ok := byOp[d.ValidatorAddress]; ok {
 			s.Deleg[key] = v.TokensFromShares(d.Shares).TruncateInt().String()
 		}
-		if res, err := q.DelegationRewards(ctx, &distrtypes.QueryDelegationRewardsRequest{
-			DelegatorAddress: d.DelegatorAddress, ValidatorAddress: d.ValidatorAddress,
-		}); err == nil {
-			s.Rewards[key] = res.Rewards.AmountOf(denom).String()
+		if r, ok := delegationRewards(ctx, q, d.DelegatorAddress, d.ValidatorAddress, denom); ok {
+			s.Rewards[key] = r
 		}
 		if !seen[dh] {
 			seen[dh] = true
@@ -242,6 +277,26 @@ func readStaking(ctx sdk.Context, k Keepers, s *state, denom string, accs []sdk.
 			}
 		}
 	}
+}
+
+// delegationRewards reads one delegation's claimable rewards. ok is false when the query
+// returns an error or panics. x/distribution panics (nil dereference) when the reward period
+// records are incomplete, which happens on the intermediate state of a precompile call that
+// ran out of gas half-way (O2 exit with an error). Such an entry is left out, like a query
+// error, instead of failing the whole state read; rules that use rewards (R3) skip failed calls.
+func delegationRewards(ctx sdk.Context, q distrtypes.QueryServer, del, val, denom string) (amount string, ok bool) {
+	defer func() {
+		if recover() != nil {
+			amount, ok = "", false
+		}
+	}()
+	res, err := q.DelegationRewards(ctx, &distrtypes.QueryDelegationRewardsRequest{
+		DelegatorAddress: del, ValidatorAddress: val,
+	})
+	if err != nil {
+		return "", false
+	}
+	return res.Rewards.AmountOf(denom).String(), true
 }
 
 // eventSigs returns a short content hash per event (type and attributes, in order).

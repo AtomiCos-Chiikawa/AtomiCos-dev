@@ -76,15 +76,25 @@ func TestR1S_NoCommitNoVerdict(t *testing.T) {
 	expectRules(t, Check(recs), "")
 }
 
+// Two top-level StateDBs use the same snapshot id with different snapshot values. Only pairing
+// each revert with the snapshot of its own StateDB gives exactly one R1-S finding (db1: its
+// reverted frame left 100 -> 130 behind and db1 committed it). Pairing by id alone gives
+// db2's snapshot to db1 (no candidate: 0 findings) or db1's to db2 (a false db2 finding).
 func TestR1S_SnapshotsArePairedPerDB(t *testing.T) {
 	recs := []Record{
 		{Seq: 1, Point: PointSnapshot, DB: "db1", Snap: 1, State: st(map[string]string{alice: "100"})},
 		{Seq: 2, Point: PointSnapshot, DB: "db2", Snap: 1, State: st(map[string]string{alice: "130"})},
-		{Seq: 3, Point: PointRevert, DB: "db2", Snap: 1, State: st(map[string]string{alice: "130"})},
-		{Seq: 4, Point: PointRevert, DB: "db1", Snap: 1, State: st(map[string]string{alice: "100"})},
+		{Seq: 3, Point: PointRevert, DB: "db1", Snap: 1, State: st(map[string]string{alice: "130"})},
+		{Seq: 4, Point: PointRevert, DB: "db2", Snap: 1, State: st(map[string]string{alice: "130"})},
 		{Seq: 5, Point: PointCommit, DB: "db1", State: st(map[string]string{alice: "130"})},
+		{Seq: 6, Point: PointCommit, DB: "db2", State: st(map[string]string{alice: "130"})},
 	}
-	expectRules(t, Check(recs), "")
+	fs := Check(recs)
+	expectRules(t, fs, "", "R1-S")
+	f := fs[0]
+	if f.DB != "db1" || f.Seq != 5 || f.Subject != "bank:"+alice || !strings.HasPrefix(f.Expected, "100 ") {
+		t.Fatalf("finding = %+v", f)
+	}
 }
 
 func ev(ctx, cache []string) EventsRec {

@@ -192,9 +192,26 @@ func TestGHSA7g4w_VestingDelegateBeyondSpendable(t *testing.T) {
 	}
 	t.Logf("REPRO target: delegate(amount=%s > spendable=%s, <= total=%s) -> %s | 2^256-after=%s | wrapped=%v",
 		beyond, spendable, total, target, distance, wrapped)
-	assert.False(t, wrapped,
-		"StateDB balance wrapped around after delegating more than the spendable balance (underflow): before=%s after=%s",
-		target.before, target.after)
+	// Only two outcomes say something about the underflow, and only they are accepted:
+	//   (a) the delegation call itself succeeded (no query error, no VM error, delegate returned
+	//       true): then the StateDB balance must not have wrapped around (vulnerable: it does);
+	//   (b) the call was rejected by the underflow guard of the fix ("state balance underflow").
+	// Any other failure (revert, out of gas, delegate returning false, another panic, a query
+	// error) is not evidence either way and fails the test.
+	const underflowRejection = "state balance underflow"
+	succeeded := target.callErr == "" && target.vmErr == "" && target.ok
+	rejected := strings.Contains(target.callErr, underflowRejection) || strings.Contains(target.vmErr, underflowRejection)
+	switch {
+	case succeeded:
+		assert.False(t, wrapped,
+			"StateDB balance wrapped around after delegating more than the spendable balance (underflow): before=%s after=%s",
+			target.before, target.after)
+	case rejected:
+		// guarded: the fix refused the underflowing balance change
+	default:
+		t.Errorf("target delegation neither succeeded nor was rejected with %q, so the test cannot judge the underflow; outcome: %s",
+			underflowRejection, target)
+	}
 
 	// 6. Informational only (no assertion): send the same call as a real transaction and look
 	//    only at the state before and after the transaction, like an RPC-based checker would.

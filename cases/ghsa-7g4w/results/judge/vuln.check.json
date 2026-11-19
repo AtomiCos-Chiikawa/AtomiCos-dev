@@ -1,5 +1,83 @@
 {
   "records": 98,
+  "verdict": "violation",
+  "inconclusive": [],
+  "stats": {
+    "records": 98,
+    "points": {
+      "O2.enter": 3,
+      "O2.exit": 3,
+      "O4.balance": 55,
+      "O5.revert": 9,
+      "O5.snapshot": 26,
+      "O6.commit": 2
+    },
+    "unknownPoints": 0,
+    "stateDBs": 23,
+    "stateErrors": 0,
+    "unparsable": 0,
+    "o2": {
+      "enters": 3,
+      "exits": 3,
+      "unclosed": 0
+    },
+    "r1": {
+      "reverts": 9,
+      "noSnapshot": 0,
+      "noState": 0,
+      "compared": 9,
+      "withCandidates": 0,
+      "stateCandidates": 0,
+      "eventCandidates": 0,
+      "commits": 2,
+      "commitsNested": 0,
+      "commitsFailed": 1,
+      "commitsNoState": 0,
+      "judged": 1,
+      "judgedWithCandidates": 0,
+      "discarded": 0,
+      "unparsable": 0
+    },
+    "r2a": {
+      "ops": 55,
+      "checked": 55,
+      "nonZero": 3,
+      "set": 0,
+      "otherOp": 0,
+      "unparsable": 0
+    },
+    "r2w": {
+      "syncEnter": 3,
+      "syncExit": 3,
+      "failedExit": 0,
+      "noState": 0,
+      "enter": 6,
+      "exit": 6,
+      "blocked": 6,
+      "unparsable": 0
+    },
+    "r3": {
+      "exits": 3,
+      "evaluated": {
+        "R3-D": 3,
+        "R3-U": 0,
+        "R3-C": 0
+      },
+      "notCovered": 0,
+      "skipped": {
+        "callError": 0,
+        "noEnter": 0,
+        "noState": 0,
+        "missingArgs": 0,
+        "unparsable": 0,
+        "missingModule": 0
+      }
+    },
+    "a1": {
+      "compared": 2,
+      "unparsable": 0
+    }
+  },
   "findings": [
     {
       "rule": "R2-A",
@@ -8,7 +86,7 @@
       "seq": 87,
       "db": "db22",
       "call": 2,
-      "subject": "0xa4df1f1088c2db43748148938edc9a60b18859aa",
+      "subject": "0x90aa33ce320326a3165b75eb4267d987aae667f6",
       "expected": "sub amount \u003c= current balance 1000000000000000000",
       "actual": "sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)",
       "detail": "balance underflow",
@@ -29,7 +107,7 @@
       "seq": 88,
       "db": "db22",
       "call": 2,
-      "subject": "0xa4df1f1088c2db43748148938edc9a60b18859aa",
+      "subject": "0x90aa33ce320326a3165b75eb4267d987aae667f6",
       "expected": "write-back 2000000000000000000 == bank reference",
       "actual": "write-back 115792089237316195423570985008687907853269984665640564039459584007913129639936 (StateDB balance 115792089237316195423570985008687907853269984665640564039455584007913129639936, mode balance+locked_snapshot=bank_total)",
       "detail": "the StateDB balance would not reconcile with the bank at commit"
@@ -41,7 +119,7 @@
       "seq": 96,
       "db": "db23",
       "call": 3,
-      "subject": "0xa4df1f1088c2db43748148938edc9a60b18859aa",
+      "subject": "0x90aa33ce320326a3165b75eb4267d987aae667f6",
       "expected": "sub amount \u003c= current balance 1000000000000000000",
       "actual": "sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)",
       "detail": "balance underflow",
@@ -62,7 +140,7 @@
       "seq": 97,
       "db": "db23",
       "call": 3,
-      "subject": "0xa4df1f1088c2db43748148938edc9a60b18859aa",
+      "subject": "0x90aa33ce320326a3165b75eb4267d987aae667f6",
       "expected": "write-back 2000000000000000000 == bank reference",
       "actual": "write-back 115792089237316195423570985008687907853269984665640564039459584007913129639936 (StateDB balance 115792089237316195423570985008687907853269984665640564039455584007913129639936, mode balance+locked_snapshot=bank_total)",
       "detail": "the StateDB balance would not reconcile with the bank at commit"

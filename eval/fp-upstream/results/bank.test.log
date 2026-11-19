@@ -1,15 +1,15 @@
 === RUN   TestBankPrecompileIntegrationTestSuite
-Running Suite: Bank Extension Suite - /home/dev/atomicos/.work/fp-v074/evmd/tests/integration/precompiles/bank
-==============================================================================================================
-Random Seed: [1m1795034558[0m
+Running Suite: Bank Extension Suite - /private/tmp/atomicos-run/AtomiCos/.work/fp-v074/evmd/tests/integration/precompiles/bank
+==============================================================================================================================
+Random Seed: [1m1795044189[0m
 
 Will run [1m19[0m of [1m19[0m specs
 [38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m
 Inner call: success=false, innerGasUsed=9002777, gasForwarded=9000000, txGasUsed=10000000
 [38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m[38;5;10m•[0m
 
-[38;5;10m[1mRan 19 of 19 Specs in 4.799 seconds[0m
+[38;5;10m[1mRan 19 of 19 Specs in 1.661 seconds[0m
 [38;5;10m[1mSUCCESS![0m -- [38;5;10m[1m19 Passed[0m | [38;5;9m[1m0 Failed[0m | [38;5;11m[1m0 Pending[0m | [38;5;14m[1m0 Skipped[0m
---- PASS: TestBankPrecompileIntegrationTestSuite (4.80s)
+--- PASS: TestBankPrecompileIntegrationTestSuite (1.66s)
 PASS
-ok  	github.com/cosmos/evm/evmd/tests/integration/precompiles/bank	4.885s
+ok  	github.com/cosmos/evm/evmd/tests/integration/precompiles/bank	2.849s
