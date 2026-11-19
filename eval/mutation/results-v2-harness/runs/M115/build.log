@@ -1,0 +1,2 @@
+# github.com/cosmos/evm/x/vm/statedb
+x/vm/statedb/statedb.go:463:2: declared and not used: prevEvents

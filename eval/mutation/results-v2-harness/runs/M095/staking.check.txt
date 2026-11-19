@@ -1,0 +1,357 @@
+records: 4251, findings: 31
+  violation R2-A         31
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 442, O2.exit 442, O4.balance 1893, O5.revert 475, O5.snapshot 935, O6.commit 64; unknown point 0
+  trace   statedbs 936, records with state.error 0, unparsable numbers 0
+  O2      enters 442, exits 442, enters never closed 0
+  R1      reverts 475: compared 475, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 64: top-level judged 64 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 1893: add/sub checked 1893 (non-zero amount 37); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 444, exit 233 (sync points enter 442, exit 233); not compared: blocked 711, unparsable 0; failed exits 209, no usable state 0
+  R3      exits 442: evaluated R3-D 24, R3-U 61, R3-C 0; method not covered 148
+  R3      skipped: call exited with error 209, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 64, unparsable 0
+  O6      commits 64: judged 64 (R2-W comparisons 87, R1-C 36); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R2-A  (seq 1036 db288 O4.balance call 3)
+  subject:  0x380d3d54e67d7b45116eb4353ccabadfa0b2d093
+  expected: sub amount <= current balance 0
+  actual:   sub 1 from 0 (unchecked result would be 2^256 - 1)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1049 db290 O4.balance call 5)
+  subject:  0x7439aab74b1a69d97e7bae8d59cbd9beda54f451
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1055 db291 O4.balance call 6)
+  subject:  0x7439aab74b1a69d97e7bae8d59cbd9beda54f451
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1085 db296 O4.balance call 11)
+  subject:  0x7439aab74b1a69d97e7bae8d59cbd9beda54f451
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1115 db301 O4.balance call 16)
+  subject:  0x7439aab74b1a69d97e7bae8d59cbd9beda54f451
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1121 db302 O4.balance call 17)
+  subject:  0x7439aab74b1a69d97e7bae8d59cbd9beda54f451
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1169 db310 O4.balance call 25)
+  subject:  0x7439aab74b1a69d97e7bae8d59cbd9beda54f451
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1287 db331 O4.balance call 45)
+  subject:  0x3a45c4663af13d7e5f6c8eb8e133d6583a66cb98
+  expected: sub amount <= current balance 0
+  actual:   sub 2000000000000000000 from 0 (unchecked result would be 2^256 - 2000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1293 db332 O4.balance call 46)
+  subject:  0x3a45c4663af13d7e5f6c8eb8e133d6583a66cb98
+  expected: sub amount <= current balance 0
+  actual:   sub 2000000000000000000 from 0 (unchecked result would be 2^256 - 2000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1323 db337 O4.balance call 51)
+  subject:  0x3a45c4663af13d7e5f6c8eb8e133d6583a66cb98
+  expected: sub amount <= current balance 0
+  actual:   sub 2000000000000000000 from 0 (unchecked result would be 2^256 - 2000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1335 db339 O4.balance call 53)
+  subject:  0x3a45c4663af13d7e5f6c8eb8e133d6583a66cb98
+  expected: sub amount <= current balance 0
+  actual:   sub 2000000000000000000 from 0 (unchecked result would be 2^256 - 2000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1359 db343 O4.balance call 57)
+  subject:  0x3a45c4663af13d7e5f6c8eb8e133d6583a66cb98
+  expected: sub amount <= current balance 0
+  actual:   sub 2000000000000000000 from 0 (unchecked result would be 2^256 - 2000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1389 db348 O4.balance call 62)
+  subject:  0x3a45c4663af13d7e5f6c8eb8e133d6583a66cb98
+  expected: sub amount <= current balance 0
+  actual:   sub 2000000000000000000 from 0 (unchecked result would be 2^256 - 2000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1395 db349 O4.balance call 63)
+  subject:  0x3a45c4663af13d7e5f6c8eb8e133d6583a66cb98
+  expected: sub amount <= current balance 0
+  actual:   sub 2000000000000000000 from 0 (unchecked result would be 2^256 - 2000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1401 db350 O4.balance call 64)
+  subject:  0x3a45c4663af13d7e5f6c8eb8e133d6583a66cb98
+  expected: sub amount <= current balance 0
+  actual:   sub 2000000000000000000 from 0 (unchecked result would be 2^256 - 2000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1420 db353 O4.balance call 67)
+  subject:  0xe0137e1ec0b53beeb5e175c7df571c9a06b0a874
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1426 db354 O4.balance call 68)
+  subject:  0xe0137e1ec0b53beeb5e175c7df571c9a06b0a874
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1456 db359 O4.balance call 73)
+  subject:  0xe0137e1ec0b53beeb5e175c7df571c9a06b0a874
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1468 db361 O4.balance call 75)
+  subject:  0xe0137e1ec0b53beeb5e175c7df571c9a06b0a874
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1486 db364 O4.balance call 78)
+  subject:  0xe0137e1ec0b53beeb5e175c7df571c9a06b0a874
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1516 db369 O4.balance call 83)
+  subject:  0xe0137e1ec0b53beeb5e175c7df571c9a06b0a874
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1522 db370 O4.balance call 84)
+  subject:  0xe0137e1ec0b53beeb5e175c7df571c9a06b0a874
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1528 db371 O4.balance call 85)
+  subject:  0xe0137e1ec0b53beeb5e175c7df571c9a06b0a874
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 3403 db710 O4.balance call 423)
+  subject:  0x2e5f057fb5b66c4103b56bf8893bdde2bd14ae5c
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 3409 db711 O4.balance call 424)
+  subject:  0x2e5f057fb5b66c4103b56bf8893bdde2bd14ae5c
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 3439 db716 O4.balance call 429)
+  subject:  0x2e5f057fb5b66c4103b56bf8893bdde2bd14ae5c
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 3451 db718 O4.balance call 431)
+  subject:  0x2e5f057fb5b66c4103b56bf8893bdde2bd14ae5c
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 3475 db722 O4.balance call 435)
+  subject:  0x2e5f057fb5b66c4103b56bf8893bdde2bd14ae5c
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 3505 db727 O4.balance call 440)
+  subject:  0x2e5f057fb5b66c4103b56bf8893bdde2bd14ae5c
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 3511 db728 O4.balance call 441)
+  subject:  0x2e5f057fb5b66c4103b56bf8893bdde2bd14ae5c
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 3517 db729 O4.balance call 442)
+  subject:  0x2e5f057fb5b66c4103b56bf8893bdde2bd14ae5c
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction

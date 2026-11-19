@@ -1,0 +1,57 @@
+records: 5722, findings: 5
+  guarded R2-A           2
+  violation R2-W         3
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 510, O2.exit 510, O4.balance 2651, O5.revert 667, O5.snapshot 1297, O6.commit 87; unknown point 0
+  trace   statedbs 1285, records with state.error 0, unparsable numbers 0
+  O2      enters 510, exits 510, enters never closed 0
+  R1      reverts 667: compared 667, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 87: top-level judged 87 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 2651: add/sub checked 2651 (non-zero amount 99); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 520, exit 270 (sync points enter 510, exit 265); not compared: blocked 819, unparsable 0; failed exits 245, no usable state 0
+  R3      exits 510: evaluated R3-D 28, R3-U 61, R3-C 0; method not covered 176
+  R3      skipped: call exited with error 245, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 87, unparsable 0
+  O6      commits 87: judged 87 (R2-W comparisons 130, R1-C 44); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R2-W  (seq 2325 db420 O2.exit call 412)
+  subject:  0x9332c063f9e10845b191f9c90be0b49c3ffabf65
+  expected: write-back 99999999634302408571832 == bank reference
+  actual:   write-back 99999999396703449928168 (StateDB balance 99999999396703449928168, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[VIOLATION] R2-W  (seq 2345 db423 O2.exit call 415)
+  subject:  0x20dfd69f351e2871f3306ea250a3879a99fa3ab5
+  expected: write-back 99999999634302408571832 == bank reference
+  actual:   write-back 99999999396703449928168 (StateDB balance 99999999396703449928168, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[VIOLATION] R2-W  (seq 2371 db427 O2.exit call 419)
+  subject:  0x026ddeb95005996a2a6df684723b5f084e898b14
+  expected: write-back 99999999634302408571832 == bank reference
+  actual:   write-back 99999999396703449928168 (StateDB balance 99999999396703449928168, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[GUARDED] R2-A  (seq 3297 db660 O4.balance call 445)
+  subject:  0xd0cb0b09eaa5fc629590b864aece41d06a067a62
+  expected: sub amount <= current balance 999961208333333334
+  actual:   sub 1000000000000000000 from 999961208333333334 (unchecked result would be 2^256 - 38791666666666)
+  detail:   balance underflow
+  outcome:  rejected (panic: state balance underflow for 0xd0Cb0B09eaA5fc629590B864aecE41D06A067A62: have=999961208333333334 sub=1000000000000000000)
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[GUARDED] R2-A  (seq 5721 db1285 O4.balance call 510)
+  subject:  0x393b8ac4ab2a90bedc1ea89f90846f3b7bbe17c4
+  expected: sub amount <= current balance 999992186689603792
+  actual:   sub 1000000000000000000 from 999992186689603792 (unchecked result would be 2^256 - 7813310396208)
+  detail:   balance underflow
+  outcome:  rejected (panic: state balance underflow for 0x393b8aC4aB2A90BEdC1eA89F90846F3B7bBE17C4: have=999992186689603792 sub=1000000000000000000)
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction

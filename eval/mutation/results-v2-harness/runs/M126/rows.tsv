@@ -1,0 +1,8 @@
+M126	bank	FAIL	0	-	0	0	0	0	0	25	b04c5c9	none	0	-
+M126	distribution	FAIL	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+M126	erc20	FAIL	0	-	0	0	0	0	0	61	b04c5c9	none	0	-
+M126	gov	FAIL	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+M126	ics20	FAIL	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M126	slashing	FAIL	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M126	staking	FAIL	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+M126	werc20	FAIL	0	-	0	0	0	0	0	16	b04c5c9	none	0	-

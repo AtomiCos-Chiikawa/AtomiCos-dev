@@ -1,0 +1,8 @@
+M245	bank	FAIL	0	-	0	0	0	0	0	25	b04c5c9	none	0	-
+M245	distribution	FAIL	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M245	erc20	FAIL	0	-	0	0	0	0	0	49	b04c5c9	none	0	-
+M245	gov	FAIL	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+M245	ics20	FAIL	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M245	slashing	FAIL	0	-	0	0	0	0	0	7	b04c5c9	none	0	-
+M245	staking	FAIL	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M245	werc20	FAIL	0	-	0	0	0	0	0	14	b04c5c9	none	0	-

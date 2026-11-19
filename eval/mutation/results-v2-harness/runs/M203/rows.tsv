@@ -1,0 +1,6 @@
+M203	distribution	PASS	0	-	0	0	0	0	0	28	b04c5c9	none	0	-
+M203	erc20	PASS	0	-	0	0	0	0	0	58	b04c5c9	none	0	-
+M203	gov	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+M203	ics20	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M203	staking	PASS	0	-	0	0	0	0	0	27	b04c5c9	none	0	-
+M203	werc20	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-

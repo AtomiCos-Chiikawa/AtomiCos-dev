@@ -1,0 +1,8 @@
+C165	bank	PASS	0	-	0	0	0	0	0	25	b04c5c9	none	0	-
+C165	distribution	PASS	0	-	0	0	0	0	0	29	b04c5c9	none	0	-
+C165	erc20	PASS	0	-	0	0	0	0	0	67	b04c5c9	none	0	-
+C165	gov	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+C165	ics20	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+C165	slashing	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+C165	staking	PASS	0	-	0	0	0	0	0	27	b04c5c9	none	0	-
+C165	werc20	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-

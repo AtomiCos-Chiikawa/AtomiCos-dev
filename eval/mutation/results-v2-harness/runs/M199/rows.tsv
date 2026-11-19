@@ -1,0 +1,8 @@
+M199	bank	PASS	0	-	0	0	0	0	0	14	b04c5c9	none	0	-
+M199	distribution	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+M199	erc20	PASS	0	-	0	0	0	0	0	58	b04c5c9	none	0	-
+M199	gov	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+M199	ics20	PASS	0	-	0	0	0	0	0	6	b04c5c9	none	0	-
+M199	slashing	PASS	0	-	0	0	0	0	0	7	b04c5c9	none	0	-
+M199	staking	PASS	0	-	0	0	0	0	0	17	b04c5c9	none	0	-
+M199	werc20	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-

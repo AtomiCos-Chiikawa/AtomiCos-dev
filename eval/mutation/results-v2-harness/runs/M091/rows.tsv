@@ -1,0 +1,6 @@
+M091	distribution	PASS	0	-	0	0	0	0	0	33	b04c5c9	none	0	-
+M091	erc20	FAIL	0	-	0	0	0	0	0	63	b04c5c9	none	0	-
+M091	gov	PASS	0	-	0	0	0	0	0	18	b04c5c9	none	0	-
+M091	ics20	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+M091	staking	FAIL	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+M091	werc20	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-

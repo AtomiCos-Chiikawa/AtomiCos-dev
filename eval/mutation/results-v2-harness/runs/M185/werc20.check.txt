@@ -1,0 +1,209 @@
+records: 981, findings: 36
+  violation R1-E         24
+  violation R1-S         12
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 84, O2.exit 84, O4.balance 462, O5.revert 12, O5.snapshot 174, O6.commit 165; unknown point 0
+  trace   statedbs 165, records with state.error 0, unparsable numbers 0
+  O2      enters 84, exits 84, enters never closed 0
+  R1      reverts 12: compared 12, with candidates 6, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 12, events 24; discarded (no judged top-level commit followed) 0
+  R1      commits 165: top-level judged 165 (with candidates 6); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 462: add/sub checked 462 (non-zero amount 240); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 177, exit 168 (sync points enter 84, exit 78); not compared: blocked 0, unparsable 0; failed exits 6, no usable state 0
+  R3      exits 84: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 78
+  R3      skipped: call exited with error 6, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 165, unparsable 0
+  O6      commits 165: judged 165 (R2-W comparisons 342, R1-C 84); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R1-S  (seq 230 db38 O6.commit)
+  subject:  bank:0x319b0bf7666e03286719614519afa9e5ad7cc1ff
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 229)
+
+[VIOLATION] R1-S  (seq 230 db38 O6.commit)
+  subject:  bank:0xb327f795d02c11e9d4f3623d6fdbbff593eabce5
+  expected: 100000000000 (value before the reverted frame)
+  actual:   99999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 229)
+
+[VIOLATION] R1-E  (seq 230 db38 O6.commit)
+  subject:  event coin_received:132d6320db52
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 229)
+
+[VIOLATION] R1-E  (seq 230 db38 O6.commit)
+  subject:  event coin_spent:69f1acc758e7
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 229)
+
+[VIOLATION] R1-E  (seq 230 db38 O6.commit)
+  subject:  event message:ce58e6d076f2
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 229)
+
+[VIOLATION] R1-E  (seq 230 db38 O6.commit)
+  subject:  event transfer:e31a36fd7956
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 229)
+
+[VIOLATION] R1-S  (seq 246 db40 O6.commit)
+  subject:  bank:0x2498911da1dfc65162c7f92e8bb893bf5c1fbb22
+  expected: 100000000000 (value before the reverted frame)
+  actual:   99999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 245)
+
+[VIOLATION] R1-S  (seq 246 db40 O6.commit)
+  subject:  bank:0x8d92ace8874ba8c7019951da5dcc086aa88b87c0
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 245)
+
+[VIOLATION] R1-E  (seq 246 db40 O6.commit)
+  subject:  event coin_received:0df80f87666a
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 245)
+
+[VIOLATION] R1-E  (seq 246 db40 O6.commit)
+  subject:  event coin_spent:69f1acc758e7
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 245)
+
+[VIOLATION] R1-E  (seq 246 db40 O6.commit)
+  subject:  event message:ce58e6d076f2
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 245)
+
+[VIOLATION] R1-E  (seq 246 db40 O6.commit)
+  subject:  event transfer:6b5b5109fe8a
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 245)
+
+[VIOLATION] R1-S  (seq 557 db93 O6.commit)
+  subject:  bank:0x0a92f767ecd2ca58dd5d3fcdfa33e4541e01ff35
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 556)
+
+[VIOLATION] R1-S  (seq 557 db93 O6.commit)
+  subject:  bank:0xd8331a9c3c4e5bcd65604393801a292cf00e9f97
+  expected: 100000000000000000 (value before the reverted frame)
+  actual:   99999999999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 556)
+
+[VIOLATION] R1-E  (seq 557 db93 O6.commit)
+  subject:  event coin_received:f31394d7db36
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 556)
+
+[VIOLATION] R1-E  (seq 557 db93 O6.commit)
+  subject:  event coin_spent:ed4f0bc352f0
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 556)
+
+[VIOLATION] R1-E  (seq 557 db93 O6.commit)
+  subject:  event message:ce58e6d076f2
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 556)
+
+[VIOLATION] R1-E  (seq 557 db93 O6.commit)
+  subject:  event transfer:383808842d36
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 556)
+
+[VIOLATION] R1-S  (seq 573 db95 O6.commit)
+  subject:  bank:0x013a596d3d30d21764e3cac7542408c321ef6322
+  expected: 100000000000000000 (value before the reverted frame)
+  actual:   99999999999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 572)
+
+[VIOLATION] R1-S  (seq 573 db95 O6.commit)
+  subject:  bank:0x552c6e78f81a7ae86526c58aa3162674b5b75728
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 572)
+
+[VIOLATION] R1-E  (seq 573 db95 O6.commit)
+  subject:  event coin_received:bd808026c84c
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 572)
+
+[VIOLATION] R1-E  (seq 573 db95 O6.commit)
+  subject:  event coin_spent:ed4f0bc352f0
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 572)
+
+[VIOLATION] R1-E  (seq 573 db95 O6.commit)
+  subject:  event message:ce58e6d076f2
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 572)
+
+[VIOLATION] R1-E  (seq 573 db95 O6.commit)
+  subject:  event transfer:a86ce356777b
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 572)
+
+[VIOLATION] R1-S  (seq 884 db148 O6.commit)
+  subject:  bank:0xa3f9a46f01e98f075d443b4c8245a19a9daa3a4d
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 883)
+
+[VIOLATION] R1-S  (seq 884 db148 O6.commit)
+  subject:  bank:0xcefb060d2a6c473ad1f39b3882887c2830aee8a7
+  expected: 100000000000000000000000 (value before the reverted frame)
+  actual:   99999999999999999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 883)
+
+[VIOLATION] R1-E  (seq 884 db148 O6.commit)
+  subject:  event coin_received:7dc0f78ba85d
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 883)
+
+[VIOLATION] R1-E  (seq 884 db148 O6.commit)
+  subject:  event coin_spent:420f2f89974e
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 883)
+
+[VIOLATION] R1-E  (seq 884 db148 O6.commit)
+  subject:  event message:ce58e6d076f2
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 883)
+
+[VIOLATION] R1-E  (seq 884 db148 O6.commit)
+  subject:  event transfer:4281c73845cf
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 883)
+
+[VIOLATION] R1-S  (seq 900 db150 O6.commit)
+  subject:  bank:0x586d8cf48b44503951ec8b300bc93d2e3bc8ce90
+  expected: 100000000000000000000000 (value before the reverted frame)
+  actual:   99999999999999999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 899)
+
+[VIOLATION] R1-S  (seq 900 db150 O6.commit)
+  subject:  bank:0x5c32697cb834ff69f729f2f0730a5b708667f014
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 899)
+
+[VIOLATION] R1-E  (seq 900 db150 O6.commit)
+  subject:  event coin_received:4f18f056c096
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 899)
+
+[VIOLATION] R1-E  (seq 900 db150 O6.commit)
+  subject:  event coin_spent:420f2f89974e
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 899)
+
+[VIOLATION] R1-E  (seq 900 db150 O6.commit)
+  subject:  event message:ce58e6d076f2
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 899)
+
+[VIOLATION] R1-E  (seq 900 db150 O6.commit)
+  subject:  event transfer:a0e52fb915ef
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 899)

@@ -1,0 +1,49 @@
+records: 75896, findings: 6
+  violation R1-E         4
+  violation R1-S         2
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 863, O2.exit 863, O4.balance 42039, O5.revert 9907, O5.snapshot 21262, O6.commit 962; unknown point 0
+  trace   statedbs 20328, records with state.error 0, unparsable numbers 0
+  O2      enters 863, exits 863, enters never closed 0
+  R1      reverts 9907: compared 9907, with candidates 1, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 2, events 4; discarded (no judged top-level commit followed) 0
+  R1      commits 962: top-level judged 962 (with candidates 1); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 42039: add/sub checked 42039 (non-zero amount 36); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 2118, exit 2159 (sync points enter 863, exit 849); not compared: blocked 0, unparsable 0; failed exits 14, no usable state 0
+  R3      exits 863: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 849
+  R3      skipped: call exited with error 14, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 962, unparsable 0
+  O6      commits 962: judged 962 (R2-W comparisons 1998, R1-C 79); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R1-S  (seq 10105 db2815 O6.commit)
+  subject:  bank:0x0b80e45f446a784e021371270045faf37f9f4e55
+  expected: 100000000000000000000100 (value before the reverted frame)
+  actual:   100000000000000000000200 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 10104)
+
+[VIOLATION] R1-S  (seq 10105 db2815 O6.commit)
+  subject:  bank:0x923241934b3b86d21301c05f49c0a621178fbc1b
+  expected: 100 (value before the reverted frame)
+  actual:   0 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 10104)
+
+[VIOLATION] R1-E  (seq 10105 db2815 O6.commit)
+  subject:  event coin_received:de151357a812
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 10104)
+
+[VIOLATION] R1-E  (seq 10105 db2815 O6.commit)
+  subject:  event coin_spent:ca25deffa938
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 10104)
+
+[VIOLATION] R1-E  (seq 10105 db2815 O6.commit)
+  subject:  event message:7db025519028
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 10104)
+
+[VIOLATION] R1-E  (seq 10105 db2815 O6.commit)
+  subject:  event transfer:92fddf64219c
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 2 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 10104)

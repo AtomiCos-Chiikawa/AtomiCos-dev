@@ -1,0 +1,8 @@
+C201	bank	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+C201	distribution	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+C201	erc20	PASS	0	-	0	0	0	0	0	56	b04c5c9	none	0	-
+C201	gov	PASS	0	-	0	0	0	0	0	18	b04c5c9	none	0	-
+C201	ics20	PASS	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+C201	slashing	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+C201	staking	PASS	0	-	0	0	0	0	0	30	b04c5c9	none	0	-
+C201	werc20	PASS	0	-	0	0	0	0	0	17	b04c5c9	none	0	-

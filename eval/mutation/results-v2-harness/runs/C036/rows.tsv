@@ -1,0 +1,8 @@
+C036	bank	PASS	0	-	0	0	0	0	0	20	b04c5c9	none	0	-
+C036	distribution	PASS	0	-	0	0	0	0	0	26	b04c5c9	none	0	-
+C036	erc20	PASS	0	-	0	0	0	0	0	57	b04c5c9	none	0	-
+C036	gov	PASS	0	-	0	0	0	0	0	18	b04c5c9	none	0	-
+C036	ics20	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+C036	slashing	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-
+C036	staking	PASS	0	-	0	0	0	0	0	34	b04c5c9	none	0	-
+C036	werc20	PASS	0	-	0	0	0	0	0	17	b04c5c9	none	0	-

@@ -1,0 +1,8 @@
+M095	bank	PASS	0	-	0	0	0	0	0	25	b04c5c9	none	0	-
+M095	distribution	FAIL	5	R2-A	0	5	0	5	5	20	b04c5c9	violation	0	-
+M095	erc20	FAIL	0	-	0	0	0	0	0	73	b04c5c9	none	0	-
+M095	gov	FAIL	3	R2-A	0	3	0	3	3	15	b04c5c9	violation	0	-
+M095	ics20	FAIL	3	R2-A	0	3	0	3	3	15	b04c5c9	violation	0	-
+M095	slashing	PASS	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+M095	staking	FAIL	31	R2-A	0	31	0	31	31	19	b04c5c9	violation	0	-
+M095	werc20	FAIL	0	-	0	0	0	0	0	17	b04c5c9	none	0	-

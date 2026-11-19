@@ -1,0 +1,27 @@
+records: 22390, findings: 1
+  guarded R2-A           1
+verdict: no violation
+stats (what the checker examined):
+  points  O2.enter 1123, O2.exit 1123, O4.balance 11557, O5.revert 2818, O5.snapshot 5473, O6.commit 296; unknown point 0
+  trace   statedbs 4377, records with state.error 0, unparsable numbers 0
+  O2      enters 1123, exits 1123, enters never closed 0
+  R1      reverts 2818: compared 2818, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 296: top-level judged 294 (with candidates 0); not judged: nested 0, failed 2, no usable state 0; unparsable 0
+  R2-A    balance ops 11557: add/sub checked 11557 (non-zero amount 771); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 1766, exit 1457 (sync points enter 1123, exit 852); not compared: blocked 2091, unparsable 0; failed exits 271, no usable state 0
+  R3      exits 1123: evaluated R3-D 593, R3-U 66, R3-C 0; method not covered 193
+  R3      skipped: call exited with error 271, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 296, unparsable 0
+  O6      commits 296: judged 294 (R2-W comparisons 546, R1-C 117); not judged: failed 2, possibly refused write-back 0, no usable state 0
+
+[GUARDED] R2-A  (seq 387 db70 O4.balance call 63)
+  subject:  0x28c10efeb9d35b9698e6614e86a1cf45c92c997b
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000000000000000 from 0 (unchecked result would be 2^256 - 1000000000000000000)
+  detail:   balance underflow
+  outcome:  rejected (panic: state balance underflow for 0x28C10efeb9D35b9698e6614e86A1Cf45c92c997b: have=0 sub=1000000000000000000)
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction

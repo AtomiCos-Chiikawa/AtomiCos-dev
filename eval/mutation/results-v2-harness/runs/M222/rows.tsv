@@ -1,0 +1,8 @@
+M222	bank	FAIL	0	-	0	0	0	0	0	21	b04c5c9	none	0	-
+M222	distribution	FAIL	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+M222	erc20	FAIL	0	-	0	0	0	0	0	51	b04c5c9	none	0	-
+M222	gov	FAIL	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M222	ics20	FAIL	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M222	slashing	FAIL	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M222	staking	FAIL	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+M222	werc20	FAIL	0	-	0	0	0	0	0	16	b04c5c9	none	0	-

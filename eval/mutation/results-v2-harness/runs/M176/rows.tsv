@@ -1,0 +1,8 @@
+M176	bank	FAIL	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M176	distribution	FAIL	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M176	erc20	FAIL	0	-	0	0	0	0	0	56	b04c5c9	none	0	-
+M176	gov	FAIL	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+M176	ics20	FAIL	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M176	slashing	FAIL	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M176	staking	FAIL	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+M176	werc20	FAIL	0	-	0	0	0	0	0	14	b04c5c9	none	0	-

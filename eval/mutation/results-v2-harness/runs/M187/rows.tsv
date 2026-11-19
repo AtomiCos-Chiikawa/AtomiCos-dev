@@ -1,0 +1,8 @@
+M187	bank	PASS	0	-	0	0	0	0	0	21	b04c5c9	none	0	-
+M187	distribution	PASS	1	R1-S	0	1	1	0	0	27	b04c5c9	violation	0	-
+M187	erc20	PASS	14	R1-S,R2-W	0	14	14	7	0	70	b04c5c9	violation	0	-
+M187	gov	PASS	0	-	0	0	0	0	0	18	b04c5c9	none	0	-
+M187	ics20	FAIL	1	R1-S	0	1	1	0	0	11	b04c5c9	violation	0	-
+M187	slashing	PASS	0	-	0	0	0	0	0	7	b04c5c9	none	0	-
+M187	staking	FAIL	3	R1-S	0	3	3	0	0	17	b04c5c9	violation	0	-
+M187	werc20	PASS	24	R1-S,R2-W	0	24	24	12	0	14	b04c5c9	violation	0	-

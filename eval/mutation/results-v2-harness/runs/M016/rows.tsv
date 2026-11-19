@@ -1,0 +1,8 @@
+M016	bank	FAIL	0	-	0	0	0	0	0	18	b04c5c9	none	0	-
+M016	distribution	PASS	0	-	0	0	0	0	0	27	b04c5c9	none	0	-
+M016	erc20	PASS	0	-	0	0	0	0	0	74	b04c5c9	none	0	-
+M016	gov	PASS	0	-	0	0	0	0	0	18	b04c5c9	none	0	-
+M016	ics20	PASS	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+M016	slashing	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M016	staking	PASS	0	-	0	0	0	0	0	34	b04c5c9	none	0	-
+M016	werc20	PASS	0	-	0	0	0	0	0	18	b04c5c9	none	0	-

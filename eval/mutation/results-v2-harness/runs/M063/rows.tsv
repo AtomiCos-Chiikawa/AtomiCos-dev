@@ -1,0 +1,6 @@
+M063	distribution	FAIL	12	R2-W	0	0	12	12	12	18	b04c5c9	violation	0	-
+M063	erc20	FAIL	6	R2-W	0	0	6	6	6	67	b04c5c9	violation	0	-
+M063	gov	FAIL	8	R2-W	0	0	8	8	8	9	b04c5c9	violation	0	-
+M063	ics20	FAIL	5	R2-W	0	0	5	5	5	9	b04c5c9	violation	0	-
+M063	staking	FAIL	114	R2-W	0	0	114	114	114	18	b04c5c9	violation	0	-
+M063	werc20	FAIL	57	R2-W	0	0	57	57	57	15	b04c5c9	violation	0	-

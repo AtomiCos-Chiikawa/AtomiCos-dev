@@ -1,0 +1,2 @@
+# github.com/cosmos/evm/x/vm/statedb
+x/vm/statedb/statedb.go:15:2: "github.com/ethereum/go-ethereum/crypto" imported and not used

@@ -1,0 +1,76 @@
+records: 75850, findings: 10
+  violation R2-W         10
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 862, O2.exit 862, O4.balance 42025, O5.revert 9883, O5.snapshot 21256, O6.commit 962; unknown point 0
+  trace   statedbs 20323, records with state.error 0, unparsable numbers 0
+  O2      enters 862, exits 862, enters never closed 0
+  R1      reverts 9883: compared 9883, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 962: top-level judged 962 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 42025: add/sub checked 42025 (non-zero amount 36); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 2115, exit 2155 (sync points enter 862, exit 848); not compared: blocked 0, unparsable 0; failed exits 14, no usable state 0
+  R3      exits 862: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 848
+  R3      skipped: call exited with error 14, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 962, unparsable 0
+  O6      commits 962: judged 962 (R2-W comparisons 1998, R1-C 79); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R2-W  (seq 7645 db2135 O6.commit)
+  subject:  0xcba973a2be35f70ae4600ea4e51a0a436ec999df
+  expected: write-back 99999993450394643954676 == bank reference
+  actual:   write-back 99999993450394643954576 (StateDB balance 99999993450394643954576, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 7645 db2135 O6.commit)
+  subject:  0xd211298ad1249cb482fdcdda43ab6f3eab687b79
+  expected: write-back 100000000000000000000000 == bank reference
+  actual:   write-back 100000000000000000000100 (StateDB balance 100000000000000000000100, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 8134 db2271 O6.commit)
+  subject:  0x078f1acb10ae243637158b868111ec6baffafee3
+  expected: write-back 99999993450394643954676 == bank reference
+  actual:   write-back 99999993450394643954576 (StateDB balance 99999993450394643954576, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 8134 db2271 O6.commit)
+  subject:  0xe634a64495c01c3fd4e5ad0b98803cb3f89191ae
+  expected: write-back 100000000000000000000000 == bank reference
+  actual:   write-back 100000000000000000000100 (StateDB balance 100000000000000000000100, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 9113 db2543 O6.commit)
+  subject:  0x1fc8ee259b36b475ab2444a759864f6ef6ed186e
+  expected: write-back 100000000000000000000000 == bank reference
+  actual:   write-back 100000000000000000000100 (StateDB balance 100000000000000000000100, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 9113 db2543 O6.commit)
+  subject:  0x5fb6f9f476f2929f4ec0c4233a38a3a4565ee3bb
+  expected: write-back 0 == bank reference
+  actual:   write-back 200 (StateDB balance 200, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 9113 db2543 O6.commit)
+  subject:  0xa62d8e00f237e702b4702b2e87e5667731d89382
+  expected: write-back 99999993450394643954676 == bank reference
+  actual:   write-back 99999993450394643954376 (StateDB balance 99999993450394643954376, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 9605 db2679 O6.commit)
+  subject:  0x0fb99a79cd1ee44a1b753964523987a8b3f6490b
+  expected: write-back 0 == bank reference
+  actual:   write-back 100 (StateDB balance 100, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 9605 db2679 O6.commit)
+  subject:  0x539344932ce17e1b4790629f9415818356225464
+  expected: write-back 99999993450394643954676 == bank reference
+  actual:   write-back 99999993450394643954376 (StateDB balance 99999993450394643954376, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 9605 db2679 O6.commit)
+  subject:  0xcb01d605811f1ff4a1da886fc1ae5991ebcff40b
+  expected: write-back 100000000000000000000000 == bank reference
+  actual:   write-back 100000000000000000000200 (StateDB balance 100000000000000000000200, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back

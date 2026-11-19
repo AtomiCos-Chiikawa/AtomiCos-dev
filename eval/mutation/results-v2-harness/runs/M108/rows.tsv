@@ -1,0 +1,8 @@
+M108	bank	FAIL	0	-	0	0	0	0	0	20	b04c5c9	none	0	-
+M108	distribution	FAIL	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+M108	erc20	FAIL	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+M108	gov	FAIL	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M108	ics20	FAIL	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M108	slashing	FAIL	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M108	staking	FAIL	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+M108	werc20	FAIL	0	-	0	0	0	0	0	12	b04c5c9	none	0	-

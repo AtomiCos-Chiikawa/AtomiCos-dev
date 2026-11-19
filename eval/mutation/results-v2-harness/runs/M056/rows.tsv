@@ -1,0 +1,8 @@
+M056	bank	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+M056	distribution	PASS	0	-	0	0	0	0	0	22	b04c5c9	none	0	-
+M056	erc20	PASS	0	-	0	0	0	0	0	53	b04c5c9	none	0	-
+M056	gov	PASS	0	-	0	0	0	0	0	19	b04c5c9	none	0	-
+M056	ics20	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+M056	slashing	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M056	staking	PASS	0	-	0	0	0	0	0	34	b04c5c9	none	0	-
+M056	werc20	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-

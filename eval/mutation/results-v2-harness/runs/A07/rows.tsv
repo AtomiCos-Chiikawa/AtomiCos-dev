@@ -1,0 +1,8 @@
+A07	bank	PASS	0	-	0	0	0	0	0	20	b04c5c9	none	0	-
+A07	distribution	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+A07	erc20	PASS	0	-	0	0	0	0	0	57	b04c5c9	none	0	-
+A07	gov	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+A07	ics20	PASS	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+A07	slashing	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+A07	staking	PASS	0	-	0	0	0	0	0	29	b04c5c9	none	0	-
+A07	werc20	PASS	0	-	0	0	0	0	0	17	b04c5c9	none	0	-

@@ -3,5 +3,5 @@ __pycache__/
 # 변이 실행 기록 원본(수백 MB)은 커밋하지 않는다. 판정 결과(check.txt, rows.tsv)와 보고서만 커밋한다.
 eval/mutation/results*/runs/*/*.trace.jsonl.gz
 eval/mutation/results*/claims/
-eval/mutation/results-v2-harness/
+eval/mutation/results-v2-harness/runs/*/*.trace.jsonl.gz
 eval/mutation/results-v2-harness.log

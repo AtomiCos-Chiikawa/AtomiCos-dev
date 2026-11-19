@@ -1,0 +1,8 @@
+C116	bank	PASS	0	-	0	0	0	0	0	22	b04c5c9	none	0	-
+C116	distribution	PASS	0	-	0	0	0	0	0	25	b04c5c9	none	0	-
+C116	erc20	PASS	0	-	0	0	0	0	0	62	b04c5c9	none	0	-
+C116	gov	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+C116	ics20	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+C116	slashing	PASS	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+C116	staking	FAIL	7	R1-E,R1-S	0	7	7	0	0	18	b04c5c9	violation	0	-
+C116	werc20	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-

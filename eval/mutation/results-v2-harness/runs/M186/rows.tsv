@@ -1,0 +1,8 @@
+M186	bank	FAIL	0	-	0	0	0	0	0	22	b04c5c9	none	0	-
+M186	distribution	FAIL	0	-	0	0	0	0	0	17	b04c5c9	none	0	-
+M186	erc20	PASS	0	-	0	0	0	0	0	56	b04c5c9	none	0	-
+M186	gov	FAIL	0	-	0	0	0	0	0	19	b04c5c9	none	0	-
+M186	ics20	FAIL	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+M186	slashing	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-
+M186	staking	FAIL	0	-	0	0	0	0	0	26	b04c5c9	none	0	-
+M186	werc20	PASS	0	-	0	0	0	0	0	18	b04c5c9	none	0	-

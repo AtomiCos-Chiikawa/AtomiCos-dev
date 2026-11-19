@@ -1,0 +1,8 @@
+M154	bank	PASS	0	-	0	0	0	0	0	23	b04c5c9	none	0	-
+M154	distribution	MEMOUT	13	R1-C	0	13	13	13	0	112	b04c5c9	violation	0	-
+M154	erc20	FAIL	5	R1-C	0	5	5	5	0	129	b04c5c9	violation	0	-
+M154	gov	FAIL	14	R1-C	0	14	14	14	0	15	b04c5c9	violation	0	-
+M154	ics20	PASS	4	R1-C	0	4	4	4	0	10	b04c5c9	violation	0	-
+M154	slashing	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M154	staking	FAIL	23	R1-C	0	23	23	23	0	22	b04c5c9	violation	0	-
+M154	werc20	PASS	51	R1-C	0	51	51	51	0	17	b04c5c9	violation	0	-

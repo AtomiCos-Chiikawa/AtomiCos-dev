@@ -1,0 +1,8 @@
+M220	bank	PASS	0	-	0	0	0	0	0	14	b04c5c9	none	0	-
+M220	distribution	PASS	0	-	0	0	0	0	0	22	b04c5c9	none	0	-
+M220	erc20	PASS	0	-	0	0	0	0	0	52	b04c5c9	none	0	-
+M220	gov	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+M220	ics20	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M220	slashing	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M220	staking	PASS	0	-	0	0	0	0	0	29	b04c5c9	none	0	-
+M220	werc20	PASS	0	-	0	0	0	0	0	11	b04c5c9	none	0	-

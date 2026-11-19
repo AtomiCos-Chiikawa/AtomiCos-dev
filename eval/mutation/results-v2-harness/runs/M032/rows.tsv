@@ -1,0 +1,8 @@
+M032	bank	PASS	0	-	0	0	0	0	0	17	b04c5c9	none	0	-
+M032	distribution	PASS	0	-	0	0	0	0	0	30	b04c5c9	none	0	-
+M032	erc20	PASS	0	-	0	0	0	0	0	52	b04c5c9	none	0	-
+M032	gov	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+M032	ics20	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M032	slashing	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-
+M032	staking	PASS	0	-	0	0	0	0	0	27	b04c5c9	none	0	-
+M032	werc20	PASS	0	-	0	0	0	0	0	17	b04c5c9	none	0	-

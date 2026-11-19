@@ -1,0 +1,161 @@
+records: 981, findings: 24
+  violation R1-S         12
+  violation R2-W         12
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 84, O2.exit 84, O4.balance 462, O5.revert 12, O5.snapshot 174, O6.commit 165; unknown point 0
+  trace   statedbs 165, records with state.error 0, unparsable numbers 0
+  O2      enters 84, exits 84, enters never closed 0
+  R1      reverts 12: compared 12, with candidates 6, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 12, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 165: top-level judged 165 (with candidates 6); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 462: add/sub checked 462 (non-zero amount 240); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 177, exit 168 (sync points enter 84, exit 78); not compared: blocked 0, unparsable 0; failed exits 6, no usable state 0
+  R3      exits 84: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 78
+  R3      skipped: call exited with error 6, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 165, unparsable 0
+  O6      commits 165: judged 165 (R2-W comparisons 342, R1-C 84); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R1-S  (seq 230 db38 O6.commit)
+  subject:  bank:0x51d2ee64fe666ecf08b401c6fea77522bc3f52e0
+  expected: 100000000000 (value before the reverted frame)
+  actual:   99999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 229)
+
+[VIOLATION] R1-S  (seq 230 db38 O6.commit)
+  subject:  bank:0x8904acdd66e3906c877101fbd30f316ba9cb7ad9
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 229)
+
+[VIOLATION] R2-W  (seq 230 db38 O6.commit)
+  subject:  0x51d2ee64fe666ecf08b401c6fea77522bc3f52e0
+  expected: write-back 99999999000 == bank reference
+  actual:   write-back 100000000000 (StateDB balance 100000000000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 230 db38 O6.commit)
+  subject:  0x8904acdd66e3906c877101fbd30f316ba9cb7ad9
+  expected: write-back 1000 == bank reference
+  actual:   write-back 0 (StateDB balance 0, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-S  (seq 246 db40 O6.commit)
+  subject:  bank:0x3676effde9c9f454fea7a91c96e959909461d14a
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 245)
+
+[VIOLATION] R1-S  (seq 246 db40 O6.commit)
+  subject:  bank:0x50b1d9a6ea2804cbc42890539c17bd943ceda50e
+  expected: 100000000000 (value before the reverted frame)
+  actual:   99999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 245)
+
+[VIOLATION] R2-W  (seq 246 db40 O6.commit)
+  subject:  0x3676effde9c9f454fea7a91c96e959909461d14a
+  expected: write-back 1000 == bank reference
+  actual:   write-back 0 (StateDB balance 0, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 246 db40 O6.commit)
+  subject:  0x50b1d9a6ea2804cbc42890539c17bd943ceda50e
+  expected: write-back 99999999000 == bank reference
+  actual:   write-back 100000000000 (StateDB balance 100000000000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-S  (seq 557 db93 O6.commit)
+  subject:  bank:0x4bfce6569f4a315bd98b5b7aea6d9a7365dcf370
+  expected: 100000000000000000 (value before the reverted frame)
+  actual:   99999999999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 556)
+
+[VIOLATION] R1-S  (seq 557 db93 O6.commit)
+  subject:  bank:0xa8febffe168a14ebc607ef68bc91938e2a6bfbfc
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 556)
+
+[VIOLATION] R2-W  (seq 557 db93 O6.commit)
+  subject:  0x4bfce6569f4a315bd98b5b7aea6d9a7365dcf370
+  expected: write-back 99999999999999000 == bank reference
+  actual:   write-back 100000000000000000 (StateDB balance 100000000000000000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 557 db93 O6.commit)
+  subject:  0xa8febffe168a14ebc607ef68bc91938e2a6bfbfc
+  expected: write-back 1000 == bank reference
+  actual:   write-back 0 (StateDB balance 0, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-S  (seq 573 db95 O6.commit)
+  subject:  bank:0x18604dec46d67d19c269c6a38e54afa41d44fa95
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 572)
+
+[VIOLATION] R1-S  (seq 573 db95 O6.commit)
+  subject:  bank:0xbad445a91695ac549ca5172dd4586e7cdf500dfe
+  expected: 100000000000000000 (value before the reverted frame)
+  actual:   99999999999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 572)
+
+[VIOLATION] R2-W  (seq 573 db95 O6.commit)
+  subject:  0x18604dec46d67d19c269c6a38e54afa41d44fa95
+  expected: write-back 1000 == bank reference
+  actual:   write-back 0 (StateDB balance 0, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 573 db95 O6.commit)
+  subject:  0xbad445a91695ac549ca5172dd4586e7cdf500dfe
+  expected: write-back 99999999999999000 == bank reference
+  actual:   write-back 100000000000000000 (StateDB balance 100000000000000000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-S  (seq 884 db148 O6.commit)
+  subject:  bank:0x3350d2f34c088f31239ff884cd7ec912f036b558
+  expected: 100000000000000000000000 (value before the reverted frame)
+  actual:   99999999999999999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 883)
+
+[VIOLATION] R1-S  (seq 884 db148 O6.commit)
+  subject:  bank:0xc4c2a0c70b7b0086ded4f5db8de2f212395931f6
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 883)
+
+[VIOLATION] R2-W  (seq 884 db148 O6.commit)
+  subject:  0x3350d2f34c088f31239ff884cd7ec912f036b558
+  expected: write-back 99999999999999999999000 == bank reference
+  actual:   write-back 100000000000000000000000 (StateDB balance 100000000000000000000000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 884 db148 O6.commit)
+  subject:  0xc4c2a0c70b7b0086ded4f5db8de2f212395931f6
+  expected: write-back 1000 == bank reference
+  actual:   write-back 0 (StateDB balance 0, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-S  (seq 900 db150 O6.commit)
+  subject:  bank:0x938de2a8dc536466f81611aa6cc5b29a67a65888
+  expected: 0 (value before the reverted frame)
+  actual:   1000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 899)
+
+[VIOLATION] R1-S  (seq 900 db150 O6.commit)
+  subject:  bank:0x996ae136c3b4be8e4bbb5aee44f96cad6fbceac9
+  expected: 100000000000000000000000 (value before the reverted frame)
+  actual:   99999999999999999999000 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 899)
+
+[VIOLATION] R2-W  (seq 900 db150 O6.commit)
+  subject:  0x938de2a8dc536466f81611aa6cc5b29a67a65888
+  expected: write-back 1000 == bank reference
+  actual:   write-back 0 (StateDB balance 0, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 900 db150 O6.commit)
+  subject:  0x996ae136c3b4be8e4bbb5aee44f96cad6fbceac9
+  expected: write-back 99999999999999999999000 == bank reference
+  actual:   write-back 100000000000000000000000 (StateDB balance 100000000000000000000000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back

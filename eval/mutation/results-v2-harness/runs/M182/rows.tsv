@@ -1,0 +1,6 @@
+M182	distribution	PASS	0	-	0	0	0	0	0	26	b04c5c9	none	0	-
+M182	erc20	FAIL	0	-	0	0	0	0	0	45	b04c5c9	none	0	-
+M182	gov	PASS	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+M182	ics20	PASS	0	-	0	0	0	0	0	7	b04c5c9	none	0	-
+M182	staking	FAIL	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+M182	werc20	PASS	0	-	0	0	0	0	0	13	b04c5c9	none	0	-

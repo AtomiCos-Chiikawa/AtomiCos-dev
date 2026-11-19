@@ -1,0 +1,71 @@
+records: 1265, findings: 5
+  violation R2-A         5
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 178, O2.exit 178, O4.balance 517, O5.revert 109, O5.snapshot 252, O6.commit 31; unknown point 0
+  trace   statedbs 253, records with state.error 0, unparsable numbers 0
+  O2      enters 178, exits 178, enters never closed 0
+  R1      reverts 109: compared 109, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 31: top-level judged 31 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 517: add/sub checked 517 (non-zero amount 13); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 178, exit 113 (sync points enter 178, exit 110); not compared: blocked 311, unparsable 0; failed exits 68, no usable state 0
+  R3      exits 178: evaluated R3-D 0, R3-U 0, R3-C 4; method not covered 106
+  R3      skipped: call exited with error 68, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 31, unparsable 0
+  O6      commits 31: judged 31 (R2-W comparisons 38, R1-C 27); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R2-A  (seq 364 db80 O4.balance call 31)
+  subject:  0x767779f2ba42494970ccf1f597c8eaf0da0378bc
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000 from 0 (unchecked result would be 2^256 - 1000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 371 db81 O4.balance call 32)
+  subject:  0x2686d9aaf6e88e168f0eeb6f89ae759cd8a20b53
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000 from 0 (unchecked result would be 2^256 - 1000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 384 db83 O4.balance call 34)
+  subject:  0xfff272b55fe0f75c2319eec9bb2eb86f9afc0747
+  expected: sub amount <= current balance 0
+  actual:   sub 10 from 0 (unchecked result would be 2^256 - 10)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 391 db84 O4.balance call 35)
+  subject:  0x49d98cf9f26730ea0f7f483e1ca432fc565f9cf3
+  expected: sub amount <= current balance 0
+  actual:   sub 10 from 0 (unchecked result would be 2^256 - 10)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 1170 db227 O4.balance call 177)
+  subject:  0x514e9bd419da459194e5742d4de78d6a6fbd619a
+  expected: sub amount <= current balance 0
+  actual:   sub 1000000 from 0 (unchecked result would be 2^256 - 1000000)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction

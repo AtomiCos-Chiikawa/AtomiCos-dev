@@ -1,0 +1,8 @@
+M224	bank	FAIL	0	-	0	0	0	0	0	23	b04c5c9	none	0	-
+M224	distribution	FAIL	0	-	0	0	0	0	0	14	b04c5c9	none	0	-
+M224	erc20	FAIL	0	-	0	0	0	0	0	51	b04c5c9	none	0	-
+M224	gov	FAIL	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+M224	ics20	FAIL	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M224	slashing	FAIL	0	-	0	0	0	0	0	7	b04c5c9	none	0	-
+M224	staking	FAIL	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+M224	werc20	FAIL	0	-	0	0	0	0	0	13	b04c5c9	none	0	-

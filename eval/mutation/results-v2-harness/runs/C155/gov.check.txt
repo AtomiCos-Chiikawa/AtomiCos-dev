@@ -1,0 +1,22 @@
+records: 5632, findings: 1
+  violation R1-C         1
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 87, O2.exit 87, O4.balance 3096, O5.revert 706, O5.snapshot 1509, O6.commit 147; unknown point 0
+  trace   statedbs 1423, records with state.error 0, unparsable numbers 0
+  O2      enters 87, exits 87, enters never closed 0
+  R1      reverts 706: compared 706, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 147: top-level judged 147 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 3096: add/sub checked 3096 (non-zero amount 243); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 150, exit 165 (sync points enter 87, exit 80); not compared: blocked 249, unparsable 0; failed exits 7, no usable state 0
+  R3      exits 87: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 80
+  R3      skipped: call exited with error 7, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 147, unparsable 0
+  O6      commits 147: judged 147 (R2-W comparisons 291, R1-C 86); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R1-C  (seq 1696 db418 O6.commit)
+  subject:  committed events
+  expected: the 19 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   19 missing (committed 0): cancel_proposal:19a76c3f94ef, coin_received:3433166ee354, coin_received:488d5fa0ef08, …
+  detail:   events of successful precompile calls were dropped at commit
