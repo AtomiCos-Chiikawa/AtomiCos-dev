@@ -1,0 +1,8 @@
+C200	bank	PASS	0	-	0	0	0	0	0	89
+C200	distribution	PASS	0	-	0	0	0	0	0	101
+C200	erc20	PASS	0	-	0	0	0	0	0	199
+C200	gov	PASS	0	-	0	0	0	0	0	77
+C200	ics20	PASS	0	-	0	0	0	0	0	51
+C200	slashing	PASS	0	-	0	0	0	0	0	44
+C200	staking	PASS	0	-	0	0	0	0	0	114
+C200	werc20	PASS	0	-	0	0	0	0	0	62

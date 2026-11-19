@@ -1,0 +1,8 @@
+C179	bank	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+C179	distribution	PASS	0	-	0	0	0	0	0	25	b04c5c9	none	0	-
+C179	erc20	PASS	0	-	0	0	0	0	0	77	b04c5c9	none	0	-
+C179	gov	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+C179	ics20	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-
+C179	slashing	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-
+C179	staking	PASS	0	-	0	0	0	0	0	29	b04c5c9	none	0	-
+C179	werc20	PASS	0	-	0	0	0	0	0	18	b04c5c9	none	0	-

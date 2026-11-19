@@ -1,0 +1,6 @@
+M212	distribution	FAIL	12	R2-W	0	0	12	12	12	24	654d881	violation	0	-
+M212	erc20	FAIL	6	R2-W	0	0	6	6	6	71	654d881	violation	0	-
+M212	gov	FAIL	8	R2-W	0	0	8	8	8	15	654d881	violation	0	-
+M212	ics20	FAIL	5	R2-W	0	0	5	5	5	15	654d881	violation	0	-
+M212	staking	FAIL	113	R2-W	0	0	113	113	113	25	654d881	violation	0	-
+M212	werc20	FAIL	57	R2-W	0	0	57	57	57	16	654d881	violation	0	-

@@ -1,0 +1,8 @@
+C040	bank	PASS	0	-	0	0	0	0	0	12	654d881	none	0	-
+C040	distribution	FAIL	0	-	0	0	0	0	0	12	654d881	none	0	-
+C040	erc20	FAIL	0	-	0	0	0	0	0	61	654d881	none	0	-
+C040	gov	PASS	0	-	0	0	0	0	0	14	654d881	none	0	-
+C040	ics20	PASS	0	-	0	0	0	0	0	9	654d881	none	0	-
+C040	slashing	FAIL	0	-	0	0	0	0	0	7	654d881	none	0	-
+C040	staking	FAIL	3	R3-D	0	0	3	3	3	21	654d881	violation	0	-
+C040	werc20	PASS	0	-	0	0	0	0	0	13	654d881	none	0	-

@@ -1,0 +1,6 @@
+M190	bank	PASS	0	-	0	0	0	0	0	18	654d881	none	0	-
+M190	distribution	PASS	0	-	0	0	0	0	0	22	654d881	none	0	-
+M190	erc20	PASS	0	-	0	0	0	0	0	54	654d881	none	0	-
+M190	gov	PASS	0	-	0	0	0	0	0	18	654d881	none	0	-
+M190	slashing	PASS	0	-	0	0	0	0	0	9	654d881	none	0	-
+M190	staking	PASS	0	-	0	0	0	0	0	32	654d881	none	0	-

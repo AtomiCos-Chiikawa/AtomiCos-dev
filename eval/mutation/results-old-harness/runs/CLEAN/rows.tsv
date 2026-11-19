@@ -1,0 +1,8 @@
+CLEAN	staking	PASS	0	-	0	0	0	0	0	113
+CLEAN	distribution	PASS	0	-	0	0	0	0	0	61
+CLEAN	bank	PASS	0	-	0	0	0	0	0	23
+CLEAN	erc20	PASS	0	-	0	0	0	0	0	200
+CLEAN	werc20	PASS	0	-	0	0	0	0	0	37
+CLEAN	gov	PASS	0	-	0	0	0	0	0	39
+CLEAN	slashing	PASS	0	-	0	0	0	0	0	14
+CLEAN	ics20	PASS	0	-	0	0	0	0	0	26

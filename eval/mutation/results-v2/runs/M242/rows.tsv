@@ -1,0 +1,8 @@
+M242	bank	PASS	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M242	distribution	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+M242	erc20	PASS	0	-	0	0	0	0	0	70	b04c5c9	none	0	-
+M242	gov	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+M242	ics20	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M242	slashing	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M242	staking	FAIL	0	-	0	0	0	0	0	26	b04c5c9	inconclusive	1	N record(s) carry state.error; those states were not used to judge
+M242	werc20	PASS	0	-	0	0	0	0	0	13	b04c5c9	none	0	-

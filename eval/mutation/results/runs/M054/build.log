@@ -1,0 +1,3 @@
+# github.com/cosmos/evm/precompiles/common
+precompiles/common/precompile.go:204:4: syntax error: unexpected keyword default, expected name or (
+precompiles/common/precompile.go:205:12: syntax error: unexpected ) at end of statement

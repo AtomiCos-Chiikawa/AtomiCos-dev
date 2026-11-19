@@ -1,0 +1,395 @@
+records: 981, findings: 63
+  violation R1-C         51
+  violation R2-W         12
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 84, O2.exit 84, O4.balance 462, O5.revert 12, O5.snapshot 174, O6.commit 165; unknown point 0
+  trace   statedbs 165, records with state.error 0, unparsable numbers 0
+  O2      enters 84, exits 84, enters never closed 0
+  R1      reverts 12: compared 12, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 165: top-level judged 165 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 462: add/sub checked 462 (non-zero amount 240); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 177, exit 168 (sync points enter 84, exit 78); not compared: blocked 0, unparsable 0; failed exits 6, no usable state 0
+  R3      exits 84: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 78
+  R3      skipped: call exited with error 6, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 165, unparsable 0
+  O6      commits 165: judged 165 (R2-W comparisons 342, R1-C 84); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R1-C  (seq 12 db2 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:29792a966b5a, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 24 db4 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:26c093c5c02f, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 36 db6 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:8f29647070ce, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 48 db8 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:a974dde3a4f1, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 60 db10 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:bbc0a4317cdc, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 72 db12 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:3b6caeef82b9, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 84 db14 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:fa543aba4ec0, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 96 db16 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:6ad7d395077b, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 139 db24 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:97ac9d0d2869, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 151 db26 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:0dda56a9b5ac, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 163 db28 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:df4a21256914, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 175 db30 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:48d3271ea189, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 187 db32 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:65c2b37b3a44, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 199 db34 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:cbb13e0cff14, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R2-W  (seq 214 db36 O6.commit)
+  subject:  0x52ba6392150332a295bda72428a2b0c8ce184b8a
+  expected: write-back 0 == bank reference
+  actual:   write-back 1000 (StateDB balance 1000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 214 db36 O6.commit)
+  subject:  0x848aab474021842a882c9cd75129806715989b3e
+  expected: write-back 100000000000 == bank reference
+  actual:   write-back 99999999000 (StateDB balance 99999999000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 214 db36 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:ad90704ac618, coin_spent:69f1acc758e7, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 258 db42 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:a837f96b7f65, coin_spent:f40d67bfccc1, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R2-W  (seq 266 db43 O6.commit)
+  subject:  0x6938cf84e65e47b0f3627b204daa9431dbb85c55
+  expected: write-back 100000000000 == bank reference
+  actual:   write-back 99999999990 (StateDB balance 99999999990, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 266 db43 O6.commit)
+  subject:  0x7be39db2363df395378b91a9fb423db0c60d9aba
+  expected: write-back 100000000000 == bank reference
+  actual:   write-back 100000000010 (StateDB balance 100000000010, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 266 db43 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:05219065cf58, coin_spent:f92d62dfa08c, message:4259de7f7d72, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 339 db57 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:31e061686c8d, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 351 db59 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:c5694958985b, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 363 db61 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:b619edead25f, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 375 db63 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:be582e86d9f7, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 387 db65 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:54f493bd5477, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 399 db67 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:c4f9cd41d985, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 411 db69 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:bb42891a5db2, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 423 db71 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:7a2b29d558d9, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 466 db79 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:41a187900cfa, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 478 db81 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:163d34184444, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 490 db83 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:648508fd39d6, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 502 db85 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:9995d69b4938, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 514 db87 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:91adf263310c, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 526 db89 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:d4150ecaddec, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R2-W  (seq 541 db91 O6.commit)
+  subject:  0x088ee74896744942ac0b026aa80d6f78585f2f2f
+  expected: write-back 0 == bank reference
+  actual:   write-back 1000 (StateDB balance 1000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 541 db91 O6.commit)
+  subject:  0x120ce434bdc43d606ede38deecec29a5f07201b4
+  expected: write-back 100000000000000000 == bank reference
+  actual:   write-back 99999999999999000 (StateDB balance 99999999999999000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 541 db91 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:298188d927da, coin_spent:ed4f0bc352f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 585 db97 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:db55924fed07, coin_spent:430cda7cb1eb, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R2-W  (seq 593 db98 O6.commit)
+  subject:  0x5d172b8d510cf6bde36caddc8e89c306183eda5d
+  expected: write-back 100000000000000000 == bank reference
+  actual:   write-back 99999999999999990 (StateDB balance 99999999999999990, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 593 db98 O6.commit)
+  subject:  0xc6fe6a9493ad96d4dd9bdf5fef450c59034fd2c2
+  expected: write-back 100000000000000000 == bank reference
+  actual:   write-back 100000000000000010 (StateDB balance 100000000000000010, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 593 db98 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:298f497e0510, coin_spent:637edd5f45c7, message:92bf4af9bc06, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 666 db112 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:93b04718e07a, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 678 db114 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:060002839a2a, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 690 db116 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:75b52631500f, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 702 db118 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:0b49b4804131, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 714 db120 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:e1a54b1655c8, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 726 db122 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:a695340e9e6e, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 738 db124 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:e1c2b67c8e1a, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 750 db126 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:d57d375cdca3, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 793 db134 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:5737ad049df4, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 805 db136 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:9fc5a7df4742, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 817 db138 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:dd7e5fd99338, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 829 db140 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:ea9b2bd62cf1, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 841 db142 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:509a9f0df046, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 853 db144 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:580583cc94c8, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R2-W  (seq 868 db146 O6.commit)
+  subject:  0x40930078f04b298b61bdd441ff8ec49929202816
+  expected: write-back 100000000000000000000000 == bank reference
+  actual:   write-back 99999999999999999999000 (StateDB balance 99999999999999999999000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 868 db146 O6.commit)
+  subject:  0xca058eb79666e09897080c3f875df02bfa9005d7
+  expected: write-back 0 == bank reference
+  actual:   write-back 1000 (StateDB balance 1000, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 868 db146 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:2435773d7fa9, coin_spent:420f2f89974e, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 912 db152 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:a2f082e4e2c4, coin_spent:a91af49445f0, message:ce58e6d076f2, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R2-W  (seq 920 db153 O6.commit)
+  subject:  0x39c25c8eba5a8d38db4dd7e76b02a0744864aa00
+  expected: write-back 100000000000000000000000 == bank reference
+  actual:   write-back 99999999999999999999990 (StateDB balance 99999999999999999999990, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 920 db153 O6.commit)
+  subject:  0x3f854d6f171b7b099a814972b3dbe48080d2e04a
+  expected: write-back 100000000000000000000000 == bank reference
+  actual:   write-back 100000000000000000000010 (StateDB balance 100000000000000000000010, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 920 db153 O6.commit)
+  subject:  committed events
+  expected: the 4 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   4 missing (committed 0): coin_received:04a875dfb42b, coin_spent:026c2c6ff1d1, message:d95e9df9a134, …
+  detail:   events of successful precompile calls were dropped at commit

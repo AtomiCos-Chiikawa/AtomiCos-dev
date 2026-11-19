@@ -1,0 +1,8 @@
+C241	bank	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+C241	distribution	PASS	0	-	0	0	0	0	0	27	b04c5c9	none	0	-
+C241	erc20	PASS	0	-	0	0	0	0	0	66	b04c5c9	none	0	-
+C241	gov	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+C241	ics20	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+C241	slashing	PASS	0	-	0	0	0	0	0	6	b04c5c9	none	0	-
+C241	staking	PASS	0	-	0	0	0	0	0	34	b04c5c9	none	0	-
+C241	werc20	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-

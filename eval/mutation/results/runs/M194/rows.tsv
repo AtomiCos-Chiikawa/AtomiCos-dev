@@ -1,0 +1,7 @@
+M194	bank	PASS	0	-	0	0	0	0	0	10	654d881	none	0	-
+M194	distribution	PASS	0	-	0	0	0	0	0	19	654d881	none	0	-
+M194	erc20	PASS	0	-	0	0	0	0	0	66	654d881	none	0	-
+M194	ics20	PASS	0	-	0	0	0	0	0	9	654d881	none	0	-
+M194	slashing	PASS	0	-	0	0	0	0	0	9	654d881	none	0	-
+M194	staking	PASS	0	-	0	0	0	0	0	32	654d881	none	0	-
+M194	werc20	PASS	0	-	0	0	0	0	0	17	654d881	none	0	-

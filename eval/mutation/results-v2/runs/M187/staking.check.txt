@@ -1,0 +1,34 @@
+records: 7114, findings: 3
+  violation R1-S         3
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 604, O2.exit 604, O4.balance 3360, O5.revert 847, O5.snapshot 1608, O6.commit 91; unknown point 0
+  trace   statedbs 1378, records with state.error 0, unparsable numbers 0
+  O2      enters 604, exits 604, enters never closed 0
+  R1      reverts 847: compared 847, with candidates 266, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 759, events 0; discarded (no judged top-level commit followed) 755
+  R1      commits 91: top-level judged 91 (with candidates 1); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 3360: add/sub checked 3360 (non-zero amount 182); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 708, exit 445 (sync points enter 604, exit 350); not compared: blocked 1002, unparsable 0; failed exits 254, no usable state 0
+  R3      exits 604: evaluated R3-D 117, R3-U 61, R3-C 0; method not covered 172
+  R3      skipped: call exited with error 254, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 91, unparsable 0
+  O6      commits 91: judged 91 (R2-W comparisons 139, R1-C 48); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R1-S  (seq 7114 db1378 O6.commit)
+  subject:  bank:0x4fea76427b8345861e80a3540a8a9d936fd39391
+  expected: 4000000000000000000 (value before the reverted frame)
+  actual:   4000000000000000040 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 7075)
+
+[VIOLATION] R1-S  (seq 7114 db1378 O6.commit)
+  subject:  deleg:0x9aac7179683de416c6d1bb81068c6af5ddd65248|cosmosvaloper1zua9xgc3la45xfktfx8ff3dcfaxsv0gydf6gmt
+  expected: 0 (value before the reverted frame)
+  actual:   40 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 7075)
+
+[VIOLATION] R1-S  (seq 7114 db1378 O6.commit)
+  subject:  valTokens:cosmosvaloper1zua9xgc3la45xfktfx8ff3dcfaxsv0gydf6gmt
+  expected: 2000000000000000000 (value before the reverted frame)
+  actual:   2000000000000000040 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 7075)

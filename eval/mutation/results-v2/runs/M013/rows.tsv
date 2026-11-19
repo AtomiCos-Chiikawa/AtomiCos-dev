@@ -1,0 +1,8 @@
+M013	bank	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+M013	distribution	PASS	0	-	0	0	0	0	0	33	b04c5c9	none	0	-
+M013	erc20	PASS	0	-	0	0	0	0	0	93	b04c5c9	none	0	-
+M013	gov	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+M013	ics20	PASS	0	-	0	0	0	0	0	17	b04c5c9	none	0	-
+M013	slashing	PASS	0	-	0	0	0	0	0	14	b04c5c9	none	0	-
+M013	staking	FAIL	1	R2-W	0	1	7	1	1	55	b04c5c9	violation	0	-
+M013	werc20	PASS	0	-	0	0	0	0	0	25	b04c5c9	none	0	-

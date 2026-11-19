@@ -51,6 +51,7 @@
       "noState": 0,
       "enter": 0,
       "exit": 0,
+      "commit": 4,
       "blocked": 0,
       "unparsable": 0
     },
@@ -74,6 +75,14 @@
     "a1": {
       "compared": 2,
       "unparsable": 0
+    },
+    "o6": {
+      "commits": 2,
+      "failed": 0,
+      "maybeFailed": 0,
+      "noState": 0,
+      "judged": 2,
+      "eventsJudged": 1
     }
   },
   "findings": null

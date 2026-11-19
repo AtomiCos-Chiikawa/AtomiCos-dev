@@ -1,0 +1,8 @@
+M219	bank	PASS	0	-	0	0	0	0	0	142
+M219	distribution	PASS	0	-	0	0	0	0	0	132
+M219	erc20	PASS	0	-	0	0	0	0	0	252
+M219	gov	PASS	0	-	0	0	0	0	0	96
+M219	ics20	PASS	0	-	0	0	0	0	0	73
+M219	slashing	PASS	0	-	0	0	0	0	0	66
+M219	staking	PASS	0	-	0	0	0	0	0	142
+M219	werc20	PASS	0	-	0	0	0	0	0	84

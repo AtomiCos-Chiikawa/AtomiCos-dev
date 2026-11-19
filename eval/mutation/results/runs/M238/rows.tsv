@@ -1,0 +1,8 @@
+M238	bank	PASS	0	-	0	0	0	0	0	15	654d881	none	0	-
+M238	distribution	PASS	0	-	0	0	0	0	0	22	654d881	none	0	-
+M238	erc20	PASS	0	-	0	0	0	0	0	75	654d881	none	0	-
+M238	gov	PASS	0	-	0	0	0	0	0	14	654d881	none	0	-
+M238	ics20	PASS	0	-	0	0	0	0	0	8	654d881	none	0	-
+M238	slashing	PASS	0	-	0	0	0	0	0	8	654d881	none	0	-
+M238	staking	PASS	0	-	0	0	0	0	0	25	654d881	none	0	-
+M238	werc20	PASS	0	-	0	0	0	0	0	13	654d881	none	0	-

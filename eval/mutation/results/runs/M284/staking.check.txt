@@ -1,0 +1,159 @@
+records: 14144, findings: 24
+  violation R3-D         24
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 1109, O2.exit 1109, O4.balance 6988, O5.revert 1606, O5.snapshot 3192, O6.commit 140; unknown point 0
+  trace   statedbs 2148, records with state.error 0, unparsable numbers 0
+  O2      enters 1109, exits 1109, enters never closed 0
+  R1      reverts 1606: compared 1606, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 140: top-level judged 140 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 6988: add/sub checked 6988 (non-zero amount 690); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 1701, exit 1378 (sync points enter 1109, exit 822); not compared: blocked 1931, unparsable 0; failed exits 287, no usable state 0
+  R3      exits 1109: evaluated R3-D 585, R3-U 63, R3-C 0; method not covered 174
+  R3      skipped: call exited with error 287, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 140, unparsable 0
+
+[VIOLATION] R3-D  (seq 1191 db283 O2.exit call 68)
+  subject:  bank:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d
+  expected: Δbank(delegator) = -1000000000000000000 + auto-withdrawn rewards 0 = -1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegator balance does not match the delegated amount
+
+[VIOLATION] R3-D  (seq 1191 db283 O2.exit call 68)
+  subject:  deleg:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d|cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δdelegation tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegation did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1191 db283 O2.exit call 68)
+  subject:  valTokens:cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δvalidator tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; validator tokens did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1196 db284 O2.exit call 69)
+  subject:  bank:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d
+  expected: Δbank(delegator) = -1000000000000000000 + auto-withdrawn rewards 0 = -1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegator balance does not match the delegated amount
+
+[VIOLATION] R3-D  (seq 1196 db284 O2.exit call 69)
+  subject:  deleg:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d|cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δdelegation tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegation did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1196 db284 O2.exit call 69)
+  subject:  valTokens:cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δvalidator tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; validator tokens did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1219 db288 O2.exit call 73)
+  subject:  bank:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d
+  expected: Δbank(delegator) = -1000000000000000000 + auto-withdrawn rewards 0 = -1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegator balance does not match the delegated amount
+
+[VIOLATION] R3-D  (seq 1219 db288 O2.exit call 73)
+  subject:  deleg:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d|cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δdelegation tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegation did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1219 db288 O2.exit call 73)
+  subject:  valTokens:cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δvalidator tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; validator tokens did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1230 db290 O2.exit call 75)
+  subject:  bank:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d
+  expected: Δbank(delegator) = -1000000000000000000 + auto-withdrawn rewards 0 = -1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegator balance does not match the delegated amount
+
+[VIOLATION] R3-D  (seq 1230 db290 O2.exit call 75)
+  subject:  deleg:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d|cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δdelegation tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegation did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1230 db290 O2.exit call 75)
+  subject:  valTokens:cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δvalidator tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; validator tokens did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1241 db292 O2.exit call 77)
+  subject:  bank:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d
+  expected: Δbank(delegator) = -1000000000000000000 + auto-withdrawn rewards 0 = -1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegator balance does not match the delegated amount
+
+[VIOLATION] R3-D  (seq 1241 db292 O2.exit call 77)
+  subject:  deleg:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d|cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δdelegation tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegation did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1241 db292 O2.exit call 77)
+  subject:  valTokens:cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δvalidator tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; validator tokens did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1270 db297 O2.exit call 82)
+  subject:  bank:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d
+  expected: Δbank(delegator) = -1000000000000000000 + auto-withdrawn rewards 0 = -1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegator balance does not match the delegated amount
+
+[VIOLATION] R3-D  (seq 1270 db297 O2.exit call 82)
+  subject:  deleg:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d|cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δdelegation tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegation did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1270 db297 O2.exit call 82)
+  subject:  valTokens:cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δvalidator tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; validator tokens did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1281 db299 O2.exit call 84)
+  subject:  bank:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d
+  expected: Δbank(delegator) = -1000000000000000000 + auto-withdrawn rewards 0 = -1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegator balance does not match the delegated amount
+
+[VIOLATION] R3-D  (seq 1281 db299 O2.exit call 84)
+  subject:  deleg:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d|cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δdelegation tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegation did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1281 db299 O2.exit call 84)
+  subject:  valTokens:cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δvalidator tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; validator tokens did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1286 db300 O2.exit call 85)
+  subject:  bank:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d
+  expected: Δbank(delegator) = -1000000000000000000 + auto-withdrawn rewards 0 = -1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegator balance does not match the delegated amount
+
+[VIOLATION] R3-D  (seq 1286 db300 O2.exit call 85)
+  subject:  deleg:0x958b8620a4e85537e4f076b51cd00a51b26d1c2d|cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δdelegation tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegation did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 1286 db300 O2.exit call 85)
+  subject:  valTokens:cosmosvaloper1y2srksa2mmjft00wxazjk6yvfrq4pprtut9qq9
+  expected: Δvalidator tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; validator tokens did not grow by the delegated amount

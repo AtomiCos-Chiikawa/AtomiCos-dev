@@ -1,0 +1,8 @@
+M185	bank	PASS	0	-	0	0	0	0	0	21	654d881	none	0	-
+M185	distribution	FAIL	2	R1-E,R1-S	0	2	2	0	0	22	654d881	violation	0	-
+M185	erc20	FAIL	25	R1-E,R1-S	0	25	25	0	0	74	654d881	violation	0	-
+M185	gov	PASS	0	-	0	0	0	0	0	19	654d881	none	0	-
+M185	ics20	FAIL	9	R1-E,R1-S	0	9	9	0	0	16	654d881	violation	0	-
+M185	slashing	PASS	0	-	0	0	0	0	0	9	654d881	none	0	-
+M185	staking	FAIL	8	R1-E,R1-S	0	8	8	0	0	16	654d881	violation	0	-
+M185	werc20	PASS	36	R1-E,R1-S	0	36	36	0	0	13	654d881	violation	0	-

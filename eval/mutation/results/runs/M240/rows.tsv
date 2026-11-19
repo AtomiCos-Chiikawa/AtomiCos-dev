@@ -1,0 +1,8 @@
+M240	bank	PASS	0	-	0	0	0	0	0	11	654d881	none	0	-
+M240	distribution	PASS	0	-	0	0	0	0	0	18	654d881	none	0	-
+M240	erc20	PASS	0	-	0	0	0	0	0	68	654d881	none	0	-
+M240	gov	PASS	0	-	0	0	0	0	0	17	654d881	none	0	-
+M240	ics20	PASS	0	-	0	0	0	0	0	10	654d881	none	0	-
+M240	slashing	PASS	0	-	0	0	0	0	0	7	654d881	none	0	-
+M240	staking	FAIL	0	-	0	0	0	0	0	19	654d881	none	0	-
+M240	werc20	PASS	0	-	0	0	0	0	0	11	654d881	none	0	-

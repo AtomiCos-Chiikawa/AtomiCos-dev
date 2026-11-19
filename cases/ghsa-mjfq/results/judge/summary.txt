@@ -1,6 +1,6 @@
 case:    ghsa-mjfq (step 7: same input as step 4 + harness v01 + checker)
-date:    2026-11-18T23:21:41Z
-atomicos: e7eaa57b60958252c81db03fb577b5a2ee09d102 (tree DIRTY: 2 changed or untracked paths outside results/; hash of git diff HEAD: 92353bfe8d73d86814218e81e47f7364a2db1e02)
+date:    2026-11-19T16:04:50Z
+atomicos: b04c5c923c58c231a381813dfbad0aea4ca1272f (tree DIRTY: 2718 changed or untracked paths outside results/; hash of git diff HEAD: e69de29bb2d1d6434b8b29ae775ad8c2e48c5391)
 vuln:    5456ce8dd3d1bed0c7442ab2f0d4146a23efe624
 fixed:   0fff8c144b24effbcb3addd666150ba5989d631c
 go:      go1.23.6
@@ -9,8 +9,8 @@ expect:  vuln: test FAIL (EXPECT_FAIL signature), checker exit 1, >=1 violation
          fixed: test PASS, checker exit 0, 0 violations
          both: records > 0 and observation points O4 O5 O6 present
 
-vuln   test FAIL  records 96   violations 6   checker exit 1  expected >=1 violation  -> as expected
-       findings: violation R1-E x4, violation R1-S x2
+vuln   test FAIL  records 96   violations 7   checker exit 1  expected >=1 violation  -> as expected
+       findings: violation R1-E x4, violation R1-S x2, violation R2-W x1
 fixed  test PASS  records 96   violations 0   checker exit 0  expected 0 violations   -> as expected
        findings: none
 

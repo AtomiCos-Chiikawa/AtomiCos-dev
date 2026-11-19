@@ -1,0 +1,8 @@
+M104	bank	FAIL	0	-	0	0	0	0	0	12	b04c5c9	notrace	0	-
+M104	distribution	FAIL	0	-	0	0	0	0	0	11	b04c5c9	notrace	0	-
+M104	erc20	FAIL	0	-	0	0	0	0	0	16	b04c5c9	notrace	0	-
+M104	gov	FAIL	0	-	0	0	0	0	0	12	b04c5c9	notrace	0	-
+M104	ics20	FAIL	0	-	0	0	0	0	0	10	b04c5c9	notrace	0	-
+M104	slashing	FAIL	0	-	0	0	0	0	0	8	b04c5c9	notrace	0	-
+M104	staking	FAIL	0	-	0	0	0	0	0	14	b04c5c9	notrace	0	-
+M104	werc20	FAIL	0	-	0	0	0	0	0	11	b04c5c9	notrace	0	-

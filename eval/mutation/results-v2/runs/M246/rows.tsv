@@ -1,0 +1,8 @@
+M246	bank	FAIL	0	-	0	0	0	0	0	28	b04c5c9	none	0	-
+M246	distribution	FAIL	0	-	0	0	0	0	0	20	b04c5c9	none	0	-
+M246	erc20	FAIL	7	R2-W	0	7	7	7	0	49	b04c5c9	violation	0	-
+M246	gov	FAIL	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+M246	ics20	FAIL	1	R2-W	0	1	1	1	0	13	b04c5c9	violation	0	-
+M246	slashing	FAIL	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M246	staking	FAIL	0	-	0	0	0	0	0	19	b04c5c9	none	0	-
+M246	werc20	FAIL	54	R2-W	0	9	54	54	45	19	b04c5c9	violation	0	-

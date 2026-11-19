@@ -1,0 +1,7 @@
+C045	bank	PASS	0	-	0	0	0	0	0	17	654d881	none	0	-
+C045	distribution	FAIL	32	R2-W	0	0	32	32	32	18	654d881	violation	0	-
+C045	erc20	PASS	0	-	0	0	0	0	0	71	654d881	none	0	-
+C045	gov	FAIL	8	R2-W	0	0	8	8	8	14	654d881	violation	0	-
+C045	ics20	PASS	0	-	0	0	0	0	0	10	654d881	none	0	-
+C045	staking	FAIL	87	R2-W	0	0	87	87	87	17	654d881	violation	0	-
+C045	werc20	PASS	0	-	0	0	0	0	0	14	654d881	none	0	-

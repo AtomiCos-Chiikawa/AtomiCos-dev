@@ -1,0 +1,7 @@
+M044	bank	PASS	0	-	0	0	0	0	0	17	654d881	none	0	-
+M044	distribution	FAIL	47	R2-W	0	0	47	47	47	16	654d881	violation	0	-
+M044	erc20	FAIL	8	R2-W	0	0	8	8	8	84	654d881	violation	0	-
+M044	gov	FAIL	11	R2-W	0	0	11	11	11	12	654d881	violation	0	-
+M044	ics20	FAIL	5	R2-W	0	0	5	5	5	13	654d881	violation	0	-
+M044	staking	FAIL	142	R2-W	0	0	142	142	142	22	654d881	violation	0	-
+M044	werc20	FAIL	111	R2-W	0	0	111	111	111	20	654d881	violation	0	-

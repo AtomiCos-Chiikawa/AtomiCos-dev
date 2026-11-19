@@ -1,0 +1,6 @@
+M060	distribution	FAIL	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+M060	erc20	PASS	0	-	0	0	0	0	0	58	b04c5c9	none	0	-
+M060	gov	FAIL	0	-	0	0	0	0	0	14	b04c5c9	none	0	-
+M060	ics20	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+M060	staking	FAIL	0	-	0	0	0	0	0	14	b04c5c9	none	0	-
+M060	werc20	PASS	0	-	0	0	0	0	0	14	b04c5c9	none	0	-

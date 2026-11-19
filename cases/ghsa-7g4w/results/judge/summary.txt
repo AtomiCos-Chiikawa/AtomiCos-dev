@@ -1,6 +1,6 @@
 case:    ghsa-7g4w (step 7: same input as step 4 + harness v07 + checker)
-date:    2026-11-18T23:21:14Z
-atomicos: e7eaa57b60958252c81db03fb577b5a2ee09d102 (tree DIRTY: 1 changed or untracked paths outside results/; hash of git diff HEAD: 92353bfe8d73d86814218e81e47f7364a2db1e02)
+date:    2026-11-19T16:03:45Z
+atomicos: b04c5c923c58c231a381813dfbad0aea4ca1272f (tree DIRTY: 2718 changed or untracked paths outside results/; hash of git diff HEAD: e69de29bb2d1d6434b8b29ae775ad8c2e48c5391)
 vuln:    0fe56c036b72aeaf60e5862b2a8bd6d9893a5ef9
 fixed:   0182da198f1f84dc0e4c937fca5e5f175d1be986
 go:      go1.25.9

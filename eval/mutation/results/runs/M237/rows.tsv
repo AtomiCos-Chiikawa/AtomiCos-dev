@@ -1,0 +1,8 @@
+M237	bank	FAIL	0	-	0	0	0	0	0	15	654d881	notrace	0	-
+M237	distribution	FAIL	0	-	0	0	0	0	0	15	654d881	notrace	0	-
+M237	erc20	FAIL	0	-	0	0	0	0	0	19	654d881	notrace	0	-
+M237	gov	FAIL	0	-	0	0	0	0	0	11	654d881	notrace	0	-
+M237	ics20	FAIL	0	-	0	0	0	0	0	11	654d881	notrace	0	-
+M237	slashing	FAIL	0	-	0	0	0	0	0	10	654d881	notrace	0	-
+M237	staking	FAIL	0	-	0	0	0	0	0	13	654d881	notrace	0	-
+M237	werc20	FAIL	0	-	0	0	0	0	0	18	654d881	notrace	0	-

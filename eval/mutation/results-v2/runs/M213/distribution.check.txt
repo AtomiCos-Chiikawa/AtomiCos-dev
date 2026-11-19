@@ -1,0 +1,30 @@
+records: 1268, findings: 2
+  violation R2-W         2
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 178, O2.exit 178, O4.balance 519, O5.revert 109, O5.snapshot 253, O6.commit 31; unknown point 0
+  trace   statedbs 252, records with state.error 0, unparsable numbers 0
+  O2      enters 178, exits 178, enters never closed 0
+  R1      reverts 109: compared 109, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 31: top-level judged 31 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 519: add/sub checked 519 (non-zero amount 15); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 179, exit 114 (sync points enter 178, exit 111); not compared: blocked 312, unparsable 0; failed exits 67, no usable state 0
+  R3      exits 178: evaluated R3-D 0, R3-U 0, R3-C 4; method not covered 107
+  R3      skipped: call exited with error 67, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 31, unparsable 0
+  O6      commits 31: judged 31 (R2-W comparisons 38, R1-C 28); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R2-W  (seq 1264 db252 O2.enter call 178)
+  subject:  0x16454272fe4c05df85174734821cb3bc5ab9ceab
+  expected: write-back 99997998374137687106567 == bank reference
+  actual:   write-back 99996998374137687106567 (StateDB balance 99996998374137687106567, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+  repeats:  1 more in the same DB (seqs 1264, 1268)
+
+[VIOLATION] R2-W  (seq 1264 db252 O2.enter call 178)
+  subject:  0xa60b67c20384a46dd3b6f24bc433cb4130b919c2
+  expected: write-back 0 == bank reference
+  actual:   write-back 1000000000000000000 (StateDB balance 1000000000000000000, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+  repeats:  1 more in the same DB (seqs 1264, 1268)

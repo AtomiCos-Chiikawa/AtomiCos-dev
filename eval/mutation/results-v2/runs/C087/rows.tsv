@@ -1,0 +1,8 @@
+C087	bank	PASS	0	-	0	0	0	0	0	26	b04c5c9	none	0	-
+C087	distribution	PASS	0	-	0	0	0	0	0	28	b04c5c9	none	0	-
+C087	erc20	PASS	0	-	0	0	0	0	0	50	b04c5c9	none	0	-
+C087	gov	PASS	0	-	0	0	0	0	0	14	b04c5c9	none	0	-
+C087	ics20	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+C087	slashing	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-
+C087	staking	FAIL	3	R1-S	0	3	3	0	0	17	b04c5c9	violation	0	-
+C087	werc20	PASS	0	-	0	0	0	0	0	17	b04c5c9	none	0	-

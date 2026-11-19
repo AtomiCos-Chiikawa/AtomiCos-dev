@@ -1,0 +1,8 @@
+M234	bank	FAIL	0	-	0	0	0	0	0	11	b04c5c9	notrace	0	-
+M234	distribution	FAIL	0	-	0	0	0	0	0	10	b04c5c9	notrace	0	-
+M234	erc20	FAIL	0	-	0	0	0	0	0	16	b04c5c9	notrace	0	-
+M234	gov	FAIL	0	-	0	0	0	0	0	10	b04c5c9	notrace	0	-
+M234	ics20	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M234	slashing	FAIL	0	-	0	0	0	0	0	8	b04c5c9	notrace	0	-
+M234	staking	FAIL	0	-	0	0	0	0	0	9	b04c5c9	notrace	0	-
+M234	werc20	FAIL	0	-	0	0	0	0	0	10	b04c5c9	notrace	0	-

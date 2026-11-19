@@ -51,6 +51,7 @@
       "noState": 0,
       "enter": 0,
       "exit": 0,
+      "commit": 4,
       "blocked": 0,
       "unparsable": 0
     },
@@ -74,6 +75,14 @@
     "a1": {
       "compared": 2,
       "unparsable": 0
+    },
+    "o6": {
+      "commits": 2,
+      "failed": 0,
+      "maybeFailed": 0,
+      "noState": 0,
+      "judged": 2,
+      "eventsJudged": 1
     }
   },
   "findings": [
@@ -83,7 +92,7 @@
       "point": "O6.commit",
       "seq": 96,
       "db": "db26",
-      "subject": "bank:0x39c6d796f6c825fca48d7f278ed381cadfad2e3f",
+      "subject": "bank:0x7be44f52226939ab6e8e9af3815edc541cf9153e",
       "expected": "99997996564996888347057 (value before the reverted frame)",
       "actual": "99998007101617353674122 (committed; equals the value the reverted frame left behind)",
       "detail": "SDK write of a reverted frame was committed (revert at seq 95)"
@@ -105,7 +114,7 @@
       "point": "O6.commit",
       "seq": 96,
       "db": "db26",
-      "subject": "event coin_received:b7f47ac0842a",
+      "subject": "event coin_received:ce28994e810d",
       "expected": "events of reverted frames are absent from the committed events",
       "actual": "appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 95)"
     },
@@ -135,9 +144,20 @@
       "point": "O6.commit",
       "seq": 96,
       "db": "db26",
-      "subject": "event transfer:08344d668f41",
+      "subject": "event transfer:6291fdf328cc",
       "expected": "events of reverted frames are absent from the committed events",
       "actual": "appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 95)"
+    },
+    {
+      "rule": "R2-W",
+      "severity": "violation",
+      "point": "O6.commit",
+      "seq": 96,
+      "db": "db26",
+      "subject": "0x7be44f52226939ab6e8e9af3815edc541cf9153e",
+      "expected": "write-back 99998007101617353674122 == bank reference",
+      "actual": "write-back 99997996564996888347057 (StateDB balance 99997996564996888347057, mode balance=bank_total)",
+      "detail": "the committed bank balance differs from what the StateDB wrote back"
     }
   ]
 }

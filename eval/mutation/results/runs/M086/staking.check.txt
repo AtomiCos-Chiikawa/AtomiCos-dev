@@ -1,0 +1,33 @@
+records: 7108, findings: 3
+  violation R1-S         3
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 603, O2.exit 603, O4.balance 3359, O5.revert 844, O5.snapshot 1608, O6.commit 91; unknown point 0
+  trace   statedbs 1378, records with state.error 0, unparsable numbers 0
+  O2      enters 603, exits 603, enters never closed 0
+  R1      reverts 844: compared 844, with candidates 264, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 751, events 0; discarded (no judged top-level commit followed) 747
+  R1      commits 91: top-level judged 91 (with candidates 1); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 3359: add/sub checked 3359 (non-zero amount 183); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 707, exit 446 (sync points enter 603, exit 351); not compared: blocked 954, unparsable 0; failed exits 252, no usable state 0
+  R3      exits 603: evaluated R3-D 117, R3-U 61, R3-C 0; method not covered 173
+  R3      skipped: call exited with error 252, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 91, unparsable 0
+
+[VIOLATION] R1-S  (seq 3802 db716 O6.commit)
+  subject:  bank:0x4fea76427b8345861e80a3540a8a9d936fd39391
+  expected: 4000000000000000000 (value before the reverted frame)
+  actual:   4000000000000000040 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 3763)
+
+[VIOLATION] R1-S  (seq 3802 db716 O6.commit)
+  subject:  deleg:0x856b331f641616abd7af3028c1c8c9673c1f65fc|cosmosvaloper1gls20ymgc39fl4u0xevpjlz9rq3xztaepnm80x
+  expected: 0 (value before the reverted frame)
+  actual:   40 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 3763)
+
+[VIOLATION] R1-S  (seq 3802 db716 O6.commit)
+  subject:  valTokens:cosmosvaloper1gls20ymgc39fl4u0xevpjlz9rq3xztaepnm80x
+  expected: 2000000000000000000 (value before the reverted frame)
+  actual:   2000000000000000040 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 3763)

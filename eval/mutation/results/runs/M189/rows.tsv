@@ -1,0 +1,5 @@
+M189	distribution	PASS	0	-	0	0	0	0	0	36	654d881	none	0	-
+M189	erc20	FAIL	0	-	0	0	0	0	0	64	654d881	none	0	-
+M189	ics20	FAIL	0	-	0	0	0	0	0	13	654d881	none	0	-
+M189	staking	FAIL	0	-	0	0	0	0	0	19	654d881	none	0	-
+M189	werc20	PASS	0	-	0	0	0	0	0	14	654d881	none	0	-

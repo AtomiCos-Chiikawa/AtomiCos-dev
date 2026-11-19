@@ -1,0 +1,8 @@
+M125	bank	PASS	0	-	0	0	0	0	0	24	654d881	none	0	-
+M125	distribution	FAIL	12	R2-W	0	0	12	12	12	26	654d881	violation	0	-
+M125	erc20	FAIL	6	R2-W	0	0	6	6	6	110	654d881	violation	0	-
+M125	gov	FAIL	8	R2-W	0	0	8	8	8	18	654d881	violation	0	-
+M125	ics20	FAIL	5	R2-W	0	0	5	5	5	14	654d881	violation	0	-
+M125	slashing	PASS	0	-	0	0	0	0	0	10	654d881	none	0	-
+M125	staking	FAIL	113	R2-W	0	0	113	113	113	30	654d881	violation	0	-
+M125	werc20	FAIL	57	R2-W	0	0	57	57	57	18	654d881	violation	0	-

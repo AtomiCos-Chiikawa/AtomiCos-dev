@@ -1,0 +1,8 @@
+M223	bank	PASS	0	-	0	0	0	0	0	27	b04c5c9	none	0	-
+M223	distribution	PASS	0	-	0	0	0	0	0	31	b04c5c9	none	0	-
+M223	erc20	PASS	0	-	0	0	0	0	0	80	b04c5c9	none	0	-
+M223	gov	PASS	0	-	0	0	0	0	0	27	b04c5c9	none	0	-
+M223	ics20	PASS	0	-	0	0	0	0	0	18	b04c5c9	none	0	-
+M223	slashing	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+M223	staking	PASS	0	-	0	0	0	0	0	53	b04c5c9	none	0	-
+M223	werc20	PASS	0	-	0	0	0	0	0	22	b04c5c9	none	0	-

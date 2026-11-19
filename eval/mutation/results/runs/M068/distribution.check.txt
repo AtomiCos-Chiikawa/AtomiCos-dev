@@ -1,0 +1,78 @@
+records: 1886, findings: 7
+  guarded R2-A           4
+  violation R2-W         3
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 217, O2.exit 217, O4.balance 832, O5.revert 177, O5.snapshot 407, O6.commit 36; unknown point 0
+  trace   statedbs 365, records with state.error 0, unparsable numbers 0
+  O2      enters 217, exits 217, enters never closed 0
+  R1      reverts 177: compared 177, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 36: top-level judged 36 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 832: add/sub checked 832 (non-zero amount 26); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 257, exit 172 (sync points enter 217, exit 139); not compared: blocked 356, unparsable 0; failed exits 78, no usable state 0
+  R3      exits 217: evaluated R3-D 4, R3-U 0, R3-C 2; method not covered 133
+  R3      skipped: call exited with error 78, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 36, unparsable 0
+
+[GUARDED] R2-A  (seq 715 db138 O4.balance call 40)
+  subject:  0xe4f901e463e4a73bd838cb6ed177e33051489dcb
+  expected: sub amount <= current balance 0
+  actual:   sub 4912016428980120 from 0 (unchecked result would be 2^256 - 4912016428980120)
+  detail:   balance underflow
+  outcome:  rejected (panic: state balance underflow for 0xe4F901e463e4a73Bd838cb6Ed177E33051489Dcb: have=0 sub=4912016428980120)
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:106 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-W  (seq 832 db159 O2.exit call 60)
+  subject:  0x92cb76725f4f29ec65c417eab959a054fb746f10
+  expected: write-back 100000312790191282194449 == bank reference
+  actual:   write-back 99999687009808717805551 (StateDB balance 99999687009808717805551, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[GUARDED] R2-A  (seq 838 db160 O4.balance call 61)
+  subject:  0x995d7fd2d6cbfdaa72c3c082e3214093a887fc5b
+  expected: sub amount <= current balance 0
+  actual:   sub 314196815034023753 from 0 (unchecked result would be 2^256 - 314196815034023753)
+  detail:   balance underflow
+  outcome:  rejected (panic: state balance underflow for 0x995D7fD2d6CbfDaa72C3C082e3214093a887Fc5b: have=0 sub=314196815034023753)
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:106 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[GUARDED] R2-A  (seq 930 db185 O4.balance call 62)
+  subject:  0xb216d41ba973d32dbaae7f7dbc9709dc34731d96
+  expected: sub amount <= current balance 0
+  actual:   sub 315915267413785473 from 0 (unchecked result would be 2^256 - 315915267413785473)
+  detail:   balance underflow
+  outcome:  rejected (panic: state balance underflow for 0xb216d41Ba973D32dBaae7f7dbc9709DC34731D96: have=0 sub=315915267413785473)
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:106 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-W  (seq 950 db188 O2.exit call 65)
+  subject:  0x92609e4b7d09c35c05de42755c8d5adf7afe715c
+  expected: write-back 116236994758870767 == bank reference
+  actual:   write-back 83163005241129233 (StateDB balance 83163005241129233, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[GUARDED] R2-A  (seq 1042 db213 O4.balance call 66)
+  subject:  0x10de281ca7672b94954fa243c49b7322df3f2ff2
+  expected: sub amount <= current balance 0
+  actual:   sub 16690434140798317 from 0 (unchecked result would be 2^256 - 16690434140798317)
+  detail:   balance underflow
+  outcome:  rejected (panic: state balance underflow for 0x10de281cA7672b94954fA243C49b7322dF3F2fF2: have=0 sub=16690434140798317)
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:106 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-W  (seq 1057 db215 O2.exit call 68)
+  subject:  0x4f1262f7348cfc09451b5499a8cf0f9b3b4fef99
+  expected: write-back 100000938479167596583347 == bank reference
+  actual:   write-back 99999061138019903416653 (StateDB balance 99999061138019903416653, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit

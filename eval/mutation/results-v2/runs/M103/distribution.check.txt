@@ -1,0 +1,22 @@
+records: 987, findings: 1
+  violation R2-W         1
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 175, O2.exit 175, O4.balance 365, O5.revert 67, O5.snapshot 180, O6.commit 25; unknown point 0
+  trace   statedbs 180, records with state.error 0, unparsable numbers 0
+  O2      enters 175, exits 175, enters never closed 0
+  R1      reverts 67: compared 67, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 25: top-level judged 25 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 365: add/sub checked 365 (non-zero amount 11); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 175, exit 111 (sync points enter 175, exit 110); not compared: blocked 306, unparsable 0; failed exits 65, no usable state 0
+  R3      exits 175: evaluated R3-D 0, R3-U 0, R3-C 3; method not covered 107
+  R3      skipped: call exited with error 65, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 25, unparsable 0
+  O6      commits 25: judged 25 (R2-W comparisons 26, R1-C 25); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R2-W  (seq 161 db30 O2.exit call 26)
+  subject:  0xeb4617fcef3075625a5a9c1006f84e9546aa04dd
+  expected: write-back 100000938479167596583347 == bank reference
+  actual:   write-back 100000312698785032194449 (StateDB balance 100000312698785032194449, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit

@@ -14,9 +14,10 @@ stats (what the checker examined):
   R3      exits 3: evaluated R3-D 3, R3-U 0, R3-C 0; method not covered 0
   R3      skipped: call exited with error 0, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
   A1      comparisons 2, unparsable 0
+  O6      commits 2: judged 1 (R2-W comparisons 2, R1-C 0); not judged: failed 1, possibly refused write-back 0, no usable state 0
 
 [VIOLATION] R2-A  (seq 87 db22 O4.balance call 2)
-  subject:  0x90aa33ce320326a3165b75eb4267d987aae667f6
+  subject:  0x99f47fa5ff29d051b2156509b0cd247b06313dd9
   expected: sub amount <= current balance 1000000000000000000
   actual:   sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)
   detail:   balance underflow
@@ -27,13 +28,13 @@ stats (what the checker examined):
   at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
 
 [VIOLATION] R2-W  (seq 88 db22 O2.exit call 2)
-  subject:  0x90aa33ce320326a3165b75eb4267d987aae667f6
+  subject:  0x99f47fa5ff29d051b2156509b0cd247b06313dd9
   expected: write-back 2000000000000000000 == bank reference
   actual:   write-back 115792089237316195423570985008687907853269984665640564039459584007913129639936 (StateDB balance 115792089237316195423570985008687907853269984665640564039455584007913129639936, mode balance+locked_snapshot=bank_total)
   detail:   the StateDB balance would not reconcile with the bank at commit
 
 [VIOLATION] R2-A  (seq 96 db23 O4.balance call 3)
-  subject:  0x90aa33ce320326a3165b75eb4267d987aae667f6
+  subject:  0x99f47fa5ff29d051b2156509b0cd247b06313dd9
   expected: sub amount <= current balance 1000000000000000000
   actual:   sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)
   detail:   balance underflow
@@ -44,7 +45,7 @@ stats (what the checker examined):
   at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
 
 [VIOLATION] R2-W  (seq 97 db23 O2.exit call 3)
-  subject:  0x90aa33ce320326a3165b75eb4267d987aae667f6
+  subject:  0x99f47fa5ff29d051b2156509b0cd247b06313dd9
   expected: write-back 2000000000000000000 == bank reference
   actual:   write-back 115792089237316195423570985008687907853269984665640564039459584007913129639936 (StateDB balance 115792089237316195423570985008687907853269984665640564039455584007913129639936, mode balance+locked_snapshot=bank_total)
   detail:   the StateDB balance would not reconcile with the bank at commit

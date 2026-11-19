@@ -1,0 +1,8 @@
+M123	bank	PASS	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+M123	distribution	PASS	0	-	0	0	0	0	0	26	b04c5c9	none	0	-
+M123	erc20	PASS	0	-	0	0	0	0	0	61	b04c5c9	none	0	-
+M123	gov	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+M123	ics20	PASS	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M123	slashing	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-
+M123	staking	PASS	0	-	0	0	0	0	0	25	b04c5c9	none	0	-
+M123	werc20	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-

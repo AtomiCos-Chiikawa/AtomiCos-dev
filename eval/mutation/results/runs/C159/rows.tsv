@@ -1,0 +1,7 @@
+C159	bank	PASS	0	-	0	0	0	0	0	22	654d881	none	0	-
+C159	distribution	PASS	0	-	0	0	0	0	0	24	654d881	none	0	-
+C159	erc20	FAIL	0	-	0	0	0	0	0	62	654d881	none	0	-
+C159	gov	FAIL	0	-	0	0	0	0	0	13	654d881	none	0	-
+C159	ics20	PASS	0	-	0	0	0	0	0	13	654d881	none	0	-
+C159	staking	FAIL	0	-	0	0	0	0	0	20	654d881	none	0	-
+C159	werc20	PASS	0	-	0	0	0	0	0	23	654d881	none	0	-

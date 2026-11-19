@@ -1,0 +1,8 @@
+M106	bank	PASS	0	-	0	0	0	0	0	22	654d881	none	0	-
+M106	distribution	PASS	0	-	0	0	0	0	0	25	654d881	none	0	-
+M106	erc20	PASS	0	-	0	0	0	0	0	47	654d881	none	0	-
+M106	gov	PASS	0	-	0	0	0	0	0	12	654d881	none	0	-
+M106	ics20	PASS	0	-	0	0	0	0	0	10	654d881	none	0	-
+M106	slashing	PASS	0	-	0	0	0	0	0	6	654d881	none	0	-
+M106	staking	PASS	0	-	0	0	0	0	0	24	654d881	none	0	-
+M106	werc20	PASS	0	-	0	0	0	0	0	16	654d881	none	0	-

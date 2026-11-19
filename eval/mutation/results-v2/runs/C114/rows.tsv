@@ -1,0 +1,8 @@
+C114	bank	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+C114	distribution	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+C114	erc20	PASS	0	-	0	0	0	0	0	59	b04c5c9	none	0	-
+C114	gov	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+C114	ics20	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+C114	slashing	PASS	0	-	0	0	0	0	0	7	b04c5c9	none	0	-
+C114	staking	PASS	0	-	0	0	0	0	0	34	b04c5c9	none	0	-
+C114	werc20	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-

@@ -1,0 +1,8 @@
+A04	bank	PASS	0	-	0	0	0	0	0	18	b04c5c9	none	0	-
+A04	distribution	PASS	0	-	0	0	0	0	0	31	b04c5c9	none	0	-
+A04	erc20	PASS	0	-	0	0	0	0	0	77	b04c5c9	none	0	-
+A04	gov	PASS	0	-	0	0	0	0	0	19	b04c5c9	none	0	-
+A04	ics20	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+A04	slashing	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+A04	staking	FAIL	1	R2-W	0	1	7	1	0	25	b04c5c9	violation	0	-
+A04	werc20	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-

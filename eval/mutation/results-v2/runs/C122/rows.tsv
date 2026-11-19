@@ -1,0 +1,8 @@
+C122	bank	PASS	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+C122	distribution	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+C122	erc20	PASS	0	-	0	0	0	0	0	55	b04c5c9	none	0	-
+C122	gov	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+C122	ics20	PASS	0	-	0	0	0	0	0	6	b04c5c9	none	0	-
+C122	slashing	PASS	0	-	0	0	0	0	0	5	b04c5c9	none	0	-
+C122	staking	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+C122	werc20	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-

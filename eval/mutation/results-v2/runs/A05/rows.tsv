@@ -1,0 +1,8 @@
+A05	bank	PASS	0	-	0	0	0	0	0	35	b04c5c9	none	0	-
+A05	distribution	PASS	0	-	0	0	0	0	0	33	b04c5c9	none	0	-
+A05	erc20	PASS	0	-	0	0	0	0	0	64	b04c5c9	none	0	-
+A05	gov	PASS	0	-	0	0	0	0	0	19	b04c5c9	none	0	-
+A05	ics20	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+A05	slashing	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+A05	staking	FAIL	0	-	0	0	0	0	0	21	b04c5c9	none	0	-
+A05	werc20	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-

@@ -1,0 +1,8 @@
+C028	bank	PASS	0	-	0	0	0	0	0	18	654d881	none	0	-
+C028	distribution	PASS	0	-	0	0	0	0	0	20	654d881	none	0	-
+C028	erc20	PASS	0	-	0	0	0	0	0	57	654d881	none	0	-
+C028	gov	PASS	0	-	0	0	0	0	0	23	654d881	none	0	-
+C028	ics20	PASS	0	-	0	0	0	0	0	12	654d881	none	0	-
+C028	slashing	PASS	0	-	0	0	0	0	0	12	654d881	none	0	-
+C028	staking	PASS	2	R2-W	0	0	2	2	2	40	654d881	violation	0	-
+C028	werc20	PASS	0	-	0	0	0	0	0	20	654d881	none	0	-

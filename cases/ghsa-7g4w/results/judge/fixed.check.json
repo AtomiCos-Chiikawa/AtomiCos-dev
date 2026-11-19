@@ -53,6 +53,7 @@
       "noState": 0,
       "enter": 6,
       "exit": 2,
+      "commit": 2,
       "blocked": 4,
       "unparsable": 0
     },
@@ -76,6 +77,14 @@
     "a1": {
       "compared": 1,
       "unparsable": 0
+    },
+    "o6": {
+      "commits": 1,
+      "failed": 0,
+      "maybeFailed": 0,
+      "noState": 0,
+      "judged": 1,
+      "eventsJudged": 0
     }
   },
   "findings": [
@@ -86,11 +95,11 @@
       "seq": 87,
       "db": "db22",
       "call": 2,
-      "subject": "0x96297a9e43de0652591d8c65a8be18db6004a188",
+      "subject": "0xc82d3ff487d79ef4fbe9e3f9d9babaa27a1d813c",
       "expected": "sub amount \u003c= current balance 1000000000000000000",
       "actual": "sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)",
       "detail": "balance underflow",
-      "outcome": "rejected (panic: state balance underflow for 0x96297A9E43dE0652591d8C65A8Be18db6004a188: have=1000000000000000000 sub=3000000000000000000)",
+      "outcome": "rejected (panic: state balance underflow for 0xC82d3fF487D79EF4fBe9e3F9d9babAa27A1d813C: have=1000000000000000000 sub=3000000000000000000)",
       "stack": [
         "x/vm/statedb/statedb.go:506 statedb.(*StateDB).SubBalance",
         "precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange",
@@ -107,11 +116,11 @@
       "seq": 96,
       "db": "db23",
       "call": 3,
-      "subject": "0x96297a9e43de0652591d8c65a8be18db6004a188",
+      "subject": "0xc82d3ff487d79ef4fbe9e3f9d9babaa27a1d813c",
       "expected": "sub amount \u003c= current balance 1000000000000000000",
       "actual": "sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)",
       "detail": "balance underflow",
-      "outcome": "rejected (panic: state balance underflow for 0x96297A9E43dE0652591d8C65A8Be18db6004a188: have=1000000000000000000 sub=3000000000000000000)",
+      "outcome": "rejected (panic: state balance underflow for 0xC82d3fF487D79EF4fBe9e3F9d9babAa27A1d813C: have=1000000000000000000 sub=3000000000000000000)",
       "stack": [
         "x/vm/statedb/statedb.go:506 statedb.(*StateDB).SubBalance",
         "precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange",

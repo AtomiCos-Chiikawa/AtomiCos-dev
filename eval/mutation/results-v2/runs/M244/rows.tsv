@@ -1,0 +1,8 @@
+M244	bank	PASS	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+M244	distribution	PASS	0	-	0	0	0	0	0	23	b04c5c9	none	0	-
+M244	erc20	PASS	0	-	0	0	0	0	0	63	b04c5c9	none	0	-
+M244	gov	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+M244	ics20	PASS	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M244	slashing	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M244	staking	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+M244	werc20	PASS	0	-	0	0	0	0	0	13	b04c5c9	none	0	-

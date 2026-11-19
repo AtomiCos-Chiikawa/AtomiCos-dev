@@ -1,0 +1,29 @@
+records: 9002, findings: 2
+  violation R1-C         1
+  violation R2-W         1
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 751, O2.exit 751, O4.balance 4326, O5.revert 1051, O5.snapshot 2023, O6.commit 100; unknown point 0
+  trace   statedbs 1539, records with state.error 0, unparsable numbers 0
+  O2      enters 751, exits 751, enters never closed 0
+  R1      reverts 1051: compared 1051, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 100: top-level judged 100 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 4326: add/sub checked 4326 (non-zero amount 322); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 1003, exit 720 (sync points enter 751, exit 489); not compared: blocked 1291, unparsable 0; failed exits 262, no usable state 0
+  R3      exits 751: evaluated R3-D 253, R3-U 62, R3-C 0; method not covered 174
+  R3      skipped: call exited with error 262, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 100, unparsable 0
+  O6      commits 100: judged 100 (R2-W comparisons 157, R1-C 51); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R2-W  (seq 9002 db1539 O6.commit)
+  subject:  0x2d0279fb74a99199757599a67a3cdbf8bb5e8ea7
+  expected: write-back 1000000000000000000 == bank reference
+  actual:   write-back 999999999999999980 (StateDB balance 999999999999999980, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 9002 db1539 O6.commit)
+  subject:  committed events
+  expected: the 7 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   7 missing (committed 0): coin_received:99551c6d77f7, coin_spent:451c7d71e182, delegate:3ece798ecf7b, …
+  detail:   events of successful precompile calls were dropped at commit

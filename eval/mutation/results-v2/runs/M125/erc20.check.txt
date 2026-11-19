@@ -1,0 +1,53 @@
+records: 75857, findings: 6
+  violation R2-W         6
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 862, O2.exit 862, O4.balance 42029, O5.revert 9884, O5.snapshot 21258, O6.commit 962; unknown point 0
+  trace   statedbs 20323, records with state.error 0, unparsable numbers 0
+  O2      enters 862, exits 862, enters never closed 0
+  R1      reverts 9884: compared 9884, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 962: top-level judged 962 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 42029: add/sub checked 42029 (non-zero amount 36); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 2115, exit 2155 (sync points enter 862, exit 848); not compared: blocked 0, unparsable 0; failed exits 14, no usable state 0
+  R3      exits 862: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 848
+  R3      skipped: call exited with error 14, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 962, unparsable 0
+  O6      commits 962: judged 962 (R2-W comparisons 1998, R1-C 79); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R2-W  (seq 7363 db2058 O2.exit call 24)
+  subject:  0xaef610b15192100049ae56959751b07b7057654d
+  expected: write-back 0 == bank reference
+  actual:   write-back 200 (StateDB balance 200, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[VIOLATION] R2-W  (seq 7851 db2194 O2.exit call 25)
+  subject:  0x3dce2b06d62cbc28ec31c0ee8cc3abe64df1b1f3
+  expected: write-back 0 == bank reference
+  actual:   write-back 200 (StateDB balance 200, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[VIOLATION] R2-W  (seq 8340 db2330 O2.exit call 26)
+  subject:  0xcf25fb09c60126ec9d2254b866549b2b75589ca1
+  expected: write-back 0 == bank reference
+  actual:   write-back 200 (StateDB balance 200, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[VIOLATION] R2-W  (seq 8832 db2466 O2.exit call 27)
+  subject:  0xa9508b7a4624e405464dc26d0125873fe06f863e
+  expected: write-back 350 == bank reference
+  actual:   write-back 550 (StateDB balance 550, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[VIOLATION] R2-W  (seq 9812 db2738 O2.exit call 28)
+  subject:  0xcad85a39c6093e8789590b51a07b11b200f24cfe
+  expected: write-back 300 == bank reference
+  actual:   write-back 500 (StateDB balance 500, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+
+[VIOLATION] R2-W  (seq 10301 db2874 O2.exit call 29)
+  subject:  0x46f5be6e2cff30a63d0b859362071c1094e4e1eb
+  expected: write-back 100 == bank reference
+  actual:   write-back 300 (StateDB balance 300, mode balance+locked_snapshot=bank_total)
+  detail:   the StateDB balance would not reconcile with the bank at commit
+  repeats:  1 more in the same DB (seqs 10301, 10311)

@@ -1,0 +1,8 @@
+M075	bank	PASS	0	-	0	0	0	0	0	22	654d881	none	0	-
+M075	distribution	PASS	0	-	0	0	0	0	0	23	654d881	none	0	-
+M075	erc20	PASS	0	-	0	0	0	0	0	57	654d881	none	0	-
+M075	gov	PASS	0	-	0	0	0	0	0	18	654d881	none	0	-
+M075	ics20	PASS	0	-	0	0	0	0	0	13	654d881	none	0	-
+M075	slashing	PASS	0	-	0	0	0	0	0	9	654d881	none	0	-
+M075	staking	PASS	0	-	0	0	0	0	0	34	654d881	none	0	-
+M075	werc20	PASS	0	-	0	0	0	0	0	16	654d881	none	0	-

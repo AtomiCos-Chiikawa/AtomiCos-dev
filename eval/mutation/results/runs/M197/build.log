@@ -1,0 +1,3 @@
+# github.com/cosmos/evm/x/vm/statedb
+x/vm/statedb/state_object.go:4:2: "bytes" imported and not used
+x/vm/statedb/state_object.go:7:2: "sort" imported and not used

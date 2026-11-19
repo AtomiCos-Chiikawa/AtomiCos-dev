@@ -1,0 +1,8 @@
+M096	bank	FAIL	0	-	0	0	0	0	0	125
+M096	distribution	FAIL	0	-	0	0	0	0	0	84
+M096	erc20	FAIL	0	-	0	0	0	0	0	145
+M096	gov	FAIL	0	-	0	0	0	0	0	70
+M096	ics20	PASS	0	-	0	0	0	0	0	72
+M096	slashing	FAIL	0	-	0	0	0	0	0	24
+M096	staking	FAIL	0	-	0	0	0	0	0	68
+M096	werc20	PASS	0	-	0	0	0	0	0	66

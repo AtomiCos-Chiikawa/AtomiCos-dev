@@ -1,0 +1,6 @@
+M068	distribution	FAIL	3	R2-W	0	4	3	3	3	14	654d881	violation	0	-
+M068	erc20	FAIL	6	R2-W	0	0	6	6	6	74	654d881	violation	0	-
+M068	gov	FAIL	4	R2-W	0	1	4	4	4	11	654d881	violation	0	-
+M068	ics20	FAIL	0	-	0	0	0	0	0	9	654d881	none	0	-
+M068	staking	FAIL	3	R2-W	0	2	3	3	3	18	654d881	violation	0	-
+M068	werc20	FAIL	48	R2-W	0	9	48	48	48	16	654d881	violation	0	-

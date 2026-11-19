@@ -1,0 +1,8 @@
+C027	bank	PASS	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+C027	distribution	PASS	0	-	0	0	0	0	0	17	b04c5c9	none	0	-
+C027	erc20	PASS	0	-	0	0	0	0	0	65	b04c5c9	none	0	-
+C027	gov	PASS	0	-	0	0	0	0	0	17	b04c5c9	none	0	-
+C027	ics20	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+C027	slashing	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-
+C027	staking	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+C027	werc20	PASS	0	-	0	0	0	0	0	14	b04c5c9	none	0	-

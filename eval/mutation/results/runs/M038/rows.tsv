@@ -1,0 +1,7 @@
+M038	distribution	FAIL	0	-	0	0	0	0	0	21	654d881	none	0	-
+M038	erc20	FAIL	0	-	0	0	0	0	0	76	654d881	none	0	-
+M038	gov	FAIL	0	-	0	0	0	0	0	18	654d881	none	0	-
+M038	ics20	PASS	0	-	0	0	0	0	0	13	654d881	none	0	-
+M038	slashing	FAIL	0	-	0	0	0	0	0	11	654d881	none	0	-
+M038	staking	FAIL	161	R3-D,R3-U	0	0	161	161	161	27	654d881	violation	0	-
+M038	werc20	FAIL	0	-	0	0	0	0	0	17	654d881	none	0	-

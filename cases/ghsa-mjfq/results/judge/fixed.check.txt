@@ -12,3 +12,4 @@ stats (what the checker examined):
   R3      exits 0: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 0
   R3      skipped: call exited with error 0, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
   A1      comparisons 2, unparsable 0
+  O6      commits 2: judged 2 (R2-W comparisons 4, R1-C 1); not judged: failed 0, possibly refused write-back 0, no usable state 0

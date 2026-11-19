@@ -1,0 +1,8 @@
+M097	bank	FAIL	0	-	0	0	0	0	0	37	654d881	none	0	-
+M097	distribution	FAIL	0	-	0	0	0	0	0	19	654d881	none	0	-
+M097	erc20	FAIL	0	-	0	0	0	0	0	104	654d881	none	0	-
+M097	gov	FAIL	0	-	0	0	0	0	0	24	654d881	none	0	-
+M097	ics20	FAIL	0	-	0	0	0	0	0	25	654d881	none	0	-
+M097	slashing	FAIL	0	-	0	0	0	0	0	13	654d881	none	0	-
+M097	staking	FAIL	0	-	0	0	0	0	0	20	654d881	none	0	-
+M097	werc20	FAIL	0	-	0	0	0	0	0	21	654d881	none	0	-

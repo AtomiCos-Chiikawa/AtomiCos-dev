@@ -8,7 +8,8 @@ stats (what the checker examined):
   R1      candidates: state keys 0, events 5; discarded (no judged top-level commit followed) 0
   R1      commits 10: top-level judged 8 (with candidates 1); not judged: nested 2, failed 0, no usable state 0; unparsable 0
   R2-A    balance ops 159: add/sub checked 159 (non-zero amount 9); not checked: set 0, other op 0, unparsable 0
-  R2-W    comparisons enter 46, exit 49 (sync points enter 24, exit 24); not compared: blocked 48, unparsable 0; failed exits 0, no usable state 0
+  R2-W    comparisons enter 46, exit 49 (sync points enter 24, exit 24); not compared: blocked 54, unparsable 0; failed exits 0, no usable state 0
   R3      exits 24: evaluated R3-D 2, R3-U 0, R3-C 20; method not covered 2
   R3      skipped: call exited with error 0, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
   A1      comparisons 10, unparsable 0
+  O6      commits 10: judged 10 (R2-W comparisons 21, R1-C 8); not judged: failed 0, possibly refused write-back 0, no usable state 0

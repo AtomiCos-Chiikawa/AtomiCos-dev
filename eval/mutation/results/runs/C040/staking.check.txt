@@ -1,0 +1,33 @@
+records: 14030, findings: 3
+  violation R3-D         3
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 1088, O2.exit 1088, O4.balance 6948, O5.revert 1592, O5.snapshot 3171, O6.commit 143; unknown point 0
+  trace   statedbs 2129, records with state.error 0, unparsable numbers 0
+  O2      enters 1088, exits 1088, enters never closed 0
+  R1      reverts 1592: compared 1592, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 143: top-level judged 143 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 6948: add/sub checked 6948 (non-zero amount 698); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 1678, exit 1377 (sync points enter 1088, exit 818); not compared: blocked 1906, unparsable 0; failed exits 270, no usable state 0
+  R3      exits 1088: evaluated R3-D 580, R3-U 60, R3-C 0; method not covered 178
+  R3      skipped: call exited with error 270, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 143, unparsable 0
+
+[VIOLATION] R3-D  (seq 14028 db2129 O2.exit call 1088)
+  subject:  bank:0x99cb356ac853707438d710b3fdcb17a77f796e99
+  expected: Δbank(delegator) = -1000000000000000000 + auto-withdrawn rewards 0 = -1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegator balance does not match the delegated amount
+
+[VIOLATION] R3-D  (seq 14028 db2129 O2.exit call 1088)
+  subject:  deleg:0x99cb356ac853707438d710b3fdcb17a77f796e99|cosmosvaloper1d4jrmglp8lckla2w6d4vealmvvqma7hsv8qkmc
+  expected: Δdelegation tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; delegation did not grow by the delegated amount
+
+[VIOLATION] R3-D  (seq 14028 db2129 O2.exit call 1088)
+  subject:  valTokens:cosmosvaloper1d4jrmglp8lckla2w6d4vealmvvqma7hsv8qkmc
+  expected: Δvalidator tokens = +1000000000000000000
+  actual:   Δ = 0
+  detail:   0x…0800.delegate returned success; validator tokens did not grow by the delegated amount

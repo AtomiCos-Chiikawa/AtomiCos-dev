@@ -1,0 +1,6 @@
+C218	distribution	PASS	0	-	0	0	0	0	0	47	b04c5c9	none	0	-
+C218	erc20	PASS	0	-	0	0	0	0	0	76	b04c5c9	none	0	-
+C218	gov	PASS	0	-	0	0	0	0	0	22	b04c5c9	none	0	-
+C218	ics20	PASS	0	-	0	0	0	0	0	20	b04c5c9	none	0	-
+C218	staking	FAIL	8	R2-W	0	0	14	8	8	56	b04c5c9	violation	0	-
+C218	werc20	PASS	0	-	0	0	0	0	0	23	b04c5c9	none	0	-

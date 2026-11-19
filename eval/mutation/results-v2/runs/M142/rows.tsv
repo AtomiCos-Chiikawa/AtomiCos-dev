@@ -1,0 +1,8 @@
+M142	bank	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+M142	distribution	PASS	0	-	0	0	0	0	0	23	b04c5c9	none	0	-
+M142	erc20	PASS	0	-	0	0	0	0	0	55	b04c5c9	none	0	-
+M142	gov	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+M142	ics20	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-
+M142	slashing	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M142	staking	PASS	0	-	0	0	0	0	0	26	b04c5c9	none	0	-
+M142	werc20	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-

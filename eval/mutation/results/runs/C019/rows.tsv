@@ -1,0 +1,8 @@
+C019	bank	PASS	0	-	0	0	0	0	0	11	654d881	none	0	-
+C019	distribution	PASS	0	-	0	0	0	0	0	23	654d881	none	0	-
+C019	erc20	PASS	0	-	0	0	0	0	0	59	654d881	none	0	-
+C019	gov	PASS	0	-	0	0	0	0	0	15	654d881	none	0	-
+C019	ics20	PASS	0	-	0	0	0	0	0	10	654d881	none	0	-
+C019	slashing	PASS	0	-	0	0	0	0	0	9	654d881	none	0	-
+C019	staking	PASS	0	-	0	0	0	0	0	27	654d881	none	0	-
+C019	werc20	PASS	0	-	0	0	0	0	0	14	654d881	none	0	-

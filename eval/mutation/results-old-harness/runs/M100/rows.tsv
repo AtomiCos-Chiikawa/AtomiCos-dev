@@ -1,0 +1,6 @@
+M100	distribution	PASS	0	-	0	0	0	0	0	134
+M100	erc20	FAIL	0	-	0	0	0	0	0	179
+M100	gov	PASS	0	-	0	0	0	0	0	85
+M100	ics20	PASS	0	-	0	0	0	0	0	23
+M100	staking	FAIL	0	-	0	0	0	0	0	61
+M100	werc20	FAIL	0	-	0	0	0	0	0	114

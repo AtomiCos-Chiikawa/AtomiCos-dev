@@ -1,0 +1,49 @@
+records: 576, findings: 3
+  violation R2-A         3
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 36, O2.exit 36, O4.balance 270, O5.revert 58, O5.snapshot 132, O6.commit 44; unknown point 0
+  trace   statedbs 132, records with state.error 0, unparsable numbers 0
+  O2      enters 36, exits 36, enters never closed 0
+  R1      reverts 58: compared 58, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 44: top-level judged 44 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 270: add/sub checked 270 (non-zero amount 7); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 37, exit 32 (sync points enter 36, exit 29); not compared: blocked 94, unparsable 0; failed exits 7, no usable state 0
+  R3      exits 36: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 29
+  R3      skipped: call exited with error 7, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 44, unparsable 0
+  O6      commits 44: judged 44 (R2-W comparisons 52, R1-C 36); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R2-A  (seq 175 db49 O4.balance call 1)
+  subject:  0xb3dafca4582598ba80017c97eb27abc6a0e2f3cc
+  expected: sub amount <= current balance 0
+  actual:   sub 1 from 0 (unchecked result would be 2^256 - 1)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 203 db53 O4.balance call 5)
+  subject:  0xa09617cabf87e9da2f2bffced3b744a9cf091471
+  expected: sub amount <= current balance 0
+  actual:   sub 1 from 0 (unchecked result would be 2^256 - 1)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
+
+[VIOLATION] R2-A  (seq 210 db54 O4.balance call 6)
+  subject:  0xa09617cabf87e9da2f2bffced3b744a9cf091471
+  expected: sub amount <= current balance 0
+  actual:   sub 1 from 0 (unchecked result would be 2^256 - 1)
+  detail:   balance underflow
+  outcome:  applied
+  at x/vm/statedb/statedb.go:509 statedb.(*StateDB).SubBalance
+  at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
+  at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
+  at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction

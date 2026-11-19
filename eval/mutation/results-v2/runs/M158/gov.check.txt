@@ -1,0 +1,149 @@
+records: 574, findings: 22
+  violation R1-C         14
+  violation R2-W         8
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 35, O2.exit 35, O4.balance 270, O5.revert 60, O5.snapshot 132, O6.commit 42; unknown point 0
+  trace   statedbs 130, records with state.error 0, unparsable numbers 0
+  O2      enters 35, exits 35, enters never closed 0
+  R1      reverts 60: compared 60, with candidates 0, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 0; discarded (no judged top-level commit followed) 0
+  R1      commits 42: top-level judged 42 (with candidates 0); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 270: add/sub checked 270 (non-zero amount 9); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 37, exit 30 (sync points enter 35, exit 26); not compared: blocked 61, unparsable 0; failed exits 9, no usable state 0
+  R3      exits 35: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 26
+  R3      skipped: call exited with error 9, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 42, unparsable 0
+  O6      commits 42: judged 42 (R2-W comparisons 76, R1-C 35); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R2-W  (seq 174 db47 O6.commit)
+  subject:  0x13b959568a6a7fadbc1ba4dfdfd96a9a85ac3603
+  expected: write-back 99999997482634119173550 == bank reference
+  actual:   write-back 99999997482634119172550 (StateDB balance 99999997482634119172550, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 174 db47 O6.commit)
+  subject:  0x5314ee48c5580664194d893ff90aa514f4b2caf6
+  expected: write-back 0 == bank reference
+  actual:   write-back 900 (StateDB balance 900, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 174 db47 O6.commit)
+  subject:  committed events
+  expected: the 7 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   7 missing (committed 0): coin_received:ed58f2bb2e80, coin_spent:ced5410fe2ac, message:f22a889c2c13, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R2-W  (seq 186 db49 O6.commit)
+  subject:  0x2b997e6f58123ffea3d5a4a53a695b39d6ba9653
+  expected: write-back 99999999846874999800000 == bank reference
+  actual:   write-back 99999999846874999799999 (StateDB balance 99999999846874999799999, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 186 db49 O6.commit)
+  subject:  committed events
+  expected: the 6 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   6 missing (committed 0): coin_received:b0bd69fda5b5, coin_spent:b248fc8965f0, message:c6592dd481bd, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R2-W  (seq 214 db53 O6.commit)
+  subject:  0xe8ac50c30527fcfa9d31738b66689927c2bda780
+  expected: write-back 99999999846874999800000 == bank reference
+  actual:   write-back 99999999846874999799999 (StateDB balance 99999999846874999799999, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 214 db53 O6.commit)
+  subject:  committed events
+  expected: the 6 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   6 missing (committed 0): coin_received:b0bd69fda5b5, coin_spent:397290d2e570, message:0d126c254fbb, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R2-W  (seq 229 db55 O6.commit)
+  subject:  0x1d968a4738b20376b0803b989d1a456a882a7a93
+  expected: write-back 100000000000000000000000 == bank reference
+  actual:   write-back 100000000000000000000050 (StateDB balance 100000000000000000000050, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 229 db55 O6.commit)
+  subject:  0xb4844d22aed9c271d99ef7ebcad3aab56f1bebe3
+  expected: write-back 99999999846874999800000 == bank reference
+  actual:   write-back 99999999846874999800050 (StateDB balance 99999999846874999800050, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 229 db55 O6.commit)
+  subject:  committed events
+  expected: the 9 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   9 missing (committed 0): cancel_proposal:e869b2c728ab, coin_received:22502344afa6, coin_received:f2cabdb2f780, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R2-W  (seq 237 db56 O6.commit)
+  subject:  0x59cd983e8bc64479f4ef2bf475edfdd8aaadc39b
+  expected: write-back 99999999562500000000000 == bank reference
+  actual:   write-back 99999999562500000000050 (StateDB balance 99999999562500000000050, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R2-W  (seq 237 db56 O6.commit)
+  subject:  0xa835c8628f5be22f817c6e63284c92b70f6ab589
+  expected: write-back 100000000000000000000000 == bank reference
+  actual:   write-back 100000000000000000000050 (StateDB balance 100000000000000000000050, mode balance+locked_snapshot=bank_total)
+  detail:   the committed bank balance differs from what the StateDB wrote back
+
+[VIOLATION] R1-C  (seq 237 db56 O6.commit)
+  subject:  committed events
+  expected: the 9 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   9 missing (committed 0): cancel_proposal:398b2d7bbbe8, coin_received:93c37083ceb5, coin_received:b32f79aa673d, …
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 255 db59 O6.commit)
+  subject:  committed events
+  expected: the 1 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   1 missing (committed 0): proposal_vote:248a2aa6abc4
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 273 db62 O6.commit)
+  subject:  committed events
+  expected: the 1 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   1 missing (committed 0): proposal_vote:fd2a3c877160
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 279 db63 O6.commit)
+  subject:  committed events
+  expected: the 1 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   1 missing (committed 0): proposal_vote:6acaf0acdbe6
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 292 db65 O6.commit)
+  subject:  committed events
+  expected: the 1 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   1 missing (committed 0): proposal_vote:5ecdede21a2d
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 305 db67 O6.commit)
+  subject:  committed events
+  expected: the 1 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   1 missing (committed 0): proposal_vote:0feef3b761e6
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 311 db68 O6.commit)
+  subject:  committed events
+  expected: the 1 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   1 missing (committed 0): proposal_vote:d571c2c9f8a7
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 317 db69 O6.commit)
+  subject:  committed events
+  expected: the 1 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   1 missing (committed 0): proposal_vote:c527ef9ad0ae
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 341 db73 O6.commit)
+  subject:  committed events
+  expected: the 1 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   1 missing (committed 0): proposal_vote:f5a399989ece
+  detail:   events of successful precompile calls were dropped at commit
+
+[VIOLATION] R1-C  (seq 378 db79 O6.commit)
+  subject:  committed events
+  expected: the 1 event(s) of the final precompile cache, minus copies left by reverts, are in the committed events
+  actual:   1 missing (committed 0): proposal_vote:15e068c1a17d
+  detail:   events of successful precompile calls were dropped at commit

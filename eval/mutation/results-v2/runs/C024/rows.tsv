@@ -1,0 +1,8 @@
+C024	bank	PASS	0	-	0	0	0	0	0	20	b04c5c9	none	0	-
+C024	distribution	PASS	0	-	0	0	0	0	0	42	b04c5c9	none	0	-
+C024	erc20	PASS	0	-	0	0	0	0	0	100	b04c5c9	none	0	-
+C024	gov	PASS	0	-	0	0	0	0	0	23	b04c5c9	none	0	-
+C024	ics20	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+C024	slashing	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-
+C024	staking	PASS	0	-	0	0	0	0	0	49	b04c5c9	none	0	-
+C024	werc20	PASS	0	-	0	0	0	0	0	19	b04c5c9	none	0	-

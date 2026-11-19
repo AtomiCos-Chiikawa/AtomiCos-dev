@@ -1,0 +1,8 @@
+M140	bank	PASS	0	-	0	0	0	0	0	13	654d881	none	0	-
+M140	distribution	PASS	0	-	0	0	0	0	0	24	654d881	none	0	-
+M140	erc20	PASS	0	-	0	0	0	0	0	57	654d881	none	0	-
+M140	gov	PASS	0	-	0	0	0	0	0	16	654d881	none	0	-
+M140	ics20	PASS	0	-	0	0	0	0	0	8	654d881	none	0	-
+M140	slashing	PASS	0	-	0	0	0	0	0	6	654d881	none	0	-
+M140	staking	PASS	0	-	0	0	0	0	0	30	654d881	none	0	-
+M140	werc20	PASS	0	-	0	0	0	0	0	13	654d881	none	0	-

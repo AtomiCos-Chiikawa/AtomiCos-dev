@@ -1,0 +1,8 @@
+M141	bank	PASS	0	-	0	0	0	0	0	23	b04c5c9	none	0	-
+M141	distribution	PASS	0	-	0	0	0	0	0	26	b04c5c9	none	0	-
+M141	erc20	PASS	0	-	0	0	0	0	0	57	b04c5c9	none	0	-
+M141	gov	PASS	0	-	0	0	0	0	0	16	b04c5c9	none	0	-
+M141	ics20	PASS	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
+M141	slashing	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-
+M141	staking	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+M141	werc20	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-

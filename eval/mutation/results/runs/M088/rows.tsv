@@ -1,0 +1,8 @@
+M088	bank	PASS	0	-	0	0	0	0	0	13	654d881	none	0	-
+M088	distribution	PASS	0	-	0	0	0	0	0	25	654d881	none	0	-
+M088	erc20	PASS	0	-	0	0	0	0	0	60	654d881	none	0	-
+M088	gov	PASS	0	-	0	0	0	0	0	16	654d881	none	0	-
+M088	ics20	PASS	0	-	0	0	0	0	0	9	654d881	none	0	-
+M088	slashing	PASS	0	-	0	0	0	0	0	8	654d881	none	0	-
+M088	staking	PASS	0	-	0	0	0	0	0	28	654d881	none	0	-
+M088	werc20	PASS	0	-	0	0	0	0	0	11	654d881	none	0	-

@@ -1,0 +1,8 @@
+C155	bank	PASS	0	-	0	0	0	0	0	12	654d881	none	0	-
+C155	distribution	PASS	0	-	0	0	0	0	0	20	654d881	none	0	-
+C155	erc20	PASS	0	-	0	0	0	0	0	56	654d881	none	0	-
+C155	gov	PASS	0	-	0	0	0	0	0	15	654d881	none	0	-
+C155	ics20	PASS	0	-	0	0	0	0	0	9	654d881	none	0	-
+C155	slashing	PASS	0	-	0	0	0	0	0	8	654d881	none	0	-
+C155	staking	FAIL	0	-	0	0	0	0	0	17	654d881	none	0	-
+C155	werc20	PASS	0	-	0	0	0	0	0	14	654d881	none	0	-

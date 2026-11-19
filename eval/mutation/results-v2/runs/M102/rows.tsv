@@ -1,0 +1,6 @@
+M102	distribution	PASS	0	-	0	0	0	0	0	46	b04c5c9	none	0	-
+M102	erc20	FAIL	0	-	0	0	0	0	0	98	b04c5c9	none	0	-
+M102	gov	PASS	0	-	0	0	0	0	0	26	b04c5c9	none	0	-
+M102	ics20	PASS	0	-	0	0	0	0	0	26	b04c5c9	none	0	-
+M102	staking	PASS	0	-	0	0	0	0	0	48	b04c5c9	none	0	-
+M102	werc20	PASS	0	-	0	0	0	0	0	20	b04c5c9	none	0	-

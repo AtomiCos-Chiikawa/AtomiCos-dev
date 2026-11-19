@@ -1,0 +1,8 @@
+C177	bank	PASS	0	-	0	0	0	0	0	13	b04c5c9	none	0	-
+C177	distribution	PASS	0	-	0	0	0	0	0	23	b04c5c9	none	0	-
+C177	erc20	PASS	0	-	0	0	0	0	0	63	b04c5c9	none	0	-
+C177	gov	PASS	0	-	0	0	0	0	0	15	b04c5c9	none	0	-
+C177	ics20	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+C177	slashing	PASS	0	-	0	0	0	0	0	8	b04c5c9	none	0	-
+C177	staking	PASS	0	-	0	0	0	0	0	29	b04c5c9	none	0	-
+C177	werc20	PASS	0	-	0	0	0	0	0	12	b04c5c9	none	0	-

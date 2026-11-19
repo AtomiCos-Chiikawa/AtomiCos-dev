@@ -53,6 +53,7 @@
       "noState": 0,
       "enter": 6,
       "exit": 6,
+      "commit": 2,
       "blocked": 6,
       "unparsable": 0
     },
@@ -76,6 +77,14 @@
     "a1": {
       "compared": 2,
       "unparsable": 0
+    },
+    "o6": {
+      "commits": 2,
+      "failed": 1,
+      "maybeFailed": 0,
+      "noState": 0,
+      "judged": 1,
+      "eventsJudged": 0
     }
   },
   "findings": [
@@ -86,7 +95,7 @@
       "seq": 87,
       "db": "db22",
       "call": 2,
-      "subject": "0x90aa33ce320326a3165b75eb4267d987aae667f6",
+      "subject": "0x99f47fa5ff29d051b2156509b0cd247b06313dd9",
       "expected": "sub amount \u003c= current balance 1000000000000000000",
       "actual": "sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)",
       "detail": "balance underflow",
@@ -107,7 +116,7 @@
       "seq": 88,
       "db": "db22",
       "call": 2,
-      "subject": "0x90aa33ce320326a3165b75eb4267d987aae667f6",
+      "subject": "0x99f47fa5ff29d051b2156509b0cd247b06313dd9",
       "expected": "write-back 2000000000000000000 == bank reference",
       "actual": "write-back 115792089237316195423570985008687907853269984665640564039459584007913129639936 (StateDB balance 115792089237316195423570985008687907853269984665640564039455584007913129639936, mode balance+locked_snapshot=bank_total)",
       "detail": "the StateDB balance would not reconcile with the bank at commit"
@@ -119,7 +128,7 @@
       "seq": 96,
       "db": "db23",
       "call": 3,
-      "subject": "0x90aa33ce320326a3165b75eb4267d987aae667f6",
+      "subject": "0x99f47fa5ff29d051b2156509b0cd247b06313dd9",
       "expected": "sub amount \u003c= current balance 1000000000000000000",
       "actual": "sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)",
       "detail": "balance underflow",
@@ -140,7 +149,7 @@
       "seq": 97,
       "db": "db23",
       "call": 3,
-      "subject": "0x90aa33ce320326a3165b75eb4267d987aae667f6",
+      "subject": "0x99f47fa5ff29d051b2156509b0cd247b06313dd9",
       "expected": "write-back 2000000000000000000 == bank reference",
       "actual": "write-back 115792089237316195423570985008687907853269984665640564039459584007913129639936 (StateDB balance 115792089237316195423570985008687907853269984665640564039455584007913129639936, mode balance+locked_snapshot=bank_total)",
       "detail": "the StateDB balance would not reconcile with the bank at commit"

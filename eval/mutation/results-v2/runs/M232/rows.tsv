@@ -1,0 +1,8 @@
+M232	bank	FAIL	0	-	0	0	0	0	0	10	b04c5c9	notrace	0	-
+M232	distribution	FAIL	0	-	0	0	0	0	0	9	b04c5c9	notrace	0	-
+M232	erc20	FAIL	0	-	0	0	0	0	0	18	b04c5c9	notrace	0	-
+M232	gov	FAIL	0	-	0	0	0	0	0	11	b04c5c9	notrace	0	-
+M232	ics20	FAIL	0	-	0	0	0	0	0	8	b04c5c9	notrace	0	-
+M232	slashing	FAIL	0	-	0	0	0	0	0	9	b04c5c9	notrace	0	-
+M232	staking	FAIL	0	-	0	0	0	0	0	11	b04c5c9	notrace	0	-
+M232	werc20	FAIL	0	-	0	0	0	0	0	12	b04c5c9	notrace	0	-

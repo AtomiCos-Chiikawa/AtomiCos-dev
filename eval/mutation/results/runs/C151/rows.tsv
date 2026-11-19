@@ -1,0 +1,8 @@
+C151	bank	PASS	0	-	0	0	0	0	0	14	654d881	none	0	-
+C151	distribution	PASS	0	-	0	0	0	0	0	35	654d881	none	0	-
+C151	erc20	PASS	0	-	0	0	0	0	0	73	654d881	none	0	-
+C151	gov	PASS	0	-	0	0	0	0	0	23	654d881	none	0	-
+C151	ics20	PASS	0	-	0	0	0	0	0	12	654d881	none	0	-
+C151	slashing	PASS	0	-	0	0	0	0	0	10	654d881	none	0	-
+C151	staking	PASS	0	-	0	0	0	0	0	31	654d881	none	0	-
+C151	werc20	PASS	0	-	0	0	0	0	0	20	654d881	none	0	-

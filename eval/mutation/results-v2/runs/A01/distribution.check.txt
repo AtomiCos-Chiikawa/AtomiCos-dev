@@ -1,0 +1,28 @@
+records: 14223, findings: 2
+  violation R1-E         1
+  violation R1-S         1
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 1071, O2.exit 1071, O4.balance 7097, O5.revert 1400, O5.snapshot 3405, O6.commit 179; unknown point 0
+  trace   statedbs 2262, records with state.error 0, unparsable numbers 0
+  O2      enters 1071, exits 1071, enters never closed 0
+  R1      reverts 1400: compared 1400, with candidates 469, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 575, events 1374; discarded (no judged top-level commit followed) 1947
+  R1      commits 179: top-level judged 179 (with candidates 1); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 7097: add/sub checked 7097 (non-zero amount 959); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 1967, exit 1563 (sync points enter 1071, exit 793); not compared: blocked 1986, unparsable 0; failed exits 278, no usable state 0
+  R3      exits 1071: evaluated R3-D 136, R3-U 0, R3-C 184; method not covered 473
+  R3      skipped: call exited with error 278, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 179, unparsable 0
+  O6      commits 179: judged 179 (R2-W comparisons 344, R1-C 130); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R1-S  (seq 224 db48 O6.commit)
+  subject:  bank:0x93354845030274cd4bf1686abd60ab28ec52e1a7
+  expected: 1020708140209939176 (value before the reverted frame)
+  actual:   1004171145451068409 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 223)
+
+[VIOLATION] R1-E  (seq 224 db48 O6.commit)
+  subject:  event coin_spent:e70bfcf2b416
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 223)

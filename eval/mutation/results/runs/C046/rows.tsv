@@ -1,0 +1,7 @@
+C046	bank	PASS	0	-	0	0	0	0	0	13	654d881	none	0	-
+C046	distribution	FAIL	39	R2-W	0	0	39	39	39	13	654d881	violation	0	-
+C046	erc20	FAIL	8	R2-W	0	0	8	8	8	70	654d881	violation	0	-
+C046	gov	FAIL	6	R2-W	0	0	6	6	6	15	654d881	violation	0	-
+C046	ics20	FAIL	5	R2-W	0	0	5	5	5	10	654d881	violation	0	-
+C046	staking	FAIL	80	R2-W	0	0	80	80	80	22	654d881	violation	0	-
+C046	werc20	FAIL	18	R2-W	0	0	18	18	18	14	654d881	violation	0	-

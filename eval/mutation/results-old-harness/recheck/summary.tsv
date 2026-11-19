@@ -1,0 +1,5 @@
+id	suite	run	test	checker
+CLEAN	staking	1	92 Passed | 0 Failed	none
+C028	staking	1	92 Passed | 0 Failed	R2-W=1
+A04	staking	1	91 Passed | 1 Failed	none
+A05	staking	1	57 Passed | 1 Failed	none

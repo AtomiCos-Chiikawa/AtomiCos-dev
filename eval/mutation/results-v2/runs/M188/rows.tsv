@@ -1,0 +1,7 @@
+M188	bank	PASS	0	-	0	0	0	0	0	24	b04c5c9	none	0	-
+M188	distribution	PASS	0	-	0	0	0	0	0	28	b04c5c9	none	0	-
+M188	erc20	PASS	0	-	0	0	0	0	0	64	b04c5c9	none	0	-
+M188	gov	PASS	0	-	0	0	0	0	0	17	b04c5c9	none	0	-
+M188	ics20	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M188	slashing	PASS	0	-	0	0	0	0	0	10	b04c5c9	none	0	-
+M188	staking	PASS	0	-	0	0	0	0	0	26	b04c5c9	none	0	-

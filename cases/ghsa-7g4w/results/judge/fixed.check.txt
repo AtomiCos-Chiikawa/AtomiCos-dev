@@ -13,24 +13,25 @@ stats (what the checker examined):
   R3      exits 3: evaluated R3-D 1, R3-U 0, R3-C 0; method not covered 0
   R3      skipped: call exited with error 2, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
   A1      comparisons 1, unparsable 0
+  O6      commits 1: judged 1 (R2-W comparisons 2, R1-C 0); not judged: failed 0, possibly refused write-back 0, no usable state 0
 
 [GUARDED] R2-A  (seq 87 db22 O4.balance call 2)
-  subject:  0x96297a9e43de0652591d8c65a8be18db6004a188
+  subject:  0xc82d3ff487d79ef4fbe9e3f9d9babaa27a1d813c
   expected: sub amount <= current balance 1000000000000000000
   actual:   sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)
   detail:   balance underflow
-  outcome:  rejected (panic: state balance underflow for 0x96297A9E43dE0652591d8C65A8Be18db6004a188: have=1000000000000000000 sub=3000000000000000000)
+  outcome:  rejected (panic: state balance underflow for 0xC82d3fF487D79EF4fBe9e3F9d9babAa27A1d813C: have=1000000000000000000 sub=3000000000000000000)
   at x/vm/statedb/statedb.go:506 statedb.(*StateDB).SubBalance
   at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
   at precompiles/common/precompile.go:131 common.Precompile.runNativeAction
   at precompiles/common/precompile.go:48 common.Precompile.RunNativeAction
 
 [GUARDED] R2-A  (seq 96 db23 O4.balance call 3)
-  subject:  0x96297a9e43de0652591d8c65a8be18db6004a188
+  subject:  0xc82d3ff487d79ef4fbe9e3f9d9babaa27a1d813c
   expected: sub amount <= current balance 1000000000000000000
   actual:   sub 3000000000000000000 from 1000000000000000000 (unchecked result would be 2^256 - 2000000000000000000)
   detail:   balance underflow
-  outcome:  rejected (panic: state balance underflow for 0x96297A9E43dE0652591d8C65A8Be18db6004a188: have=1000000000000000000 sub=3000000000000000000)
+  outcome:  rejected (panic: state balance underflow for 0xC82d3fF487D79EF4fBe9e3F9d9babAa27A1d813C: have=1000000000000000000 sub=3000000000000000000)
   at x/vm/statedb/statedb.go:506 statedb.(*StateDB).SubBalance
   at precompiles/common/balance_handler.go:89 common.(*BalanceHandler).AfterBalanceChange
   at precompiles/common/precompile.go:131 common.Precompile.runNativeAction

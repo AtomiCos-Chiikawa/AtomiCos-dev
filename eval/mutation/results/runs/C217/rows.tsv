@@ -1,0 +1,6 @@
+C217	distribution	PASS	0	-	0	0	0	0	0	39	654d881	none	0	-
+C217	erc20	PASS	2	R2-W	0	0	2	2	2	70	654d881	violation	0	-
+C217	gov	FAIL	1	R2-W	0	0	1	1	1	13	654d881	violation	0	-
+C217	ics20	PASS	0	-	0	0	0	0	0	11	654d881	none	0	-
+C217	staking	FAIL	43	R2-W	0	0	43	43	43	17	654d881	violation	0	-
+C217	werc20	PASS	0	-	0	0	0	0	0	16	654d881	none	0	-

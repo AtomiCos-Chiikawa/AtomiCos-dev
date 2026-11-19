@@ -1,0 +1,55 @@
+records: 143, findings: 8
+  violation R1-E         8
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 8, O2.exit 8, O4.balance 72, O5.revert 7, O5.snapshot 31, O6.commit 17; unknown point 0
+  trace   statedbs 17, records with state.error 0, unparsable numbers 0
+  O2      enters 8, exits 8, enters never closed 0
+  R1      reverts 7: compared 7, with candidates 1, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 0, events 8; discarded (no judged top-level commit followed) 0
+  R1      commits 17: top-level judged 17 (with candidates 1); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 72: add/sub checked 72 (non-zero amount 20); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 16, exit 15 (sync points enter 8, exit 5); not compared: blocked 13, unparsable 0; failed exits 3, no usable state 0
+  R3      exits 8: evaluated R3-D 0, R3-U 0, R3-C 0; method not covered 5
+  R3      skipped: call exited with error 3, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 17, unparsable 0
+
+[VIOLATION] R1-E  (seq 143 db17 O6.commit)
+  subject:  event coin_received:60a579a7a515
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 139)
+
+[VIOLATION] R1-E  (seq 143 db17 O6.commit)
+  subject:  event coin_spent:5344c1884a24
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 139)
+
+[VIOLATION] R1-E  (seq 143 db17 O6.commit)
+  subject:  event ibc_transfer:41946559859f
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 139)
+
+[VIOLATION] R1-E  (seq 143 db17 O6.commit)
+  subject:  event message:5801ca41fccb
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 139)
+
+[VIOLATION] R1-E  (seq 143 db17 O6.commit)
+  subject:  event message:7ce0f3539fc8
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 139)
+
+[VIOLATION] R1-E  (seq 143 db17 O6.commit)
+  subject:  event message:aeef529083f2
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 139)
+
+[VIOLATION] R1-E  (seq 143 db17 O6.commit)
+  subject:  event send_packet:6e3779db5ce8
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 139)
+
+[VIOLATION] R1-E  (seq 143 db17 O6.commit)
+  subject:  event transfer:fc4326eae6b3
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 139)

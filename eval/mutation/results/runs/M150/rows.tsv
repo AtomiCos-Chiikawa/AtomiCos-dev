@@ -1,0 +1,8 @@
+M150	bank	PASS	0	-	0	0	0	0	0	10	654d881	none	0	-
+M150	distribution	PASS	0	-	0	0	0	0	0	16	654d881	none	0	-
+M150	erc20	PASS	0	-	0	0	0	0	0	50	654d881	none	0	-
+M150	gov	PASS	0	-	0	0	0	0	0	18	654d881	none	0	-
+M150	ics20	PASS	0	-	0	0	0	0	0	8	654d881	none	0	-
+M150	slashing	PASS	0	-	0	0	0	0	0	8	654d881	none	0	-
+M150	staking	PASS	0	-	0	0	0	0	0	27	654d881	none	0	-
+M150	werc20	PASS	0	-	0	0	0	0	0	12	654d881	none	0	-

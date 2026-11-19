@@ -1,0 +1,6 @@
+M231	distribution	PASS	0	-	0	0	0	0	0	48	b04c5c9	none	0	-
+M231	erc20	FAIL	0	-	0	0	0	0	0	86	b04c5c9	none	0	-
+M231	gov	PASS	0	-	0	0	0	0	0	27	b04c5c9	none	0	-
+M231	ics20	PASS	0	-	0	0	0	0	0	18	b04c5c9	none	0	-
+M231	staking	FAIL	0	-	0	0	0	0	0	34	b04c5c9	none	0	-
+M231	werc20	FAIL	0	-	0	0	0	0	0	21	b04c5c9	none	0	-

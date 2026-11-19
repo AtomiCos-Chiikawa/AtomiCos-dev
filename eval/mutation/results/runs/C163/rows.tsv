@@ -1,0 +1,8 @@
+C163	bank	PASS	0	-	0	0	0	0	0	25	654d881	none	0	-
+C163	distribution	PASS	0	-	0	0	0	0	0	24	654d881	none	0	-
+C163	erc20	PASS	0	-	0	0	0	0	0	65	654d881	none	0	-
+C163	gov	PASS	0	-	0	0	0	0	0	15	654d881	none	0	-
+C163	ics20	PASS	0	-	0	0	0	0	0	12	654d881	none	0	-
+C163	slashing	PASS	0	-	0	0	0	0	0	8	654d881	none	0	-
+C163	staking	PASS	0	-	0	0	0	0	0	28	654d881	none	0	-
+C163	werc20	PASS	0	-	0	0	0	0	0	15	654d881	none	0	-

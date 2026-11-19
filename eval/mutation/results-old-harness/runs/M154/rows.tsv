@@ -1,0 +1,8 @@
+M154	bank	PASS	0	-	0	0	0	0	0	36
+M154	distribution	MEMOUT	0	-	0	0	0	0	0	198
+M154	erc20	FAIL	0	-	0	0	0	0	0	221
+M154	gov	FAIL	0	-	0	0	0	0	0	100
+M154	ics20	PASS	0	-	0	0	0	0	0	70
+M154	slashing	PASS	0	-	0	0	0	0	0	45
+M154	staking	FAIL	0	-	0	0	0	0	0	76
+M154	werc20	PASS	0	-	0	0	0	0	0	90

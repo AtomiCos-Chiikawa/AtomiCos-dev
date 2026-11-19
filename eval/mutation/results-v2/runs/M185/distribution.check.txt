@@ -1,0 +1,28 @@
+records: 13689, findings: 2
+  violation R1-E         1
+  violation R1-S         1
+verdict: violation
+stats (what the checker examined):
+  points  O2.enter 1018, O2.exit 1018, O4.balance 6869, O5.revert 1348, O5.snapshot 3268, O6.commit 168; unknown point 0
+  trace   statedbs 2115, records with state.error 0, unparsable numbers 0
+  O2      enters 1018, exits 1018, enters never closed 0
+  R1      reverts 1348: compared 1348, with candidates 494, no matching snapshot 0, no usable state 0
+  R1      candidates: state keys 977, events 1374; discarded (no judged top-level commit followed) 2347
+  R1      commits 168: top-level judged 168 (with candidates 2); not judged: nested 0, failed 0, no usable state 0; unparsable 0
+  R2-A    balance ops 6869: add/sub checked 6869 (non-zero amount 1007); not checked: set 0, other op 0, unparsable 0
+  R2-W    comparisons enter 1876, exit 1478 (sync points enter 1018, exit 742); not compared: blocked 1882, unparsable 0; failed exits 276, no usable state 0
+  R3      exits 1018: evaluated R3-D 132, R3-U 0, R3-C 184; method not covered 426
+  R3      skipped: call exited with error 276, missing arguments 0, unparsable number 0, no usable state 0, no matching enter 0; missing distribution module address 0
+  A1      comparisons 168, unparsable 0
+  O6      commits 168: judged 168 (R2-W comparisons 323, R1-C 123); not judged: failed 0, possibly refused write-back 0, no usable state 0
+
+[VIOLATION] R1-S  (seq 12742 db1936 O6.commit)
+  subject:  bank:0x93354845030274cd4bf1686abd60ab28ec52e1a7
+  expected: 1020708140209939176 (value before the reverted frame)
+  actual:   1004171145451068409 (committed; equals the value the reverted frame left behind)
+  detail:   SDK write of a reverted frame was committed (revert at seq 12741)
+
+[VIOLATION] R1-E  (seq 12742 db1936 O6.commit)
+  subject:  event coin_spent:e70bfcf2b416
+  expected: events of reverted frames are absent from the committed events
+  actual:   appears 1 time(s) in the committed events; 1 copy(ies) were left behind by reverts (first at seq 12741)

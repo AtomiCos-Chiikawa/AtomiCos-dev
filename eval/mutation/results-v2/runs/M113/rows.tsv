@@ -1,0 +1,8 @@
+M113	bank	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M113	distribution	PASS	0	-	0	0	0	0	0	22	b04c5c9	none	0	-
+M113	erc20	PASS	0	-	0	0	0	0	0	61	b04c5c9	none	0	-
+M113	gov	PASS	0	-	0	0	0	0	0	14	b04c5c9	none	0	-
+M113	ics20	PASS	0	-	0	0	0	0	0	9	b04c5c9	none	0	-
+M113	slashing	PASS	0	-	0	0	0	0	0	7	b04c5c9	none	0	-
+M113	staking	PASS	0	-	0	0	0	0	0	28	b04c5c9	none	0	-
+M113	werc20	PASS	0	-	0	0	0	0	0	11	b04c5c9	none	0	-
