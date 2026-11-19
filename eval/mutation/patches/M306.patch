@@ -1,0 +1,10 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -65,7 +65,6 @@
+ 		// Convert the validator operator address into an ValAddress
+ 		valAddr, err := sdk.ValAddressFromBech32(validator.OperatorAddress)
+ 		if err != nil {
+-			return nil, err
+ 		}
+ 
+ 		// Withdraw the rewards for each validator address

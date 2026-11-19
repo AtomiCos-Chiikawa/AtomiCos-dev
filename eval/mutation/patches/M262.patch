@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -381,7 +381,6 @@
+ 	// Reject deleting an account that has open staking positions.
+ 	hasPositions, err := k.hasStakingPositions(ctx, cosmosAddr)
+ 	if err != nil {
+-		return err
+ 	}
+ 	if hasPositions {
+ 		return errorsmod.Wrapf(errors.New("cannot self-destruct an account with staking positions"),

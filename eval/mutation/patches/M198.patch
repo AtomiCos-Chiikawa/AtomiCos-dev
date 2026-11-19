@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -125,7 +125,6 @@
+ func (s *stateObject) empty() bool {
+ 	return s.account.Nonce == 0 &&
+ 		s.account.Balance.Sign() == 0 &&
+-		types.IsEmptyCodeHash(s.account.CodeHash)
+ }
+ 
+ func (s *stateObject) markSelfDestructed() {

@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -185,7 +185,7 @@
+ 	}
+ 
+ 	// If the channel is in v1 format, check if channel exists and is open
+-	if channeltypes.IsChannelIDFormat(msg.SourceChannel) {
++	if false && (channeltypes.IsChannelIDFormat(msg.SourceChannel)) {
+ 		if err := p.validateV1TransferChannel(ctx, msg); err != nil {
+ 			return nil, err
+ 		}

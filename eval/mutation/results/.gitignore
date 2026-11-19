@@ -1,0 +1,3 @@
+# traces of mutant runs are large; runs.tsv and report.md are the committed results
+runs/**/*.trace.jsonl
+runs/**/*.trace.jsonl.gz

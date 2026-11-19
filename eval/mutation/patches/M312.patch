@@ -1,0 +1,10 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -103,7 +103,6 @@
+ 	}
+ 
+ 	if _, err = p.distributionMsgServer.SetWithdrawAddress(ctx, msg); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err = p.EmitSetWithdrawAddressEvent(ctx, stateDB, delegatorHexAddr, msg.WithdrawAddress); err != nil {

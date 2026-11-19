@@ -1,0 +1,10 @@
+--- a/precompiles/gov/tx.go
++++ b/precompiles/gov/tx.go
+@@ -135,7 +135,6 @@
+ 	}
+ 
+ 	if err = p.EmitVoteEvent(ctx, stateDB, voterHexAddr, msg.ProposalId, int32(msg.Option)); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	return method.Outputs.Pack(true)

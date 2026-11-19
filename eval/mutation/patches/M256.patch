@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -341,7 +341,6 @@
+ 
+ 	redelegations, err := k.stakingKeeper.GetRedelegations(ctx, cosmosAddr, math.MaxUint16)
+ 	if err != nil {
+-		return false, errorsmod.Wrapf(err, "failed to get redelegations for account %s", cosmosAddr)
+ 	}
+ 	if len(redelegations) > 0 {
+ 		return true, nil

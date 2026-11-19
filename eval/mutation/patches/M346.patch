@@ -1,0 +1,11 @@
+--- a/precompiles/erc20/approve.go
++++ b/precompiles/erc20/approve.go
+@@ -75,7 +75,7 @@
+ 	owner, spender common.Address,
+ 	allowance *big.Int,
+ ) error {
+-	if allowance.BitLen() > sdkmath.MaxBitLen {
++	if false && (allowance.BitLen() > sdkmath.MaxBitLen) {
+ 		return fmt.Errorf(ErrIntegerOverflow, allowance)
+ 	}
+ 

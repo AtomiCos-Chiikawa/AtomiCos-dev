@@ -1,0 +1,10 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -157,7 +157,6 @@
+ 	}
+ 
+ 	if err != nil {
+-		return nil, nil, err
+ 	}
+ 
+ 	// return error if trying to write to state during a read-only call

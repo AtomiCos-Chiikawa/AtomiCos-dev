@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -765,7 +765,6 @@
+ 			if obj.code != nil && obj.dirtyCode && len(obj.code) > 0 {
+ 				s.keeper.SetCode(ctx, obj.CodeHash(), obj.code)
+ 				if err := s.keeper.SetAccount(ctx, obj.Address(), obj.account); err != nil {
+-					return errorsmod.Wrap(err, "failed to set account before delete")
+ 				}
+ 			}
+ 			if err := s.keeper.DeleteAccount(ctx, obj.Address()); err != nil {

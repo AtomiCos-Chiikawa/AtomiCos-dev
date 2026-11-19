@@ -1,0 +1,10 @@
+--- a/precompiles/gov/tx.go
++++ b/precompiles/gov/tx.go
+@@ -48,7 +48,6 @@
+ 	}
+ 
+ 	if err = p.EmitSubmitProposalEvent(ctx, stateDB, proposerHexAddr, res.ProposalId); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	return method.Outputs.Pack(res.ProposalId)

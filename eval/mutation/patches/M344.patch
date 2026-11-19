@@ -1,0 +1,10 @@
+--- a/precompiles/erc20/approve.go
++++ b/precompiles/erc20/approve.go
+@@ -60,7 +60,6 @@
+ 	}
+ 
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err := p.EmitApprovalEvent(ctx, stateDB, owner, spender, amount); err != nil {

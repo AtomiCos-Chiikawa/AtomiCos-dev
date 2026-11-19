@@ -1,0 +1,11 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -187,7 +187,7 @@
+ 	}
+ 
+ 	msgSender := contract.Caller()
+-	if msgSender != depositorHexAddr {
++	if false && (msgSender != depositorHexAddr) {
+ 		return nil, fmt.Errorf(cmn.ErrRequesterIsNotMsgSender, msgSender.String(), depositorHexAddr.String())
+ 	}
+ 

@@ -1,0 +1,14 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -468,11 +468,6 @@
+ 		return fmt.Errorf("max calls to precompiles (%d) reached", types.MaxPrecompileCalls)
+ 	}
+ 
+-	s.journal.append(precompileCallChange{
+-		snapshot:                snapshot,
+-		prevEvents:              prevEvents,
+-		prevProcessedEventCount: s.processedEventsCount,
+-	})
+ 	s.precompileCallsCounter++
+ 	return nil
+ }

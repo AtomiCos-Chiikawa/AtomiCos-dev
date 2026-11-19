@@ -1,0 +1,13 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -735,7 +735,9 @@
+ 	if err := s.commitWithCtx(cacheCtx); err != nil {
+ 		return err
+ 	}
+-	writeCache()
++	if !(s.precompileCallsCounter > 1) {
++		writeCache()
++	}
+ 	return nil
+ }
+ 

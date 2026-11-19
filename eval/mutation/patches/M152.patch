@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -711,7 +711,6 @@
+ 
+ 	// Replay the journal to undo changes and remove invalidated snapshots
+ 	// Event restoration is handled by precompileCallChange.Revert()
+-	s.journal.Revert(s, snapshot)
+ 	s.validRevisions = s.validRevisions[:idx]
+ }
+ 

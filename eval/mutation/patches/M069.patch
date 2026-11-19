@@ -1,0 +1,11 @@
+--- a/precompiles/common/utils.go
++++ b/precompiles/common/utils.go
+@@ -16,7 +16,7 @@
+ // ParseAddress parses the address from the event attributes
+ func ParseAddress(event sdk.Event, key string) (sdk.AccAddress, error) {
+ 	attr, ok := event.GetAttribute(key)
+-	if !ok {
++	if false && (!ok) {
+ 		return sdk.AccAddress{}, fmt.Errorf("event %q missing attribute %q", event.Type, key)
+ 	}
+ 

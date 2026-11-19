@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/journal.go
++++ b/x/vm/statedb/journal.go
+@@ -278,7 +278,6 @@
+ 		(addr) at this point, since no storage adds can remain when come upon
+ 		a single (addr) change.
+ 	*/
+-	s.accessList.DeleteAddress(*ch.address)
+ }
+ 
+ func (ch accessListAddAccountChange) Dirtied() *common.Address {

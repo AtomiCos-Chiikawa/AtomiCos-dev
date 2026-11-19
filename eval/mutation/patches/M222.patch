@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -225,7 +225,6 @@
+ 		prevhash: s.CodeHash(),
+ 		prevcode: prevcode,
+ 	})
+-	s.setCode(codeHash, code)
+ }
+ 
+ func (s *stateObject) setCode(codeHash common.Hash, code []byte) {

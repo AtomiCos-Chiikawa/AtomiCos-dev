@@ -1,0 +1,11 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -157,7 +157,7 @@
+ 	}
+ 
+ 	msgSender := contract.Caller()
+-	if msgSender != validatorHexAddr {
++	if false && (msgSender != validatorHexAddr) {
+ 		return nil, fmt.Errorf(cmn.ErrRequesterIsNotMsgSender, msgSender.String(), validatorHexAddr.String())
+ 	}
+ 

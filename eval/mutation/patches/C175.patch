@@ -1,0 +1,13 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -774,7 +774,9 @@
+ 		} else {
+ 			if obj.code != nil && obj.dirtyCode {
+ 				if len(obj.code) == 0 {
+-					s.keeper.DeleteCode(ctx, obj.CodeHash())
++					if !(s.precompileCallsCounter > 1) {
++						s.keeper.DeleteCode(ctx, obj.CodeHash())
++					}
+ 				} else {
+ 					s.keeper.SetCode(ctx, obj.CodeHash(), obj.code)
+ 				}

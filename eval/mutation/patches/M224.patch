@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -240,7 +240,6 @@
+ 		account: &s.address,
+ 		prev:    s.account.Nonce,
+ 	})
+-	s.setNonce(nonce)
+ }
+ 
+ func (s *stateObject) setNonce(nonce uint64) {

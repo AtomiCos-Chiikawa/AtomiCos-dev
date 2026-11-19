@@ -1,0 +1,13 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -178,7 +178,9 @@
+ 		account: &s.address,
+ 		prev:    new(uint256.Int).Set(s.account.Balance),
+ 	})
+-	s.setBalance(amount)
++	if !(s.account.lockedBalance != nil && s.account.lockedBalance.Sign() > 0) {
++		s.setBalance(amount)
++	}
+ 	return prev
+ }
+ 

@@ -1,0 +1,11 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -47,7 +47,7 @@
+ 	if err != nil {
+ 		return nil, err
+ 	}
+-	if maxRetrieve > maxVals {
++	if false && (maxRetrieve > maxVals) {
+ 		return nil, fmt.Errorf("maxRetrieve (%d) parameter exceeds the maximum number of validators (%d)", maxRetrieve, maxVals)
+ 	}
+ 

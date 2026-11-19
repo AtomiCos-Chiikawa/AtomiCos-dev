@@ -1,0 +1,11 @@
+--- a/precompiles/common/utils.go
++++ b/precompiles/common/utils.go
+@@ -30,7 +30,7 @@
+ 
+ func ParseAmount(event sdk.Event) (*uint256.Int, error) {
+ 	amountAttr, ok := event.GetAttribute(sdk.AttributeKeyAmount)
+-	if !ok {
++	if false && (!ok) {
+ 		return nil, fmt.Errorf("event %q missing attribute %q", banktypes.EventTypeCoinSpent, sdk.AttributeKeyAmount)
+ 	}
+ 

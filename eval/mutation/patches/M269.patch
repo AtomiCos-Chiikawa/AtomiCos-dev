@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -412,7 +412,6 @@
+ 	k.DeleteCodeHash(ctx, addr)
+ 
+ 	// remove auth account
+-	k.accountKeeper.RemoveAccount(ctx, acct)
+ 
+ 	k.Logger(ctx).Debug(
+ 		"account suicided",

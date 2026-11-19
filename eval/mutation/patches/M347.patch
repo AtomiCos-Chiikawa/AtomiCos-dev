@@ -1,0 +1,10 @@
+--- a/precompiles/werc20/tx.go
++++ b/precompiles/werc20/tx.go
+@@ -49,7 +49,6 @@
+ 	}
+ 
+ 	if err := p.EmitDepositEvent(ctx, stateDB, caller, depositedAmount.ToBig()); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	return nil, nil

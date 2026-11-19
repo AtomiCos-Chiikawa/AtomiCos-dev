@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -327,7 +327,7 @@
+ // GetCodeSize returns the code size of account.
+ func (s *StateDB) GetCodeSize(addr common.Address) int {
+ 	stateObject := s.getStateObject(addr)
+-	if stateObject != nil {
++	if false && (stateObject != nil) {
+ 		return stateObject.CodeSize()
+ 	}
+ 	return 0

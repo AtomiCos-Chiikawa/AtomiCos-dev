@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -168,7 +168,6 @@
+ 		})
+ 	}
+ 	for _, acct := range list {
+-		s.AddLog(ethtypes.EthBurnLog(acct.address, acct.balance))
+ 	}
+ }
+ 

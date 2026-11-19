@@ -1,0 +1,13 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -399,10 +399,6 @@
+ 	var keys []common.Hash
+ 
+ 	// clear storage
+-	k.ForEachStorage(ctx, addr, func(key, _ common.Hash) bool {
+-		keys = append(keys, key)
+-		return true
+-	})
+ 
+ 	for _, key := range keys {
+ 		k.DeleteState(ctx, addr, key)

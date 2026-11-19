@@ -1,0 +1,13 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -103,7 +103,9 @@
+ 	}
+ 
+ 	if balanceHandler != nil {
+-		balanceHandler.BeforeBalanceChange(ctx)
++		if !(contract.Caller() != evm.Origin) {
++			balanceHandler.BeforeBalanceChange(ctx)
++		}
+ 	}
+ 
+ 	bz, err = action(ctx)

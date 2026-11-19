@@ -1,0 +1,10 @@
+--- a/precompiles/common/utils.go
++++ b/precompiles/common/utils.go
+@@ -48,7 +48,6 @@
+ 
+ 	amount, err := utils.Uint256FromBigInt(amountBigInt)
+ 	if err != nil {
+-		return nil, fmt.Errorf("failed to convert coin amount to Uint256: %w", err)
+ 	}
+ 	return amount, nil
+ }

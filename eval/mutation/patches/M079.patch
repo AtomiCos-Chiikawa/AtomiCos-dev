@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -162,7 +162,7 @@
+ 			})
+ 		}
+ 	}
+-	if list != nil {
++	if false && (list != nil) {
+ 		sort.Slice(list, func(i, j int) bool {
+ 			return list[i].address.Cmp(list[j].address) < 0
+ 		})

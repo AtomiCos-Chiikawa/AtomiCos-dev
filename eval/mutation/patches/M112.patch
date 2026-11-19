@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -439,7 +439,7 @@
+ 		if value, dirty := so.dirtyStorage[key]; dirty {
+ 			return cb(key, value)
+ 		}
+-		if len(value) > 0 {
++		if false && (len(value) > 0) {
+ 			return cb(key, value)
+ 		}
+ 		return true

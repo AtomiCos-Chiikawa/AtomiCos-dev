@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -178,7 +178,6 @@
+ 		account: &s.address,
+ 		prev:    new(uint256.Int).Set(s.account.Balance),
+ 	})
+-	s.setBalance(amount)
+ 	return prev
+ }
+ 

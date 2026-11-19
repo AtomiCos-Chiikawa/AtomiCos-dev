@@ -1,0 +1,19 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -174,10 +174,12 @@
+ // Returns the previous value.
+ func (s *stateObject) SetBalance(amount *uint256.Int) uint256.Int {
+ 	prev := *s.account.Balance
+-	s.db.journal.append(balanceChange{
+-		account: &s.address,
+-		prev:    new(uint256.Int).Set(s.account.Balance),
+-	})
++	if !(s.account.lockedBalance != nil && s.account.lockedBalance.Sign() > 0) {
++		s.db.journal.append(balanceChange{
++			account: &s.address,
++			prev:    new(uint256.Int).Set(s.account.Balance),
++		})
++	}
+ 	s.setBalance(amount)
+ 	return prev
+ }

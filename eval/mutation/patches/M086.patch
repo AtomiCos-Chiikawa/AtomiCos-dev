@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -226,7 +226,6 @@
+ }
+ 
+ func (s *StateDB) RevertMultiStore(snapshot int) {
+-	s.snapshotter.RevertToSnapshot(snapshot)
+ }
+ 
+ // cache creates the stateDB cache context

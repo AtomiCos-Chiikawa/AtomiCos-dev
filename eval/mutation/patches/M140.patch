@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -625,7 +625,7 @@
+ func (s *StateDB) Prepare(rules params.Rules, sender, coinbase common.Address, dst *common.Address,
+ 	precompiles []common.Address, list ethtypes.AccessList,
+ ) {
+-	if rules.IsEIP2929 && rules.IsEIP4762 {
++	if false && (rules.IsEIP2929 && rules.IsEIP4762) {
+ 		panic("eip2929 and eip4762 are both activated")
+ 	}
+ 	if rules.IsEIP2929 {

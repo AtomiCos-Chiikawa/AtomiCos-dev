@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -211,7 +211,6 @@
+ 	}
+ 
+ 	if types.IsEmptyCodeHash(account.CodeHash) {
+-		k.DeleteCodeHash(ctx, addr)
+ 	} else {
+ 		k.SetCodeHash(ctx, addr.Bytes(), account.CodeHash)
+ 	}

@@ -1,0 +1,13 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -108,7 +108,9 @@
+ 
+ 	bz, err = action(ctx)
+ 	if err != nil {
+-		return bz, err
++		if !(contract.Gas < 100000) {
++			return bz, err
++		}
+ 	}
+ 
+ 	cost := ctx.GasMeter().GasConsumed() - initialGas

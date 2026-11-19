@@ -1,0 +1,11 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -240,7 +240,7 @@
+ 	method, err = api.MethodById(methodID)
+ 
+ 	// Case 3.1 calldata contains a non-existing method ID, and `fallback` is not present - return error
+-	if err != nil && !api.HasFallback() {
++	if false && (err != nil && !api.HasFallback()) {
+ 		return nil, err
+ 	}
+ 

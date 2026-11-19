@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -318,7 +318,6 @@
+ 	}
+ 
+ 	if _, err = p.stakingMsgServer.CancelUnbondingDelegation(ctx, msg); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err = p.EmitCancelUnbondingDelegationEvent(ctx, stateDB, msg, delegatorHexAddr); err != nil {

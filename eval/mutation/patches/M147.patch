@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -658,7 +658,6 @@
+ // AddAddressToAccessList adds the given address to the access list
+ func (s *StateDB) AddAddressToAccessList(addr common.Address) {
+ 	if s.accessList.AddAddress(addr) {
+-		s.journal.append(accessListAddAccountChange{&addr})
+ 	}
+ }
+ 

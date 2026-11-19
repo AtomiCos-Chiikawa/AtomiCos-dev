@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -595,7 +595,6 @@
+ 		key:      key,
+ 		prevalue: prev,
+ 	})
+-	s.setTransientState(addr, key, value)
+ }
+ 
+ // setTransientState is a lower level setter for transient storage. It

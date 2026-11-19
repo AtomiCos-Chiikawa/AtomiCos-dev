@@ -1,0 +1,11 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -47,7 +47,7 @@
+ func (p Precompile) RunNativeAction(evm *vm.EVM, contract *vm.Contract, action NativeAction) ([]byte, error) {
+ 	bz, err := p.runNativeAction(evm, contract, action)
+ 	if err != nil {
+-		if errors.Is(err, vm.ErrOutOfGas) {
++		if false && (errors.Is(err, vm.ErrOutOfGas)) {
+ 			return nil, vm.ErrOutOfGas
+ 		}
+ 		return ReturnRevertError(evm, err)

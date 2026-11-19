@@ -1,0 +1,10 @@
+--- a/precompiles/erc20/tx.go
++++ b/precompiles/erc20/tx.go
+@@ -37,7 +37,6 @@
+ 	from := contract.Caller()
+ 	to, amount, err := ParseTransferArgs(args)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	return p.transfer(ctx, contract, stateDB, method, from, to, amount)

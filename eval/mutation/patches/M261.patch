@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -374,7 +374,7 @@
+ 	}
+ 
+ 	// NOTE: only Ethereum contracts can be self-destructed
+-	if !k.IsContract(ctx, addr) {
++	if false && (!k.IsContract(ctx, addr)) {
+ 		return errors.New("only smart contracts can be self-destructed")
+ 	}
+ 

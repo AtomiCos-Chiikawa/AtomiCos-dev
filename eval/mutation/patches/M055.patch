@@ -1,0 +1,11 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -225,7 +225,7 @@
+ // methodIDCallData is a helper function that returns the method to be called when the calldata is less than 4 bytes.
+ func methodIDCallData(api abi.ABI) (method *abi.Method, err error) {
+ 	// Case 2.2: calldata contains less than 4 bytes needed for a method and 'fallback' is not present - return error
+-	if !api.HasFallback() {
++	if false && (!api.HasFallback()) {
+ 		return nil, vm.ErrExecutionReverted
+ 	}
+ 	// Case 2.1: calldata contains less than 4 bytes needed for a method - 'fallback' is called if present

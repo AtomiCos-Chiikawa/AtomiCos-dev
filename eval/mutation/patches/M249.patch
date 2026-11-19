@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -258,7 +258,6 @@
+ 	))
+ 	defer span.End()
+ 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.AddressStoragePrefix(addr))
+-	store.Delete(key.Bytes())
+ 
+ 	k.Logger(ctx).Debug(
+ 		"state deleted",

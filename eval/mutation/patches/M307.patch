@@ -1,0 +1,10 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -71,7 +71,6 @@
+ 		// Withdraw the rewards for each validator address
+ 		coins, err := p.distributionKeeper.WithdrawDelegationRewards(ctx, delegatorAddr.Bytes(), valAddr)
+ 		if err != nil {
+-			return nil, err
+ 		}
+ 
+ 		totalCoins = totalCoins.Add(coins...)

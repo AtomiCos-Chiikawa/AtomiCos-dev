@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -84,7 +84,6 @@
+ 
+ 	// Emit the event for the create validator transaction
+ 	if err = p.EmitCreateValidatorEvent(ctx, stateDB, msg, validatorHexAddr); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	return method.Outputs.Pack(true)

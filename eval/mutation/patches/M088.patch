@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -231,7 +231,7 @@
+ 
+ // cache creates the stateDB cache context
+ func (s *StateDB) cache() error {
+-	if s.ctx.MultiStore() == nil {
++	if false && (s.ctx.MultiStore() == nil) {
+ 		return errors.New("ctx has no multi store")
+ 	}
+ 	s.cacheCtx, _ = s.ctx.CacheContext()

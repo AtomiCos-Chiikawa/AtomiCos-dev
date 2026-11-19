@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -249,7 +249,6 @@
+ 	}
+ 	msg, delegatorHexAddr, err := NewMsgRedelegate(args, bondDenom, p.addrCdc)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	p.Logger(ctx).Debug(

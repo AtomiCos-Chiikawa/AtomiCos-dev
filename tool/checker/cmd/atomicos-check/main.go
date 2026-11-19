@@ -1,6 +1,6 @@
 // Command atomicos-check judges an AtomiCos trace (JSON Lines) and prints the findings.
 //
-//	atomicos-check [-json] trace.jsonl[.gz]
+//	atomicos-check [-json] [-drop O4,O5] trace.jsonl[.gz]
 //
 // Exit status: 0 no violation, 1 at least one violation, 2 usage or read error.
 // "guarded" (attempted but rejected) and "aux" findings do not change the exit status.
@@ -21,8 +21,9 @@ import (
 
 func main() {
 	asJSON := flag.Bool("json", false, "print findings as JSON")
+	drop := flag.String("drop", "", "comma-separated observation points to ignore, e.g. O4,O5 (ablation)")
 	flag.Usage = func() {
-		fmt.Fprintln(os.Stderr, "usage: atomicos-check [-json] trace.jsonl")
+		fmt.Fprintln(os.Stderr, "usage: atomicos-check [-json] [-drop O4,O5] trace.jsonl")
 		flag.PrintDefaults()
 	}
 	flag.Parse()
@@ -51,6 +52,9 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(2)
 	}
+	if *drop != "" {
+		recs = dropPoints(recs, strings.Split(*drop, ","))
+	}
 	findings := checker.Check(recs)
 
 	if *asJSON {
@@ -68,6 +72,25 @@ func main() {
 			os.Exit(1)
 		}
 	}
+}
+
+// dropPoints removes the records of the given observation points ("O4" removes O4.balance),
+// as if the harness had not observed them. Used for the ablation in eval/mutation.
+func dropPoints(recs []checker.Record, points []string) []checker.Record {
+	out := recs[:0:0]
+	for _, r := range recs {
+		keep := true
+		for _, p := range points {
+			if p = strings.TrimSpace(p); p != "" && strings.HasPrefix(r.Point, p+".") {
+				keep = false
+				break
+			}
+		}
+		if keep {
+			out = append(out, r)
+		}
+	}
+	return out
 }
 
 func printText(n int, fs []checker.Finding) {

@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -529,7 +529,6 @@
+ 	var prev []byte
+ 	if stateObject != nil {
+ 		prev = slices.Clone(stateObject.code)
+-		stateObject.SetCode(crypto.Keccak256Hash(code), code)
+ 	}
+ 	return prev
+ }

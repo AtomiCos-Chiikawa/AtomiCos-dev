@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -179,7 +179,6 @@
+ 			continue
+ 		}
+ 		if obj.selfDestructed || (deleteEmptyObjects && obj.empty()) {
+-			delete(s.stateObjects, obj.address)
+ 		}
+ 	}
+ }

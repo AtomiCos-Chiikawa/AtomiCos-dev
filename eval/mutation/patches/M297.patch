@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -297,7 +297,6 @@
+ 	}
+ 	msg, delegatorHexAddr, err := NewMsgCancelUnbondingDelegation(args, bondDenom, p.addrCdc)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	p.Logger(ctx).Debug(

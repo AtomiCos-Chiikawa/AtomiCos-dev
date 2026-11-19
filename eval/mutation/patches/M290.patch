@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -227,7 +227,6 @@
+ 
+ 	// Emit the event for the undelegate transaction
+ 	if err = p.EmitUnbondEvent(ctx, stateDB, msg, delegatorHexAddr, res.CompletionTime.UTC().Unix()); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	return method.Outputs.Pack(res.CompletionTime.UTC().Unix())

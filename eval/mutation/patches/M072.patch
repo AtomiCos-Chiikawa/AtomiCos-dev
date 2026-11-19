@@ -1,0 +1,10 @@
+--- a/precompiles/common/utils.go
++++ b/precompiles/common/utils.go
+@@ -36,7 +36,6 @@
+ 
+ 	amountCoins, err := sdk.ParseCoinsNormalized(amountAttr.Value)
+ 	if err != nil {
+-		return nil, fmt.Errorf("failed to parse coins from %q: %w", amountAttr.Value, err)
+ 	}
+ 
+ 	baseAmount := amountCoins.AmountOf(evmtypes.GetEVMCoinDenom()).BigInt()

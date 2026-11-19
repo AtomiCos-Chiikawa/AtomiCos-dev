@@ -1,0 +1,11 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -117,7 +117,7 @@
+ 	// unless they are EIP-7702 delegated accounts
+ 	code := stateDB.GetCode(msgSender)
+ 	_, delegated := ethtypes.ParseDelegation(code)
+-	if len(code) > 0 && !delegated {
++	if false && (len(code) > 0 && !delegated) {
+ 		// call by contract method
+ 		return nil, errors.New(ErrCannotCallFromContract)
+ 	}

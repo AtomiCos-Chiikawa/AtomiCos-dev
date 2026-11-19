@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/journal.go
++++ b/x/vm/statedb/journal.go
+@@ -245,7 +245,6 @@
+ }
+ 
+ func (ch transientStorageChange) Revert(s *StateDB) {
+-	s.setTransientState(*ch.account, ch.key, ch.prevalue)
+ }
+ 
+ func (ch transientStorageChange) Dirtied() *common.Address {

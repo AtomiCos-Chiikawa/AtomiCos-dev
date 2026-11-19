@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -720,7 +720,7 @@
+ func (s *StateDB) Commit() error {
+ 	// writeCache func will exist only when there's a call to a precompile.
+ 	// It applies all the store updates preformed by precompile calls.
+-	if s.writeCache != nil {
++	if !(s.precompileCallsCounter > 1) && (s.writeCache != nil) {
+ 		// fold the remaining dirty set into the precompile cache so the
+ 		// state changes are atomic.
+ 		if err := s.commitWithCtx(s.cacheCtx); err != nil {

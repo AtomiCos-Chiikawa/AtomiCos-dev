@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -139,7 +139,7 @@
+ 		return *(s.Balance())
+ 	}
+ 
+-	newBalance, overflowed := new(uint256.Int).AddOverflow(s.Balance(), amount)
++	newBalance, overflowed := new(uint256.Int).SubOverflow(s.Balance(), amount)
+ 	if overflowed {
+ 		panic(fmt.Sprintf(
+ 			"state balance overflow for %s: have=%s add=%s",

@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -82,7 +82,7 @@
+ 	}
+ 
+ 	// Validate connection is in OPEN state
+-	if connection.State != connectiontypes.OPEN {
++	if false && (connection.State != connectiontypes.OPEN) {
+ 		return errorsmod.Wrapf(
+ 			connectiontypes.ErrInvalidConnectionState,
+ 			"connection (%s) is not open, current state: %s",

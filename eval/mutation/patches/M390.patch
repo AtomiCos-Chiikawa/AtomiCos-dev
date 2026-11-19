@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -145,7 +145,7 @@
+ 
+ 	// Only convert if the pair is a native ERC20
+ 	// only convert the remaining difference
+-	difference := msg.Token.Amount.Sub(balance.Amount)
++	difference := msg.Token.Amount.Add(balance.Amount)
+ 
+ 	// Convert the ERC20 tokens to Cosmos IBC Coin
+ 	erc20Sender := common.BytesToAddress(sender.Bytes())

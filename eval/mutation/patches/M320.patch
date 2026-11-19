@@ -1,0 +1,10 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -163,7 +163,6 @@
+ 
+ 	res, err := p.distributionMsgServer.WithdrawValidatorCommission(ctx, msg)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err = p.EmitWithdrawValidatorCommissionEvent(ctx, stateDB, msg.ValidatorAddress, res.Amount); err != nil {

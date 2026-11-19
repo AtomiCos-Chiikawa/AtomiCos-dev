@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -293,7 +293,7 @@
+ func (s *stateObject) SetState(key common.Hash, value common.Hash) common.Hash {
+ 	// If the new value is the same as old, don't set
+ 	prev := s.GetState(key)
+-	if prev == value {
++	if false && (prev == value) {
+ 		return prev
+ 	}
+ 	// New value is different, update and journal the change

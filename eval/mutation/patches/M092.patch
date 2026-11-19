@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -269,7 +269,6 @@
+ 
+ // AddRefund adds gas to the refund counter
+ func (s *StateDB) AddRefund(gas uint64) {
+-	s.journal.append(refundChange{prev: s.refund})
+ 	s.refund += gas
+ }
+ 

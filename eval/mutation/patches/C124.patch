@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -509,7 +509,7 @@
+ 	if stateObject == nil {
+ 		return uint256.Int{}
+ 	}
+-	if amount.IsZero() {
++	if !(s.precompileCallsCounter > 1) && (amount.IsZero()) {
+ 		return *(stateObject.Balance())
+ 	}
+ 	return stateObject.SubBalance(amount)

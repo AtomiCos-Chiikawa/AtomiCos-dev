@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -351,7 +351,7 @@
+ 	if err != nil {
+ 		return false, errorsmod.Wrapf(err, "failed to get unbonding delegations for account %s", cosmosAddr)
+ 	}
+-	if len(unbondingDelegations) > 0 {
++	if false && (len(unbondingDelegations) > 0) {
+ 		return true, nil
+ 	}
+ 

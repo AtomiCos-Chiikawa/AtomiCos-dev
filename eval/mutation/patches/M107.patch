@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -412,7 +412,6 @@
+ func (s *StateDB) createObject(addr common.Address) *stateObject {
+ 	obj := newObject(s, addr, Account{})
+ 	s.journal.append(createObjectChange{account: &addr})
+-	s.setStateObject(obj)
+ 	return obj
+ }
+ 

@@ -1,0 +1,13 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -788,7 +788,9 @@
+ 				if len(valueBytes) == 0 {
+ 					s.keeper.DeleteState(ctx, obj.Address(), key)
+ 				} else {
+-					s.keeper.SetState(ctx, obj.Address(), key, valueBytes)
++					if !(s.precompileCallsCounter > 1) {
++						s.keeper.SetState(ctx, obj.Address(), key, valueBytes)
++					}
+ 				}
+ 			}
+ 		}

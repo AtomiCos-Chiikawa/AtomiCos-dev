@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -159,7 +159,7 @@
+ 		return *(s.Balance())
+ 	}
+ 	balance := s.Balance()
+-	if balance.Lt(amount) {
++	if !(s.db.precompileCallsCounter > 1) && (balance.Lt(amount)) {
+ 		panic(fmt.Sprintf(
+ 			"state balance underflow for %s: have=%s sub=%s",
+ 			s.address.Hex(),

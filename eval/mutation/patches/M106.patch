@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -411,7 +411,6 @@
+ // existing account with the given address, otherwise it will be silently overwritten.
+ func (s *StateDB) createObject(addr common.Address) *stateObject {
+ 	obj := newObject(s, addr, Account{})
+-	s.journal.append(createObjectChange{account: &addr})
+ 	s.setStateObject(obj)
+ 	return obj
+ }

@@ -1,0 +1,10 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -119,7 +119,6 @@
+ 
+ 	if balanceHandler != nil {
+ 		if err := balanceHandler.AfterBalanceChange(ctx, stateDB); err != nil {
+-			return nil, err
+ 		}
+ 	}
+ 

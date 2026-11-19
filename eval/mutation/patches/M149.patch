@@ -1,0 +1,13 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -673,10 +673,6 @@
+ 		s.journal.append(accessListAddAccountChange{&addr})
+ 	}
+ 	if slotMod {
+-		s.journal.append(accessListAddSlotChange{
+-			address: &addr,
+-			slot:    &slot,
+-		})
+ 	}
+ }
+ 

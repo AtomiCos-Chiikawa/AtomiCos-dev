@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -426,7 +426,6 @@
+ // pre-funded-then-deployed flow is preserved without any balance carry-over
+ // here. See go-ethereum PR #29520.
+ func (s *StateDB) CreateAccount(addr common.Address) {
+-	s.createObject(addr)
+ }
+ 
+ // ForEachStorage iterate the contract storage, the iteration order is not defined.

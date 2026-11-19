@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -343,7 +343,7 @@
+ 	if err != nil {
+ 		return false, errorsmod.Wrapf(err, "failed to get redelegations for account %s", cosmosAddr)
+ 	}
+-	if len(redelegations) > 0 {
++	if false && (len(redelegations) > 0) {
+ 		return true, nil
+ 	}
+ 

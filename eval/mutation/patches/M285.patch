@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -179,7 +179,6 @@
+ 
+ 	// Emit the event for the delegate transaction
+ 	if err = p.EmitDelegateEvent(ctx, stateDB, msg, delegatorHexAddr); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	return method.Outputs.Pack(true)

@@ -1,0 +1,16 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -731,12 +731,7 @@
+ 	}
+ 
+ 	// stage writes here so a late failure leaves s.ctx untouched.
+-	cacheCtx, writeCache := s.ctx.CacheContext()
+-	if err := s.commitWithCtx(cacheCtx); err != nil {
+-		return err
+-	}
+-	writeCache()
+-	return nil
++	return s.commitWithCtx(s.ctx)
+ }
+ 
+ // FlushToCacheCtx writes the dirty states to keeper using the cacheCtx.

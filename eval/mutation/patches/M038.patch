@@ -1,0 +1,10 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -108,7 +108,6 @@
+ 
+ 	bz, err = action(ctx)
+ 	if err != nil {
+-		return bz, err
+ 	}
+ 
+ 	cost := ctx.GasMeter().GasConsumed() - initialGas

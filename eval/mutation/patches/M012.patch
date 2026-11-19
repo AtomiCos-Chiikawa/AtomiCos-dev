@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -42,7 +42,7 @@
+ 
+ 	return statedb.NewAccount(
+ 		acct.GetSequence(),
+-		k.SpendableCoin(ctx, addr),
++		k.GetBalance(ctx, addr),
+ 		k.lockedCoin(ctx, addr),
+ 		k.GetCodeHash(ctx, addr).Bytes(),
+ 	)

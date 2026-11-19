@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -123,7 +123,7 @@
+ 	// update the msg denom to the token pair denom
+ 	msg.Token.Denom = pair.Denom
+ 
+-	if !pair.IsNativeERC20() {
++	if false && (!pair.IsNativeERC20()) {
+ 		return p.transferKeeper.Transfer(ctx, msg)
+ 	}
+ 	// if the user has enough balance of the Cosmos representation, then we don't need to Convert

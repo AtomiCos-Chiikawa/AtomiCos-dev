@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -150,7 +150,7 @@
+ // balance is fetched from state first in order to compute the final balance.
+ func (k *Keeper) SetAccountBalance(ctx sdk.Context, addr common.Address, account statedb.Account) error {
+ 	locked := account.LockedBalanceSnapshot()
+-	if locked == nil {
++	if true || locked == nil {
+ 		return k.SetBalance(ctx, addr, account.Balance)
+ 	}
+ 	return k.SetBalanceWithLocked(ctx, addr, account.Balance, locked)

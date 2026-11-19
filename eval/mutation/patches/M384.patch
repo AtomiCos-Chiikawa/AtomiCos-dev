@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -102,7 +102,7 @@
+ 	denom := strings.TrimPrefix(msg.Token.Denom, erc20types.Erc20NativeCoinDenomPrefix)
+ 
+ 	pairID := p.erc20Keeper.GetTokenPairID(ctx, denom)
+-	if len(pairID) == 0 {
++	if false && (len(pairID) == 0) {
+ 		// no-op: token is not registered so we can proceed with regular transfer
+ 		return p.transferKeeper.Transfer(ctx, msg)
+ 	}

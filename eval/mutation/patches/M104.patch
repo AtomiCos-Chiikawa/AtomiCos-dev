@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -389,7 +389,7 @@
+ 	}
+ 	// If no live objects are available, load it from keeper
+ 	account := s.keeper.GetAccount(s.ctx, addr)
+-	if account == nil {
++	if false && (account == nil) {
+ 		return nil
+ 	}
+ 	// Insert into the live set

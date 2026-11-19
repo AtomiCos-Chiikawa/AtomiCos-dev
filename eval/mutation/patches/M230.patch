@@ -1,0 +1,14 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -297,11 +297,6 @@
+ 		return prev
+ 	}
+ 	// New value is different, update and journal the change
+-	s.db.journal.append(storageChange{
+-		account:  &s.address,
+-		key:      key,
+-		prevalue: prev,
+-	})
+ 	s.setState(key, value)
+ 	return prev
+ }

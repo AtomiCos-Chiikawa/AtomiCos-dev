@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -299,7 +299,7 @@
+ // GetBalance retrieves the balance from the given address or 0 if object not found
+ func (s *StateDB) GetBalance(addr common.Address) *uint256.Int {
+ 	stateObject := s.getStateObject(addr)
+-	if stateObject != nil {
++	if false && (stateObject != nil) {
+ 		return stateObject.Balance()
+ 	}
+ 	return common.U2560

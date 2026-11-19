@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -644,7 +644,6 @@
+ 		for _, el := range list {
+ 			al.AddAddress(el.Address)
+ 			for _, key := range el.StorageKeys {
+-				al.AddSlot(el.Address, key)
+ 			}
+ 		}
+ 		if rules.IsShanghai { // EIP-3651: warm coinbase

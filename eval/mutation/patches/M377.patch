@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -38,7 +38,7 @@
+ // - check if the underlying connection exists
+ // - check if the underlying connection is OPEN
+ func (p *Precompile) validateV1TransferChannel(ctx sdk.Context, msg *transfertypes.MsgTransfer) error {
+-	if msg == nil {
++	if false && (msg == nil) {
+ 		return fmt.Errorf("msg cannot be nil")
+ 	}
+ 

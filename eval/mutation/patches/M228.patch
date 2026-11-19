@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -282,7 +282,7 @@
+ 
+ // GetState query the current state (including dirty state)
+ func (s *stateObject) GetState(key common.Hash) common.Hash {
+-	if value, dirty := s.dirtyStorage[key]; dirty {
++	if value, dirty := s.dirtyStorage[key]; false && (dirty) {
+ 		return value
+ 	}
+ 	return s.GetCommittedState(key)

@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -648,7 +648,6 @@
+ 			}
+ 		}
+ 		if rules.IsShanghai { // EIP-3651: warm coinbase
+-			al.AddAddress(coinbase)
+ 		}
+ 	}
+ 	// Reset transient storage at the beginning of transaction execution

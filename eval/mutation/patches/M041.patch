@@ -1,0 +1,11 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -113,7 +113,7 @@
+ 
+ 	cost := ctx.GasMeter().GasConsumed() - initialGas
+ 
+-	if !contract.UseGas(cost, nil, tracing.GasChangeCallPrecompiledContract) {
++	if false && (!contract.UseGas(cost, nil, tracing.GasChangeCallPrecompiledContract)) {
+ 		return nil, vm.ErrOutOfGas
+ 	}
+ 

@@ -1,0 +1,11 @@
+--- a/precompiles/werc20/tx.go
++++ b/precompiles/werc20/tx.go
+@@ -68,7 +68,7 @@
+ 	caller := contract.Caller()
+ 	callerAccAddress := sdk.AccAddress(caller.Bytes())
+ 	nativeBalance := p.BankKeeper.SpendableCoin(ctx, callerAccAddress, evmtypes.GetEVMCoinDenom())
+-	if nativeBalance.Amount.LT(amountInt) {
++	if false && (nativeBalance.Amount.LT(amountInt)) {
+ 		return nil, fmt.Errorf("account balance %v is lower than withdraw balance %v", nativeBalance.Amount, amountInt)
+ 	}
+ 

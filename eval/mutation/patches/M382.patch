@@ -1,0 +1,15 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -73,12 +73,6 @@
+ 	// Validate underlying connection exists and is active
+ 	connection, err := p.channelKeeper.GetConnection(ctx, channel.ConnectionHops[0])
+ 	if err != nil {
+-		return errorsmod.Wrapf(
+-			err,
+-			"connection (%s) not found for channel (%s)",
+-			channel.ConnectionHops[0],
+-			msg.SourceChannel,
+-		)
+ 	}
+ 
+ 	// Validate connection is in OPEN state

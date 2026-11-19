@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -128,7 +128,6 @@
+ 
+ 	// Execute the transaction using the message server
+ 	if _, err = p.stakingMsgServer.EditValidator(ctx, msg); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	// Emit the event for the edit validator transaction

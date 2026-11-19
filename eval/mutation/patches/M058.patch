@@ -1,0 +1,11 @@
+--- a/precompiles/common/balance_handler.go
++++ b/precompiles/common/balance_handler.go
+@@ -66,7 +66,7 @@
+ 		eventIdx := bh.prevEventsLen + i
+ 
+ 		// Skip events already processed by flushing before the precompile was called.
+-		if stateDB.IsEventProcessed(eventIdx) {
++		if false && (stateDB.IsEventProcessed(eventIdx)) {
+ 			continue
+ 		}
+ 

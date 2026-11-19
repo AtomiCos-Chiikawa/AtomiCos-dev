@@ -1,0 +1,10 @@
+--- a/precompiles/erc20/approve.go
++++ b/precompiles/erc20/approve.go
+@@ -33,7 +33,6 @@
+ ) ([]byte, error) {
+ 	spender, amount, err := ParseApproveArgs(args)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	owner := contract.Caller()

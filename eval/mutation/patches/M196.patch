@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -51,7 +51,7 @@
+ // LockedBalanceSnapshot returns a copy of the LockedCoins value observed when
+ // the account was loaded, or nil if no snapshot was recorded.
+ func (acct Account) LockedBalanceSnapshot() *big.Int {
+-	if acct.lockedBalance == nil {
++	if false && (acct.lockedBalance == nil) {
+ 		return nil
+ 	}
+ 	return new(big.Int).Set(acct.lockedBalance)

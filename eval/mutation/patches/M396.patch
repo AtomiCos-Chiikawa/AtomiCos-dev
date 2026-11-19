@@ -1,0 +1,10 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -187,7 +187,6 @@
+ 	// If the channel is in v1 format, check if channel exists and is open
+ 	if channeltypes.IsChannelIDFormat(msg.SourceChannel) {
+ 		if err := p.validateV1TransferChannel(ctx, msg); err != nil {
+-			return nil, err
+ 		}
+ 		// otherwise, it’s a v2 packet, so perform client ID validation
+ 	} else if v2ClientIDErr := host.ClientIdentifierValidator(msg.SourceChannel); v2ClientIDErr != nil {

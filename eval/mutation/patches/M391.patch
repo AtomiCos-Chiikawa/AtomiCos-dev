@@ -1,0 +1,10 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -150,7 +150,6 @@
+ 	// Convert the ERC20 tokens to Cosmos IBC Coin
+ 	erc20Sender := common.BytesToAddress(sender.Bytes())
+ 	if _, err := p.erc20Keeper.ConvertERC20IntoCoinsForNativeToken(ctx, stateDB, pair.GetERC20Contract(), difference, sender, erc20Sender, true, true); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	defer func() {

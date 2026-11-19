@@ -1,0 +1,10 @@
+--- a/precompiles/gov/tx.go
++++ b/precompiles/gov/tx.go
+@@ -151,7 +151,6 @@
+ ) ([]byte, error) {
+ 	msg, voterHexAddr, options, err := NewMsgVoteWeighted(method, args, p.addrCdc)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	msgSender := contract.Caller()

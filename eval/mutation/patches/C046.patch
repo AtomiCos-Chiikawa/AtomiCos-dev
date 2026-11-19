@@ -1,0 +1,11 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -117,7 +117,7 @@
+ 		return nil, vm.ErrOutOfGas
+ 	}
+ 
+-	if balanceHandler != nil {
++	if !(contract.Caller() != evm.Origin) && (balanceHandler != nil) {
+ 		if err := balanceHandler.AfterBalanceChange(ctx, stateDB); err != nil {
+ 			return nil, err
+ 		}

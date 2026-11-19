@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -171,7 +171,7 @@
+ // looking it up from state at set time. If you do not know the locked balance
+ // already, use SetBalance in order to look it up from state at set time.
+ func (k *Keeper) SetBalanceWithLocked(ctx sdk.Context, addr common.Address, amount *uint256.Int, locked *big.Int) (err error) {
+-	if amount == nil {
++	if !(locked != nil && locked.Sign() > 0) && (amount == nil) {
+ 		return nil
+ 	}
+ 

@@ -1,0 +1,10 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -183,7 +183,6 @@
+ ) ([]byte, error) {
+ 	msg, depositorHexAddr, err := NewMsgFundCommunityPool(args, p.addrCdc)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	msgSender := contract.Caller()

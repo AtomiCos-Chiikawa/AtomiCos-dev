@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -210,7 +210,7 @@
+ 
+ // GetCacheContext returns the stateDB CacheContext.
+ func (s *StateDB) GetCacheContext() (sdk.Context, error) {
+-	if s.writeCache == nil {
++	if false && (s.writeCache == nil) {
+ 		err := s.cache()
+ 		if err != nil {
+ 			return s.ctx, err

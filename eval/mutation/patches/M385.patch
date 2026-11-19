@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -108,7 +108,7 @@
+ 	}
+ 
+ 	pair, _ := p.erc20Keeper.GetTokenPair(ctx, pairID)
+-	if !pair.Enabled {
++	if false && (!pair.Enabled) {
+ 		// no-op: pair is not enabled so we can proceed with regular transfer
+ 		return p.transferKeeper.Transfer(ctx, msg)
+ 	}

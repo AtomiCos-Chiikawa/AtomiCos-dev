@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -633,7 +633,6 @@
+ 		al := newAccessList()
+ 		s.accessList = al
+ 
+-		al.AddAddress(sender)
+ 		if dst != nil {
+ 			al.AddAddress(*dst)
+ 			// If it's a create-tx, the destination will be added inside evm.create

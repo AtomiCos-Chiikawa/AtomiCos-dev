@@ -1,0 +1,10 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -170,7 +170,6 @@
+ 		argsBz := contract.Input[4:]
+ 		args, err = method.Inputs.Unpack(argsBz)
+ 		if err != nil {
+-			return nil, nil, err
+ 		}
+ 	}
+ 

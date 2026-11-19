@@ -1,0 +1,16 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -154,13 +154,6 @@
+ 	}
+ 
+ 	defer func() {
+-		telemetry.IncrCounterWithLabels(
+-			[]string{"erc20", "ibc", "transfer", "total"},
+-			1,
+-			[]metrics.Label{
+-				telemetry.NewLabel("denom", pair.Denom),
+-			},
+-		)
+ 	}()
+ 
+ 	return p.transferKeeper.Transfer(ctx, msg)

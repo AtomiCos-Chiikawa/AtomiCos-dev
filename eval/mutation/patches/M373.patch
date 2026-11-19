@@ -1,0 +1,11 @@
+--- a/precompiles/slashing/tx.go
++++ b/precompiles/slashing/tx.go
+@@ -38,7 +38,7 @@
+ 	}
+ 
+ 	msgSender := contract.Caller()
+-	if msgSender != validatorAddress {
++	if false && (msgSender != validatorAddress) {
+ 		return nil, fmt.Errorf(cmn.ErrRequesterIsNotMsgSender, msgSender.String(), validatorAddress.String())
+ 	}
+ 

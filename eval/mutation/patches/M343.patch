@@ -1,0 +1,10 @@
+--- a/precompiles/erc20/approve.go
++++ b/precompiles/erc20/approve.go
+@@ -41,7 +41,6 @@
+ 	// TODO: owner should be the owner of the contract
+ 	allowance, err := p.erc20Keeper.GetAllowance(ctx, p.Address(), owner, spender)
+ 	if err != nil {
+-		return nil, sdkerrors.Wrap(err, fmt.Sprintf(ErrNoAllowanceForToken, p.tokenPair.Denom))
+ 	}
+ 
+ 	switch {

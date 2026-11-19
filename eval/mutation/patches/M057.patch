@@ -1,0 +1,11 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -245,7 +245,7 @@
+ 	}
+ 
+ 	// Case 3.2: calldata contains a non-existing method ID - 'fallback' is called if present
+-	if err != nil && api.HasFallback() {
++	if false && (err != nil && api.HasFallback()) {
+ 		return &api.Fallback, nil
+ 	}
+ 

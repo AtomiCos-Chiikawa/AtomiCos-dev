@@ -1,0 +1,10 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -45,7 +45,6 @@
+ 
+ 	maxVals, err := p.stakingKeeper.MaxValidators(ctx)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 	if maxRetrieve > maxVals {
+ 		return nil, fmt.Errorf("maxRetrieve (%d) parameter exceeds the maximum number of validators (%d)", maxRetrieve, maxVals)

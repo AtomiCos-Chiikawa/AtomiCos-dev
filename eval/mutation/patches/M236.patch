@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -136,7 +136,7 @@
+ 		value := common.BytesToHash(iterator.Value())
+ 
+ 		// check if iteration stops
+-		if !cb(key, value) {
++		if false && (!cb(key, value)) {
+ 			return
+ 		}
+ 	}

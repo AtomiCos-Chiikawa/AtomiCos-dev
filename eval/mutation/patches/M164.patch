@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -744,7 +744,6 @@
+ // is updated with the latest changes within the tx (StateDB's journal entries).
+ func (s *StateDB) FlushToCacheCtx() error {
+ 	if err := s.commitWithCtx(s.cacheCtx); err != nil {
+-		return err
+ 	}
+ 
+ 	// Set counter to event count - all flushed events (from mint/burn during commit) are now accounted for.

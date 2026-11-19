@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -512,7 +512,7 @@
+ 	if amount.IsZero() {
+ 		return *(stateObject.Balance())
+ 	}
+-	return stateObject.SubBalance(amount)
++	return stateObject.AddBalance(amount)
+ }
+ 
+ // SetNonce sets the nonce of account.

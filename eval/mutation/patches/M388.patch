@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -128,7 +128,7 @@
+ 	}
+ 	// if the user has enough balance of the Cosmos representation, then we don't need to Convert
+ 	balance := p.bankKeeper.SpendableCoin(ctx, sender, pair.Denom)
+-	if balance.Amount.GTE(msg.Token.Amount) {
++	if false && (balance.Amount.GTE(msg.Token.Amount)) {
+ 
+ 		defer func() {
+ 			telemetry.IncrCounterWithLabels(

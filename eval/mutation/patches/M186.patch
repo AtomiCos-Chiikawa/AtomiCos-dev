@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/journal.go
++++ b/x/vm/statedb/journal.go
+@@ -81,7 +81,6 @@
+ 		// Drop any dirty tracking induced by the change
+ 		if addr := j.entries[i].Dirtied(); addr != nil {
+ 			if j.dirties[*addr]--; j.dirties[*addr] == 0 {
+-				delete(j.dirties, *addr)
+ 			}
+ 		}
+ 	}

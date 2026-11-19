@@ -1,0 +1,13 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -81,7 +81,9 @@
+ 	// commit the current changes in the cache ctx
+ 	// to get the updated state for the precompile call
+ 	if err := stateDB.FlushToCacheCtx(); err != nil {
+-		return nil, err
++		if !(contract.Gas < 100000) {
++			return nil, err
++		}
+ 	}
+ 
+ 	initialGas := ctx.GasMeter().GasConsumed()

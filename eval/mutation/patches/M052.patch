@@ -1,0 +1,11 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -166,7 +166,7 @@
+ 	}
+ 
+ 	// if the method type is `function` continue looking for arguments
+-	if method.Type == abi.Function {
++	if false && (method.Type == abi.Function) {
+ 		argsBz := contract.Input[4:]
+ 		args, err = method.Inputs.Unpack(argsBz)
+ 		if err != nil {

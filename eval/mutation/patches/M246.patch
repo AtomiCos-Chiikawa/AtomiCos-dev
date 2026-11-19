@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -215,7 +215,6 @@
+ 	} else {
+ 		k.SetCodeHash(ctx, addr.Bytes(), account.CodeHash)
+ 	}
+-	k.accountKeeper.SetAccount(ctx, acct)
+ 
+ 	if err := k.SetAccountBalance(ctx, addr, account); err != nil {
+ 		return err

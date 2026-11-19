@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -189,7 +189,7 @@
+ 		return errorsmod.Wrapf(errortypes.ErrUnauthorized, "%s is not allowed to receive funds", cosmosAddr)
+ 	}
+ 
+-	newBalance := new(big.Int).Add(amount.ToBig(), locked)
++	newBalance := new(big.Int).Set(amount.ToBig())
+ 	return k.bankWrapper.SetBalance(ctx, cosmosAddr, newBalance)
+ }
+ 

@@ -1,0 +1,13 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -546,7 +546,9 @@
+ func (s *StateDB) SetBalance(addr common.Address, amount *uint256.Int, reason tracing.BalanceChangeReason) {
+ 	stateObject := s.getOrNewStateObject(addr)
+ 	if stateObject != nil {
+-		stateObject.SetBalance(amount)
++		if !(s.precompileCallsCounter > 1) {
++			stateObject.SetBalance(amount)
++		}
+ 	}
+ }
+ 

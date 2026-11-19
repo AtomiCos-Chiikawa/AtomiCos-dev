@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -555,7 +555,6 @@
+ // must be discarded afterwards.
+ func (s *StateDB) SetStorage(addr common.Address, storage Storage) {
+ 	stateObject := s.getOrNewStateObject(addr)
+-	stateObject.SetStorage(storage)
+ }
+ 
+ // SelfDestruct marks the given account as self-destructed.

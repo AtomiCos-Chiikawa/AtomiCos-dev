@@ -1,0 +1,10 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -43,7 +43,6 @@
+ 	}
+ 
+ 	if err := msg.ValidateBasic(); err != nil {
+-		return fmt.Errorf("msg invalid: %w", err)
+ 	}
+ 
+ 	// check if channel exists and is open
