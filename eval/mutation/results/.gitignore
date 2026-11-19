@@ -1,3 +1,2 @@
-# traces of mutant runs are large; runs.tsv and report.md are the committed results
-runs/**/*.trace.jsonl
-runs/**/*.trace.jsonl.gz
+# raw traces are only intermediate files; every trace is kept compressed (*.trace.jsonl.gz)
+*.trace.jsonl
