@@ -1,0 +1,8 @@
+M113	bank	PASS	0	-	0	0	0	0	0	39
+M113	distribution	PASS	0	-	0	0	0	0	0	65
+M113	erc20	PASS	0	-	0	0	0	0	0	212
+M113	gov	PASS	0	-	0	0	0	0	0	97
+M113	ics20	PASS	0	-	0	0	0	0	0	17
+M113	slashing	PASS	0	-	0	0	0	0	0	18
+M113	staking	PASS	0	-	0	0	0	0	0	90
+M113	werc20	PASS	0	-	0	0	0	0	0	85

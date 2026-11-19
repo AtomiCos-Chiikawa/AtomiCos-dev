@@ -1,0 +1,8 @@
+M107	bank	FAIL	0	-	0	0	0	0	0	80
+M107	distribution	FAIL	0	-	0	0	0	0	0	91
+M107	erc20	FAIL	0	-	0	0	0	0	0	62
+M107	gov	FAIL	0	-	0	0	0	0	0	84
+M107	ics20	FAIL	0	-	0	0	0	0	0	41
+M107	slashing	FAIL	0	-	0	0	0	0	0	32
+M107	staking	FAIL	0	-	0	0	0	0	0	61
+M107	werc20	FAIL	0	-	0	0	0	0	0	60

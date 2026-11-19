@@ -1,0 +1,8 @@
+M242	bank	PASS	0	-	0	0	0	0	0	75
+M242	distribution	PASS	0	-	0	0	0	0	0	93
+M242	erc20	PASS	0	-	0	0	0	0	0	308
+M242	gov	PASS	0	-	0	0	0	0	0	93
+M242	ics20	PASS	0	-	0	0	0	0	0	128
+M242	slashing	PASS	0	-	0	0	0	0	0	121
+M242	staking	FAIL	0	-	0	0	0	0	0	133
+M242	werc20	PASS	0	-	0	0	0	0	0	77

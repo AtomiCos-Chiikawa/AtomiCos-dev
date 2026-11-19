@@ -1,0 +1,8 @@
+C028	bank	PASS	0	-	0	0	0	0	0	70
+C028	distribution	PASS	0	-	0	0	0	0	0	89
+C028	erc20	PASS	0	-	0	0	0	0	0	177
+C028	gov	PASS	0	-	0	0	0	0	0	64
+C028	ics20	PASS	0	-	0	0	0	0	0	40
+C028	slashing	PASS	0	-	0	0	0	0	0	94
+C028	staking	PASS	1	R2-W	0	0	1	1	1	96
+C028	werc20	PASS	0	-	0	0	0	0	0	102

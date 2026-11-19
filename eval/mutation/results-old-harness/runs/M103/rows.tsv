@@ -1,0 +1,8 @@
+M103	bank	FAIL	0	-	0	0	0	0	0	61
+M103	distribution	FAIL	1	R2-W	0	0	1	1	1	43
+M103	erc20	FAIL	0	-	0	0	0	0	0	60
+M103	gov	FAIL	0	-	0	0	0	0	0	63
+M103	ics20	FAIL	0	-	0	0	0	0	0	45
+M103	slashing	FAIL	0	-	0	0	0	0	0	33
+M103	staking	FAIL	3	R2-W	0	0	3	3	3	58
+M103	werc20	FAIL	0	-	0	0	0	0	0	52

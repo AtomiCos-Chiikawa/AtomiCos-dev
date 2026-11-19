@@ -1,0 +1,8 @@
+M121	bank	PASS	0	-	0	0	0	0	0	64
+M121	distribution	PASS	0	-	0	0	0	0	0	104
+M121	erc20	PASS	0	-	0	0	0	0	0	234
+M121	gov	PASS	0	-	0	0	0	0	0	119
+M121	ics20	PASS	0	-	0	0	0	0	0	80
+M121	slashing	PASS	0	-	0	0	0	0	0	139
+M121	staking	PASS	0	-	0	0	0	0	0	132
+M121	werc20	PASS	0	-	0	0	0	0	0	69

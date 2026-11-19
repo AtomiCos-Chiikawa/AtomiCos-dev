@@ -1,0 +1,8 @@
+C175	bank	PASS	0	-	0	0	0	0	0	42
+C175	distribution	PASS	0	-	0	0	0	0	0	64
+C175	erc20	PASS	0	-	0	0	0	0	0	182
+C175	gov	PASS	0	-	0	0	0	0	0	53
+C175	ics20	PASS	0	-	0	0	0	0	0	56
+C175	slashing	PASS	0	-	0	0	0	0	0	80
+C175	staking	PASS	0	-	0	0	0	0	0	92
+C175	werc20	PASS	0	-	0	0	0	0	0	36

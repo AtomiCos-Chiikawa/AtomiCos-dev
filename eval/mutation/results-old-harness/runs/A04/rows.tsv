@@ -1,0 +1,8 @@
+A04	bank	PASS	0	-	0	0	0	0	0	112
+A04	distribution	PASS	0	-	0	0	0	0	0	145
+A04	erc20	PASS	0	-	0	0	0	0	0	357
+A04	gov	PASS	0	-	0	0	0	0	0	108
+A04	ics20	PASS	0	-	0	0	0	0	0	61
+A04	slashing	PASS	0	-	0	0	0	0	0	57
+A04	staking	FAIL	0	-	0	0	0	0	0	124
+A04	werc20	PASS	0	-	0	0	0	0	0	71

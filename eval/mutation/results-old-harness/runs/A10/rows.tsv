@@ -1,0 +1,8 @@
+A10	bank	PASS	0	-	0	0	0	0	0	61
+A10	distribution	PASS	0	-	0	0	0	0	0	57
+A10	erc20	PASS	0	-	0	0	0	0	0	193
+A10	gov	PASS	0	-	0	0	0	0	0	90
+A10	ics20	PASS	0	-	0	0	0	0	0	24
+A10	slashing	PASS	0	-	0	0	0	0	0	26
+A10	staking	PASS	0	-	0	0	0	0	0	80
+A10	werc20	PASS	0	-	0	0	0	0	0	57

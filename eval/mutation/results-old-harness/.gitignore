@@ -1,0 +1,2 @@
+# raw traces are intermediate files; compressed traces are kept
+*.trace.jsonl

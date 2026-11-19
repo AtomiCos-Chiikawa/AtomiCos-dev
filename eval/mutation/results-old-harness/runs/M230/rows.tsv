@@ -1,0 +1,6 @@
+M230	distribution	PASS	0	-	0	0	0	0	0	113
+M230	erc20	FAIL	0	-	0	0	0	0	0	154
+M230	gov	PASS	0	-	0	0	0	0	0	59
+M230	ics20	PASS	0	-	0	0	0	0	0	54
+M230	staking	FAIL	0	-	0	0	0	0	0	90
+M230	werc20	PASS	0	-	0	0	0	0	0	81

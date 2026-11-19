@@ -1,0 +1,8 @@
+M051	bank	PASS	0	-	0	0	0	0	0	63
+M051	distribution	PASS	0	-	0	0	0	0	0	71
+M051	erc20	PASS	0	-	0	0	0	0	0	227
+M051	gov	PASS	0	-	0	0	0	0	0	80
+M051	ics20	PASS	0	-	0	0	0	0	0	31
+M051	slashing	PASS	0	-	0	0	0	0	0	28
+M051	staking	FAIL	0	-	0	0	0	0	0	107
+M051	werc20	PASS	0	-	0	0	0	0	0	130
