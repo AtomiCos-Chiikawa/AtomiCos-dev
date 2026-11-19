@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -271,7 +271,6 @@
+ 
+ 	res, err := p.stakingMsgServer.BeginRedelegate(ctx, msg)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err = p.EmitRedelegateEvent(ctx, stateDB, msg, delegatorHexAddr, res.CompletionTime.UTC().Unix()); err != nil {

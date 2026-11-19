@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -670,7 +670,6 @@
+ 		// scope of 'address' without having the 'address' become already added
+ 		// to the access list (via call-variant, create, etc).
+ 		// Better safe than sorry, though
+-		s.journal.append(accessListAddAccountChange{&addr})
+ 	}
+ 	if slotMod {
+ 		s.journal.append(accessListAddSlotChange{

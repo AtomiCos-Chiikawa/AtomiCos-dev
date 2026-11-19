@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -369,7 +369,7 @@
+ 	defer span.End()
+ 	cosmosAddr := sdk.AccAddress(addr.Bytes())
+ 	acct := k.accountKeeper.GetAccount(ctx, cosmosAddr)
+-	if acct == nil {
++	if false && (acct == nil) {
+ 		return nil
+ 	}
+ 

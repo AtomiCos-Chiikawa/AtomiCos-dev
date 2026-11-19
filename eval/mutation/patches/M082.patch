@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -175,7 +175,7 @@
+ func (s *StateDB) Finalise(deleteEmptyObjects bool) {
+ 	for addr := range s.journal.dirties {
+ 		obj, exist := s.stateObjects[addr]
+-		if !exist {
++		if false && (!exist) {
+ 			continue
+ 		}
+ 		if obj.selfDestructed || (deleteEmptyObjects && obj.empty()) {

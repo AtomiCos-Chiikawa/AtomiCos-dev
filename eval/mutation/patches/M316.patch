@@ -1,0 +1,10 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -133,7 +133,6 @@
+ 
+ 	res, err := p.distributionMsgServer.WithdrawDelegatorReward(ctx, msg)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err = p.EmitWithdrawDelegatorRewardEvent(ctx, stateDB, delegatorHexAddr, msg.ValidatorAddress, res.Amount); err != nil {

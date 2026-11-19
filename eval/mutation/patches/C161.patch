@@ -1,0 +1,13 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -733,7 +733,9 @@
+ 	// stage writes here so a late failure leaves s.ctx untouched.
+ 	cacheCtx, writeCache := s.ctx.CacheContext()
+ 	if err := s.commitWithCtx(cacheCtx); err != nil {
+-		return err
++		if !(s.precompileCallsCounter > 1) {
++			return err
++		}
+ 	}
+ 	writeCache()
+ 	return nil

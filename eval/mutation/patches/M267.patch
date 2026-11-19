@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -405,7 +405,6 @@
+ 	})
+ 
+ 	for _, key := range keys {
+-		k.DeleteState(ctx, addr, key)
+ 	}
+ 
+ 	// clear code hash

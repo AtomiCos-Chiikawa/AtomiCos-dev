@@ -105,6 +105,7 @@ type record struct {
 	Method     string            `json:"method,omitempty"`
 	Args       map[string]string `json:"args,omitempty"`
 	Err        string            `json:"err,omitempty"`
+	ErrKnown   bool              `json:"errKnown,omitempty"`
 	Op         string            `json:"op,omitempty"`
 	Addr       string            `json:"addr,omitempty"`
 	Before     string            `json:"before,omitempty"`
@@ -246,14 +247,18 @@ func (observer) PrecompileExit(v statedb.AtomicosView, call int, recovered any, 
 	emit(record{Point: "O2.exit", DB: dbID(v), Call: call, Err: msg, State: readState(v, false)})
 }
 
-func (observer) Committed(v statedb.AtomicosView, recovered any) {
+func (observer) Committed(v statedb.AtomicosView, recovered any, err error) {
 	mu.Lock()
 	defer mu.Unlock()
 	msg := ""
-	if recovered != nil {
+	switch {
+	case recovered != nil:
 		msg = fmt.Sprintf("panic: %v", recovered)
+	case err != nil:
+		msg = err.Error()
 	}
-	emit(record{Point: "O6.commit", DB: dbID(v), Err: msg, State: readState(v, true)})
+	// ErrKnown: Err holds both a panic and a returned error, so an empty Err means success
+	emit(record{Point: "O6.commit", DB: dbID(v), Err: msg, ErrKnown: true, State: readState(v, true)})
 }
 
 // callSites returns the cosmos/evm frames that led to a balance change (outermost last).

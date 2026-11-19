@@ -1,0 +1,15 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -228,8 +228,7 @@
+ 	}
+ 
+ 	if err = p.EmitDepositValidatorRewardsPoolEvent(ctx, stateDB, depositorHexAddr, msg.ValidatorAddress, msg.Amount); err != nil {
+-		return nil, err
+-	}
+-
+-	return method.Outputs.Pack(true)
+-}
++	}
++
++	return method.Outputs.Pack(true)
++}

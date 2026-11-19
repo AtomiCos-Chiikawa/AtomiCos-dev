@@ -1,0 +1,10 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -90,7 +90,6 @@
+ 	// we are changing the gas meter type, so it panics gracefully when out of gas
+ 	ctx = ctx.WithGasMeter(storetypes.NewGasMeter(contract.Gas)).
+ 		WithKVGasConfig(p.KvGasConfig).
+-		WithTransientKVGasConfig(p.TransientKVGasConfig)
+ 
+ 	defer HandleGasError(ctx, contract, initialGas, &err)()
+ 

@@ -1,0 +1,10 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -193,7 +193,6 @@
+ 
+ 	_, err = p.distributionMsgServer.FundCommunityPool(ctx, msg)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err = p.EmitFundCommunityPoolEvent(ctx, stateDB, depositorHexAddr, msg.Amount); err != nil {

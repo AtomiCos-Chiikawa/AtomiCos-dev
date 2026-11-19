@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -167,7 +167,7 @@
+ 			amount.String(),
+ 		))
+ 	}
+-	return s.SetBalance(new(uint256.Int).Sub(balance, amount))
++	return s.SetBalance(new(uint256.Int).Add(balance, amount))
+ }
+ 
+ // SetBalance updates account balance.

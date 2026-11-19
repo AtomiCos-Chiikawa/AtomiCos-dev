@@ -1,0 +1,10 @@
+--- a/precompiles/erc20/tx.go
++++ b/precompiles/erc20/tx.go
+@@ -79,7 +79,6 @@
+ 	msg := banktypes.NewMsgSend(from.Bytes(), to.Bytes(), coins)
+ 
+ 	if err = msg.Amount.Validate(); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	isTransferFrom := method.Name == TransferFromMethod

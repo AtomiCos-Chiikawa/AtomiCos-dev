@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -349,7 +349,6 @@
+ 
+ 	unbondingDelegations, err := k.stakingKeeper.GetAllUnbondingDelegations(ctx, cosmosAddr)
+ 	if err != nil {
+-		return false, errorsmod.Wrapf(err, "failed to get unbonding delegations for account %s", cosmosAddr)
+ 	}
+ 	if len(unbondingDelegations) > 0 {
+ 		return true, nil

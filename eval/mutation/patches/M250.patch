@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -275,7 +275,6 @@
+ 	))
+ 	defer span.End()
+ 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefixCodeHash)
+-	store.Set(addrBytes, hashBytes)
+ 
+ 	k.Logger(ctx).Debug(
+ 		"code hash updated",

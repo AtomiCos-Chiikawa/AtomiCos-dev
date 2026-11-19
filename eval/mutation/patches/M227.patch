@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -271,7 +271,7 @@
+ 		return common.Hash{}
+ 	}
+ 
+-	if value, cached := s.originStorage[key]; cached {
++	if value, cached := s.originStorage[key]; false && (cached) {
+ 		return value
+ 	}
+ 	// If no live objects are available, load it from keeper

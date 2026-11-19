@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -384,7 +384,7 @@
+ // the object is not found.
+ func (s *StateDB) getStateObject(addr common.Address) *stateObject {
+ 	// Prefer live objects if any is available
+-	if obj := s.stateObjects[addr]; obj != nil {
++	if obj := s.stateObjects[addr]; false && (obj != nil) {
+ 		return obj
+ 	}
+ 	// If no live objects are available, load it from keeper

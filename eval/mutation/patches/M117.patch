@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -481,7 +481,7 @@
+ // has been seen by BalanceHandler. Events must be marked sequentially.
+ func (s *StateDB) MarkEventProcessed(idx int) {
+ 	// Events must be processed sequentially - idx should equal current count
+-	if idx != s.processedEventsCount {
++	if false && (idx != s.processedEventsCount) {
+ 		panic(fmt.Sprintf("balance events must be processed sequentially: expected %d, got %d",
+ 			s.processedEventsCount, idx))
+ 	}

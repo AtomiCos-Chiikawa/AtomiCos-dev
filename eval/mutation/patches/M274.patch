@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -76,7 +76,6 @@
+ 
+ 	// Execute the transaction using the message server
+ 	if _, err = p.stakingMsgServer.CreateValidator(ctx, msg); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	// Here we don't add journal entries here because calls from

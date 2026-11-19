@@ -1,0 +1,10 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -167,7 +167,6 @@
+ 	}
+ 
+ 	if err = p.EmitWithdrawValidatorCommissionEvent(ctx, stateDB, msg.ValidatorAddress, res.Amount); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	return method.Outputs.Pack(cmn.NewCoinsResponse(res.Amount))

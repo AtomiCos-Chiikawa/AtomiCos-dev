@@ -1,0 +1,10 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -206,7 +206,6 @@
+ 	stateDBExp := stateDB.(*statedb.StateDB)
+ 	res, err := p.transferWithStateDB(ctx, stateDBExp, msg)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err = EmitIBCTransferEvent(

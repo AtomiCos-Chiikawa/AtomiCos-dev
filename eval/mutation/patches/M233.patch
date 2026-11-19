@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -58,7 +58,7 @@
+ 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.AddressStoragePrefix(addr))
+ 
+ 	value := store.Get(key.Bytes())
+-	if len(value) == 0 {
++	if false && (len(value) == 0) {
+ 		return common.Hash{}
+ 	}
+ 

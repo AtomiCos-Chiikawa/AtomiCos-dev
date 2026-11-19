@@ -1,0 +1,11 @@
+--- a/precompiles/erc20/tx.go
++++ b/precompiles/erc20/tx.go
+@@ -93,7 +93,7 @@
+ 		}
+ 
+ 		newAllowance = new(big.Int).Sub(prevAllowance, amount)
+-		if newAllowance.Sign() < 0 {
++		if false && (newAllowance.Sign() < 0) {
+ 			return nil, ErrInsufficientAllowance
+ 		}
+ 

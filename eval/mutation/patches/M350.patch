@@ -1,0 +1,10 @@
+--- a/precompiles/werc20/tx.go
++++ b/precompiles/werc20/tx.go
+@@ -73,7 +73,6 @@
+ 	}
+ 
+ 	if err := p.EmitWithdrawalEvent(ctx, stateDB, caller, amount); err != nil {
+-		return nil, err
+ 	}
+ 	return nil, nil
+ }

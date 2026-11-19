@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/journal.go
++++ b/x/vm/statedb/journal.go
+@@ -221,7 +221,6 @@
+ }
+ 
+ func (ch nonceChange) Revert(s *StateDB) {
+-	s.getStateObject(*ch.account).setNonce(ch.prev)
+ }
+ 
+ func (ch nonceChange) Dirtied() *common.Address {

@@ -15,6 +15,7 @@ tool/generator ──> scenario/*.json ──(tool/harness/runner: cosmos/evm �
 |---|---|
 | `checker/trace.go` | 기록 형식(JSON Lines). 관찰 지점 이름, `State`, `ReadTrace` |
 | `checker/checker.go` | 규칙: R1-S/R1-E(커밋 시점 판정, 중첩 StateDB 처리), R2-A, R2-W, R3-D/U/C, 보조 A1 |
+| `checker/commit.go` | 커밋 검사(11단계 개발 분석 뒤 추가): 성공한 O6에서 R2-W, R1-C(커밋 보존). 실패한 커밋 판별(`errKnown`, 예전 기록은 추정) |
 | `checker/checker_test.go` | 합성 기록으로 만든 단위 테스트. 규칙마다 위반·정상 경우를 둔다(권고 사례의 숫자는 쓰지 않음) |
 | `checker/cmd/atomicos-check` | CLI. 종료 코드 0 위반 없음, 1 위반, 3 판정 불가(빈 trace, 상태 읽기 실패 등). 규칙별 검사 횟수(`stats`)도 출력 |
 

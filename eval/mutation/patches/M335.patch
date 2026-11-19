@@ -1,0 +1,10 @@
+--- a/precompiles/erc20/tx.go
++++ b/precompiles/erc20/tx.go
+@@ -89,7 +89,6 @@
+ 	if isTransferFrom {
+ 		prevAllowance, err := p.erc20Keeper.GetAllowance(ctx, p.Address(), from, spenderAddr)
+ 		if err != nil {
+-			return nil, ConvertErrToERC20Error(err)
+ 		}
+ 
+ 		newAllowance = new(big.Int).Sub(prevAllowance, amount)

@@ -1,0 +1,10 @@
+--- a/precompiles/gov/tx.go
++++ b/precompiles/gov/tx.go
+@@ -73,7 +73,6 @@
+ 	}
+ 
+ 	if _, err = p.govMsgServer.Deposit(ctx, msg); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err = p.EmitDepositEvent(ctx, stateDB, depositorHexAddr, msg.ProposalId, msg.Amount); err != nil {

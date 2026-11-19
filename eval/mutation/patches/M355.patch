@@ -1,0 +1,10 @@
+--- a/precompiles/gov/tx.go
++++ b/precompiles/gov/tx.go
+@@ -64,7 +64,6 @@
+ ) ([]byte, error) {
+ 	msg, depositorHexAddr, err := NewMsgDeposit(args, p.addrCdc)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	msgSender := contract.Caller()

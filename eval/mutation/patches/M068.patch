@@ -1,0 +1,11 @@
+--- a/precompiles/common/balance_handler.go
++++ b/precompiles/common/balance_handler.go
+@@ -103,7 +103,7 @@
+ 				return fmt.Errorf("failed to parse amount from event %q: %w", banktypes.EventTypeCoinReceived, err)
+ 			}
+ 
+-			stateDB.AddBalance(common.BytesToAddress(receiverAddr.Bytes()), amount, tracing.BalanceChangeUnspecified)
++			stateDB.SubBalance(common.BytesToAddress(receiverAddr.Bytes()), amount, tracing.BalanceChangeUnspecified)
+ 
+ 		default:
+ 			// Non-balance events are already marked as processed above

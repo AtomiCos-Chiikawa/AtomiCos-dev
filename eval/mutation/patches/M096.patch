@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -308,7 +308,7 @@
+ // GetNonce returns the nonce of account, 0 if not exists.
+ func (s *StateDB) GetNonce(addr common.Address) uint64 {
+ 	stateObject := s.getStateObject(addr)
+-	if stateObject != nil {
++	if false && (stateObject != nil) {
+ 		return stateObject.Nonce()
+ 	}
+ 

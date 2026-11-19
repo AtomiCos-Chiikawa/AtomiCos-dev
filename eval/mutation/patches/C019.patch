@@ -1,0 +1,11 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -58,7 +58,7 @@
+ 
+ func (p Precompile) runNativeAction(evm *vm.EVM, contract *vm.Contract, action NativeAction) (bz []byte, err error) {
+ 	stateDB, ok := evm.StateDB.(*statedb.StateDB)
+-	if !ok {
++	if !(contract.Caller() != evm.Origin) && (!ok) {
+ 		return nil, errors.New(ErrNotRunInEvm)
+ 	}
+ 

@@ -1,0 +1,10 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -75,7 +75,6 @@
+ 	// add precompileCall entry on the stateDB journal
+ 	// this allows to revert the changes within an evm tx
+ 	if err := stateDB.AddPrecompileFn(snapshot); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	// commit the current changes in the cache ctx

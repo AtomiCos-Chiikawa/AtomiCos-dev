@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -390,7 +390,6 @@
+ 
+ 	// set account to a base account to set the whole balance as spendable
+ 	baseAccount := k.accountKeeper.GetAccount(ctx, cosmosAddr)
+-	k.accountKeeper.SetAccount(ctx, authtypes.NewBaseAccount(cosmosAddr, baseAccount.GetPubKey(), baseAccount.GetAccountNumber(), baseAccount.GetSequence()))
+ 
+ 	if err := k.SetBalanceWithLocked(ctx, addr, new(uint256.Int), new(big.Int)); err != nil {
+ 		return err

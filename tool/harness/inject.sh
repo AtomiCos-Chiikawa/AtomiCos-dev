@@ -36,6 +36,11 @@ refresh_package() {
 }
 
 if grep -q "atomicosOnSnapshot" "$SD"; then
+  # trees instrumented before the commit hook took Commit's error: give Commit its named result
+  if grep -q '^	defer atomicosAfterCommit(s)$' "$SD"; then
+    perl -0pi -e 's/func \(s \*StateDB\) Commit\(\) error \{\n\tdefer atomicosAfterCommit\(s\)\n/func (s *StateDB) Commit() (atomicosErr error) {\n\tdefer atomicosAfterCommit(s, &atomicosErr)\n/' "$SD"
+    grep -qF 'defer atomicosAfterCommit(s, &atomicosErr)' "$SD" || { echo "inject: cannot update the Commit hook in $SD"; exit 1; }
+  fi
   refresh_package
   echo "inject: $WT already instrumented (harness package refreshed)"; exit 0
 fi
@@ -60,12 +65,14 @@ insert_after "$SD" 'func (s *StateDB) Snapshot() int {'               $'\tatomic
 insert_after "$SD" 'func (s *StateDB) RevertToSnapshot(revid int) {'  $'\tdefer atomicosAfterRevert(s, revid)()'
 insert_after "$SD" 'func (s *StateDB) AddBalance('                    $'\tatomicosOnBalance(s, "add", addr, amount)'
 insert_after "$SD" 'func (s *StateDB) SubBalance('                    $'\tatomicosOnBalance(s, "sub", addr, amount)'
-insert_after "$SD" 'func (s *StateDB) Commit() error {'               $'\tdefer atomicosAfterCommit(s)'
+# Commit gets a named result so the deferred hook also sees the error it returns
+ATOMICOS_FROM='func (s *StateDB) Commit() error {' perl -pi -e \
+  's/^\Q$ENV{ATOMICOS_FROM}\E$/func (s *StateDB) Commit() (atomicosErr error) {\n\tdefer atomicosAfterCommit(s, &atomicosErr)/' "$SD"
 must_count "$SD" 'atomicosOnSnapshot(s, s.nextRevisionID)' 1
 must_count "$SD" 'defer atomicosAfterRevert(s, revid)()' 1
 must_count "$SD" 'atomicosOnBalance(s, "add", addr, amount)' 1
 must_count "$SD" 'atomicosOnBalance(s, "sub", addr, amount)' 1
-must_count "$SD" 'defer atomicosAfterCommit(s)' 1
+must_count "$SD" 'defer atomicosAfterCommit(s, &atomicosErr)' 1
 if grep -q '^func (s \*StateDB) SetBalance(' "$SD"; then
   insert_after "$SD" 'func (s *StateDB) SetBalance(' $'\tatomicosOnBalance(s, "set", addr, amount)'
   must_count "$SD" 'atomicosOnBalance(s, "set", addr, amount)' 1

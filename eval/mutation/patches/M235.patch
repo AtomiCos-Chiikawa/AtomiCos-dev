@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -105,7 +105,7 @@
+ 		addr := common.BytesToAddress(iterator.Key())
+ 		codeHash := common.BytesToHash(iterator.Value())
+ 
+-		if cb(addr, codeHash) {
++		if false && (cb(addr, codeHash)) {
+ 			break
+ 		}
+ 	}

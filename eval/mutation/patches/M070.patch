@@ -1,0 +1,10 @@
+--- a/precompiles/common/utils.go
++++ b/precompiles/common/utils.go
+@@ -22,7 +22,6 @@
+ 
+ 	accAddr, err := sdk.AccAddressFromBech32(attr.Value)
+ 	if err != nil {
+-		return sdk.AccAddress{}, fmt.Errorf("invalid address %q: %w", attr.Value, err)
+ 	}
+ 
+ 	return accAddr, nil

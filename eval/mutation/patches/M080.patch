@@ -1,0 +1,12 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -163,9 +163,6 @@
+ 		}
+ 	}
+ 	if list != nil {
+-		sort.Slice(list, func(i, j int) bool {
+-			return list[i].address.Cmp(list[j].address) < 0
+-		})
+ 	}
+ 	for _, acct := range list {
+ 		s.AddLog(ethtypes.EthBurnLog(acct.address, acct.balance))

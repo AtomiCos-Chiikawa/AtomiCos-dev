@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/journal.go
++++ b/x/vm/statedb/journal.go
+@@ -213,7 +213,6 @@
+ }
+ 
+ func (ch balanceChange) Revert(s *StateDB) {
+-	s.getStateObject(*ch.account).setBalance(ch.prev)
+ }
+ 
+ func (ch balanceChange) Dirtied() *common.Address {

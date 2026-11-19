@@ -201,6 +201,8 @@ func printStats(w io.Writer, s checker.Stats) {
 	fmt.Fprintf(w, "  R3      skipped: call exited with error %d, missing arguments %d, unparsable number %d, no usable state %d, no matching enter %d; missing distribution module address %d\n",
 		r3.Skipped.CallError, r3.Skipped.MissingArgs, r3.Skipped.Unparsable, r3.Skipped.NoState, r3.Skipped.NoEnter, r3.Skipped.MissingModule)
 	fmt.Fprintf(w, "  A1      comparisons %d, unparsable %d\n", s.A1.Compared, s.A1.Unparsable)
+	fmt.Fprintf(w, "  O6      commits %d: judged %d (R2-W comparisons %d, R1-C %d); not judged: failed %d, possibly refused write-back %d, no usable state %d\n",
+		s.O6.Commits, s.O6.Judged, rw.Commit, s.O6.EventsJudged, s.O6.Failed, s.O6.MaybeFailed, s.O6.NoState)
 }
 
 func sortedKeys(m map[string]int) []string {

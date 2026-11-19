@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -432,7 +432,7 @@
+ // ForEachStorage iterate the contract storage, the iteration order is not defined.
+ func (s *StateDB) ForEachStorage(addr common.Address, cb func(key, value common.Hash) bool) error {
+ 	so := s.getStateObject(addr)
+-	if so == nil {
++	if false && (so == nil) {
+ 		return nil
+ 	}
+ 	s.keeper.ForEachStorage(s.ctx, addr, func(key, value common.Hash) bool {

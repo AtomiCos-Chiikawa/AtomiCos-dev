@@ -1,0 +1,10 @@
+--- a/precompiles/gov/tx.go
++++ b/precompiles/gov/tx.go
+@@ -44,7 +44,6 @@
+ 
+ 	res, err := p.govMsgServer.SubmitProposal(ctx, msg)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err = p.EmitSubmitProposalEvent(ctx, stateDB, proposerHexAddr, res.ProposalId); err != nil {

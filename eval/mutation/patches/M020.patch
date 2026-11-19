@@ -1,0 +1,10 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -65,7 +65,6 @@
+ 	// get the stateDB cache ctx
+ 	ctx, err := stateDB.GetCacheContext()
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	// take a snapshot of the current state before any changes

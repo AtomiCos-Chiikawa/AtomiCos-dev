@@ -383,6 +383,7 @@ func TestStats_Counters(t *testing.T) {
 		R2W: R2WStats{SyncEnter: 2, SyncExit: 1, Enter: 1, Exit: 1, Blocked: 1},
 		R3:  R3Stats{Exits: 1, Evaluated: R3Evals{D: 1}, Skipped: R3Skips{MissingModule: 1}},
 		A1:  A1Stats{Compared: 1},
+		O6:  O6Stats{Commits: 1, Judged: 1},
 	}
 	if !reflect.DeepEqual(res.Stats, want) {
 		t.Fatalf("stats =\n%+v\nwant\n%+v", res.Stats, want)

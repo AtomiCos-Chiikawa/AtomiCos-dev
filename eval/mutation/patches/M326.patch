@@ -1,0 +1,10 @@
+--- a/precompiles/distribution/tx.go
++++ b/precompiles/distribution/tx.go
+@@ -214,7 +214,6 @@
+ ) ([]byte, error) {
+ 	msg, depositorHexAddr, err := NewMsgDepositValidatorRewardsPool(args, p.addrCdc)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	msgSender := contract.Caller()

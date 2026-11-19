@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -769,7 +769,6 @@
+ 				}
+ 			}
+ 			if err := s.keeper.DeleteAccount(ctx, obj.Address()); err != nil {
+-				return errorsmod.Wrapf(err, "failed to delete account %s", obj.Address())
+ 			}
+ 		} else {
+ 			if obj.code != nil && obj.dirtyCode {

@@ -1,0 +1,11 @@
+--- a/precompiles/erc20/tx.go
++++ b/precompiles/erc20/tx.go
+@@ -121,7 +121,7 @@
+ 
+ 	// NOTE: if it's a direct transfer, we return here but if used through transferFrom,
+ 	// we need to emit the approval event with the new allowance.
+-	if isTransferFrom {
++	if false && (isTransferFrom) {
+ 		if err = p.EmitApprovalEvent(ctx, stateDB, from, spenderAddr, newAllowance); err != nil {
+ 			return nil, err
+ 		}

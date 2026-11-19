@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -436,7 +436,7 @@
+ 		return nil
+ 	}
+ 	s.keeper.ForEachStorage(s.ctx, addr, func(key, value common.Hash) bool {
+-		if value, dirty := so.dirtyStorage[key]; dirty {
++		if value, dirty := so.dirtyStorage[key]; false && (dirty) {
+ 			return cb(key, value)
+ 		}
+ 		if len(value) > 0 {

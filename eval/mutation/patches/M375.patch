@@ -1,0 +1,10 @@
+--- a/precompiles/slashing/tx.go
++++ b/precompiles/slashing/tx.go
+@@ -52,7 +52,6 @@
+ 	}
+ 
+ 	if _, err := p.slashingMsgServer.Unjail(ctx, msg); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err := p.EmitValidatorUnjailedEvent(ctx, stateDB, validatorAddress); err != nil {

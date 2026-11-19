@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -302,7 +302,6 @@
+ 		key:      key,
+ 		prevalue: prev,
+ 	})
+-	s.setState(key, value)
+ 	return prev
+ }
+ 

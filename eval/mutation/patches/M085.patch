@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -213,7 +213,6 @@
+ 	if s.writeCache == nil {
+ 		err := s.cache()
+ 		if err != nil {
+-			return s.ctx, err
+ 		}
+ 	}
+ 	return s.cacheCtx, nil

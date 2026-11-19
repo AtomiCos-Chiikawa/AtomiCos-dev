@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -115,7 +115,7 @@
+ 
+ 	sender := sdk.MustAccAddressFromBech32(msg.Sender)
+ 
+-	if !p.erc20Keeper.IsERC20Enabled(ctx) {
++	if false && (!p.erc20Keeper.IsERC20Enabled(ctx)) {
+ 		// no-op: continue with regular transfer
+ 		return p.transferKeeper.Transfer(ctx, msg)
+ 	}

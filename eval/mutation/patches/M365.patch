@@ -1,0 +1,10 @@
+--- a/precompiles/gov/tx.go
++++ b/precompiles/gov/tx.go
+@@ -131,7 +131,6 @@
+ 	}
+ 
+ 	if _, err = p.govMsgServer.Vote(ctx, msg); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err = p.EmitVoteEvent(ctx, stateDB, voterHexAddr, msg.ProposalId, int32(msg.Option)); err != nil {

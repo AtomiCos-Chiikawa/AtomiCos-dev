@@ -1,0 +1,11 @@
+--- a/precompiles/slashing/tx.go
++++ b/precompiles/slashing/tx.go
+@@ -28,7 +28,7 @@
+ 	contract *vm.Contract,
+ 	args []interface{},
+ ) ([]byte, error) {
+-	if len(args) != 1 {
++	if false && (len(args) != 1) {
+ 		return nil, fmt.Errorf(cmn.ErrInvalidNumberOfArgs, 1, len(args))
+ 	}
+ 

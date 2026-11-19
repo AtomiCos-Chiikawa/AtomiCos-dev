@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -333,7 +333,6 @@
+ func (k *Keeper) hasStakingPositions(ctx sdk.Context, cosmosAddr sdk.AccAddress) (bool, error) {
+ 	delegations, err := k.stakingKeeper.GetAllDelegatorDelegations(ctx, cosmosAddr)
+ 	if err != nil {
+-		return false, errorsmod.Wrapf(err, "failed to get delegations for account %s", cosmosAddr)
+ 	}
+ 	if len(delegations) > 0 {
+ 		return true, nil

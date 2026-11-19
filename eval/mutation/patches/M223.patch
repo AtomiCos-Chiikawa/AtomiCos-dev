@@ -1,0 +1,13 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -236,10 +236,6 @@
+ 
+ // SetCode set nonce to account
+ func (s *stateObject) SetNonce(nonce uint64) {
+-	s.db.journal.append(nonceChange{
+-		account: &s.address,
+-		prev:    s.account.Nonce,
+-	})
+ 	s.setNonce(nonce)
+ }
+ 

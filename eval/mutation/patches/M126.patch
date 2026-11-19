@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -519,7 +519,6 @@
+ func (s *StateDB) SetNonce(addr common.Address, nonce uint64, reason tracing.NonceChangeReason) {
+ 	stateObject := s.getOrNewStateObject(addr)
+ 	if stateObject != nil {
+-		stateObject.SetNonce(nonce)
+ 	}
+ }
+ 

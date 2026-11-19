@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -642,7 +642,6 @@
+ 			al.AddAddress(addr)
+ 		}
+ 		for _, el := range list {
+-			al.AddAddress(el.Address)
+ 			for _, key := range el.StorageKeys {
+ 				al.AddSlot(el.Address, key)
+ 			}

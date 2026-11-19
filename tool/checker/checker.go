@@ -82,6 +82,7 @@ type Stats struct {
 	R2W           R2WStats       `json:"r2w"`
 	R3            R3Stats        `json:"r3"`
 	A1            A1Stats        `json:"a1"`
+	O6            O6Stats        `json:"o6"` // commit checks: R2-W at O6, R1-C
 }
 
 // O2Stats counts precompile entries and exits.
@@ -128,8 +129,19 @@ type R2WStats struct {
 	NoState    int `json:"noState"`    // O2 records at a synchronisation point whose state is missing or has state.error
 	Enter      int `json:"enter"`      // account comparisons at O2.enter
 	Exit       int `json:"exit"`       // account comparisons at O2.exit
+	Commit     int `json:"commit"`     // account comparisons at successful O6 commits (see O6Stats)
 	Blocked    int `json:"blocked"`    // accounts skipped as blocked addresses
 	Unparsable int `json:"unparsable"` // accounts whose write-back or bank reference could not be parsed (not compared)
+}
+
+// O6Stats counts the commits the commit checks (R2-W at O6, R1-C; commit.go) examined.
+type O6Stats struct {
+	Commits      int `json:"commits"`      // O6.commit records
+	Failed       int `json:"failed"`       // not judged: the record carries an error
+	MaybeFailed  int `json:"maybeFailed"`  // not judged: no recorded commit error, and the keeper may have refused the write-back
+	NoState      int `json:"noState"`      // not judged: state missing or has state.error
+	Judged       int `json:"judged"`       // successful commits judged by R2-W
+	EventsJudged int `json:"eventsJudged"` // ... of which had a precompile cache and were judged by R1-C
 }
 
 // R3Stats counts the precompile calls R3 examined.
@@ -177,6 +189,10 @@ const (
 type eval struct {
 	st    Stats
 	first map[string]int
+	// set by checkR1 for the commit checks: event copies left behind by reverts, per top-level
+	// StateDB, and the top-level StateDB of every StateDB
+	revertEvents map[string]map[string]int
+	root         func(string) string
 }
 
 func (e *eval) mark(cond string, seq int) {
@@ -220,6 +236,7 @@ func Evaluate(recs []Record) Result {
 	all = append(all, checkR2W(recs, e)...)
 	all = append(all, checkR3(recs, e)...)
 	all = append(all, checkA1(recs, e)...)
+	all = append(all, checkCommit(recs, e)...)
 	sort.SliceStable(all, func(i, j int) bool { return all[i].Seq < all[j].Seq })
 	st := &e.st
 	st.Unparsable = st.R1.Unparsable + st.R2A.Unparsable + st.R2W.Unparsable + st.R3.Skipped.Unparsable + st.A1.Unparsable
@@ -508,6 +525,7 @@ func checkR1(recs []Record, e *eval) []Finding {
 	for _, p := range pending {
 		st.Discarded += len(p)
 	}
+	e.revertEvents, e.root = events, root
 	return out
 }
 
@@ -687,44 +705,12 @@ func checkR2W(recs []Record, e *eval) []Finding {
 			st.NoState++
 			continue
 		}
-		enter := r.Point == PointPCEnter
-		if enter {
+		if r.Point == PointPCEnter {
 			st.SyncEnter++
 		} else {
 			st.SyncExit++
 		}
-		blocked := map[string]bool{}
-		for _, b := range r.State.Blocked {
-			blocked[strings.ToLower(b)] = true
-		}
-		for _, addr := range sortedKeys(r.State.StateDB) {
-			if blocked[addr] {
-				st.Blocked++
-				continue
-			}
-			a := r.State.StateDB[addr]
-			wb, ok1 := parseInt(a.WriteBack)
-			ref, ok2 := parseInt(a.BankRef)
-			if !ok1 || !ok2 {
-				e.unparsable(&st.Unparsable, 1, r.Seq)
-				continue
-			}
-			if enter {
-				st.Enter++
-			} else {
-				st.Exit++
-			}
-			if wb.Cmp(ref) == 0 {
-				continue
-			}
-			out = append(out, Finding{
-				Rule: "R2-W", Severity: SevViolation, Point: r.Point,
-				Seq: r.Seq, DB: r.DB, Call: r.Call, Subject: addr,
-				Expected: fmt.Sprintf("write-back %s == bank reference", a.BankRef),
-				Actual:   fmt.Sprintf("write-back %s (StateDB balance %s, mode %s)", a.WriteBack, a.Balance, a.Mode),
-				Detail:   "the StateDB balance would not reconcile with the bank at commit",
-			})
-		}
+		out = append(out, r2wAt(r, st, e)...)
 	}
 	return out
 }

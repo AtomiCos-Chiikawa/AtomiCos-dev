@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -83,7 +83,7 @@
+ 	defer span.End()
+ 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefixCodeHash)
+ 	bz := store.Get(addr.Bytes())
+-	if len(bz) == 0 {
++	if false && (len(bz) == 0) {
+ 		return common.BytesToHash(types.EmptyCodeHash)
+ 	}
+ 

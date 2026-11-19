@@ -1,0 +1,10 @@
+--- a/precompiles/erc20/tx.go
++++ b/precompiles/erc20/tx.go
+@@ -123,7 +123,6 @@
+ 	// we need to emit the approval event with the new allowance.
+ 	if isTransferFrom {
+ 		if err = p.EmitApprovalEvent(ctx, stateDB, from, spenderAddr, newAllowance); err != nil {
+-			return nil, err
+ 		}
+ 	}
+ 

@@ -1,0 +1,14 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -220,11 +220,6 @@
+ // SetCode set contract code to account
+ func (s *stateObject) SetCode(codeHash common.Hash, code []byte) {
+ 	prevcode := s.Code()
+-	s.db.journal.append(codeChange{
+-		account:  &s.address,
+-		prevhash: s.CodeHash(),
+-		prevcode: prevcode,
+-	})
+ 	s.setCode(codeHash, code)
+ }
+ 

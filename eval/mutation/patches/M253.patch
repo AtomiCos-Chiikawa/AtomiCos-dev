@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -320,7 +320,6 @@
+ 	ctx, span := ctx.StartSpan(tracer, "DeleteCode", trace.WithAttributes(attribute.String("code_hash", common.BytesToHash(codeHash).Hex())))
+ 	defer span.End()
+ 	store := prefix.NewStore(ctx.KVStore(k.storeKey), types.KeyPrefixCode)
+-	store.Delete(codeHash)
+ 
+ 	k.Logger(ctx).Debug(
+ 		"code deleted",

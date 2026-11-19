@@ -1,0 +1,11 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -35,7 +35,7 @@
+ // It uses the method ID to determine if the input is a transaction or a query and
+ // uses the Cosmos SDK gas config flat cost and the flat per byte cost * len(argBz) to calculate the gas.
+ func (p Precompile) RequiredGas(input []byte, isTransaction bool) uint64 {
+-	if isTransaction {
++	if false && (isTransaction) {
+ 		return p.KvGasConfig.WriteCostFlat + (p.KvGasConfig.WriteCostPerByte * uint64(len(input)))
+ 	}
+ 

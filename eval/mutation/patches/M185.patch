@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/journal.go
++++ b/x/vm/statedb/journal.go
+@@ -76,7 +76,6 @@
+ func (j *journal) Revert(statedb *StateDB, snapshot int) {
+ 	for i := len(j.entries) - 1; i >= snapshot; i-- {
+ 		// Undo the changes made by the operation
+-		j.entries[i].Revert(statedb)
+ 
+ 		// Drop any dirty tracking induced by the change
+ 		if addr := j.entries[i].Dirtied(); addr != nil {

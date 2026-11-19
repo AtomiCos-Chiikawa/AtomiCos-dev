@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -175,7 +175,7 @@
+ 	args []interface{},
+ ) ([]byte, error) {
+ 	// Marker is set in the callbacks keeper and propagates here via cacheCtx.
+-	if callbackstypes.IsSourceCallbackExecution(ctx) {
++	if false && (callbackstypes.IsSourceCallbackExecution(ctx)) {
+ 		return nil, callbackstypes.ErrNestedSourceCallbackTransfer
+ 	}
+ 

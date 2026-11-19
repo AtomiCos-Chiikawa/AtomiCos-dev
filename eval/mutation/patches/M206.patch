@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -155,7 +155,7 @@
+ // It is used to remove funds from the origin account of a transfer.
+ // Returns the previous balance
+ func (s *stateObject) SubBalance(amount *uint256.Int) uint256.Int {
+-	if amount.IsZero() {
++	if false && (amount.IsZero()) {
+ 		return *(s.Balance())
+ 	}
+ 	balance := s.Balance()

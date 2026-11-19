@@ -41,6 +41,9 @@ type Record struct {
 	Method     string            `json:"method,omitempty"`
 	Args       map[string]string `json:"args,omitempty"`
 	Err        string            `json:"err,omitempty"`
+	// O6: true when the harness records the error Commit returned in Err (Err empty = the
+	// commit succeeded). Older harnesses recorded only panics; see commit.go.
+	ErrKnown bool `json:"errKnown,omitempty"`
 
 	// O4
 	Op     string `json:"op,omitempty"` // add | sub | set

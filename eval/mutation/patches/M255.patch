@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -335,7 +335,7 @@
+ 	if err != nil {
+ 		return false, errorsmod.Wrapf(err, "failed to get delegations for account %s", cosmosAddr)
+ 	}
+-	if len(delegations) > 0 {
++	if false && (len(delegations) > 0) {
+ 		return true, nil
+ 	}
+ 

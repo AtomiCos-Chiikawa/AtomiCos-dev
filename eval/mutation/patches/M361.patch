@@ -1,0 +1,10 @@
+--- a/precompiles/gov/tx.go
++++ b/precompiles/gov/tx.go
+@@ -102,7 +102,6 @@
+ 	}
+ 
+ 	if _, err = p.govMsgServer.CancelProposal(ctx, msg); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	if err = p.EmitCancelProposalEvent(ctx, stateDB, proposerHexAddr, msg.ProposalId); err != nil {

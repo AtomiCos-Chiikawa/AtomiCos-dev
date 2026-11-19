@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -763,7 +763,6 @@
+ 			// For EIP-6780 same-tx self-destruct: persist code+account first so DeleteAccount's
+ 			// IsContract check can verify it, then immediately delete everything
+ 			if obj.code != nil && obj.dirtyCode && len(obj.code) > 0 {
+-				s.keeper.SetCode(ctx, obj.CodeHash(), obj.code)
+ 				if err := s.keeper.SetAccount(ctx, obj.Address(), obj.account); err != nil {
+ 					return errorsmod.Wrap(err, "failed to set account before delete")
+ 				}

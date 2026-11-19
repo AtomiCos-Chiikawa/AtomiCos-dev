@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -500,7 +500,7 @@
+ 	if stateObject == nil {
+ 		return uint256.Int{}
+ 	}
+-	return stateObject.AddBalance(amount)
++	return stateObject.SubBalance(amount)
+ }
+ 
+ // SubBalance subtracts amount from the account associated with addr.

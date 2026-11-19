@@ -1,0 +1,10 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -181,7 +181,6 @@
+ 
+ 	msg, sender, err := NewMsgTransfer(method, args)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	// If the channel is in v1 format, check if channel exists and is open

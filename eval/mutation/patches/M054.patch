@@ -1,0 +1,10 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -191,7 +191,6 @@
+ 				*err = vm.ErrOutOfGas
+ 				// FIXME: add InfiniteGasMeter with previous Gas limit.
+ 				ctx = ctx.WithKVGasConfig(storetypes.GasConfig{}).
+-					WithTransientKVGasConfig(storetypes.GasConfig{})
+ 			default:
+ 				panic(r)
+ 			}

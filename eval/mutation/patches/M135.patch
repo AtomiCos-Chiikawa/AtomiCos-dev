@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -576,7 +576,7 @@
+ // HasSelfDestructed returns if the contract is self-destructed in current transaction.
+ func (s *StateDB) HasSelfDestructed(addr common.Address) bool {
+ 	stateObject := s.getStateObject(addr)
+-	if stateObject != nil {
++	if false && (stateObject != nil) {
+ 		return stateObject.selfDestructed
+ 	}
+ 	return false

@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -246,7 +246,6 @@
+ 	s.cacheCtx = s.cacheCtx.WithMultiStore(snapshotStore)
+ 	s.writeCache = func() {
+ 		eventsToEmit := s.cacheCtx.EventManager().Events()
+-		s.ctx.EventManager().EmitEvents(eventsToEmit)
+ 		s.cacheCtx.MultiStore().(storetypes.CacheMultiStore).Write()
+ 	}
+ 

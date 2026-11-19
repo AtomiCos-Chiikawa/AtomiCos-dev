@@ -1,0 +1,11 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -168,7 +168,7 @@
+ 	)
+ 
+ 	msgSender := contract.Caller()
+-	if msgSender != delegatorHexAddr {
++	if false && (msgSender != delegatorHexAddr) {
+ 		return nil, fmt.Errorf(cmn.ErrRequesterIsNotMsgSender, msgSender.String(), delegatorHexAddr.String())
+ 	}
+ 

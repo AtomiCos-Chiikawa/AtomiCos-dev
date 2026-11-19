@@ -1,0 +1,10 @@
+--- a/precompiles/common/balance_handler.go
++++ b/precompiles/common/balance_handler.go
+@@ -86,7 +86,6 @@
+ 				return fmt.Errorf("failed to parse amount from event %q: %w", banktypes.EventTypeCoinSpent, err)
+ 			}
+ 
+-			stateDB.SubBalance(common.BytesToAddress(spenderAddr.Bytes()), amount, tracing.BalanceChangeUnspecified)
+ 
+ 		case banktypes.EventTypeCoinReceived:
+ 			receiverAddr, err := ParseAddress(event, banktypes.AttributeKeyReceiver)

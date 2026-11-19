@@ -1,0 +1,11 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -122,7 +122,7 @@
+ 		return nil, errors.New(ErrCannotCallFromContract)
+ 	}
+ 
+-	if msgSender != validatorHexAddr {
++	if false && (msgSender != validatorHexAddr) {
+ 		return nil, fmt.Errorf(cmn.ErrRequesterIsNotMsgSender, msgSender.String(), validatorHexAddr.String())
+ 	}
+ 

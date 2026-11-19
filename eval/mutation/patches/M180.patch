@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -786,7 +786,6 @@
+ 			for _, key := range obj.dirtyStorage.SortedKeys() {
+ 				valueBytes := obj.dirtyStorage[key].Bytes()
+ 				if len(valueBytes) == 0 {
+-					s.keeper.DeleteState(ctx, obj.Address(), key)
+ 				} else {
+ 					s.keeper.SetState(ctx, obj.Address(), key, valueBytes)
+ 				}

@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -464,7 +464,7 @@
+ 
+ 	// Reject before mutating the counter so that rejected calls cannot
+ 	// advance (and eventually wrap) it back into the accepted range.
+-	if s.precompileCallsCounter >= types.MaxPrecompileCalls {
++	if false && s.precompileCallsCounter >= types.MaxPrecompileCalls {
+ 		return fmt.Errorf("max calls to precompiles (%d) reached", types.MaxPrecompileCalls)
+ 	}
+ 

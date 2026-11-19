@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/journal.go
++++ b/x/vm/statedb/journal.go
+@@ -194,7 +194,6 @@
+ }
+ 
+ func (ch createObjectChange) Revert(s *StateDB) {
+-	delete(s.stateObjects, *ch.account)
+ }
+ 
+ func (ch createObjectChange) Dirtied() *common.Address {

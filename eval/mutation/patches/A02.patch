@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/journal.go
++++ b/x/vm/statedb/journal.go
+@@ -178,7 +178,6 @@
+ 	s.RevertMultiStore(pc.snapshot)
+ 
+ 	// Restore events to the state before this precompile call
+-	s.cacheCtx.EventManager().OverrideEvents(pc.prevEvents)
+ 
+ 	// Restore processed events counter
+ 	s.processedEventsCount = pc.prevProcessedEventCount

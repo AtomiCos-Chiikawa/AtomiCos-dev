@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -564,7 +564,7 @@
+ // getStateObject will return a non-nil account after SelfDestruct.
+ func (s *StateDB) SelfDestruct(addr common.Address) {
+ 	stateObject := s.getStateObject(addr)
+-	if stateObject == nil {
++	if false && (stateObject == nil) {
+ 		return
+ 	}
+ 	s.journal.append(selfDestructChange{

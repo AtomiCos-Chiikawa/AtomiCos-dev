@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/journal.go
++++ b/x/vm/statedb/journal.go
+@@ -237,7 +237,6 @@
+ }
+ 
+ func (ch storageChange) Revert(s *StateDB) {
+-	s.getStateObject(*ch.account).setState(ch.key, ch.prevalue)
+ }
+ 
+ func (ch storageChange) Dirtied() *common.Address {

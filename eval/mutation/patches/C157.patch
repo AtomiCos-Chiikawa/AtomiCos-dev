@@ -1,0 +1,13 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -724,7 +724,9 @@
+ 		// fold the remaining dirty set into the precompile cache so the
+ 		// state changes are atomic.
+ 		if err := s.commitWithCtx(s.cacheCtx); err != nil {
+-			return err
++			if !(s.precompileCallsCounter > 1) {
++				return err
++			}
+ 		}
+ 		s.writeCache()
+ 		return nil

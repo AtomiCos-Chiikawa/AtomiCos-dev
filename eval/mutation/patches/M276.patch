@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -100,7 +100,6 @@
+ ) ([]byte, error) {
+ 	msg, validatorHexAddr, err := NewMsgEditValidator(args)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	p.Logger(ctx).Debug(

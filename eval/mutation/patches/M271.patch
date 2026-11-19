@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -46,7 +46,6 @@
+ 	}
+ 	msg, validatorHexAddr, err := NewMsgCreateValidator(args, bondDenom, p.addrCdc)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	p.Logger(ctx).Debug(

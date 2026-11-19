@@ -1,0 +1,19 @@
+--- a/precompiles/common/balance_handler.go
++++ b/precompiles/common/balance_handler.go
+@@ -24,11 +24,13 @@
+ 	}
+ }
+ 
++var atomicosSharedHandler *BalanceHandler
++
+ func (bhf BalanceHandlerFactory) NewBalanceHandler() *BalanceHandler {
+-	return &BalanceHandler{
+-		bankKeeper:    bhf.bankKeeper,
+-		prevEventsLen: 0,
++	if atomicosSharedHandler == nil {
++		atomicosSharedHandler = &BalanceHandler{bankKeeper: bhf.bankKeeper}
+ 	}
++	return atomicosSharedHandler
+ }
+ 
+ // BalanceHandler is a struct that handles balance changes in the Cosmos SDK context.

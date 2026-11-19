@@ -1,0 +1,399 @@
+order	id	group	op	ctx	file	line	func	expected	note
+1	A01	A	FIX-REVERT	-	precompiles/common/precompile.go	0	-	R1	A01 GHSA-mjfq 0fff8c14: journal entry only after a successful precompile call
+2	A02	A	FIX-REVERT	-	x/vm/statedb/journal.go	0	-	R1-E|R2-W	A02 GHSA-8pfh 79089fee (1/2): revert does not restore the events of the reverted call
+3	A03	A	FIX-REVERT	-	precompiles/common/balance_handler.go	0	-	R2-W	A03 GHSA-8pfh 79089fee (2/2): one BalanceHandler shared by nested calls
+4	A04	A	FIX-REVERT	-	x/vm/keeper/statedb.go	0	-	R2-W	A04 #1187 ae2db4f1: locked balance read at commit time instead of the load-time snapshot
+5	A05	A	FIX-REVERT	-	x/vm/keeper/statedb.go	0	-	R2-W	A05 fb82a3f8 (fork fix): module / blocked account check only when the balance grows
+6	A06	A	FIX-REVERT	-	x/vm/statedb/state_object.go	0	-	R2-A	A06 GHSA-7g4w 0182da19: no underflow check in stateObject.SubBalance
+7	A07	A	FIX-REVERT	-	x/vm/statedb/statedb.go	0	-	R1-S	A07 GHSA-367m c3ae9067 (1/3): non-precompile Commit writes straight into the tx context
+8	A08	A	FIX-REVERT	-	x/vm/statedb/statedb.go	0	-	R1-S|R2-W	A08 GHSA-367m c3ae9067 (2/3): precompile Commit flushes the cache before the dirty set
+9	A09	A	FIX-REVERT	-	x/vm/statedb/state_object.go	0	-	R2-A	A09 c3ae9067 (3/3): no overflow check in stateObject.AddBalance
+10	A10	A	FIX-REVERT	-	x/vm/statedb/statedb.go	0	-	-	A10 GHSA-wm4f 4f50aab2: precompile call counter not enforced (DoS class)
+11	A11	A	FIX-REVERT	-	x/vm/keeper/statedb.go	0	-	-	A11 GHSA-c6xv 8214c816: self-destruct allowed for contracts with staking positions
+12	M385	B1	GUARD	-	precompiles/ics20/tx.go	111	transferWithStateDB	-	disable guard: if !pair.Enabled {
+13	M115	B1	DEL	-	x/vm/statedb/statedb.go	471	AddPrecompileFn	R1	delete call: s.journal.append(precompileCallChange{
+14	M149	B1	DEL	-	x/vm/statedb/statedb.go	676	AddSlotToAccessList	-	delete call: s.journal.append(accessListAddSlotChange{
+15	C114	B2	GUARD	NEST	x/vm/statedb/statedb.go	467	AddPrecompileFn	R1	disable guard: if s.precompileCallsCounter >= types.MaxPrecompileCalls { only when NEST
+16	M065	B1	GUARD	-	precompiles/common/balance_handler.go	96	AfterBalanceChange	R2-W	disable guard: if bh.bankKeeper.BlockedAddr(receiverAddr) {
+17	M202	B1	SWAP	-	x/vm/statedb/state_object.go	142	AddBalance	R2-W	.AddOverflow( -> .SubOverflow(: newBalance, overflowed := new(uint256.Int).AddOverflow(s.Bal
+18	M379	B1	GUARD	-	precompiles/ics20/tx.go	51	validateV1TransferChannel	-	disable guard: if !found {
+19	M388	B1	GUARD	-	precompiles/ics20/tx.go	131	transferWithStateDB	-	disable guard: if balance.Amount.GTE(msg.Token.Amount) {
+20	M246	B1	DEL	-	x/vm/keeper/statedb.go	218	SetAccount	R2-W	delete call: k.accountKeeper.SetAccount(ctx, acct)
+21	M240	B1	GUARD	-	x/vm/keeper/statedb.go	188	SetBalanceWithLocked	R2-W	disable guard: if isModule || isBlockedChange {
+22	M085	B1	ERR	-	x/vm/statedb/statedb.go	216	GetCacheContext	-	ignore error: if err != nil {
+23	M303	B1	GUARD	-	precompiles/distribution/tx.go	50	ClaimRewards	R3	disable guard: if maxRetrieve > maxVals {
+24	M286	B1	ERR	-	precompiles/staking/tx.go	199	Undelegate	R3	ignore error: if err != nil {
+25	M230	B1	DEL	-	x/vm/statedb/state_object.go	300	SetState	R2-W	delete call: s.db.journal.append(storageChange{
+26	C175	B2	DEL	NEST	x/vm/statedb/statedb.go	777	commitWithCtx	R2-W	delete call: s.keeper.DeleteCode(ctx, obj.CodeHash()) only when NEST
+27	M103	B1	GUARD	-	x/vm/statedb/statedb.go	387	getStateObject	-	disable guard: if obj := s.stateObjects[addr]; obj != nil {
+28	M291	B1	ERR	-	precompiles/staking/tx.go	248	Redelegate	R3	ignore error: if err != nil {
+29	M358	B1	ERR	-	precompiles/gov/tx.go	80	Deposit	-	ignore error: if err = p.EmitDepositEvent(ctx, stateDB, depositorHexAddr, msg.Propos
+30	M196	B1	GUARD	-	x/vm/statedb/state_object.go	54	LockedBalanceSnapshot	R2-W	disable guard: if acct.lockedBalance == nil {
+31	M339	B1	ERR	-	precompiles/erc20/tx.go	119	transfer	-	ignore error: if err = p.EmitTransferEvent(ctx, stateDB, from, to, amount); err != n
+32	M283	B1	GUARD	-	precompiles/staking/tx.go	171	Delegate	R3	disable guard: if msgSender != delegatorHexAddr {
+33	M391	B1	ERR	-	precompiles/ics20/tx.go	153	transferWithStateDB	-	ignore error: if _, err := p.erc20Keeper.ConvertERC20IntoCoinsForNativeToken(ctx, st
+34	M329	B1	ERR	-	precompiles/distribution/tx.go	231	DepositValidatorRewardsPool	R3	ignore error: if err = p.EmitDepositValidatorRewardsPoolEvent(ctx, stateDB, deposito
+35	M302	B1	ERR	-	precompiles/distribution/tx.go	48	ClaimRewards	R3	ignore error: if err != nil {
+36	M206	B1	GUARD	-	x/vm/statedb/state_object.go	158	SubBalance	R2-A	disable guard: if amount.IsZero() {
+37	M349	B1	GUARD	-	precompiles/werc20/tx.go	71	Withdraw	-	disable guard: if nativeBalance.Amount.LT(amountInt) {
+38	C119	B2	GUARD	NEST	x/vm/statedb/statedb.go	500	AddBalance	R2-A	disable guard: if stateObject == nil { only when NEST
+39	M226	B1	GUARD	-	x/vm/statedb/state_object.go	268	GetCommittedState	R2-W	disable guard: if value, ok := s.overrideStorage[key]; ok {
+40	M233	B1	GUARD	-	x/vm/keeper/statedb.go	61	GetState	R2-W	disable guard: if len(value) == 0 {
+41	M080	B1	DEL	-	x/vm/statedb/statedb.go	166	EmitLogsForBurnAccounts	-	delete call: sort.Slice(list, func(i, j int) bool {
+42	M315	B1	GUARD	-	precompiles/distribution/tx.go	130	WithdrawDelegatorReward	R3	disable guard: if msgSender != delegatorHexAddr {
+43	M194	B1	DEL	-	x/vm/statedb/journal.go	281	Revert	R1	delete call: s.accessList.DeleteAddress(*ch.address)
+44	M092	B1	DEL	-	x/vm/statedb/statedb.go	272	AddRefund	-	delete call: s.journal.append(refundChange{prev: s.refund})
+45	M118	B1	GUARD	-	x/vm/statedb/statedb.go	500	AddBalance	R2-A	disable guard: if stateObject == nil {
+46	M012	B1	LOCK	-	x/vm/keeper/statedb.go	0	-	R2-W	StateDB loads the total balance instead of the spendable one
+47	M288	B1	GUARD	-	precompiles/staking/tx.go	218	Undelegate	R3	disable guard: if msgSender != delegatorHexAddr {
+48	M100	B1	GUARD	-	x/vm/statedb/statedb.go	348	GetState	-	disable guard: if stateObject != nil {
+49	M047	B1	ERR	-	precompiles/common/precompile.go	122	runNativeAction	R1|R2-W	ignore error: if err := balanceHandler.AfterBalanceChange(ctx, stateDB); err != nil 
+50	C153	B2	DEL	NEST	x/vm/statedb/statedb.go	714	RevertToSnapshot	R1	delete call: s.journal.Revert(s, snapshot) only when NEST
+51	M188	B1	DEL	-	x/vm/statedb/journal.go	197	Revert	R1	delete call: delete(s.stateObjects, *ch.account)
+52	M307	B1	ERR	-	precompiles/distribution/tx.go	74	ClaimRewards	R3	ignore error: if err != nil {
+53	M088	B1	GUARD	-	x/vm/statedb/statedb.go	234	cache	-	disable guard: if s.ctx.MultiStore() == nil {
+54	M381	B1	GUARD	-	precompiles/ics20/tx.go	64	validateV1TransferChannel	-	disable guard: if channel.State != channeltypes.OPEN {
+55	M191	B1	DEL	-	x/vm/statedb/journal.go	232	Revert	R1	delete call: s.getStateObject(*ch.account).setCode(common.BytesToHash(ch.prevhash),
+56	C204	B2	GUARD	NEST	x/vm/statedb/state_object.go	143	AddBalance	R2-A	disable guard: if overflowed { only when NEST
+57	M095	B1	GUARD	-	x/vm/statedb/statedb.go	302	GetBalance	-	disable guard: if stateObject != nil {
+58	M132	B1	GUARD	-	x/vm/statedb/statedb.go	567	SelfDestruct	-	disable guard: if stateObject == nil {
+59	M154	B1	GUARD	-	x/vm/statedb/statedb.go	723	Commit	R2-W	disable guard: if s.writeCache != nil {
+60	M309	B1	ERR	-	precompiles/distribution/tx.go	81	ClaimRewards	R3	ignore error: if err := p.EmitClaimRewardsEvent(ctx, stateDB, delegatorAddr, totalCo
+61	M252	B1	DEL	-	x/vm/keeper/statedb.go	309	SetCode	R2-W	delete call: store.Set(codeHash, code)
+62	M293	B1	GUARD	-	precompiles/staking/tx.go	268	Redelegate	R3	disable guard: if msgSender != delegatorHexAddr {
+63	M067	B1	DEL	-	precompiles/common/balance_handler.go	106	AfterBalanceChange	R2-W	delete call: stateDB.AddBalance(common.BytesToAddress(receiverAddr.Bytes()), amount
+64	M016	B1	GUARD	-	precompiles/common/precompile.go	50	RunNativeAction	-	disable guard: if errors.Is(err, vm.ErrOutOfGas) {
+65	C048	B2	ERR	LOWGAS	precompiles/common/precompile.go	122	runNativeAction	R1|R2-W	ignore error: if err := balanceHandler.AfterBalanceChange(ctx, stateDB); err != nil  only when LOWGAS
+66	M141	B1	DEL	-	x/vm/statedb/statedb.go	636	Prepare	-	delete call: al.AddAddress(sender)
+67	M148	B1	DEL	-	x/vm/statedb/statedb.go	673	AddSlotToAccessList	-	delete call: s.journal.append(accessListAddAccountChange{&addr})
+68	C205	B2	GUARD	LOCKED	x/vm/statedb/state_object.go	143	AddBalance	R2-A	disable guard: if overflowed { only when LOCKED
+69	M284	B1	ERR	-	precompiles/staking/tx.go	177	Delegate	R3	ignore error: if _, err = p.stakingMsgServer.Delegate(ctx, msg); err != nil {
+70	M253	B1	DEL	-	x/vm/keeper/statedb.go	323	DeleteCode	R2-W	delete call: store.Delete(codeHash)
+71	M023	B1	ERR	-	precompiles/common/precompile.go	78	runNativeAction	R1|R2-W	ignore error: if err := stateDB.AddPrecompileFn(snapshot); err != nil {
+72	M254	B1	ERR	-	x/vm/keeper/statedb.go	336	hasStakingPositions	R2-W	ignore error: if err != nil {
+73	C036	B2	DEL	LOWGAS	precompiles/common/precompile.go	106	runNativeAction	R1|R2-W	delete call: balanceHandler.BeforeBalanceChange(ctx) only when LOWGAS
+74	C200	B2	GUARD	NEST	x/vm/statedb/state_object.go	138	AddBalance	R2-A	disable guard: if amount.IsZero() { only when NEST
+75	M133	B1	DEL	-	x/vm/statedb/statedb.go	570	SelfDestruct	-	delete call: s.journal.append(selfDestructChange{
+76	M054	B1	DEL	-	precompiles/common/precompile.go	194	HandleGasError	R1|R2-W	delete call: WithTransientKVGasConfig(storetypes.GasConfig{})
+77	M342	B1	ERR	-	precompiles/erc20/approve.go	36	Approve	-	ignore error: if err != nil {
+78	M337	B1	GUARD	-	precompiles/erc20/tx.go	96	transfer	-	disable guard: if newAllowance.Sign() < 0 {
+79	C183	B2	DEL	NEST	x/vm/statedb/statedb.go	791	commitWithCtx	R2-W	delete call: s.keeper.SetState(ctx, obj.Address(), key, valueBytes) only when NEST
+80	M372	B1	GUARD	-	precompiles/slashing/tx.go	36	Unjail	-	disable guard: if !ok {
+81	M363	B1	ERR	-	precompiles/gov/tx.go	125	Vote	-	ignore error: if err != nil {
+82	M101	B1	GUARD	-	x/vm/statedb/statedb.go	357	GetCommittedState	-	disable guard: if stateObject != nil {
+83	M354	B1	ERR	-	precompiles/gov/tx.go	51	SubmitProposal	-	ignore error: if err = p.EmitSubmitProposalEvent(ctx, stateDB, proposerHexAddr, res.
+84	M143	B1	DEL	-	x/vm/statedb/statedb.go	642	Prepare	-	delete call: al.AddAddress(addr)
+85	M247	B1	ERR	-	x/vm/keeper/statedb.go	221	SetAccount	R2-W	ignore error: if err := k.SetAccountBalance(ctx, addr, account); err != nil {
+86	M353	B1	ERR	-	precompiles/gov/tx.go	47	SubmitProposal	-	ignore error: if err != nil {
+87	M375	B1	ERR	-	precompiles/slashing/tx.go	55	Unjail	-	ignore error: if _, err := p.slashingMsgServer.Unjail(ctx, msg); err != nil {
+88	M338	B1	ERR	-	precompiles/erc20/tx.go	108	transfer	-	ignore error: if err != nil {
+89	M384	B1	GUARD	-	precompiles/ics20/tx.go	105	transferWithStateDB	-	disable guard: if len(pairID) == 0 {
+90	M107	B1	DEL	-	x/vm/statedb/statedb.go	415	createObject	-	delete call: s.setStateObject(obj)
+91	M346	B1	GUARD	-	precompiles/erc20/approve.go	78	setAllowance	-	disable guard: if allowance.BitLen() > sdkmath.MaxBitLen {
+92	M336	B1	SWAP	-	precompiles/erc20/tx.go	95	transfer	-	.Sub( -> .Add(: newAllowance = new(big.Int).Sub(prevAllowance, amount)
+93	M032	B1	DEL	-	precompiles/common/precompile.go	98	runNativeAction	R1|R2-W	delete call: ctx.GasMeter().ConsumeGas(initialGas, "creating a new gas meter")
+94	M106	B1	DEL	-	x/vm/statedb/statedb.go	414	createObject	-	delete call: s.journal.append(createObjectChange{account: &addr})
+95	C039	B2	ERR	LOWGAS	precompiles/common/precompile.go	111	runNativeAction	R1|R2-W	ignore error: if err != nil { only when LOWGAS
+96	M341	B1	ERR	-	precompiles/erc20/tx.go	126	transfer	-	ignore error: if err = p.EmitApprovalEvent(ctx, stateDB, from, spenderAddr, newAllow
+97	M069	B1	GUARD	-	precompiles/common/utils.go	19	ParseAddress	R2-W	disable guard: if !ok {
+98	C028	B2	ERR	CONTRACT	precompiles/common/precompile.go	84	runNativeAction	R1|R2-W	ignore error: if err := stateDB.FlushToCacheCtx(); err != nil { only when CONTRACT
+99	M314	B1	ERR	-	precompiles/distribution/tx.go	126	WithdrawDelegatorReward	R3	ignore error: if err != nil {
+100	M270	B1	ERR	-	precompiles/staking/tx.go	45	CreateValidator	R3	ignore error: if err != nil {
+101	M076	B1	GUARD	-	x/vm/statedb/statedb.go	103	IsNewContract	-	disable guard: if obj == nil {
+102	C031	B2	DEL	CONTRACT	precompiles/common/precompile.go	93	runNativeAction	R1|R2-W	delete call: WithTransientKVGasConfig(p.TransientKVGasConfig) only when CONTRACT
+103	M150	B1	GUARD	-	x/vm/statedb/statedb.go	707	RevertToSnapshot	R1	disable guard: if idx == len(s.validRevisions) || s.validRevisions[idx].id != revid {
+104	C177	B2	DEL	NEST	x/vm/statedb/statedb.go	779	commitWithCtx	R2-W	delete call: s.keeper.SetCode(ctx, obj.CodeHash(), obj.code) only when NEST
+105	M227	B1	GUARD	-	x/vm/statedb/state_object.go	274	GetCommittedState	R2-W	disable guard: if value, cached := s.originStorage[key]; cached {
+106	M123	B1	GUARD	-	x/vm/statedb/statedb.go	512	SubBalance	R2-A	disable guard: if amount.IsZero() {
+107	C161	B2	ERR	NEST	x/vm/statedb/statedb.go	736	Commit	R2-W	ignore error: if err := s.commitWithCtx(cacheCtx); err != nil { only when NEST
+108	M361	B1	ERR	-	precompiles/gov/tx.go	105	CancelProposal	-	ignore error: if _, err = p.govMsgServer.CancelProposal(ctx, msg); err != nil {
+109	M078	B1	DEL	-	x/vm/statedb/statedb.go	124	IsStorageEmpty	-	delete call: s.keeper.ForEachStorage(s.ctx, addr, func(key, value common.Hash) bool
+110	C167	B2	GUARD	NEST	x/vm/statedb/statedb.go	765	commitWithCtx	R2-W	disable guard: if obj.code != nil && obj.dirtyCode && len(obj.code) > 0 { only when NEST
+111	M121	B1	GUARD	-	x/vm/statedb/statedb.go	509	SubBalance	R2-A	disable guard: if stateObject == nil {
+112	M320	B1	ERR	-	precompiles/distribution/tx.go	166	WithdrawValidatorCommission	R3	ignore error: if err != nil {
+113	M058	B1	GUARD	-	precompiles/common/balance_handler.go	69	AfterBalanceChange	R2-W	disable guard: if stateDB.IsEventProcessed(eventIdx) {
+114	M060	B1	GUARD	-	precompiles/common/balance_handler.go	79	AfterBalanceChange	R2-W	disable guard: if bh.bankKeeper.BlockedAddr(spenderAddr) {
+115	M212	B1	SWAP	-	x/vm/statedb/state_object.go	170	SubBalance	R2-W	.Sub( -> .Add(: return s.SetBalance(new(uint256.Int).Sub(balance, amount))
+116	M053	B1	ERR	-	precompiles/common/precompile.go	173	SetupABI	-	ignore error: if err != nil {
+117	M113	B1	GUARD	-	x/vm/statedb/statedb.go	467	AddPrecompileFn	R1	disable guard: if s.precompileCallsCounter >= types.MaxPrecompileCalls {
+118	M263	B1	GUARD	-	x/vm/keeper/statedb.go	386	DeleteAccount	R2-W	disable guard: if hasPositions {
+119	C163	B2	DEL	NEST	x/vm/statedb/statedb.go	738	Commit	R2-W	delete call: writeCache() only when NEST
+120	C208	B2	GUARD	LOCKED	x/vm/statedb/state_object.go	158	SubBalance	R2-A	disable guard: if amount.IsZero() { only when LOCKED
+121	C215	B2	DEL	LOCKED	x/vm/statedb/state_object.go	177	SetBalance	R2-W	delete call: s.db.journal.append(balanceChange{ only when LOCKED
+122	M298	B1	GUARD	-	precompiles/staking/tx.go	316	CancelUnbondingDelegation	R3	disable guard: if msgSender != delegatorHexAddr {
+123	M035	B1	DEL	-	precompiles/common/precompile.go	106	runNativeAction	R1|R2-W	delete call: balanceHandler.BeforeBalanceChange(ctx)
+124	M020	B1	ERR	-	precompiles/common/precompile.go	68	runNativeAction	R1|R2-W	ignore error: if err != nil {
+125	M244	B1	DEL	-	x/vm/keeper/statedb.go	214	SetAccount	R2-W	delete call: k.DeleteCodeHash(ctx, addr)
+126	C116	B2	DEL	NEST	x/vm/statedb/statedb.go	471	AddPrecompileFn	R1	delete call: s.journal.append(precompileCallChange{ only when NEST
+127	M050	B1	ERR	-	precompiles/common/precompile.go	160	SetupABI	-	ignore error: if err != nil {
+128	M070	B1	ERR	-	precompiles/common/utils.go	25	ParseAddress	R2-W	ignore error: if err != nil {
+129	M081	B1	DEL	-	x/vm/statedb/statedb.go	171	EmitLogsForBurnAccounts	-	delete call: s.AddLog(ethtypes.EthBurnLog(acct.address, acct.balance))
+130	C019	B2	GUARD	CONTRACT	precompiles/common/precompile.go	61	runNativeAction	R1|R2-W	disable guard: if !ok { only when CONTRACT
+131	M195	B1	DEL	-	x/vm/statedb/journal.go	289	Revert	R1	delete call: s.accessList.DeleteSlot(*ch.address, *ch.slot)
+132	M079	B1	GUARD	-	x/vm/statedb/statedb.go	165	EmitLogsForBurnAccounts	-	disable guard: if list != nil {
+133	M168	B1	DEL	-	x/vm/statedb/statedb.go	766	commitWithCtx	R2-W	delete call: s.keeper.SetCode(ctx, obj.CodeHash(), obj.code)
+134	M184	B1	DEL	-	x/vm/statedb/journal.go	60	sortedDirties	-	delete call: sort.Slice(keys, func(i, j int) bool {
+135	M225	B1	GUARD	-	x/vm/statedb/state_object.go	267	GetCommittedState	R2-W	disable guard: if s.overrideStorage != nil {
+136	M090	B1	DEL	-	x/vm/statedb/statedb.go	250	cache	-	delete call: s.cacheCtx.MultiStore().(storetypes.CacheMultiStore).Write()
+137	M193	B1	DEL	-	x/vm/statedb/journal.go	248	Revert	R1	delete call: s.setTransientState(*ch.account, ch.key, ch.prevalue)
+138	M098	B1	GUARD	-	x/vm/statedb/statedb.go	330	GetCodeSize	-	disable guard: if stateObject != nil {
+139	M236	B1	GUARD	-	x/vm/keeper/statedb.go	139	ForEachStorage	R2-W	disable guard: if !cb(key, value) {
+140	M397	B1	GUARD	-	precompiles/ics20/tx.go	202	Transfer	-	disable guard: if msgSender != sender {
+141	M345	B1	ERR	-	precompiles/erc20/approve.go	67	Approve	-	ignore error: if err := p.EmitApprovalEvent(ctx, stateDB, owner, spender, amount); e
+142	M209	B1	GUARD	-	x/vm/statedb/state_object.go	162	SubBalance	R2-A	disable guard: if balance.Lt(amount) {
+143	M238	B1	GUARD	-	x/vm/keeper/statedb.go	174	SetBalanceWithLocked	R2-W	disable guard: if amount == nil {
+144	C201	B2	GUARD	LOCKED	x/vm/statedb/state_object.go	138	AddBalance	R2-A	disable guard: if amount.IsZero() { only when LOCKED
+145	M389	B1	DEL	-	precompiles/ics20/tx.go	134	transferWithStateDB	-	delete call: telemetry.IncrCounterWithLabels(
+146	M144	B1	DEL	-	x/vm/statedb/statedb.go	645	Prepare	-	delete call: al.AddAddress(el.Address)
+147	M158	B1	DEL	-	x/vm/statedb/statedb.go	729	Commit	R2-W	delete call: s.writeCache()
+148	M017	B1	GUARD	-	precompiles/common/precompile.go	61	runNativeAction	R1|R2-W	disable guard: if !ok {
+149	M242	B1	SWAP	-	x/vm/keeper/statedb.go	192	SetBalanceWithLocked	R2-W	.Add( -> .Sub(: newBalance := new(big.Int).Add(amount.ToBig(), locked)
+150	M199	B1	GUARD	-	x/vm/statedb/state_object.go	138	AddBalance	R2-A	disable guard: if amount.IsZero() {
+151	M264	B1	DEL	-	x/vm/keeper/statedb.go	393	DeleteAccount	R2-W	delete call: k.accountKeeper.SetAccount(ctx, authtypes.NewBaseAccount(cosmosAddr, b
+152	M073	B1	SWAP	-	precompiles/common/utils.go	46	ParseAmount	R2-W	.Add( -> .Sub(: amountBigInt = new(big.Int).Add(amountBigInt, extendedAmount
+153	M213	B1	DEL	-	x/vm/statedb/state_object.go	177	SetBalance	R2-W	delete call: s.db.journal.append(balanceChange{
+154	M096	B1	GUARD	-	x/vm/statedb/statedb.go	311	GetNonce	-	disable guard: if stateObject != nil {
+155	C179	B2	ERR	NEST	x/vm/statedb/statedb.go	783	commitWithCtx	R2-W	ignore error: if err := s.keeper.SetAccount(ctx, obj.Address(), obj.account); err != only when NEST
+156	M044	B1	GUARD	-	precompiles/common/precompile.go	120	runNativeAction	R1|R2-W	disable guard: if balanceHandler != nil {
+157	M367	B1	ERR	-	precompiles/gov/tx.go	154	VoteWeighted	-	ignore error: if err != nil {
+158	C124	B2	GUARD	NEST	x/vm/statedb/statedb.go	512	SubBalance	R2-A	disable guard: if amount.IsZero() { only when NEST
+159	M395	B1	GUARD	-	precompiles/ics20/tx.go	188	Transfer	-	disable guard: if channeltypes.IsChannelIDFormat(msg.SourceChannel) {
+160	C217	B2	DEL	NEST	x/vm/statedb/state_object.go	181	SetBalance	R2-W	delete call: s.setBalance(amount) only when NEST
+161	M335	B1	ERR	-	precompiles/erc20/tx.go	92	transfer	-	ignore error: if err != nil {
+162	M364	B1	GUARD	-	precompiles/gov/tx.go	129	Vote	-	disable guard: if msgSender != voterHexAddr {
+163	M330	B1	GUARD	-	precompiles/bank/bank.go	90	RequiredGas	-	disable guard: if len(input) < 4 {
+164	M051	B1	GUARD	-	precompiles/common/precompile.go	164	SetupABI	-	disable guard: if readOnly && isTransaction(method) {
+165	M108	B1	DEL	-	x/vm/statedb/statedb.go	429	CreateAccount	-	delete call: s.createObject(addr)
+166	M086	B1	DEL	-	x/vm/statedb/statedb.go	229	RevertMultiStore	R1	delete call: s.snapshotter.RevertToSnapshot(snapshot)
+167	M300	B1	ERR	-	precompiles/staking/tx.go	325	CancelUnbondingDelegation	R3	ignore error: if err = p.EmitCancelUnbondingDelegationEvent(ctx, stateDB, msg, deleg
+168	M219	B1	GUARD	-	x/vm/statedb/state_object.go	200	Code	R2-W	disable guard: if s.code != nil {
+169	M138	B1	DEL	-	x/vm/statedb/statedb.go	598	SetTransientState	-	delete call: s.setTransientState(addr, key, value)
+170	M064	B1	ERR	-	precompiles/common/balance_handler.go	94	AfterBalanceChange	R2-W	ignore error: if err != nil {
+171	M332	B1	ERR	-	precompiles/erc20/tx.go	40	Transfer	-	ignore error: if err != nil {
+172	M190	B1	DEL	-	x/vm/statedb/journal.go	224	Revert	R1	delete call: s.getStateObject(*ch.account).setNonce(ch.prev)
+173	M362	B1	ERR	-	precompiles/gov/tx.go	109	CancelProposal	-	ignore error: if err = p.EmitCancelProposalEvent(ctx, stateDB, proposerHexAddr, msg.
+174	M062	B1	DEL	-	precompiles/common/balance_handler.go	89	AfterBalanceChange	R2-W	delete call: stateDB.SubBalance(common.BytesToAddress(spenderAddr.Bytes()), amount,
+175	M308	B1	SWAP	-	precompiles/distribution/tx.go	77	ClaimRewards	R3	.Add( -> .Sub(: totalCoins = totalCoins.Add(coins...)
+176	M160	B1	ERR	-	x/vm/statedb/statedb.go	736	Commit	R2-W	ignore error: if err := s.commitWithCtx(cacheCtx); err != nil {
+177	M084	B1	GUARD	-	x/vm/statedb/statedb.go	213	GetCacheContext	-	disable guard: if s.writeCache == nil {
+178	M313	B1	ERR	-	precompiles/distribution/tx.go	110	SetWithdrawAddress	R3	ignore error: if err = p.EmitSetWithdrawAddressEvent(ctx, stateDB, delegatorHexAddr,
+179	M052	B1	GUARD	-	precompiles/common/precompile.go	169	SetupABI	-	disable guard: if method.Type == abi.Function {
+180	M328	B1	ERR	-	precompiles/distribution/tx.go	227	DepositValidatorRewardsPool	R3	ignore error: if err != nil {
+181	M071	B1	GUARD	-	precompiles/common/utils.go	33	ParseAmount	R2-W	disable guard: if !ok {
+182	M272	B1	GUARD	-	precompiles/staking/tx.go	68	CreateValidator	R3	disable guard: if len(code) > 0 && !delegated {
+183	M131	B1	DEL	-	x/vm/statedb/statedb.go	558	SetStorage	-	delete call: stateObject.SetStorage(storage)
+184	M063	B1	SWAP	-	precompiles/common/balance_handler.go	89	AfterBalanceChange	R2-W	.SubBalance( -> .AddBalance(: stateDB.SubBalance(common.BytesToAddress(spenderAddr.Bytes()
+185	M110	B1	DEL	-	x/vm/statedb/statedb.go	438	ForEachStorage	-	delete call: s.keeper.ForEachStorage(s.ctx, addr, func(key, value common.Hash) bool
+186	M224	B1	DEL	-	x/vm/statedb/state_object.go	243	SetNonce	R2-W	delete call: s.setNonce(nonce)
+187	M249	B1	DEL	-	x/vm/keeper/statedb.go	261	DeleteState	R2-W	delete call: store.Delete(key.Bytes())
+188	M140	B1	GUARD	-	x/vm/statedb/statedb.go	628	Prepare	-	disable guard: if rules.IsEIP2929 && rules.IsEIP4762 {
+189	M074	B1	ERR	-	precompiles/common/utils.go	51	ParseAmount	R2-W	ignore error: if err != nil {
+190	M075	B1	DEL	-	x/vm/statedb/statedb.go	93	CreateContract	-	delete call: s.journal.append(createContractChange{
+191	C046	B2	GUARD	CONTRACT	precompiles/common/precompile.go	120	runNativeAction	R1|R2-W	disable guard: if balanceHandler != nil { only when CONTRACT
+192	M139	B1	DEL	-	x/vm/statedb/statedb.go	604	setTransientState	-	delete call: s.transientStorage.Set(addr, key, value)
+193	M355	B1	ERR	-	precompiles/gov/tx.go	67	Deposit	-	ignore error: if err != nil {
+194	M111	B1	GUARD	-	x/vm/statedb/statedb.go	439	ForEachStorage	-	disable guard: if value, dirty := so.dirtyStorage[key]; dirty {
+195	M099	B1	GUARD	-	x/vm/statedb/statedb.go	339	GetCodeHash	-	disable guard: if stateObject == nil {
+196	M278	B1	GUARD	-	precompiles/staking/tx.go	125	EditValidator	R3	disable guard: if msgSender != validatorHexAddr {
+197	M371	B1	GUARD	-	precompiles/slashing/tx.go	31	Unjail	-	disable guard: if len(args) != 1 {
+198	M392	B1	DEL	-	precompiles/ics20/tx.go	157	transferWithStateDB	-	delete call: telemetry.IncrCounterWithLabels(
+199	C087	B2	DEL	NEST	x/vm/statedb/statedb.go	229	RevertMultiStore	R1	delete call: s.snapshotter.RevertToSnapshot(snapshot) only when NEST
+200	M325	B1	ERR	-	precompiles/distribution/tx.go	200	FundCommunityPool	R3	ignore error: if err = p.EmitFundCommunityPoolEvent(ctx, stateDB, depositorHexAddr, 
+201	M134	B1	DEL	-	x/vm/statedb/statedb.go	573	SelfDestruct	-	delete call: stateObject.markSelfDestructed()
+202	M296	B1	ERR	-	precompiles/staking/tx.go	296	CancelUnbondingDelegation	R3	ignore error: if err != nil {
+203	M216	B1	DEL	-	x/vm/statedb/state_object.go	181	SetBalance	R2-W	delete call: s.setBalance(amount)
+204	M182	B1	DEL	-	x/vm/statedb/statedb.go	791	commitWithCtx	R2-W	delete call: s.keeper.SetState(ctx, obj.Address(), key, valueBytes)
+205	M334	B1	ERR	-	precompiles/erc20/tx.go	82	transfer	-	ignore error: if err = msg.Amount.Validate(); err != nil {
+206	M282	B1	ERR	-	precompiles/staking/tx.go	156	Delegate	R3	ignore error: if err != nil {
+207	C021	B2	ERR	LOWGAS	precompiles/common/precompile.go	68	runNativeAction	R1|R2-W	ignore error: if err != nil { only when LOWGAS
+208	M089	B1	DEL	-	x/vm/statedb/statedb.go	249	cache	-	delete call: s.ctx.EventManager().EmitEvents(eventsToEmit)
+209	C027	B2	ERR	LOWGAS	precompiles/common/precompile.go	84	runNativeAction	R1|R2-W	ignore error: if err := stateDB.FlushToCacheCtx(); err != nil { only when LOWGAS
+210	M136	B1	GUARD	-	x/vm/statedb/statedb.go	590	SetTransientState	-	disable guard: if prev == value {
+211	M340	B1	GUARD	-	precompiles/erc20/tx.go	124	transfer	-	disable guard: if isTransferFrom {
+212	M068	B1	SWAP	-	precompiles/common/balance_handler.go	106	AfterBalanceChange	R2-W	.AddBalance( -> .SubBalance(: stateDB.AddBalance(common.BytesToAddress(receiverAddr.Bytes(
+213	M295	B1	ERR	-	precompiles/staking/tx.go	278	Redelegate	R3	ignore error: if err = p.EmitRedelegateEvent(ctx, stateDB, msg, delegatorHexAddr, re
+214	M370	B1	ERR	-	precompiles/gov/tx.go	167	VoteWeighted	-	ignore error: if err = p.EmitVoteWeightedEvent(ctx, stateDB, voterHexAddr, msg.Propo
+215	M014	B1	LOCK	-	x/vm/keeper/statedb.go	0	-	R2-W	commit writes spendable only (locked dropped)
+216	C211	B2	GUARD	LOCKED	x/vm/statedb/state_object.go	162	SubBalance	R2-A	disable guard: if balance.Lt(amount) { only when LOCKED
+217	M268	B1	DEL	-	x/vm/keeper/statedb.go	412	DeleteAccount	R2-W	delete call: k.DeleteCodeHash(ctx, addr)
+218	M203	B1	GUARD	-	x/vm/statedb/state_object.go	143	AddBalance	R2-A	disable guard: if overflowed {
+219	M228	B1	GUARD	-	x/vm/statedb/state_object.go	285	GetState	R2-W	disable guard: if value, dirty := s.dirtyStorage[key]; dirty {
+220	M180	B1	DEL	-	x/vm/statedb/statedb.go	789	commitWithCtx	R2-W	delete call: s.keeper.DeleteState(ctx, obj.Address(), key)
+221	M319	B1	GUARD	-	precompiles/distribution/tx.go	160	WithdrawValidatorCommission	R3	disable guard: if msgSender != validatorHexAddr {
+222	M376	B1	ERR	-	precompiles/slashing/tx.go	59	Unjail	-	ignore error: if err := p.EmitValidatorUnjailedEvent(ctx, stateDB, validatorAddress)
+223	C171	B2	ERR	NEST	x/vm/statedb/statedb.go	768	commitWithCtx	R2-W	ignore error: if err := s.keeper.SetAccount(ctx, obj.Address(), obj.account); err != only when NEST
+224	C169	B2	DEL	NEST	x/vm/statedb/statedb.go	766	commitWithCtx	R2-W	delete call: s.keeper.SetCode(ctx, obj.CodeHash(), obj.code) only when NEST
+225	M234	B1	GUARD	-	x/vm/keeper/statedb.go	86	GetCodeHash	R2-W	disable guard: if len(bz) == 0 {
+226	M326	B1	ERR	-	precompiles/distribution/tx.go	217	DepositValidatorRewardsPool	R3	ignore error: if err != nil {
+227	M235	B1	GUARD	-	x/vm/keeper/statedb.go	108	IterateContracts	R2-W	disable guard: if cb(addr, codeHash) {
+228	M189	B1	DEL	-	x/vm/statedb/journal.go	216	Revert	R1	delete call: s.getStateObject(*ch.account).setBalance(ch.prev)
+229	M368	B1	GUARD	-	precompiles/gov/tx.go	158	VoteWeighted	-	disable guard: if msgSender != voterHexAddr {
+230	M290	B1	ERR	-	precompiles/staking/tx.go	230	Undelegate	R3	ignore error: if err = p.EmitUnbondEvent(ctx, stateDB, msg, delegatorHexAddr, res.Co
+231	M390	B1	SWAP	-	precompiles/ics20/tx.go	148	transferWithStateDB	-	.Sub( -> .Add(: difference := msg.Token.Amount.Sub(balance.Amount)
+232	M311	B1	GUARD	-	precompiles/distribution/tx.go	101	SetWithdrawAddress	R3	disable guard: if msgSender != delegatorHexAddr {
+233	M365	B1	ERR	-	precompiles/gov/tx.go	134	Vote	-	ignore error: if _, err = p.govMsgServer.Vote(ctx, msg); err != nil {
+234	M135	B1	GUARD	-	x/vm/statedb/statedb.go	579	HasSelfDestructed	-	disable guard: if stateObject != nil {
+235	M304	B1	GUARD	-	precompiles/distribution/tx.go	55	ClaimRewards	R3	disable guard: if msgSender != delegatorAddr {
+236	M289	B1	ERR	-	precompiles/staking/tx.go	225	Undelegate	R3	ignore error: if err != nil {
+237	M350	B1	ERR	-	precompiles/werc20/tx.go	76	Withdraw	-	ignore error: if err := p.EmitWithdrawalEvent(ctx, stateDB, caller, amount); err != 
+238	M178	B1	ERR	-	x/vm/statedb/statedb.go	783	commitWithCtx	R2-W	ignore error: if err := s.keeper.SetAccount(ctx, obj.Address(), obj.account); err !=
+239	M198	B1	DEL	-	x/vm/statedb/state_object.go	128	empty	R2-W	delete call: types.IsEmptyCodeHash(s.account.CodeHash)
+240	M248	B1	DEL	-	x/vm/keeper/statedb.go	243	SetState	R2-W	delete call: store.Set(key.Bytes(), value)
+241	M396	B1	ERR	-	precompiles/ics20/tx.go	190	Transfer	-	ignore error: if err := p.validateV1TransferChannel(ctx, msg); err != nil {
+242	M387	B1	GUARD	-	precompiles/ics20/tx.go	126	transferWithStateDB	-	disable guard: if !pair.IsNativeERC20() {
+243	M265	B1	ERR	-	x/vm/keeper/statedb.go	396	DeleteAccount	R2-W	ignore error: if err := k.SetBalanceWithLocked(ctx, addr, new(uint256.Int), new(big.
+244	M351	B1	ERR	-	precompiles/gov/tx.go	37	SubmitProposal	-	ignore error: if err != nil {
+245	M245	B1	DEL	-	x/vm/keeper/statedb.go	216	SetAccount	R2-W	delete call: k.SetCodeHash(ctx, addr.Bytes(), account.CodeHash)
+246	M333	B1	ERR	-	precompiles/erc20/tx.go	57	TransferFrom	-	ignore error: if err != nil {
+247	C025	B2	ERR	CONTRACT	precompiles/common/precompile.go	78	runNativeAction	R1|R2-W	ignore error: if err := stateDB.AddPrecompileFn(snapshot); err != nil { only when CONTRACT
+248	M331	B1	ERR	-	precompiles/bank/bank.go	124	Execute	-	ignore error: if err != nil {
+249	M321	B1	ERR	-	precompiles/distribution/tx.go	170	WithdrawValidatorCommission	R3	ignore error: if err = p.EmitWithdrawValidatorCommissionEvent(ctx, stateDB, msg.Vali
+250	M066	B1	ERR	-	precompiles/common/balance_handler.go	103	AfterBalanceChange	R2-W	ignore error: if err != nil {
+251	M279	B1	ERR	-	precompiles/staking/tx.go	131	EditValidator	R3	ignore error: if _, err = p.stakingMsgServer.EditValidator(ctx, msg); err != nil {
+252	M094	B1	GUARD	-	x/vm/statedb/statedb.go	280	SubRefund	-	disable guard: if gas > s.refund {
+253	M164	B1	ERR	-	x/vm/statedb/statedb.go	747	FlushToCacheCtx	R2-W	ignore error: if err := s.commitWithCtx(s.cacheCtx); err != nil {
+254	M145	B1	DEL	-	x/vm/statedb/statedb.go	647	Prepare	-	delete call: al.AddSlot(el.Address, key)
+255	M112	B1	GUARD	-	x/vm/statedb/statedb.go	442	ForEachStorage	-	disable guard: if len(value) > 0 {
+256	M109	B1	GUARD	-	x/vm/statedb/statedb.go	435	ForEachStorage	-	disable guard: if so == nil {
+257	M056	B1	GUARD	-	precompiles/common/precompile.go	243	standardCallData	-	disable guard: if err != nil && !api.HasFallback() {
+258	M185	B1	DEL	-	x/vm/statedb/journal.go	79	Revert	R1	delete call: j.entries[i].Revert(statedb)
+259	C155	B2	GUARD	NEST	x/vm/statedb/statedb.go	723	Commit	R2-W	disable guard: if s.writeCache != nil { only when NEST
+260	M327	B1	GUARD	-	precompiles/distribution/tx.go	221	DepositValidatorRewardsPool	R3	disable guard: if msgSender != depositorHexAddr {
+261	M281	B1	ERR	-	precompiles/staking/tx.go	152	Delegate	R3	ignore error: if err != nil {
+262	M029	B1	DEL	-	precompiles/common/precompile.go	93	runNativeAction	R1|R2-W	delete call: WithTransientKVGasConfig(p.TransientKVGasConfig)
+263	M292	B1	ERR	-	precompiles/staking/tx.go	252	Redelegate	R3	ignore error: if err != nil {
+264	C030	B2	DEL	LOWGAS	precompiles/common/precompile.go	93	runNativeAction	R1|R2-W	delete call: WithTransientKVGasConfig(p.TransientKVGasConfig) only when LOWGAS
+265	M383	B1	GUARD	-	precompiles/ics20/tx.go	85	validateV1TransferChannel	-	disable guard: if connection.State != connectiontypes.OPEN {
+266	M072	B1	ERR	-	precompiles/common/utils.go	39	ParseAmount	R2-W	ignore error: if err != nil {
+267	M360	B1	GUARD	-	precompiles/gov/tx.go	100	CancelProposal	-	disable guard: if msgSender != proposerHexAddr {
+268	M274	B1	ERR	-	precompiles/staking/tx.go	79	CreateValidator	R3	ignore error: if _, err = p.stakingMsgServer.CreateValidator(ctx, msg); err != nil {
+269	M187	B1	DEL	-	x/vm/statedb/journal.go	178	Revert	R1	delete call: s.RevertMultiStore(pc.snapshot)
+270	M255	B1	GUARD	-	x/vm/keeper/statedb.go	338	hasStakingPositions	R2-W	disable guard: if len(delegations) > 0 {
+271	M082	B1	GUARD	-	x/vm/statedb/statedb.go	178	Finalise	-	disable guard: if !exist {
+272	M378	B1	ERR	-	precompiles/ics20/tx.go	46	validateV1TransferChannel	-	ignore error: if err := msg.ValidateBasic(); err != nil {
+273	M273	B1	GUARD	-	precompiles/staking/tx.go	73	CreateValidator	R3	disable guard: if msgSender != validatorHexAddr {
+274	C207	B2	GUARD	NEST	x/vm/statedb/state_object.go	158	SubBalance	R2-A	disable guard: if amount.IsZero() { only when NEST
+275	M059	B1	ERR	-	precompiles/common/balance_handler.go	77	AfterBalanceChange	R2-W	ignore error: if err != nil {
+276	M318	B1	ERR	-	precompiles/distribution/tx.go	156	WithdrawValidatorCommission	R3	ignore error: if err != nil {
+277	M310	B1	ERR	-	precompiles/distribution/tx.go	97	SetWithdrawAddress	R3	ignore error: if err != nil {
+278	M380	B1	ERR	-	precompiles/ics20/tx.go	60	validateV1TransferChannel	-	ignore error: if err := channel.ValidateBasic(); err != nil {
+279	C042	B2	GUARD	LOWGAS	precompiles/common/precompile.go	116	runNativeAction	R1|R2-W	disable guard: if !contract.UseGas(cost, nil, tracing.GasChangeCallPrecompiledContrac only when LOWGAS
+280	M344	B1	ERR	-	precompiles/erc20/approve.go	63	Approve	-	ignore error: if err != nil {
+281	C159	B2	DEL	NEST	x/vm/statedb/statedb.go	729	Commit	R2-W	delete call: s.writeCache() only when NEST
+282	C157	B2	ERR	NEST	x/vm/statedb/statedb.go	727	Commit	R2-W	ignore error: if err := s.commitWithCtx(s.cacheCtx); err != nil { only when NEST
+283	M297	B1	ERR	-	precompiles/staking/tx.go	300	CancelUnbondingDelegation	R3	ignore error: if err != nil {
+284	M267	B1	DEL	-	x/vm/keeper/statedb.go	408	DeleteAccount	R2-W	delete call: k.DeleteState(ctx, addr, key)
+285	C033	B2	DEL	LOWGAS	precompiles/common/precompile.go	98	runNativeAction	R1|R2-W	delete call: ctx.GasMeter().ConsumeGas(initialGas, "creating a new gas meter") only when LOWGAS
+286	M369	B1	ERR	-	precompiles/gov/tx.go	163	VoteWeighted	-	ignore error: if _, err = p.govMsgServer.VoteWeighted(ctx, msg); err != nil {
+287	M356	B1	GUARD	-	precompiles/gov/tx.go	71	Deposit	-	disable guard: if msgSender != depositorHexAddr {
+288	M357	B1	ERR	-	precompiles/gov/tx.go	76	Deposit	-	ignore error: if _, err = p.govMsgServer.Deposit(ctx, msg); err != nil {
+289	M374	B1	ERR	-	precompiles/slashing/tx.go	47	Unjail	-	ignore error: if err != nil {
+290	C214	B2	DEL	NEST	x/vm/statedb/state_object.go	177	SetBalance	R2-W	delete call: s.db.journal.append(balanceChange{ only when NEST
+291	M129	B1	DEL	-	x/vm/statedb/statedb.go	549	SetBalance	R2-W	delete call: stateObject.SetBalance(amount)
+292	M128	B1	GUARD	-	x/vm/statedb/statedb.go	539	SetState	-	disable guard: if stateObject := s.getOrNewStateObject(addr); stateObject != nil {
+293	M275	B1	ERR	-	precompiles/staking/tx.go	87	CreateValidator	R3	ignore error: if err = p.EmitCreateValidatorEvent(ctx, stateDB, msg, validatorHexAdd
+294	M220	B1	GUARD	-	x/vm/statedb/state_object.go	204	Code	R2-W	disable guard: if types.IsEmptyCodeHash(s.CodeHash()) {
+295	M174	B1	DEL	-	x/vm/statedb/statedb.go	777	commitWithCtx	R2-W	delete call: s.keeper.DeleteCode(ctx, obj.CodeHash())
+296	M176	B1	DEL	-	x/vm/statedb/statedb.go	779	commitWithCtx	R2-W	delete call: s.keeper.SetCode(ctx, obj.CodeHash(), obj.code)
+297	M170	B1	ERR	-	x/vm/statedb/statedb.go	768	commitWithCtx	R2-W	ignore error: if err := s.keeper.SetAccount(ctx, obj.Address(), obj.account); err !=
+298	M317	B1	ERR	-	precompiles/distribution/tx.go	140	WithdrawDelegatorReward	R3	ignore error: if err = p.EmitWithdrawDelegatorRewardEvent(ctx, stateDB, delegatorHex
+299	M257	B1	GUARD	-	x/vm/keeper/statedb.go	346	hasStakingPositions	R2-W	disable guard: if len(redelegations) > 0 {
+300	C241	B2	GUARD	LOCKED	x/vm/keeper/statedb.go	188	SetBalanceWithLocked	R2-W	disable guard: if isModule || isBlockedChange { only when LOCKED
+301	M146	B1	DEL	-	x/vm/statedb/statedb.go	651	Prepare	-	delete call: al.AddAddress(coinbase)
+302	M222	B1	DEL	-	x/vm/statedb/state_object.go	228	SetCode	R2-W	delete call: s.setCode(codeHash, code)
+303	M262	B1	ERR	-	x/vm/keeper/statedb.go	384	DeleteAccount	R2-W	ignore error: if err != nil {
+304	M269	B1	DEL	-	x/vm/keeper/statedb.go	415	DeleteAccount	R2-W	delete call: k.accountKeeper.RemoveAccount(ctx, acct)
+305	M229	B1	GUARD	-	x/vm/statedb/state_object.go	296	SetState	R2-W	disable guard: if prev == value {
+306	M277	B1	GUARD	-	precompiles/staking/tx.go	120	EditValidator	R3	disable guard: if len(code) > 0 && !delegated {
+307	M382	B1	ERR	-	precompiles/ics20/tx.go	76	validateV1TransferChannel	-	ignore error: if err != nil {
+308	M162	B1	DEL	-	x/vm/statedb/statedb.go	738	Commit	R2-W	delete call: writeCache()
+309	M091	B1	DEL	-	x/vm/statedb/statedb.go	258	AddLog	-	delete call: s.journal.append(addLogChange{})
+310	M243	B1	ERR	-	x/vm/keeper/statedb.go	210	SetAccount	R2-W	ignore error: if err := acct.SetSequence(account.Nonce); err != nil {
+311	M287	B1	ERR	-	precompiles/staking/tx.go	203	Undelegate	R3	ignore error: if err != nil {
+312	M077	B1	DEL	-	x/vm/statedb/statedb.go	112	GetStorageRoot	-	delete call: s.keeper.ForEachStorage(s.ctx, addr, func(key, value common.Hash) bool
+313	M259	B1	GUARD	-	x/vm/keeper/statedb.go	354	hasStakingPositions	R2-W	disable guard: if len(unbondingDelegations) > 0 {
+314	C045	B2	GUARD	LOWGAS	precompiles/common/precompile.go	120	runNativeAction	R1|R2-W	disable guard: if balanceHandler != nil { only when LOWGAS
+315	M186	B1	DEL	-	x/vm/statedb/journal.go	84	Revert	R1	delete call: delete(j.dirties, *addr)
+316	C018	B2	GUARD	LOWGAS	precompiles/common/precompile.go	61	runNativeAction	R1|R2-W	disable guard: if !ok { only when LOWGAS
+317	M343	B1	ERR	-	precompiles/erc20/approve.go	44	Approve	-	ignore error: if err != nil {
+318	M093	B1	DEL	-	x/vm/statedb/statedb.go	279	SubRefund	-	delete call: s.journal.append(refundChange{prev: s.refund})
+319	M266	B1	DEL	-	x/vm/keeper/statedb.go	402	DeleteAccount	R2-W	delete call: k.ForEachStorage(ctx, addr, func(key, _ common.Hash) bool {
+320	M232	B1	GUARD	-	x/vm/keeper/statedb.go	39	GetAccount	R2-W	disable guard: if acct == nil {
+321	M347	B1	ERR	-	precompiles/werc20/tx.go	52	Deposit	-	ignore error: if err := p.EmitDepositEvent(ctx, stateDB, caller, depositedAmount.ToB
+322	M221	B1	DEL	-	x/vm/statedb/state_object.go	223	SetCode	R2-W	delete call: s.db.journal.append(codeChange{
+323	M250	B1	DEL	-	x/vm/keeper/statedb.go	278	SetCodeHash	R2-W	delete call: store.Set(addrBytes, hashBytes)
+324	M398	B1	ERR	-	precompiles/ics20/tx.go	209	Transfer	-	ignore error: if err != nil {
+325	M104	B1	GUARD	-	x/vm/statedb/statedb.go	392	getStateObject	-	disable guard: if account == nil {
+326	M316	B1	ERR	-	precompiles/distribution/tx.go	136	WithdrawDelegatorReward	R3	ignore error: if err != nil {
+327	M137	B1	DEL	-	x/vm/statedb/statedb.go	593	SetTransientState	-	delete call: s.journal.append(transientStorageChange{
+328	M312	B1	ERR	-	precompiles/distribution/tx.go	106	SetWithdrawAddress	R3	ignore error: if _, err = p.distributionMsgServer.SetWithdrawAddress(ctx, msg); err 
+329	C049	B2	ERR	CONTRACT	precompiles/common/precompile.go	122	runNativeAction	R1|R2-W	ignore error: if err := balanceHandler.AfterBalanceChange(ctx, stateDB); err != nil  only when CONTRACT
+330	C151	B2	GUARD	NEST	x/vm/statedb/statedb.go	707	RevertToSnapshot	R1	disable guard: if idx == len(s.validRevisions) || s.validRevisions[idx].id != revid { only when NEST
+331	M305	B1	ERR	-	precompiles/distribution/tx.go	61	ClaimRewards	R3	ignore error: if err != nil {
+332	M260	B1	GUARD	-	x/vm/keeper/statedb.go	372	DeleteAccount	R2-W	disable guard: if acct == nil {
+333	M038	B1	ERR	-	precompiles/common/precompile.go	111	runNativeAction	R1|R2-W	ignore error: if err != nil {
+334	C218	B2	DEL	LOCKED	x/vm/statedb/state_object.go	181	SetBalance	R2-W	delete call: s.setBalance(amount) only when LOCKED
+335	M223	B1	DEL	-	x/vm/statedb/state_object.go	239	SetNonce	R2-W	delete call: s.db.journal.append(nonceChange{
+336	M102	B1	GUARD	-	x/vm/statedb/statedb.go	366	GetStateAndCommittedState	-	disable guard: if stateObject != nil {
+337	M251	B1	DEL	-	x/vm/keeper/statedb.go	292	DeleteCodeHash	R2-W	delete call: store.Delete(addr.Bytes())
+338	M061	B1	ERR	-	precompiles/common/balance_handler.go	86	AfterBalanceChange	R2-W	ignore error: if err != nil {
+339	M055	B1	GUARD	-	precompiles/common/precompile.go	228	methodIDCallData	-	disable guard: if !api.HasFallback() {
+340	C024	B2	ERR	LOWGAS	precompiles/common/precompile.go	78	runNativeAction	R1|R2-W	ignore error: if err := stateDB.AddPrecompileFn(snapshot); err != nil { only when LOWGAS
+341	M192	B1	DEL	-	x/vm/statedb/journal.go	240	Revert	R1	delete call: s.getStateObject(*ch.account).setState(ch.key, ch.prevalue)
+342	M125	B1	SWAP	-	x/vm/statedb/statedb.go	515	SubBalance	R2-W	.SubBalance( -> .AddBalance(: return stateObject.SubBalance(amount)
+343	M348	B1	GUARD	-	precompiles/werc20/tx.go	63	Withdraw	-	disable guard: if !ok {
+344	C034	B2	DEL	CONTRACT	precompiles/common/precompile.go	98	runNativeAction	R1|R2-W	delete call: ctx.GasMeter().ConsumeGas(initialGas, "creating a new gas meter") only when CONTRACT
+345	M166	B1	GUARD	-	x/vm/statedb/statedb.go	765	commitWithCtx	R2-W	disable guard: if obj.code != nil && obj.dirtyCode && len(obj.code) > 0 {
+346	M280	B1	ERR	-	precompiles/staking/tx.go	136	EditValidator	R3	ignore error: if err = p.EmitEditValidatorEvent(ctx, stateDB, msg, validatorHexAddr)
+347	M126	B1	DEL	-	x/vm/statedb/statedb.go	522	SetNonce	-	delete call: stateObject.SetNonce(nonce)
+348	M394	B1	ERR	-	precompiles/ics20/tx.go	184	Transfer	-	ignore error: if err != nil {
+349	M237	B1	GUARD	-	x/vm/keeper/statedb.go	153	SetAccountBalance	R2-W	disable guard: if locked == nil {
+350	M231	B1	DEL	-	x/vm/statedb/state_object.go	305	SetState	R2-W	delete call: s.setState(key, value)
+351	M057	B1	GUARD	-	precompiles/common/precompile.go	248	standardCallData	-	disable guard: if err != nil && api.HasFallback() {
+352	M147	B1	DEL	-	x/vm/statedb/statedb.go	661	AddAddressToAccessList	-	delete call: s.journal.append(accessListAddAccountChange{&addr})
+353	M306	B1	ERR	-	precompiles/distribution/tx.go	68	ClaimRewards	R3	ignore error: if err != nil {
+354	M117	B1	GUARD	-	x/vm/statedb/statedb.go	484	MarkEventProcessed	-	disable guard: if idx != s.processedEventsCount {
+355	M120	B1	SWAP	-	x/vm/statedb/statedb.go	503	AddBalance	R2-W	.AddBalance( -> .SubBalance(: return stateObject.AddBalance(amount)
+356	M172	B1	ERR	-	x/vm/statedb/statedb.go	772	commitWithCtx	R2-W	ignore error: if err := s.keeper.DeleteAccount(ctx, obj.Address()); err != nil {
+357	M285	B1	ERR	-	precompiles/staking/tx.go	182	Delegate	R3	ignore error: if err = p.EmitDelegateEvent(ctx, stateDB, msg, delegatorHexAddr); err
+358	M083	B1	DEL	-	x/vm/statedb/statedb.go	182	Finalise	-	delete call: delete(s.stateObjects, obj.address)
+359	M386	B1	GUARD	-	precompiles/ics20/tx.go	118	transferWithStateDB	-	disable guard: if !p.erc20Keeper.IsERC20Enabled(ctx) {
+360	M013	B1	LOCK	-	x/vm/keeper/statedb.go	0	-	R2-W	locked balance snapshot taken as zero
+361	C210	B2	GUARD	NEST	x/vm/statedb/state_object.go	162	SubBalance	R2-A	disable guard: if balance.Lt(amount) { only when NEST
+362	C173	B2	ERR	NEST	x/vm/statedb/statedb.go	772	commitWithCtx	R2-W	ignore error: if err := s.keeper.DeleteAccount(ctx, obj.Address()); err != nil { only when NEST
+363	M097	B1	GUARD	-	x/vm/statedb/statedb.go	321	GetCode	-	disable guard: if stateObject != nil {
+364	C043	B2	GUARD	CONTRACT	precompiles/common/precompile.go	116	runNativeAction	R1|R2-W	disable guard: if !contract.UseGas(cost, nil, tracing.GasChangeCallPrecompiledContrac only when CONTRACT
+365	M256	B1	ERR	-	x/vm/keeper/statedb.go	344	hasStakingPositions	R2-W	ignore error: if err != nil {
+366	M127	B1	DEL	-	x/vm/statedb/statedb.go	532	SetCode	-	delete call: stateObject.SetCode(crypto.Keccak256Hash(code), code)
+367	C130	B2	DEL	NEST	x/vm/statedb/statedb.go	549	SetBalance	R2-W	delete call: stateObject.SetBalance(amount) only when NEST
+368	M015	B1	GUARD	-	precompiles/common/precompile.go	38	RequiredGas	-	disable guard: if isTransaction {
+369	M041	B1	GUARD	-	precompiles/common/precompile.go	116	runNativeAction	R1|R2-W	disable guard: if !contract.UseGas(cost, nil, tracing.GasChangeCallPrecompiledContrac
+370	M393	B1	GUARD	-	precompiles/ics20/tx.go	178	Transfer	-	disable guard: if callbackstypes.IsSourceCallbackExecution(ctx) {
+371	M294	B1	ERR	-	precompiles/staking/tx.go	274	Redelegate	R3	ignore error: if err != nil {
+372	M299	B1	ERR	-	precompiles/staking/tx.go	321	CancelUnbondingDelegation	R3	ignore error: if _, err = p.stakingMsgServer.CancelUnbondingDelegation(ctx, msg); er
+373	C165	B2	ERR	NEST	x/vm/statedb/statedb.go	747	FlushToCacheCtx	R2-W	ignore error: if err := s.commitWithCtx(s.cacheCtx); err != nil { only when NEST
+374	C181	B2	DEL	NEST	x/vm/statedb/statedb.go	789	commitWithCtx	R2-W	delete call: s.keeper.DeleteState(ctx, obj.Address(), key) only when NEST
+375	M271	B1	ERR	-	precompiles/staking/tx.go	49	CreateValidator	R3	ignore error: if err != nil {
+376	M261	B1	GUARD	-	x/vm/keeper/statedb.go	377	DeleteAccount	R2-W	disable guard: if !k.IsContract(ctx, addr) {
+377	M322	B1	ERR	-	precompiles/distribution/tx.go	186	FundCommunityPool	R3	ignore error: if err != nil {
+378	M026	B1	ERR	-	precompiles/common/precompile.go	84	runNativeAction	R1|R2-W	ignore error: if err := stateDB.FlushToCacheCtx(); err != nil {
+379	M156	B1	ERR	-	x/vm/statedb/statedb.go	727	Commit	R2-W	ignore error: if err := s.commitWithCtx(s.cacheCtx); err != nil {
+380	M105	B1	DEL	-	x/vm/statedb/statedb.go	397	getStateObject	-	delete call: s.setStateObject(obj)
+381	M352	B1	GUARD	-	precompiles/gov/tx.go	41	SubmitProposal	-	disable guard: if msgSender != proposerHexAddr {
+382	M359	B1	ERR	-	precompiles/gov/tx.go	96	CancelProposal	-	ignore error: if err != nil {
+383	C037	B2	DEL	CONTRACT	precompiles/common/precompile.go	106	runNativeAction	R1|R2-W	delete call: balanceHandler.BeforeBalanceChange(ctx) only when CONTRACT
+384	M323	B1	GUARD	-	precompiles/distribution/tx.go	190	FundCommunityPool	R3	disable guard: if msgSender != depositorHexAddr {
+385	M152	B1	DEL	-	x/vm/statedb/statedb.go	714	RevertToSnapshot	R1	delete call: s.journal.Revert(s, snapshot)
+386	C040	B2	ERR	CONTRACT	precompiles/common/precompile.go	111	runNativeAction	R1|R2-W	ignore error: if err != nil { only when CONTRACT
+387	M197	B1	DEL	-	x/vm/statedb/state_object.go	77	SortedKeys	R2-W	delete call: sort.Slice(keys, func(i, j int) bool {
+388	C239	B2	GUARD	LOCKED	x/vm/keeper/statedb.go	174	SetBalanceWithLocked	R2-W	disable guard: if amount == nil { only when LOCKED
+389	M366	B1	ERR	-	precompiles/gov/tx.go	138	Vote	-	ignore error: if err = p.EmitVoteEvent(ctx, stateDB, voterHexAddr, msg.ProposalId, i
+390	M301	B1	ERR	-	precompiles/distribution/tx.go	43	ClaimRewards	R3	ignore error: if err != nil {
+391	M142	B1	DEL	-	x/vm/statedb/statedb.go	638	Prepare	-	delete call: al.AddAddress(*dst)
+392	C022	B2	ERR	CONTRACT	precompiles/common/precompile.go	68	runNativeAction	R1|R2-W	ignore error: if err != nil { only when CONTRACT
+393	C122	B2	GUARD	NEST	x/vm/statedb/statedb.go	509	SubBalance	R2-A	disable guard: if stateObject == nil { only when NEST
+394	M324	B1	ERR	-	precompiles/distribution/tx.go	196	FundCommunityPool	R3	ignore error: if err != nil {
+395	M377	B1	GUARD	-	precompiles/ics20/tx.go	41	validateV1TransferChannel	-	disable guard: if msg == nil {
+396	M276	B1	ERR	-	precompiles/staking/tx.go	103	EditValidator	R3	ignore error: if err != nil {
+397	M373	B1	GUARD	-	precompiles/slashing/tx.go	41	Unjail	-	disable guard: if msgSender != validatorAddress {
+398	M258	B1	ERR	-	x/vm/keeper/statedb.go	352	hasStakingPositions	R2-W	ignore error: if err != nil {

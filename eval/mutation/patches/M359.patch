@@ -1,0 +1,10 @@
+--- a/precompiles/gov/tx.go
++++ b/precompiles/gov/tx.go
+@@ -93,7 +93,6 @@
+ ) ([]byte, error) {
+ 	msg, proposerHexAddr, err := NewMsgCancelProposal(args, p.addrCdc)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 
+ 	msgSender := contract.Caller()

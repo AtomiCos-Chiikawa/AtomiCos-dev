@@ -1,0 +1,10 @@
+--- a/precompiles/slashing/tx.go
++++ b/precompiles/slashing/tx.go
+@@ -56,7 +56,6 @@
+ 	}
+ 
+ 	if err := p.EmitValidatorUnjailedEvent(ctx, stateDB, validatorAddress); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	return method.Outputs.Pack(true)

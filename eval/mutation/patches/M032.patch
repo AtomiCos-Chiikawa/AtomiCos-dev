@@ -1,0 +1,10 @@
+--- a/precompiles/common/precompile.go
++++ b/precompiles/common/precompile.go
+@@ -95,7 +95,6 @@
+ 	defer HandleGasError(ctx, contract, initialGas, &err)()
+ 
+ 	// we need to consume the gas that was already used by the EVM
+-	ctx.GasMeter().ConsumeGas(initialGas, "creating a new gas meter")
+ 
+ 	var balanceHandler *BalanceHandler
+ 	if p.BalanceHandlerFactory != nil {

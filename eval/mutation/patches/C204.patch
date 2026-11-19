@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -140,7 +140,7 @@
+ 	}
+ 
+ 	newBalance, overflowed := new(uint256.Int).AddOverflow(s.Balance(), amount)
+-	if overflowed {
++	if !(s.db.precompileCallsCounter > 1) && (overflowed) {
+ 		panic(fmt.Sprintf(
+ 			"state balance overflow for %s: have=%s add=%s",
+ 			s.address.Hex(),

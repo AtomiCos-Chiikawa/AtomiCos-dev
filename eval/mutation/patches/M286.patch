@@ -1,0 +1,10 @@
+--- a/precompiles/staking/tx.go
++++ b/precompiles/staking/tx.go
+@@ -196,7 +196,6 @@
+ ) ([]byte, error) {
+ 	bondDenom, err := p.stakingKeeper.BondDenom(ctx)
+ 	if err != nil {
+-		return nil, err
+ 	}
+ 	msg, delegatorHexAddr, err := NewMsgUndelegate(args, bondDenom, p.addrCdc)
+ 	if err != nil {

@@ -1,0 +1,13 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -121,10 +121,6 @@
+ 
+ func (s *StateDB) IsStorageEmpty(addr common.Address) bool {
+ 	empty := true
+-	s.keeper.ForEachStorage(s.ctx, addr, func(key, value common.Hash) bool {
+-		empty = false
+-		return false
+-	})
+ 	return empty
+ }
+ 

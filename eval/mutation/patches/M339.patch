@@ -1,0 +1,10 @@
+--- a/precompiles/erc20/tx.go
++++ b/precompiles/erc20/tx.go
+@@ -116,7 +116,6 @@
+ 	}
+ 
+ 	if err = p.EmitTransferEvent(ctx, stateDB, from, to, amount); err != nil {
+-		return nil, err
+ 	}
+ 
+ 	// NOTE: if it's a direct transfer, we return here but if used through transferFrom,

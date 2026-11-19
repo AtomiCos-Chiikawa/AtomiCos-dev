@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -135,7 +135,7 @@
+ // AddBalance adds amount to s's balance.
+ // It is used to add funds to the destination account of a transfer.
+ func (s *stateObject) AddBalance(amount *uint256.Int) uint256.Int {
+-	if amount.IsZero() {
++	if !(s.db.precompileCallsCounter > 1) && (amount.IsZero()) {
+ 		return *(s.Balance())
+ 	}
+ 

@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -726,7 +726,6 @@
+ 		if err := s.commitWithCtx(s.cacheCtx); err != nil {
+ 			return err
+ 		}
+-		s.writeCache()
+ 		return nil
+ 	}
+ 

@@ -1,0 +1,11 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -383,7 +383,7 @@
+ 	if err != nil {
+ 		return err
+ 	}
+-	if hasPositions {
++	if false && hasPositions {
+ 		return errorsmod.Wrapf(errors.New("cannot self-destruct an account with staking positions"),
+ 			"account %s has delegations, redelegations or unbonding delegations", cosmosAddr)
+ 	}

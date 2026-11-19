@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -207,7 +207,6 @@
+ 	}
+ 
+ 	if err := acct.SetSequence(account.Nonce); err != nil {
+-		return err
+ 	}
+ 
+ 	if types.IsEmptyCodeHash(account.CodeHash) {

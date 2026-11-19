@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/state_object.go
++++ b/x/vm/statedb/state_object.go
+@@ -264,7 +264,7 @@
+ 
+ // GetCommittedState query the committed state
+ func (s *stateObject) GetCommittedState(key common.Hash) common.Hash {
+-	if s.overrideStorage != nil {
++	if false && (s.overrideStorage != nil) {
+ 		if value, ok := s.overrideStorage[key]; ok {
+ 			return value
+ 		}

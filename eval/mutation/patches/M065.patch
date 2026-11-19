@@ -1,0 +1,11 @@
+--- a/precompiles/common/balance_handler.go
++++ b/precompiles/common/balance_handler.go
+@@ -93,7 +93,7 @@
+ 			if err != nil {
+ 				return fmt.Errorf("failed to parse receiver address from event %q: %w", banktypes.EventTypeCoinReceived, err)
+ 			}
+-			if bh.bankKeeper.BlockedAddr(receiverAddr) {
++			if false && (bh.bankKeeper.BlockedAddr(receiverAddr)) {
+ 				// Bypass blocked addresses
+ 				continue
+ 			}

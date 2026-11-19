@@ -1,0 +1,11 @@
+--- a/precompiles/gov/tx.go
++++ b/precompiles/gov/tx.go
+@@ -126,7 +126,7 @@
+ 	}
+ 
+ 	msgSender := contract.Caller()
+-	if msgSender != voterHexAddr {
++	if false && (msgSender != voterHexAddr) {
+ 		return nil, fmt.Errorf(cmn.ErrRequesterIsNotMsgSender, msgSender.String(), voterHexAddr.String())
+ 	}
+ 

@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/journal.go
++++ b/x/vm/statedb/journal.go
+@@ -175,7 +175,6 @@
+ func (pc precompileCallChange) Revert(s *StateDB) {
+ 	// rollback multi store from cache ctx to the previous
+ 	// state stored in the snapshot
+-	s.RevertMultiStore(pc.snapshot)
+ 
+ 	// Restore events to the state before this precompile call
+ 	s.cacheCtx.EventManager().OverrideEvents(pc.prevEvents)

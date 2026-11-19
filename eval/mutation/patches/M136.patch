@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -587,7 +587,7 @@
+ // to its previous value if there is a revert.
+ func (s *StateDB) SetTransientState(addr common.Address, key, value common.Hash) {
+ 	prev := s.GetTransientState(addr, key)
+-	if prev == value {
++	if false && (prev == value) {
+ 		return
+ 	}
+ 	s.journal.append(transientStorageChange{

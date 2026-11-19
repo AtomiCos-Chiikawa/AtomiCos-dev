@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -100,7 +100,7 @@
+ // during the current transaction.
+ func (s *StateDB) IsNewContract(addr common.Address) bool {
+ 	obj := s.getStateObject(addr)
+-	if obj == nil {
++	if false && (obj == nil) {
+ 		return false
+ 	}
+ 	return obj.newContract

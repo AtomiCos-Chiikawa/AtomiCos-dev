@@ -1,0 +1,10 @@
+--- a/x/vm/keeper/statedb.go
++++ b/x/vm/keeper/statedb.go
+@@ -218,7 +218,6 @@
+ 	k.accountKeeper.SetAccount(ctx, acct)
+ 
+ 	if err := k.SetAccountBalance(ctx, addr, account); err != nil {
+-		return err
+ 	}
+ 
+ 	k.Logger(ctx).Debug(

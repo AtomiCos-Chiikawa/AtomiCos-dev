@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -780,7 +780,6 @@
+ 				}
+ 			}
+ 			if err := s.keeper.SetAccount(ctx, obj.Address(), obj.account); err != nil {
+-				return errorsmod.Wrap(err, "failed to set account")
+ 			}
+ 
+ 			for _, key := range obj.dirtyStorage.SortedKeys() {

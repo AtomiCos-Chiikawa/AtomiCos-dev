@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -536,7 +536,7 @@
+ 
+ // SetState sets the contract state.
+ func (s *StateDB) SetState(addr common.Address, key, value common.Hash) common.Hash {
+-	if stateObject := s.getOrNewStateObject(addr); stateObject != nil {
++	if stateObject := s.getOrNewStateObject(addr); false && (stateObject != nil) {
+ 		return stateObject.SetState(key, value)
+ 	}
+ 	return common.Hash{}

@@ -1,0 +1,11 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -336,7 +336,7 @@
+ // GetCodeHash returns the code hash of account.
+ func (s *StateDB) GetCodeHash(addr common.Address) common.Hash {
+ 	stateObject := s.getStateObject(addr)
+-	if stateObject == nil {
++	if false && (stateObject == nil) {
+ 		return common.Hash{}
+ 	}
+ 	return common.BytesToHash(stateObject.CodeHash())

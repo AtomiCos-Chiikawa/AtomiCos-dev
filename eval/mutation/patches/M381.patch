@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -61,7 +61,7 @@
+ 	}
+ 
+ 	// Validate channel is in OPEN state
+-	if channel.State != channeltypes.OPEN {
++	if false && (channel.State != channeltypes.OPEN) {
+ 		return errorsmod.Wrapf(
+ 			channeltypes.ErrInvalidChannelState,
+ 			"channel (%s) is not open, current state: %s",

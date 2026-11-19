@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -570,7 +570,6 @@
+ 	s.journal.append(selfDestructChange{
+ 		account: &addr,
+ 	})
+-	stateObject.markSelfDestructed()
+ }
+ 
+ // HasSelfDestructed returns if the contract is self-destructed in current transaction.

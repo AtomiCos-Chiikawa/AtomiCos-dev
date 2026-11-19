@@ -45,7 +45,7 @@ type AtomicosObserver interface {
 	Balance(v AtomicosView, op string, addr common.Address, before, amount *big.Int)
 	PrecompileEnter(v AtomicosView, precompile, caller common.Address, input []byte) int
 	PrecompileExit(v AtomicosView, call int, recovered any, err error)
-	Committed(v AtomicosView, recovered any)
+	Committed(v AtomicosView, recovered any, err error)
 }
 
 // AtomicosHook is installed by the harness. nil = disabled.
@@ -108,16 +108,17 @@ func atomicosOnBalance(s *StateDB, op string, addr common.Address, amount *big.I
 }
 
 // atomicosAfterCommit must be deferred directly (it calls recover to see a failed commit
-// and re-panics with the same value).
-func atomicosAfterCommit(s *StateDB) {
+// and re-panics with the same value). err points to Commit's (named) result, so the error a
+// failed commit returns is recorded too.
+func atomicosAfterCommit(s *StateDB, err *error) {
 	if AtomicosHook == nil {
 		return
 	}
 	if r := recover(); r != nil {
-		AtomicosHook.Committed(atomicosView{s}, r)
+		AtomicosHook.Committed(atomicosView{s}, r, nil)
 		panic(r)
 	}
-	AtomicosHook.Committed(atomicosView{s}, nil)
+	AtomicosHook.Committed(atomicosView{s}, nil, *err)
 }
 
 // AtomicosPrecompileEnter / Exit exist for API parity; this version has no call site for them.

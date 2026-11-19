@@ -1,0 +1,10 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -635,7 +635,6 @@
+ 
+ 		al.AddAddress(sender)
+ 		if dst != nil {
+-			al.AddAddress(*dst)
+ 			// If it's a create-tx, the destination will be added inside evm.create
+ 		}
+ 		for _, addr := range precompiles {

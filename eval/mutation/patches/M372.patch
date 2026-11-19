@@ -1,0 +1,11 @@
+--- a/precompiles/slashing/tx.go
++++ b/precompiles/slashing/tx.go
+@@ -33,7 +33,7 @@
+ 	}
+ 
+ 	validatorAddress, ok := args[0].(common.Address)
+-	if !ok {
++	if false && (!ok) {
+ 		return nil, fmt.Errorf("invalid validator hex address")
+ 	}
+ 

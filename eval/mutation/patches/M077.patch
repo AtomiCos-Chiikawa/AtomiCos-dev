@@ -1,0 +1,16 @@
+--- a/x/vm/statedb/statedb.go
++++ b/x/vm/statedb/statedb.go
+@@ -109,13 +109,6 @@
+ // GetStorageRoot calculates the hash of the trie root by iterating through all storage objects for a given account
+ func (s *StateDB) GetStorageRoot(addr common.Address) common.Hash {
+ 	sr := trie.NewStackTrie(nil)
+-	s.keeper.ForEachStorage(s.ctx, addr, func(key, value common.Hash) bool {
+-		if err := sr.Update(key.Bytes(), value.Bytes()); err != nil {
+-			s.ctx.Logger().Error("failed adding state during storage root hash", "err", err.Error())
+-			return false
+-		}
+-		return true
+-	})
+ 	return sr.Hash()
+ }
+ 

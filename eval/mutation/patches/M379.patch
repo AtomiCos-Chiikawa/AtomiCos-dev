@@ -1,0 +1,11 @@
+--- a/precompiles/ics20/tx.go
++++ b/precompiles/ics20/tx.go
+@@ -48,7 +48,7 @@
+ 
+ 	// check if channel exists and is open
+ 	channel, found := p.channelKeeper.GetChannel(ctx, msg.SourcePort, msg.SourceChannel)
+-	if !found {
++	if false && (!found) {
+ 		return errorsmod.Wrapf(
+ 			channeltypes.ErrChannelNotFound,
+ 			"port ID (%s) channel ID (%s)",
